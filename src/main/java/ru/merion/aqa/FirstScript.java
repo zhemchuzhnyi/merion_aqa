@@ -7,8 +7,8 @@ public class FirstScript {
 
     public static void main(String[] args) {
 
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://google.ru");
+        WebDriver driver1 = WebDriverFactory.create("opera");
+        driver1.get("https:google.com");
 
 
 
