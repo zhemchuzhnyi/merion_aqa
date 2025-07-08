@@ -10,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
+import java.io.File;
+
 public class WebDriverFactory {
 
     public static WebDriver create(String browserName) {
@@ -37,7 +39,10 @@ public class WebDriverFactory {
     }
 
     public static WebDriver create(ChromeOptions options) {
-        return new ChromeDriver(options);
+        ChromeOptions opts = new ChromeOptions();
+        opts.addExtensions(new File("/Users/a0000/IdeaProjects/merion_aqa/src/main/resources/User-Agent-Switcher-for-Chrome-Chrome.crx"));
+        opts.merge(options);
+        return new ChromeDriver(opts);
     }
 
     public static WebDriver create(EdgeOptions options) {
