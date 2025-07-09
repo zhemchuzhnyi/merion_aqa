@@ -9,6 +9,10 @@ public class Navigation {
         WebDriver driver = WebDriverFactory.create("chrome");
 
         driver.get("https://habr.com/ru"); // == driver.navigate().to("https://habr.com/ru");
+        driver.navigate().refresh();
+        driver.navigate().to("https://rzd.ru");
+        driver.navigate().back();
+        driver.navigate().forward();
 
         driver.quit();
 
