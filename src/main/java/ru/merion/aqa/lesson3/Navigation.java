@@ -3,7 +3,7 @@ package ru.merion.aqa.lesson3;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
-public class GetUrl {
+public class Navigation {
     public static void main(String[] args) {
 
         WebDriver driver = WebDriverFactory.create("chrome");
@@ -13,4 +13,5 @@ public class GetUrl {
         driver.quit();
 
     }
+
 }
