@@ -16,6 +16,7 @@ public class Cookies {
 
         Cookie cookie = new Cookie("cookie_policy", "1");
         driver.manage().addCookie(cookie);
+        driver.navigate().refresh();
         driver.get("https://www.labirint.ru/");
 
 
