@@ -15,8 +15,10 @@ public class WindowHandles {
         driver.get("https://the-internet.herokuapp.com/windows");
         driver.findElement(By.cssSelector("#content a")).click();
         
-        String windowHandle = driver.getWindowHandle();
-        Set<String> windows = driver.getWindowHandles();
+        String firstTabId = driver.getWindowHandle();
+        Set<String> tabIds = driver.getWindowHandles();
+
+        driver.switchTo().window(firstTabId);
 
     }
 }
