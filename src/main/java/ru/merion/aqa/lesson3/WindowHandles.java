@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class WindowHandles {
@@ -17,8 +18,12 @@ public class WindowHandles {
         
         String firstTabId = driver.getWindowHandle();
         Set<String> tabIds = driver.getWindowHandles();
+        tabIds.remove(firstTabId);
+        String sendTabId = new ArrayList<>(tabIds).get(0);
 
-        driver.switchTo().window(firstTabId);
+       driver.switchTo().window(sendTabId);
+       String url = driver.getCurrentUrl();
+       System.out.println("url = "+ url);
 
     }
 }
