@@ -23,7 +23,13 @@ public class WindowHandles {
 
        driver.switchTo().window(sendTabId);
        String url = driver.getCurrentUrl();
-       System.out.println("url = "+ url);
+       System.out.println("url = " + url);
+
+       url = driver.getCurrentUrl();
+       System.out.println("url = " + url);
+
+
+
 
     }
 }
