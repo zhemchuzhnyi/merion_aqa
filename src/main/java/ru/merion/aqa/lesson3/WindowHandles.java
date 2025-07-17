@@ -29,7 +29,6 @@ public class WindowHandles {
        System.out.println("url = " + url);
 
 
-
-
     }
+
 }
