@@ -15,19 +15,23 @@ import java.io.File;
 public class WebDriverFactory {
 
     public static WebDriver create(String browserName) {
-        if (browserName.equalsIgnoreCase("chrome")) {
-            return create( new ChromeOptions());
+        if (browserName == null) {
+            throw new IllegalArgumentException("Имя браузера не может быть null");
         }
-        if (browserName.equalsIgnoreCase("firefox")) {
-            return create(new FirefoxOptions());
+
+        switch (browserName.toLowerCase()) {
+            case "chrome":
+                return create(new ChromeOptions());
+            case "firefox":
+                return create(new FirefoxOptions());
+            case "edge":
+                return create(new EdgeOptions());
+            case "safari":
+                return create(new SafariOptions());
+            default:
+                throw new IllegalArgumentException(
+                        "Неподдерживаемый тип браузера: " + browserName + ". Ожидается: chrome, firefox, edge или safari");
         }
-        if (browserName.equalsIgnoreCase("edge")) {
-            return create(new EdgeOptions());
-        }
-        if (browserName.equalsIgnoreCase("safari")) {
-            return create(new SafariOptions());
-        }
-        throw new IllegalArgumentException("Неподдерживаемый тип браузера " + browserName + ". (chrome|firefox|edge|safari)");
     }
 
     public static WebDriver create(SafariOptions options) {
@@ -39,13 +43,24 @@ public class WebDriverFactory {
     }
 
     public static WebDriver create(ChromeOptions options) {
-        ChromeOptions opts = new ChromeOptions();
-        opts.addExtensions(new File("/Users/a0000/IdeaProjects/merion_aqa/src/main/resources/User-Agent-Switcher-for-Chrome-Chrome.crx"));
-        opts.merge(options);
-        return new ChromeDriver(opts);
+        // Используем переданные options вместо создания новых
+        File extension = new File(getChromeExtensionPath());
+        if (extension.exists()) {
+            options.addExtensions(extension);
+        } else {
+            throw new IllegalStateException("Файл расширения Chrome не найден: " + extension.getAbsolutePath());
+        }
+        return new ChromeDriver(options);
     }
 
     public static WebDriver create(EdgeOptions options) {
         return new EdgeDriver(options);
+    }
+
+    // Метод для получения пути к расширению Chrome (можно настроить через конфигурацию)
+    private static String getChromeExtensionPath() {
+        // Пример: можно задать путь через системную переменную или конфигурацию
+        String defaultPath = "src/main/resources/User-Agent-Switcher-for-Chrome-Chrome.crx";
+        return System.getProperty("chrome.extension.path", defaultPath);
     }
 }
