@@ -7,7 +7,7 @@ import ru.merion.aqa.WebDriverFactory;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class WindowHandles {
+public class SwitchTabs {
 
     public static void main(String[] args) {
 
