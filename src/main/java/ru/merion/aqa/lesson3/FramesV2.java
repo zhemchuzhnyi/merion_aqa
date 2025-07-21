@@ -17,8 +17,12 @@ public class FramesV2 {
         List<WebElement> shouldBeEmpty = driver.findElements(By.cssSelector("body"));
 
         driver.switchTo().frame("frame-top");
-        driver.switchTo().frame("frame-midddle");
+        driver.switchTo().frame("frame-middle");
         List<WebElement> shouldHaveBody = driver.findElements(By.cssSelector("body"));
+        System.out.println(shouldHaveBody.get(0).getText());
+
+        driver.switchTo().parentFrame(); // --> return to frame-top
+        driver.switchTo().defaultContent(); // --> html
 
         driver.quit();
 
