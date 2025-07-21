@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson3;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,9 +18,21 @@ public class Alerts {
         List<WebElement> buttons = driver.findElements(By.cssSelector("ul li button"));
 
         buttons.get(0).click();
+        Alert alert = driver.switchTo().alert();
+        String text = alert.getText();
+        alert.accept();
 
+        buttons.get(1).click();
+        alert = driver.switchTo().alert();
+        text = alert.getText();
+        alert.dismiss();
 
+        buttons.get(2).click();
+        alert = driver.switchTo().alert();
+        text = alert.getText();
+        alert.dismiss();
 
+        driver.quit();
 
     }
 
