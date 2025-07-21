@@ -30,7 +30,8 @@ public class Alerts {
         buttons.get(2).click();
         alert = driver.switchTo().alert();
         text = alert.getText();
-        alert.dismiss();
+        alert.sendKeys("Hello");
+        alert.accept();
 
         driver.quit();
 
