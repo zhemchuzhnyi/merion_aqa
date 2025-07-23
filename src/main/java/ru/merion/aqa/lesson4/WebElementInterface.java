@@ -15,6 +15,7 @@ public class WebElementInterface {
        //кнопка войти
        WebElement element = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
 
+       //навигация на странице
        WebElement nav = driver.findElement(By.cssSelector("div"));
        List<WebElement> links = nav.findElements(By.cssSelector("script"));
        System.out.println(links.size());
