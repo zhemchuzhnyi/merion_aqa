@@ -16,11 +16,11 @@ public class WebElementInterface {
        WebElement element = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
 
        //навигация на странице
-       WebElement nav = driver.findElement(By.cssSelector("div"));
-       List<WebElement> links = nav.findElements(By.cssSelector("script"));
-       System.out.println(links.size());
+       WebElement span = driver.findElement(By.cssSelector(".tm-base-layout__header-wrapper"));
+       List<WebElement> spanElements = span.findElements(By.cssSelector("span"));
+       System.out.println(spanElements.size());
 
-        driver.quit();
+       driver.quit();
 
     }
 }
