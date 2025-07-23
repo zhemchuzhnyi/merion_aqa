@@ -16,9 +16,9 @@ public class WebElementInterface {
        WebElement element = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
 
        //навигация на странице
-       WebElement span = driver.findElement(By.cssSelector(".tm-base-layout__header-wrapper"));
-       List<WebElement> spanElements = span.findElements(By.cssSelector("span"));
-       System.out.println(spanElements.size());
+       WebElement body = driver.findElement(By.cssSelector("body"));
+       List<WebElement> bodyElements = body.findElements(By.cssSelector("span"));
+       System.out.println(bodyElements.size());
 
        driver.quit();
 
