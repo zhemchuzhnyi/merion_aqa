@@ -10,15 +10,15 @@ import java.util.List;
 public class WebElementInterface {
     public static void main(String[] args) {
        WebDriver driver = WebDriverFactory.create("chrome");
-       driver.get("https://habr.com/ru");
+       driver.get("https://habr.com/ru/articles");
 
        //кнопка войти
        WebElement element = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
 
        //навигация на странице
-       WebElement body = driver.findElement(By.cssSelector("body"));
-       List<WebElement> bodyElements = body.findElements(By.cssSelector("span"));
-       System.out.println(bodyElements.size());
+       WebElement nav = driver.findElement(By.cssSelector(".tm-tabs__scroll-area"));
+       List<WebElement> links = nav.findElements(By.cssSelector("a"));
+       System.out.println(links.size());
 
        driver.quit();
 
