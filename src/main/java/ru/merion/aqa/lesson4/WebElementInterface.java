@@ -17,7 +17,7 @@ public class WebElementInterface {
 
        //навигация на странице
        WebElement navig = driver.findElement(By.cssSelector(".tm-tabs__scroll-area"));
-       List<WebElement> links = navig.findElements(By.cssSelector("a"));
+       List<WebElement> links = navig.findElements(By.cssSelector("span"));
        System.out.println(links.size());
 
        driver.quit();
