@@ -16,8 +16,8 @@ public class WebElementInterface {
        WebElement element = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
 
        //навигация на странице
-       WebElement navig = driver.findElement(By.cssSelector(".tm-tabs__scroll-area"));
-       List<WebElement> links = navig.findElements(By.cssSelector("span"));
+       WebElement nav = driver.findElement(By.cssSelector(".tm-tabs__scroll-area"));
+       List<WebElement> links = nav.findElements(By.cssSelector("span"));
        System.out.println(links.size());
 
        driver.quit();
