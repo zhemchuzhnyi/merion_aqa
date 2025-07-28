@@ -14,6 +14,9 @@ public class Click {
         WebElement login = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
         login.click();
 
+        //driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+        //driver.findElement(By.cssSelector("button[onclick='jsAlert()']")).click();
+
 
         driver.quit();
 
