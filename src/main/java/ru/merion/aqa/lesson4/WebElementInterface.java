@@ -13,7 +13,7 @@ public class WebElementInterface {
        driver.get("https://habr.com/ru/articles");
 
        //кнопка войти
-       WebElement element = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
+       WebElement login = driver.findElement(By.cssSelector(".tm-header-user-menu__login"));
 
        //навигация на странице
        WebElement nav = driver.findElement(By.cssSelector(".tm-tabs__scroll-area"));
