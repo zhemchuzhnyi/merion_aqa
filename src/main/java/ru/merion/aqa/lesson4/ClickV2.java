@@ -10,7 +10,7 @@ public class ClickV2 {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/click");
-        driver.findElement(By.cssSelector("#badButton"));
+        driver.findElement(By.cssSelector("#badButton")).click();
 
         driver.navigate().refresh();
         driver.findElement(By.cssSelector("#badButton")).click();
