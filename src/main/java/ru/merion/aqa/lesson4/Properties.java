@@ -14,6 +14,7 @@ public class Properties {
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("target");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("target");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("target");
+        String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("target");
 
 
 
