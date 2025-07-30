@@ -14,7 +14,7 @@ public class SendKeys {
         driver.findElement(By.cssSelector("#newButtonName")).sendKeys("Welcome!");
         driver.findElement(By.cssSelector("#newButtonName")).sendKeys(" To site!");
         driver.findElement(By.cssSelector("#newButtonName")).sendKeys(Keys.chord(Keys.LEFT_SHIFT, Keys.ARROW_UP)); // выделяем текс
-        driver.findElement(By.cssSelector("#newButtonName")).sendKeys(Keys.BACK_SPACE); // убирает последний символ (восклицательный знак уберет) если все выделено - удалит
+        driver.findElement(By.cssSelector("#newButtonName")).sendKeys(Keys.BACK_SPACE); // убирает последнее (например - восклицательный знак) если все выделено - удалит
         driver.findElement(By.cssSelector("#updatingButton")).click();
 
         driver.quit();

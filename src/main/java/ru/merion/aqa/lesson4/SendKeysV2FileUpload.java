@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
-public class FileUpload {
+public class SendKeysV2FileUpload {
 
     public static void main(String[] args) {
 
