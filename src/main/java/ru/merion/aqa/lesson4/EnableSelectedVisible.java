@@ -12,7 +12,13 @@ public class EnableSelectedVisible {
 
         driver.get("https://the-internet.herokuapp.com/dynamic_controls");
 
-        driver.findElement(By.cssSelector("#input-example input")).sendKeys("Testing");
+        boolean isEnabled = driver.findElement(By.cssSelector("#input-example input")).isEnabled();
+
+        if (isEnabled) {
+            driver.findElement(By.cssSelector("#input-example input")).sendKeys("Testing");
+        } else {
+            System.out.println("Элемент недоступен");
+        }
 
         driver.quit();
     }
