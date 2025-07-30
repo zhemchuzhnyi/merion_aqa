@@ -24,6 +24,8 @@ public class EnableSelectedVisible {
             System.out.println("Элемент недоступен");
         }
 
+        boolean dispplayed = driver.findElement(By.cssSelector("#input-example")).isDisplayed();
+
         driver.quit();
     }
 }
