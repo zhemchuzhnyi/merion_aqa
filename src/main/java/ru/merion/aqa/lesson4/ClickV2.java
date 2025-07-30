@@ -13,6 +13,9 @@ public class ClickV2 {
         driver.findElement(By.cssSelector("#badButton"));
 
         driver.navigate().refresh();
+        driver.findElement(By.cssSelector("#badButton")).click();
+
+        driver.quit();
 
     }
 }
