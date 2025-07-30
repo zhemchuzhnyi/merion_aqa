@@ -12,8 +12,9 @@ public class EnableSelectedVisible {
 
         driver.get("https://the-internet.herokuapp.com/dynamic_controls");
 
-        driver.findElement(By.cssSelector("#checkbox input")).click();
         boolean selected = driver.findElement(By.cssSelector("#checkbox input")).isSelected();
+        driver.findElement(By.cssSelector("#checkbox input")).click();
+        selected = driver.findElement(By.cssSelector("#checkbox input")).isSelected();
 
         boolean isEnabled = driver.findElement(By.cssSelector("#input-example input")).isEnabled();
 
