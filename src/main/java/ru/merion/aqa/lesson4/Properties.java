@@ -12,7 +12,7 @@ public class Properties {
         driver.get("https://habr.com/ru/feed/");
 
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("autocorrect");
-        String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("innerHTML");
+        String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("autocorrect");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("innerHTML");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("innerHTML");
 
