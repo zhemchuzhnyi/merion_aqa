@@ -13,7 +13,7 @@ public class Properties {
 
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("host");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("host");
-        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("currentCSSZoom");
+        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("host");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("currentCSSZoom");
 
 
