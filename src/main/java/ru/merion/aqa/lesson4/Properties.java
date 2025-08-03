@@ -11,7 +11,7 @@ public class Properties {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://habr.com/ru/feed/");
 
-        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("namespaceURI");
+        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("offsetLeft");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("namespaceURI");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("namespaceURI");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("namespaceURI");
