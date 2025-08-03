@@ -11,7 +11,7 @@ public class Properties {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://habr.com/ru/feed/");
 
-        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("localName");
+        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("inert");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("localName");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("localName");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("localName");
