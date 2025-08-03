@@ -12,8 +12,8 @@ public class Properties {
         driver.get("https://habr.com/ru/feed/");
 
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("namespaceURI");
-        String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("inert");
-        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("inert");
+        String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("namespaceURI");
+        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("namespaceURI");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("inert");
 
 
