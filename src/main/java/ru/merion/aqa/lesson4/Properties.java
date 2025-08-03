@@ -14,7 +14,7 @@ public class Properties {
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("offsetLeft");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("offsetLeft");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("offsetLeft");
-        String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("namespaceURI");
+        String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("offsetLeft");
 
 
 
