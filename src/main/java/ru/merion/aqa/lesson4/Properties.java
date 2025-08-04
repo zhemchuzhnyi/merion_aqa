@@ -11,7 +11,7 @@ public class Properties {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://habr.com/ru/feed/");
 
-        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("offsetParent");
+        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("contentEditable");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("offsetParent");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("offsetParent");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("offsetParent");
