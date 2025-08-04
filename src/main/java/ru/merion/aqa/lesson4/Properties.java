@@ -12,7 +12,7 @@ public class Properties {
         driver.get("https://habr.com/ru/feed/");
 
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("offsetParent");
-        String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("offsetLeft");
+        String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("offsetParent");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("offsetLeft");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("offsetLeft");
 
