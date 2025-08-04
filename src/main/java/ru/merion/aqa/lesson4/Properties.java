@@ -16,7 +16,7 @@ public class Properties {
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("contentEditable");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("contentEditable");
 
-        String innerText = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("innerText");
+        String innerText = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("innerText"); // возвращает любой найденный текст
         System.out.println(innerText);
 
 
