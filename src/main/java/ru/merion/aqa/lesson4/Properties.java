@@ -11,7 +11,7 @@ public class Properties {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://habr.com/ru/feed/");
 
-        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("draggable");
+        String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("clientWidth");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("clientWidth");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("clientHeight");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("clientWidth");
