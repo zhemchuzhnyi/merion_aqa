@@ -13,7 +13,7 @@ public class Properties {
 
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("draggable");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("draggable");
-        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("draggable");
+        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("clientHeight");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("clientWidth");
 
         String innerText = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("innerText"); // возвращает любой найденный текст
