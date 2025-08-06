@@ -15,12 +15,12 @@ public class JSCExecution {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://mail.ru/");
-
         ((JavascriptExecutor)driver).executeScript(jsRemoveBanner);
 
 
         driver.get("https://2048game.com/ru/");
         ((JavascriptExecutor)driver).executeScript(jsSetLocalStorage);
+        driver.navigate().refresh();
 
 
 
