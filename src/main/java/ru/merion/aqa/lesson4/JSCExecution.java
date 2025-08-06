@@ -11,6 +11,7 @@ public class JSCExecution {
     public static void main(String[] args) {
 
         String jsRemoveBanner = "document.querySelector(\".tabs-content\").remove()";
+        String jsSetLocalStorage = "localStorage.setItem(\"bestScore\", \"999999999\");";
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://mail.ru/");
@@ -19,6 +20,7 @@ public class JSCExecution {
 
 
         driver.get("https://2048game.com/ru/");
+
 
 
         driver.quit();
