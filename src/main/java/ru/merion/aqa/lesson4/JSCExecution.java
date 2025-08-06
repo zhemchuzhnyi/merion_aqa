@@ -18,9 +18,9 @@ public class JSCExecution {
         ((JavascriptExecutor)driver).executeScript(jsRemoveBanner);
 
 
-        driver.get("https://2048game.com/ru/");
+        //driver.get("https://2048game.com/ru/");
 
 
-        driver.close();
+        driver.quit();
     }
 }
