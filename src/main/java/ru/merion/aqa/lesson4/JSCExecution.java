@@ -21,6 +21,7 @@ public class JSCExecution {
         driver.get("https://2048game.com/ru/");
         ((JavascriptExecutor)driver).executeScript(jsSetLocalStorage);
         driver.navigate().refresh();
+        System.out.println(jsSetLocalStorage);
 
 
 
