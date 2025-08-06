@@ -14,8 +14,8 @@ public class JSCExecution {
         String jsSetLocalStorage = "localStorage.setItem(\"bestScore\", \"999999999\");";
 
         WebDriver driver = WebDriverFactory.create("chrome");
-        driver.get("https://mail.ru/");
-        ((JavascriptExecutor)driver).executeScript(jsRemoveBanner);
+//        driver.get("https://mail.ru/");
+//        ((JavascriptExecutor)driver).executeScript(jsRemoveBanner);
 
 
         driver.get("https://2048game.com/ru/");
