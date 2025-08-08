@@ -13,7 +13,7 @@ public class Properties {
 
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("offsetTop");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("offsetTop");
-        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("contentEditable");
+        String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("offsetTop");
         String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("contentEditable");
 
         String innerText = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("innerText"); // возвращает любой найденный текст
