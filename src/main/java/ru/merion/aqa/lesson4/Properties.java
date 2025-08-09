@@ -14,7 +14,7 @@ public class Properties {
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("spellcheck");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("spellcheck");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("spellcheck");
-        String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("scrollWidth");
+        String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("spellcheck");
 
         String innerText = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("innerText"); // возвращает любой найденный текст
         System.out.println(innerText);
