@@ -14,7 +14,7 @@ public class Properties {
         String target1 = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("translate");
         String target2 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomProperty("translate");
         String target3 = driver.findElement(By.cssSelector(".tm-article-title__link")).getDomAttribute("translate");
-        String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("translate");
+        String target4 = driver.findElement(By.cssSelector(".tm-article-title__link")).getCssValue("spellcheck");
 
         String innerText = driver.findElement(By.cssSelector(".tm-article-title__link")).getAttribute("innerText"); // возвращает любой найденный текст
         System.out.println(innerText);
