@@ -11,7 +11,7 @@ public class Task3 {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/classattr");
-        WebElement element = driver.findElement(By.cssSelector(".class3"));
+        WebElement element = driver.findElement(By.cssSelector(".btn.btn-primary"));
         element.click();
         driver.navigate().refresh();
 
