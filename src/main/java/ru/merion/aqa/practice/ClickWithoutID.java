@@ -10,7 +10,7 @@ public class ClickWithoutID {
     public static void main(String[] args) {
 
         WebDriver driver = WebDriverFactory.create("chrome");
-        driver.get("https://uitestingplayground.com/dynamicid");
+        driver.get("http://uitestingplayground.com/dynamicid");
         WebElement element = driver.findElement(By.id("08ed7121-b197-2334-149e-7e6f6f5ab439"));
         element.click();
 
