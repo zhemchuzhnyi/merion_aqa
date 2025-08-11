@@ -10,7 +10,7 @@ public class Task3 {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/classattr");
-        driver.findElement(By.cssSelector(""));
+        driver.findElement(By.cssSelector(".class3"));
 
         driver.quit();
     }
