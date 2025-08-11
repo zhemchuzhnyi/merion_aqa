@@ -19,6 +19,9 @@ public class Click {
         element.click();
         element.click();
         element.click();
+//        for (int i = 0; i < 5; i ++); {
+//            element.click();
+//        }
 
         List<WebElement> deleteButtons = driver.findElements(By.className("added-manually"));
 
