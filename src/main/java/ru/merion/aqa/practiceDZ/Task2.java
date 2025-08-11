@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.merion.aqa.WebDriverFactory;
 
-public class ClickWithoutID {
+public class Task2 {
 
     public static void main(String[] args) {
 

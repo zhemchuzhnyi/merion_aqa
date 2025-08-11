@@ -7,7 +7,7 @@ import ru.merion.aqa.WebDriverFactory;
 
 import java.util.List;
 
-public class Click {
+public class Task1 {
 
     public static void main(String[] args) {
 
