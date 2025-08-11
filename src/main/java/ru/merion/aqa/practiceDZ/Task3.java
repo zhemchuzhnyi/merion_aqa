@@ -13,7 +13,6 @@ public class Task3 {
         driver.get("http://uitestingplayground.com/classattr");
         WebElement element = driver.findElement(By.cssSelector(".btn.btn-primary"));
         element.click();
-        driver.navigate().refresh();
 
         driver.quit();
     }
