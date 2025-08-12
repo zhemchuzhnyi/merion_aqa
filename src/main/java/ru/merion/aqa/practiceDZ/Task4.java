@@ -11,7 +11,7 @@ public class Task4 {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/entry_ad");
-        WebElement element = driver.findElement(By.ByCssSelector())
+        WebElement element = driver.findElement(By.cssSelector((""));
 
 
 
