@@ -8,6 +8,7 @@ public class Task4 {
     public static void main(String[] args) {
 
         WebDriver driver = WebDriverFactory.create("chrome");
+        driver.get("http://the-internet.herokuapp.com/entry_ad");
 
 
     }
