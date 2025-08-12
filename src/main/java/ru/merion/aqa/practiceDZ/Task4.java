@@ -11,6 +11,10 @@ public class Task4 {
         driver.get("http://the-internet.herokuapp.com/entry_ad");
 
 
+
+        driver.quit();
+
+
     }
 
 }
