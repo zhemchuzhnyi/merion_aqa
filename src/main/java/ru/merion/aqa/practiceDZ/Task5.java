@@ -7,7 +7,7 @@ public class Task5 {
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
-        driver.get("");
+        driver.get("http://the-internet.herokuapp.com/inputs");
     }
 
 }
