@@ -11,6 +11,8 @@ public class Task5 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/inputs");
         WebElement element = driver.findElement(By.cssSelector("."));
+
+        driver.quit();
     }
 
 }
