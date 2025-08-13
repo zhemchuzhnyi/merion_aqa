@@ -1,11 +1,12 @@
 package ru.merion.aqa.practiceDZ;
 
 import org.openqa.selenium.WebDriver;
+import ru.merion.aqa.WebDriverFactory;
 
 public class Task5 {
 
     public static void main(String[] args) {
-        WebDriver driver =
+        WebDriver driver = WebDriverFactory
     }
 
 }
