@@ -6,7 +6,7 @@ import ru.merion.aqa.WebDriverFactory;
 public class Task5 {
 
     public static void main(String[] args) {
-        WebDriver driver = WebDriverFactory
+        WebDriver driver = WebDriverFactory.create()
     }
 
 }
