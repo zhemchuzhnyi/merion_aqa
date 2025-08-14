@@ -12,7 +12,7 @@ public class Task5 {
         driver.get("http://the-internet.herokuapp.com/inputs");
         WebElement element = driver.findElement(By.cssSelector("."));
 
-        driver.quit()
+        driver.quit();
     }
 
 }
