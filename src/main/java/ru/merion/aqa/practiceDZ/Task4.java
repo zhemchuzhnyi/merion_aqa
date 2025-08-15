@@ -13,6 +13,7 @@ public class Task4 {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/entry_ad");
+        Thread.sleep(3000);
 
         WebElement element = driver.findElement(By.cssSelector(".modal-footer"));
         element.click();
