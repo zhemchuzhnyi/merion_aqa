@@ -17,9 +17,10 @@ public class Task4 {
         Thread.sleep(3000);
 
         driver.findElement(By.cssSelector(".modal-footer")).click();
-        List<WebElement> content = driver.findElements(By.cssSelector(".large-12.columns"));
 
-        System.out.println("Текст элемента content: " + content.size());
+        String content = driver.findElement(By.cssSelector("#content")).getText();
+
+        System.out.println("Текст элемента content: " + content);
 
         driver.quit();
 
