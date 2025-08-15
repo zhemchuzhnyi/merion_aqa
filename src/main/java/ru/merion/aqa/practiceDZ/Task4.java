@@ -20,7 +20,7 @@ public class Task4 {
 
         String content = driver.findElement(By.cssSelector("#content")).getText();
 
-        System.out.println("Текст элемента content: " + content);
+        System.out.println("Текст элемента: " + content);
 
         driver.quit();
 
