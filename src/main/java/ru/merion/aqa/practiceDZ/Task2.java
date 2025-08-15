@@ -1,3 +1,12 @@
+/*
+Клик по кнопке без id
+Напишите скрипт. Шаги:
+
+Открыть страницу http://uitestingplayground.com/dynamicid
+Кликнуть на синюю кнопку
+Запустите скрипт 3 раза. Убедитесь, что код не требуется редактировать – скрипт всегда работает.
+ */
+
 package ru.merion.aqa.practiceDZ;
 
 import org.openqa.selenium.By;
