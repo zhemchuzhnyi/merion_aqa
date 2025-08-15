@@ -1,3 +1,12 @@
+/*
+Клик по кнопке с css-классом
+Напишите скрипт. Шаги:
+
+Открыть страницу http://uitestingplayground.com/classattr
+Кликнуть на синюю(!) кнопку
+Запустите скрипт 3 раза. Убедитесь, что код не требуется редактировать – скрипт всегда работает.
+ */
+
 package ru.merion.aqa.practiceDZ;
 
 import org.openqa.selenium.By;
