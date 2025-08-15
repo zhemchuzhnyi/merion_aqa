@@ -1,3 +1,16 @@
+/*
+Форма авторизации
+Напишите скрипт, шаги:
+
+Открыть страницу http://the-internet.herokuapp.com/login
+В поле uername ввести значение
+tomsmith
+В поле password ввести значение
+SuperSecretPassword!
+Нажмите кнопку
+Login
+Выведите в консоль текст появившейся зеленой плашки
+ */
 package ru.merion.aqa.practiceDZ;
 
 import org.openqa.selenium.By;
