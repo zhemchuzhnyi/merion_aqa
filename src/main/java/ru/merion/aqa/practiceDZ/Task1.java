@@ -1,3 +1,15 @@
+/*
+Клик по кнопке
+Напишите скрипт. Шаги:
+
+Открыть страницу http://the-internet.herokuapp.com/add_remove_elements/
+5 раз кликнуть на кнопку
+Add Element
+Собрать со страницы список кнопок
+Delete
+Вывести на экран размер списка
+ */
+
 package ru.merion.aqa.practiceDZ;
 
 import org.openqa.selenium.By;
