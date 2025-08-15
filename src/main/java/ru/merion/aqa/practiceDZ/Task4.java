@@ -1,3 +1,15 @@
+/*
+Модальное окно
+Напишите скрипт. Шаги:
+
+Открыть страницуhttp://the-internet.herokuapp.com/entry_ad
+В модальном окне нажать на кнопку
+Сlose
+Выведите в консоль текст элемента с
+id = content
+Подсказка: тут вам может понадобиться
+Thread.sleep(3000);
+ */
 package ru.merion.aqa.practiceDZ;
 
 import org.openqa.selenium.By;
