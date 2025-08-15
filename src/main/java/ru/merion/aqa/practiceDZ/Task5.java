@@ -1,3 +1,16 @@
+/*
+Поле ввода
+Напишите скрипт. Шаги:
+
+http://the-internet.herokuapp.com/inputs
+Введите в поле текст
+1000
+Очистите это поле (метод
+clear
+)
+введите в это же поле текст
+2000
+ */
 package ru.merion.aqa.practiceDZ;
 
 import org.openqa.selenium.By;
