@@ -28,6 +28,7 @@ public class Task5 {
         driver.navigate().refresh();
         driver.findElement(By.cssSelector("input")).clear();
         driver.navigate().refresh();
+        Thread.sleep(3000);
         driver.findElement(By.cssSelector("input")).sendKeys("2000");
 
 
