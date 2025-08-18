@@ -20,14 +20,18 @@ import ru.merion.aqa.WebDriverFactory;
 
 public class Task6 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/login");
         driver.findElement(By.cssSelector("#input.username")).sendKeys("tomsmith");
+        Thread.sleep(1000);
         driver.findElement(By.cssSelector("#input.password")).sendKeys("SuperSecretPassword!");
+        Thread.sleep(1000);
         driver.findElement(By.cssSelector("#button.radius")).click();
+        Thread.sleep(1000);
         String content = driver.findElement(By.cssSelector("#flash.success")).getText();
+
         System.out.println("Текст элемента: " + content);
 
         driver.quit();
