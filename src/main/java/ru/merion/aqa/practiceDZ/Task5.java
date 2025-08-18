@@ -29,8 +29,6 @@ public class Task5 {
         driver.findElement(By.cssSelector("input")).sendKeys("2000");
 
 
-
-
         driver.quit();
     }
 
