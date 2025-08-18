@@ -25,7 +25,9 @@ public class Task5 {
         driver.get("http://the-internet.herokuapp.com/inputs");
         driver.findElement(By.cssSelector("input")).sendKeys("1000");
         driver.navigate().refresh();
-        driver.nav
+        driver.findElement(By.cssSelector("input")).clear();
+        driver.findElement(By.cssSelector("input")).sendKeys("2000");
+
 
 
 
