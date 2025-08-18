@@ -21,6 +21,8 @@ https://wiki.merionet.ru
 
 package ru.merion.aqa.practiceDZ;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -30,6 +32,12 @@ public class Task7 {
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.google.com/");
+        driver.findElement(By.cssSelector("#APjFqb")).sendKeys("Merion Academy wiki");
+        driver.findElement(By.cssSelector("#APjFqb")).sendKeys(Keys.RETURN);
+        driver.findElement(By.cssSelector(".OQ_6vPwNhCeusNiEDcGp")).click();
+
+        driver.quit();
+
 
 
 
