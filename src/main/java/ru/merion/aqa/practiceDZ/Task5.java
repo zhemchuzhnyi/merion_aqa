@@ -20,12 +20,14 @@ import ru.merion.aqa.WebDriverFactory;
 
 public class Task5 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/inputs");
         driver.findElement(By.cssSelector("input")).sendKeys("1000");
+        Thread.sleep(3000);
         driver.navigate().refresh();
         driver.findElement(By.cssSelector("input")).clear();
+        driver.navigate().refresh();
         driver.findElement(By.cssSelector("input")).sendKeys("2000");
 
 
