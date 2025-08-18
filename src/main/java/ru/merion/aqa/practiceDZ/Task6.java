@@ -26,6 +26,7 @@ public class Task6 {
         driver.get("http://the-internet.herokuapp.com/login");
         driver.findElement(By.cssSelector("#input.username")).sendKeys("tomsmith");
         driver.findElement(By.cssSelector("#input.password")).sendKeys("SuperSecretPassword");
+        driver.findElement(By.cssSelector("#button.radius")).click();
 
 
 
