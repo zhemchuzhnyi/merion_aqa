@@ -25,17 +25,9 @@ public class Task6 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/login");
         driver.findElement(By.cssSelector("#username")).sendKeys("tomsmith");
-
-        Thread.sleep(1000);
         driver.findElement(By.cssSelector("#password")).sendKeys("SuperSecretPassword!");
-
-        Thread.sleep(1000);
         driver.findElement(By.cssSelector(".fa-sign-in")).click();
-
-        Thread.sleep(1000);
         String content = driver.findElement(By.cssSelector(".flash.success")).getText();
-
-        Thread.sleep(1000);
         System.out.println("Текст элемента SUCCESS: " + content);
 
         driver.quit();
