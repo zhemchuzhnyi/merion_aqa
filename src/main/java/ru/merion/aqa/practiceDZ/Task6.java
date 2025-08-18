@@ -32,7 +32,7 @@ public class Task6 {
         Thread.sleep(1000);
         String content = driver.findElement(By.cssSelector(".flash.success")).getText();
 
-        System.out.println("Текст элемента: " + content);
+        System.out.println("Текст элемента SUCCESS: " + content);
 
         driver.quit();
 
