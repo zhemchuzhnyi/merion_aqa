@@ -24,7 +24,9 @@ public class Task6 {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/login");
-        WebElement element = driver.findElement(By.cssSelector(""));
+        driver.findElement(By.cssSelector("#input.username")).sendKeys("tomsmith");
+        driver.findElement(By.cssSelector("#input.password")).sendKeys("SuperSecretPassword");
+
 
 
 
