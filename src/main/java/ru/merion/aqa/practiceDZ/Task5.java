@@ -24,11 +24,7 @@ public class Task5 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://the-internet.herokuapp.com/inputs");
         driver.findElement(By.cssSelector("input")).sendKeys("1000");
-        Thread.sleep(3000);
-        driver.navigate().refresh();
         driver.findElement(By.cssSelector("input")).clear();
-        driver.navigate().refresh();
-        Thread.sleep(3000);
         driver.findElement(By.cssSelector("input")).sendKeys("2000");
 
 
