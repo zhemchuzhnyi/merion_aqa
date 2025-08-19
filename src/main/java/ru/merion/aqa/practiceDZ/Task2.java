@@ -21,7 +21,7 @@ public class Task2 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/dynamicid");
         WebElement element = driver.findElement(By.cssSelector(".btn-primary"));
-        () -> element.click()
+        element.click();
 
         driver.quit();
 
