@@ -38,7 +38,7 @@ public class Task1 {
         List<WebElement> deleteButtons = driver.findElements(By.className("added-manually"));
 
 
-        System.out.println("Количество кнопок Delete " + deleteButtons.size();
+        System.out.println("Количество кнопок Delete " + deleteButtons.size());
 
 
 
