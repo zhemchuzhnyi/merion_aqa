@@ -27,6 +27,7 @@ public class Task1 {
         WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
         WebElement element = driver.findElement(By.tagName("button"));
+
         element.click();
         element.click();
         element.click();
