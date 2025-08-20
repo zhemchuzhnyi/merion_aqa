@@ -15,6 +15,7 @@ package ru.merion.aqa.practiceDZ;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class Task1 {
 
     public static void main(String[] args) {
 
-        WebDriver driver = WebDriverFactory.create("chrome");
+        WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
         WebElement element = driver.findElement(By.tagName("button"));
         element.click();
@@ -37,10 +38,7 @@ public class Task1 {
 
         List<WebElement> deleteButtons = driver.findElements(By.className("added-manually"));
 
-
         System.out.println("Количество кнопок Delete " + deleteButtons.size());
-
-
 
         driver.quit();
 
