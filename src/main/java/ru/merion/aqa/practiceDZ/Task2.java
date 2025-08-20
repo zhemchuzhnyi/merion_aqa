@@ -18,11 +18,13 @@ import ru.merion.aqa.WebDriverFactory;
 public class Task2 {
 
     public static void main(String[] args) {
+        for (int i = 0; i < 3; i++) {
 
-        WebDriver driver = new ChromeDriver();
-        driver.get("http://uitestingplayground.com/dynamicid");
-        driver.findElement(By.cssSelector(".btn-primary")).click();
-        driver.quit();
+            WebDriver driver = new ChromeDriver();
+            driver.get("http://uitestingplayground.com/dynamicid");
+            driver.findElement(By.cssSelector(".btn-primary")).click();
+            driver.quit();
 
+        }
     }
 }
