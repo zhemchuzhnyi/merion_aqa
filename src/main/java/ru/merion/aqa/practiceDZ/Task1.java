@@ -32,6 +32,7 @@ public class Task1 {
         element.click();
         element.click();
         element.click();
+
 //        for (int i = 0; i < 5; i ++); {
 //            element.click();
 //        }
