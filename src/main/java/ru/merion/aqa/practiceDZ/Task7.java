@@ -39,7 +39,7 @@ public class Task7 {
 
         driver.findElement(By.cssSelector("#APjFqb")).sendKeys("Merion Academy wiki");
         driver.findElement(By.cssSelector("#APjFqb")).sendKeys(Keys.RETURN);
-        driver.findElement(By.cssSelector("h3")).click();
+        driver.findElement(By.cssSelector("h3")).click(); // findelement возвращает 1й элемент который найдет - потому h3 - первый элемент в списке
 
 
         if (driver.getCurrentUrl().startsWith("https://wiki.merionet.ru")){
