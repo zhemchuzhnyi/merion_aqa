@@ -27,6 +27,7 @@ public class Task6 {
         driver.findElement(By.cssSelector("#username")).sendKeys("tomsmith");
         driver.findElement(By.cssSelector("#password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.cssSelector(".fa-sign-in")).click();
+
         String content = driver.findElement(By.cssSelector(".flash.success")).getText();
         System.out.println("Текст элемента SUCCESS: " + content);
 
