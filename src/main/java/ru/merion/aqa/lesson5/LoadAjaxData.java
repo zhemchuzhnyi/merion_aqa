@@ -23,6 +23,9 @@ public class LoadAjaxData {
         System.out.println(content);
 
 
+        driver.quit();
+
+
 
 
     }
