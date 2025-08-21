@@ -11,7 +11,9 @@ public class LoadAjaxData {
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/ajax");
-        WebElement button = driver.findElement(By.cssSelector("#ajax-button"));
+        driver.findElement(By.cssSelector("#ajax-button")).click();
+
+
 
     }
 }
