@@ -13,6 +13,9 @@ public class LoadAjaxData {
         driver.get("http://uitestingplayground.com/ajax");
         driver.findElement(By.cssSelector("#ajax-button")).click();
         driver.findElement(By.cssSelector("#content p")).getText();
+        String content = driver.findElement(By.cssSelector("#content p")).getText();
+
+        System.out.println(content);
 
 
 
