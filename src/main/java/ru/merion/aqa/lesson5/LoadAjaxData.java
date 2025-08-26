@@ -34,7 +34,7 @@ public class LoadAjaxData {
         //Thread.sleep(16 * 1000); - пример с трэд слип 
 
         driver.findElement(By.cssSelector("#content p")).getText();
-        String content = driver.findElement(By.cssSelector("#content ")).getText();
+        String content = driver.findElement(By.cssSelector("#content p")).getText();
 
         System.out.println(content);
 
