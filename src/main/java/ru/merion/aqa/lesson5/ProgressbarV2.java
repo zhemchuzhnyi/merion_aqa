@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
-public class Progressbar {
+public class ProgressbarV2 {
     public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = WebDriverFactory.create("chrome");
@@ -17,15 +17,17 @@ public class Progressbar {
         driver.findElement(By.cssSelector("#startButton")).click();
 
         /*
-        Можно решить задачу таким образом
-        Нужно на прогрессбаре получить 75%
+        Либо решить таким способом, но это тоже такое себе решение
+        потому что можно не дождаться целевого события
+
+        Такой тест нельзя оставить без присмотра
          */
 
-        for (int i = 0; i < 1000; i++){
+        while (true) {
             String value = driver.findElement(By.cssSelector("#progressBar")).getAttribute("aria-valuenow");
             System.out.println(value);
             Thread.sleep(100);
-            if (Integer.parseInt(value) >= 75 ){
+            if (Integer.parseInt(value) >= 75 ) {
                 driver.findElement(By.cssSelector("#stopButton")).click();
                 break;
             }
