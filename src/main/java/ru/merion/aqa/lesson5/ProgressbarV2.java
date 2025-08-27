@@ -1,5 +1,5 @@
 /*
-Прогресс бар
+Прогресс бар - пример 2
  */
 
 package ru.merion.aqa.lesson5;

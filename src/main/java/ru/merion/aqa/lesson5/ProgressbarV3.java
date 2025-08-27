@@ -1,5 +1,5 @@
 /*
-Прогресс бар
+Прогресс бар пример 3
  */
 
 package ru.merion.aqa.lesson5;
@@ -15,10 +15,6 @@ public class ProgressbarV3 {
         driver.get("http://uitestingplayground.com/progressbar");
 
         driver.findElement(By.cssSelector("#startButton")).click();
-
-        /*
-        Явное ожидание
-         */
 
         long timeToWait = 15 * 1000;
         Thread.sleep(100);
