@@ -14,7 +14,7 @@ import java.time.Duration;
 
 public class ProgressbarV4Norm {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/progressbar");
 
