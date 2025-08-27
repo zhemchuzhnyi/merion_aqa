@@ -16,6 +16,10 @@ public class ProgressbarV3 {
 
         driver.findElement(By.cssSelector("#startButton")).click();
 
+        /*
+        Явное ожидание
+         */
+
         long timeToWait = 15 * 1000;
         Thread.sleep(100);
         long startTime = System.currentTimeMillis();
