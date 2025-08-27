@@ -14,6 +14,8 @@ public class Progressbar {
 
         driver.findElement(By.cssSelector("#stopButton")).click();
 
+        driver.quit();
+
     }
 
 }
