@@ -12,6 +12,8 @@ public class Progressbar {
 
         driver.findElement(By.cssSelector("#startButton")).click();
 
+        driver.findElement(By.cssSelector("#progressBar")).getAttribute("aria-valuemax");
+
         driver.findElement(By.cssSelector("#stopButton")).click();
 
         driver.quit();
