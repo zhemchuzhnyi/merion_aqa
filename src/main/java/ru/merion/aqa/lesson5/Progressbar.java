@@ -12,11 +12,14 @@ public class Progressbar {
 
         driver.findElement(By.cssSelector("#startButton")).click();
 
-        String value = driver.findElement(By.cssSelector("#progressBar")).getAttribute("aria-valuemax");
-        System.out.println(value.equals("75"));
-        System.out.println(value);
+        for (int i = 0; i < 1000; i++){
+            String value = driver.findElement(By.cssSelector("#progressBar")).getAttribute("aria-valuemax");
+            System.out.println(value);
+            if (Integer.parseInt(value) >= 75){
+                driver.findElement(By.cssSelector("#stopButton")).click();
+            }
+        }
 
-        driver.findElement(By.cssSelector("#stopButton")).click();
 
         driver.quit();
 
