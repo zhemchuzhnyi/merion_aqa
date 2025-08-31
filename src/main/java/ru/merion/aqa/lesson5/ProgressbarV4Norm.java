@@ -24,7 +24,7 @@ public class ProgressbarV4Norm {
         wait.until(ExpectedConditions.textToBe(By.cssSelector("#progressBar"), "75%"));
 
         driver.findElement(By.cssSelector("#stopButton")).click();
-        System.out.println("Finis");
+        System.out.println("Finish");
 
         driver.quit();
 
