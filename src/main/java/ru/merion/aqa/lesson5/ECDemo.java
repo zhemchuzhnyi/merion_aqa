@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
+import java.util.List;
 
 public class ECDemo {
 
@@ -20,7 +21,12 @@ public class ECDemo {
         WebDriver driver = WebDriverFactory.create("chrome");
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        //дождаться исчезновение (!) элемента
         wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(""))));
+
+        List<WebElement> elements = wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(""), 7));
+
+
 
     }
 }
