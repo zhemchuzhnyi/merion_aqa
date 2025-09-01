@@ -40,7 +40,7 @@ public class ECDemo {
         // дождаться наличия элемента в DOM
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("")));
 
-        //
+        // дождаться, что атрибут элемента содержит (!) значение
         wait.until(ExpectedConditions.attributeContains(By.cssSelector(""), "class", "btn-success"));
 
 
