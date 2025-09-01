@@ -37,8 +37,12 @@ public class ECDemo {
         // дождаться отсутствия или скрытия элемента
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(""))));
 
+        // дождаться наличия элемента в DOM
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("")));
+
         //
-        wait.until
+        wait.until(ExpectedConditions.not());
+
 
 
 
