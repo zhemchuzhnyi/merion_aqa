@@ -19,10 +19,8 @@ public class ECDemo {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
 
-        WebElement element = driver.findElement(By.cssSelector(""));
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.stalenessOf(element));
+        wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(""))));
 
     }
 }
