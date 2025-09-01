@@ -41,7 +41,7 @@ public class ECDemo {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("")));
 
         //
-        wait.until(ExpectedConditions.not());
+        wait.until(ExpectedConditions.attributeContains(By.cssSelector(""), "class", "btn-success"));
 
 
 
