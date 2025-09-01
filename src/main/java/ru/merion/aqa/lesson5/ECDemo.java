@@ -1,5 +1,5 @@
 /*
-EC - Expected Conditons
+EC - Expected Conditions
  */
 
 package ru.merion.aqa.lesson5;
