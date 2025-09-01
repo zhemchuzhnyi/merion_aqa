@@ -22,7 +22,7 @@ public class ProgressbarV4Norm {
 
         driver.findElement(By.cssSelector("#startButton")).click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60),Duration.ofMillis(100));
         wait.until(ExpectedConditions.textToBe(By.cssSelector("#progressBar"), "75%"));
 
         driver.findElement(By.cssSelector("#stopButton")).click();
