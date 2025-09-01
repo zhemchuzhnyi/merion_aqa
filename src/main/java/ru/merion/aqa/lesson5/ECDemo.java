@@ -24,7 +24,11 @@ public class ECDemo {
         //дождаться исчезновение (!) элемента
         wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(""))));
 
+        //дождаться точного количества элементов на странице
         List<WebElement> elements = wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(""), 7));
+
+        //дождаться видимости элемента
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("")))).click();
 
 
 
