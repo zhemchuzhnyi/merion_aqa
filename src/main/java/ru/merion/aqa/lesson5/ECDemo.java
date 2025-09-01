@@ -34,7 +34,11 @@ public class ECDemo {
         // дождаться появления alert/confirm/prompt и перейти в него
         wait.until(ExpectedConditions.alertIsPresent());
 
+        // дождаться отсутствия или скрытия элемента
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(""))));
+
         //
+        wait.until
 
 
 
