@@ -3,11 +3,9 @@ package ru.merion.aqa.lesson5;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
-import javax.security.auth.Refreshable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -22,7 +20,7 @@ public class CustomECDemo {
         driver.get("file://" + filePath);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20), Duration.ofSeconds(1));
-        WebElement counter = wait.until(RefreshableEC.textContains(By.cssSelector("#msg_counter"), "(1)"));
+        WebElement counter = wait.until(CustomEC.textContainsAfterRefresh(By.cssSelector("#msg_counter"), "(1)"));
 
         String txt = driver.findElement(By.cssSelector("p")).getText();
         System.out.println(txt); // Входящие (1)

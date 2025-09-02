@@ -4,13 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.function.Function;
+public class CustomEC {
 
-public class RefreshableEC {
-
-    public static ExpectedCondition<WebElement> textContains(By locator, String textContain ) {
+    public static ExpectedCondition<WebElement> textContainsAfterRefresh(By locator, String textContain ) {
         return new ExpectedCondition<WebElement>() {
             public WebElement apply(WebDriver driver) {
                 driver.navigate().refresh();
