@@ -15,6 +15,8 @@ import ru.merion.aqa.WebDriverFactory;
 import java.time.Duration;
 import java.util.List;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+
 public class ECDemo {
 
     public static void main(String[] args) {
@@ -23,33 +25,41 @@ public class ECDemo {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // дождаться исчезновение (!) элемента
-        wait.until(ExpectedConditions.stalenessOf(driver.findElement(By.cssSelector(""))));
+        wait.until(stalenessOf(driver.findElement(By.cssSelector(""))));
 
         // дождаться точного количества элементов на странице
-        List<WebElement> elements = wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector(""), 7));
+        List<WebElement> elements = wait.until(numberOfElementsToBe(By.cssSelector(""), 7));
 
         // дождаться видимости элемента
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("")))).click();
+        wait.until(visibilityOf(driver.findElement(By.cssSelector("")))).click();
 
         // дождаться появления alert/confirm/prompt и перейти в него
-        wait.until(ExpectedConditions.alertIsPresent());
+        wait.until(alertIsPresent());
 
         // дождаться отсутствия или скрытия элемента
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector(""))));
+        wait.until(visibilityOf(driver.findElement(By.cssSelector(""))));
 
         // дождаться наличия элемента в DOM
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("")));
+        wait.until(presenceOfElementLocated(By.cssSelector("")));
 
         // дождаться, что атрибут элемента содержит (!) значение
-        wait.until(ExpectedConditions.attributeContains(By.cssSelector(""), "class", "btn-success"));
+        wait.until(attributeContains(By.cssSelector(""), "class", "btn-success"));
 
         // проверить, что title страницы содержит подстроку
-        wait.until(ExpectedConditions.titleContains("Входящие (3)"));
+        wait.until(titleContains("Входящие (3)"));
 
         // проверить, что titlt страницы равен(!) строке
-        wait.until(ExpectedConditions.titleIs("Входящие (3)"));
+        wait.until(titleIs("Входящие (3)"));
+
+        // проверить, что url  страницы содержит подстроку
+        wait.until(urlContains("https://"));
+
+        // объединить ожидания
+        wait.until(and(alertIsPresent(), urlToBe("/feed")));
 
         //
+        wait.until(ExpectedConditions.)
+
 
 
 
