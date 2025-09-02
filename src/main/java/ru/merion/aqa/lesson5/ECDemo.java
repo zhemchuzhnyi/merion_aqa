@@ -48,7 +48,7 @@ public class ECDemo {
         // проверить, что title страницы содержит подстроку
         wait.until(titleContains("Входящие (3)"));
 
-        // проверить, что titlt страницы равен(!) строке
+        // проверить, что title страницы равен(!) строке
         wait.until(titleIs("Входящие (3)"));
 
         // проверить, что url страницы содержит подстроку
@@ -58,7 +58,13 @@ public class ECDemo {
         wait.until(and(alertIsPresent(), urlToBe("/feed")));
 
         // проверить, что элемент выбран или не выбран
-        wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(""), true));
+        wait.until(elementSelectionStateToBe(By.cssSelector(""), true));
+
+        // проверить, что элемент кликабельный - (видимый + доступный)
+        wait.until(elementToBeClickable(By.cssSelector("")));
+
+        //
+        wait.until(numberOfElementsToBeMoreThan(By.cssSelector(""), 7));
 
 
 
