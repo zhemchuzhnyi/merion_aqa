@@ -46,6 +46,12 @@ public class ECDemo {
         // проверить, что title страницы содержит подстроку
         wait.until(ExpectedConditions.titleContains("Входящие (3)"));
 
+        // проверить, что titlt страницы равен(!) строке
+        wait.until(ExpectedConditions.titleIs("Входящие (3)"));
+
+        //
+
+
 
 
 
