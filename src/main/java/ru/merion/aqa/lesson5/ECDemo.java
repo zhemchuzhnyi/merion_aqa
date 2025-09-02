@@ -72,14 +72,10 @@ public class ECDemo {
         // дождаться, что элемент в тексте содержит подстроку
         wait.until(textToBePresentInElementLocated(By.cssSelector(""), "test"));
 
-        //
+        // дождаться в атрибуте value подстроку
         wait.until(textToBePresentInElementValue(By.cssSelector(""), "test"));
 
-
-
-
-
-
+        //
 
 
     }
