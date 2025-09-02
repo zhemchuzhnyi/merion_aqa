@@ -60,7 +60,7 @@ public class WebDriverFactory {
     // Метод для получения пути к расширению Chrome (можно настроить через конфигурацию)
     private static String getChromeExtensionPath() {
         // Пример: можно задать путь через системную переменную или конфигурацию
-        String defaultPath = "src/main/resources/User-Agent-Switcher-for-Chrome-Chrome.crx";
+        String defaultPath = "src/main/resources/chrome_ext/User-Agent-Switcher-for-Chrome-Chrome.crx";
         return System.getProperty("chrome.extension.path", defaultPath);
     }
 }
