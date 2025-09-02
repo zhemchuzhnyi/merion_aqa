@@ -51,14 +51,14 @@ public class ECDemo {
         // проверить, что titlt страницы равен(!) строке
         wait.until(titleIs("Входящие (3)"));
 
-        // проверить, что url  страницы содержит подстроку
+        // проверить, что url страницы содержит подстроку
         wait.until(urlContains("https://"));
 
         // объединить ожидания
         wait.until(and(alertIsPresent(), urlToBe("/feed")));
 
-        //
-        wait.until(ExpectedConditions.)
+        // проверить, что элемент выбран или не выбран
+        wait.until(ExpectedConditions.elementSelectionStateToBe(By.cssSelector(""), true));
 
 
 
