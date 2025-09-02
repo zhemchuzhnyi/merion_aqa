@@ -43,6 +43,9 @@ public class ECDemo {
         // дождаться, что атрибут элемента содержит (!) значение
         wait.until(ExpectedConditions.attributeContains(By.cssSelector(""), "class", "btn-success"));
 
+        // проверить, что title страницы содержит подстроку
+        wait.until(ExpectedConditions.titleContains("Входящие (3)"));
+
 
 
 
