@@ -13,7 +13,7 @@ public class CustomECDemo {
         String filePath = Paths.get("").toAbsolutePath().resolve(relativePath).toString();
 
         WebDriver driver = WebDriverFactory.create("chrome");
-        driver.get("file:// + filePath");
+        driver.get("file://" + filePath);
 
     }
 }
