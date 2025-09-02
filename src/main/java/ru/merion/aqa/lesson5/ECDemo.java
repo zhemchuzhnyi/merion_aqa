@@ -63,8 +63,18 @@ public class ECDemo {
         // проверить, что элемент кликабельный - (видимый + доступный)
         wait.until(elementToBeClickable(By.cssSelector("")));
 
-        //
+        // проверить, что элементов на странице строго больше, чем... (7 - в этом примере)
         wait.until(numberOfElementsToBeMoreThan(By.cssSelector(""), 7));
+
+        // проверить, что выполняется хотя бы одно условие
+        wait.until(or(urlToBe(""), titleIs("")));
+
+        // дождаться, что элемент в тексте содержит подстроку
+        wait.until(textToBePresentInElementLocated(By.cssSelector(""), "test"));
+
+        //
+        wait.until(textToBePresentInElementValue(By.cssSelector(""), "test"));
+
 
 
 
