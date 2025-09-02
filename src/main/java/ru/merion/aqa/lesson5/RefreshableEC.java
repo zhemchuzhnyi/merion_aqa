@@ -16,19 +16,25 @@ public class RefreshableEC {
                 driver.navigate().refresh();
                 WebElement element = driver.findElement(locator);
                 String text = element.getText();
-                boolean contains = text.contains(textContain);
 
-                // delete
+                /* delete  - этот код не нужен тк ниже 1 проверка все решает. оставил для наглядности
                 if (text.isEmpty() || text.isBlank()) {
                     System.out.println("<ПУСТО>");
                 } else {
                     System.out.println(text);
                 }
-                return null;
+
+                if (text.contains(textContain)) {
+                    return element;
+                } else {
+                    return null;
+                } */
+
+                return text.contains(textContain) ? element : null;
             }
 
             public String toString() {
-                return "Элемент с локатором " + locator + " содержит текст " + textContain;
+                return "Элемент с локатором " + locator + " содержит текст \"" + textContain + "\"";
             }
         };
     }

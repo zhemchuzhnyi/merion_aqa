@@ -21,7 +21,7 @@ public class CustomECDemo {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("file://" + filePath);
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20), Duration.ofSeconds(1));
         WebElement counter = wait.until(RefreshableEC.textContains(By.cssSelector("#msg_counter"), "(1)"));
 
         String txt = driver.findElement(By.cssSelector("p")).getText();
