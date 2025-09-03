@@ -35,7 +35,6 @@ public class Task1 {
         String result = text.getText();
         System.out.println(result);
 
-
         driver.quit();
 
 
