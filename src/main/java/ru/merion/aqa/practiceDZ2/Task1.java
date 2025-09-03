@@ -31,7 +31,9 @@ public class Task1 {
         driver.findElement(By.cssSelector("#ajaxButton")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(16));
-        wait.until(ExpectedConditions.textToBe(By.cssSelector("#p"), "Data loaded with AJAX get request"));
+        WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bg-success")));
+        String result = text.getText();
+        System.out.println(result);
 
 
         driver.quit();
