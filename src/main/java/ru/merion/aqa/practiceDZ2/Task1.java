@@ -15,6 +15,10 @@ public class Task1 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/ajax");
         driver.findElement(By.cssSelector("#ajaxButton")).click();
+        String content = driver.findElement(By.cssSelector("#ajaxButton")).getText();
+        System.out.println(content);
+
+        driver.quit();
 
 
     }
