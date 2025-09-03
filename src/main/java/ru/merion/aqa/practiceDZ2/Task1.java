@@ -20,6 +20,8 @@ import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+
 public class Task1 {
 
     public static void main(String[] args) {
@@ -29,9 +31,7 @@ public class Task1 {
         driver.findElement(By.cssSelector("#ajaxButton")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(16));
-
-        String text = driver.findElement(By.cssSelector("#p")).getText();
-        System.out.println("text " + text);
+        wait.until(visibilityOf(driver.findElement(By.cssSelector("#p"))));
 
 
         driver.quit();
