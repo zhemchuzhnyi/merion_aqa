@@ -23,6 +23,11 @@ public class Task2 {
         driver.findElement(By.cssSelector("#newButtonName")).sendKeys("Merion");
         driver.findElement(By.cssSelector("#updatingButton")).click();
 
+        String content = driver.findElement(By.cssSelector("#updatingButton")).getText();
+        System.out.println("Текст кнопки: " + content);
+
+        вк
+
 
     }
 }
