@@ -20,6 +20,8 @@ public class Task2 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/textinput");
         driver.findElement(By.cssSelector("#newButtonName")).click();
+        driver.findElement(By.cssSelector("#newButtonName")).sendKeys("Merion");
+        driver.findElement(By.cssSelector("#updatingButton")).click();
 
 
     }
