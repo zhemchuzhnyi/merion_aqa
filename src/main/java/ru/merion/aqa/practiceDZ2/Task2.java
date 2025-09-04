@@ -26,7 +26,7 @@ public class Task2 {
         String content = driver.findElement(By.cssSelector("#updatingButton")).getText();
         System.out.println("Текст кнопки: " + content);
 
-        вк
+        driver.quit();
 
 
     }
