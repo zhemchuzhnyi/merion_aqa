@@ -19,6 +19,7 @@ public class Task2 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/textinput");
-        driver.findElement(By.cssSelector("#updatingButton"));
+        driver.findElement(By.cssSelector("#newButtonName"));
+
     }
 }
