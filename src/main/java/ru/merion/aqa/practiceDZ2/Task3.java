@@ -10,6 +10,7 @@ src
  */
 package ru.merion.aqa.practiceDZ2;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -18,6 +19,7 @@ public class Task3 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
+        driver.findElement(By.cssSelector(""));
 
 
     }
