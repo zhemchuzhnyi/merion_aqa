@@ -29,7 +29,7 @@ public class Task3 {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#award")));
 
         String src = driver.findElement(By.cssSelector("#award")).getAttribute("src");
-        System.out.println(src);
+        System.out.println("Текст атрибута " + src);
 
         driver.quit();
 
