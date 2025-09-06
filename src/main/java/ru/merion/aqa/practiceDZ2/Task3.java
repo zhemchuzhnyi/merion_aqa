@@ -8,6 +8,7 @@ src
  у 3й картинки
 Вывести значение в консоль
  */
+
 package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
@@ -29,7 +30,7 @@ public class Task3 {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#award")));
 
         String src = driver.findElement(By.cssSelector("#award")).getAttribute("src");
-        System.out.println("Текст атрибута " + src);
+        System.out.println("Атрибут src 3й картинки" + src);
 
         driver.quit();
 
