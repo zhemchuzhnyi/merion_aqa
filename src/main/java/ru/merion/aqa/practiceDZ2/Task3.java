@@ -13,6 +13,7 @@ package ru.merion.aqa.practiceDZ2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
@@ -25,9 +26,10 @@ public class Task3 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until();
-        WebElement src = driver.findElement(By.id("src"));
-        driver.findElement(By.cssSelector(""));
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("#award"),"src"));
+       // WebElement src = driver.findElement(By.id("src"));
+        // driver.findElement(By.cssSelector(""));
+
 
 
     }
