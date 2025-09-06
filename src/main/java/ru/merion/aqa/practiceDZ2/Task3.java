@@ -26,7 +26,7 @@ public class Task3 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(16));
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("#award"),"src"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#award")));
        // WebElement src = driver.findElement(By.id("src"));
         // driver.findElement(By.cssSelector(""));
 
