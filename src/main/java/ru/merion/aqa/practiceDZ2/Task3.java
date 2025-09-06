@@ -30,6 +30,11 @@ public class Task3 {
        // WebElement src = driver.findElement(By.id("src"));
         // driver.findElement(By.cssSelector(""));
 
+        String src = driver.findElement(By.cssSelector("#award")).getAttribute("src");
+        System.out.println(src);
+
+        driver.quit();
+
 
 
     }
