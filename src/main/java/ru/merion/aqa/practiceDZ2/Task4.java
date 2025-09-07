@@ -36,6 +36,7 @@ public class Task4 {
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
 
     }
 }
