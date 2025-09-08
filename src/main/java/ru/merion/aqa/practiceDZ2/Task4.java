@@ -48,13 +48,13 @@ public class Task4 {
 
         driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
-        String color_zip = driver.findElement(By.cssSelector("#zip-code")).getAttribute("alert-color");
+        String color_zip = driver.findElement(By.cssSelector("input[name='alert-danger']")).getCssValue("alert-color");
         System.out.println(color_zip);
 
-        String color_mail = driver.findElement(By.cssSelector("#e-mail")).getAttribute("color");
+        String color_mail = driver.findElement(By.cssSelector("#e-mail")).getCssValue("color");
         System.out.println(color_mail);
 
-        String color_phone = driver.findElement(By.cssSelector("#phone")).getAttribute("color");
+        String color_phone = driver.findElement(By.cssSelector("#phone")).getCssValue("color");
         System.out.println(color_phone);
 
 
