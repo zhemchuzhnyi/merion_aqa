@@ -29,6 +29,7 @@ Phone
  */
 package ru.merion.aqa.practiceDZ2;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -37,6 +38,7 @@ public class Task4 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
+        driver.findElement(By.cssSelector(""));
 
     }
 }
