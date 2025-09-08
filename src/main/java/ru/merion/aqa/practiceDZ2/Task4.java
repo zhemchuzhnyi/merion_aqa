@@ -43,6 +43,7 @@ public class Task4 {
         driver.findElement(By.cssSelector("input[name='address']")).sendKeys("Ленина, 55-3");
         driver.findElement(By.cssSelector("input[name='city']")).sendKeys("Москва");
         driver.findElement(By.cssSelector("input[name='country']")).sendKeys("Россия");
+        driver.findElement(By.cssSelector("input[name='country']")).sendKeys();
 
 
         driver.quit();
