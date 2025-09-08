@@ -40,7 +40,7 @@ public class Task4 {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         driver.findElement(By.cssSelector("input[name='first-name']")).sendKeys("Иван");
         driver.findElement(By.cssSelector("input[name='last-name']")).sendKeys("Петров");
-        driver
+        driver.findElement(By.cssSelector(""));
 
         driver.quit();
 
