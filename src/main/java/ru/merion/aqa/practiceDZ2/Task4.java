@@ -38,7 +38,8 @@ public class Task4 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
-        driver.findElement(By.cssSelector(""));
+        driver.findElement(By.cssSelector("input[name='first-name']")).sendKeys("Иван");
+
 
     }
 }
