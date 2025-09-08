@@ -49,8 +49,6 @@ public class Task4 {
         driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
 
-
-
         driver.quit();
 
 
