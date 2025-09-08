@@ -48,6 +48,10 @@ public class Task4 {
 
         driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
+        String color = driver.findElement(By.cssSelector("#zip-code")).getAttribute("color");
+        System.out.println(color);
+
+
 
         driver.quit();
 
