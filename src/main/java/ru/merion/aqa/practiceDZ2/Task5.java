@@ -15,6 +15,7 @@
  */
 package ru.merion.aqa.practiceDZ2;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -22,5 +23,7 @@ public class Task5 {
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
+        driver.findElement(By.cssSelector("#delay")).sendKeys("45");
     }
 }
