@@ -25,5 +25,7 @@ public class Task5 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
         driver.findElement(By.cssSelector("#delay")).sendKeys("45");
+
+        driver.quit();
     }
 }
