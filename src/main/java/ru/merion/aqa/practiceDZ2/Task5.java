@@ -13,6 +13,7 @@
 =
 Дождаться результата. Вывести его в консоль.
  */
+
 package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
@@ -22,11 +23,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
-
-import java.security.Key;
 import java.time.Duration;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class Task5 {
 
@@ -47,7 +44,7 @@ public class Task5 {
 
         WebElement screen = driver.findElement(By.xpath("//div[@class='screen' and text()='15']"));
         String text = screen.getText();
-        System.out.println("Результат: " + text);
+        System.out.println("Результат сложения чисел: " + text);
 
 
         driver.quit();
