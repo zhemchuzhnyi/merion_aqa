@@ -23,11 +23,14 @@ import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+
 public class Task5 {
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
+        driver.navigate().
         driver.findElement(By.cssSelector("#delay")).sendKeys("45");
 
         driver.findElement(By.xpath("//span[@class='btn btn-outline-primary' and text()='7']")).click();
@@ -36,6 +39,7 @@ public class Task5 {
         driver.findElement(By.xpath("//span[@class='btn btn-outline-warning' and text()='=']")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait.until(visibilityOf(driver.findElement(By.xpath("//div[@class='screen' and text()='15']"))));
 
         WebElement screen = driver.findElement(By.xpath("//div[@class='screen' and text()='15']"));
         String text = screen.getText();
