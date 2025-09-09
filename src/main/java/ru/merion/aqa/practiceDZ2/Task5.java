@@ -26,7 +26,7 @@ public class Task5 {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
         driver.findElement(By.cssSelector("#delay")).sendKeys("45");
 
-        driver.findElement(By.cssSelector(".btn-outline-primary")).click();
+        driver.findElement(By.xpath("//span[@class='btn btn-outline-primary' and text()='7']")).click();
 
         driver.quit();
     }
