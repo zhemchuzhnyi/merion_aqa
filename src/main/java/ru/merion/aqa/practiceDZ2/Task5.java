@@ -36,12 +36,10 @@ public class Task5 {
         driver.findElement(By.cssSelector("#delay")).sendKeys("45");
 
         /*
-        Более продвинутый вариант:
-
+        //Более продвинутый вариант:
         WebElement delayField = driver.findElement(By.cssSelector("#delay"));
         delayField.clear();
         delayField.sendKeys("45");
-
          */
 
         // Длинные XPath первоначальный вариант:
@@ -51,32 +49,19 @@ public class Task5 {
         driver.findElement(By.xpath("//span[@class='btn btn-outline-warning' and text()='=']")).click();
 
         /*
-        Более простой и компактный вид:
+        //Более простой и компактный вид:
         driver.findElement(By.xpath("//span[text()='7']")).click();
         driver.findElement(By.xpath("//span[text()='+']")).click();
         driver.findElement(By.xpath("//span[text()='8']")).click();
         driver.findElement(By.xpath("//span[text()='=']")).click();
-
          */
-
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45),Duration.ofMillis(100));
         wait.until(ExpectedConditions.textToBe(By.cssSelector(".screen"),"15"));
 
-        // Первоначальный вариант:
-        WebElement screen = driver.findElement(By.xpath("//div[@class='screen' and text()='15']"));
-        String text = screen.getText();
-        System.out.println("Результат сложения чисел: " + text);
-
-        /*
-        Вместо поиска элемента с конкретным текстом:
-
         WebElement screen = driver.findElement(By.cssSelector(".screen"));
         String result = screen.getText();
         System.out.println("Результат сложения чисел: " + result);
-
-         */
-
 
         driver.quit();
     }
