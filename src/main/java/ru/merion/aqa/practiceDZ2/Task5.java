@@ -35,7 +35,7 @@ public class Task5 {
         driver.findElement(By.xpath("//span[@class='btn btn-outline-primary' and text()='8']")).click();
         driver.findElement(By.xpath("//span[@class='btn btn-outline-warning' and text()='=']")).click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         WebElement screen = driver.findElement(By.xpath("//div[@class='screen' and text()='15']"));
         String text = screen.getText();
