@@ -29,6 +29,8 @@ public class Task5 {
         driver.findElement(By.xpath("//span[@class='btn btn-outline-primary' and text()='7']")).click();
         driver.findElement(By.xpath("//span[@class='operator btn btn-outline-success' and text()='+']")).click();
         driver.findElement(By.xpath("//span[@class='btn btn-outline-primary' and text()='8']")).click();
+        driver.findElement(By.xpath("//span[@class='btn btn-outline-warning' and text()='=']")).click();
+
 
         driver.quit();
     }
