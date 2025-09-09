@@ -17,6 +17,7 @@ package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -36,7 +37,9 @@ public class Task5 {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
 
-        driver.findElement(By.xpath("//div[@class='screen' and text()='15']"));
+        WebElement screen = driver.findElement(By.xpath("//div[@class='screen' and text()='15']"));
+        String text = screen.getText();
+        System.out.println("Результат: " + text);
 
 
         driver.quit();
