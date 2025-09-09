@@ -17,7 +17,10 @@ package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
+
+import java.time.Duration;
 
 public class Task5 {
 
@@ -30,6 +33,8 @@ public class Task5 {
         driver.findElement(By.xpath("//span[@class='operator btn btn-outline-success' and text()='+']")).click();
         driver.findElement(By.xpath("//span[@class='btn btn-outline-primary' and text()='8']")).click();
         driver.findElement(By.xpath("//span[@class='btn btn-outline-warning' and text()='=']")).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(45));
 
 
         driver.quit();
