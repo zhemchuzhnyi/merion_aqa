@@ -44,6 +44,11 @@ public class Task6 {
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
 
+        driver.findElement(By.cssSelector("#shopping_cart_link")).click();
+        driver.findElement(By.cssSelector("#checkout")).click();
+
+
+
         driver.quit();
 
 
