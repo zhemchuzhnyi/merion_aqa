@@ -18,7 +18,7 @@ standard_user
 - Почтовый индекс
 7 - Нажать continue
 
-8- Прочитать со стрницы итоговую стоимость (
+8 - Прочитать со стрницы итоговую стоимость (
 Total
  )
 9 - Закрыть браузер
@@ -29,6 +29,7 @@ package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
@@ -65,6 +66,11 @@ public class Task6 {
         WebDriver.Timeouts timeouts5 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         driver.findElement(By.cssSelector("#continue")).click();
+
+        WebElement total = driver.findElement(By.cssSelector(".summary_total_label"));
+        String totalText = total.getText();
+        driver.close();
+        System.out.println("Total text: " + totalText);
 
 
         driver.quit();
