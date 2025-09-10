@@ -47,6 +47,13 @@ public class Task6 {
         driver.findElement(By.cssSelector("#shopping_cart_link")).click();
         driver.findElement(By.cssSelector("#checkout")).click();
 
+        driver.findElement(By.cssSelector("#first-name")).click();
+        driver.findElement(By.cssSelector("#first-name")).sendKeys("Alex");
+        driver.findElement(By.cssSelector("#last-name")).click();
+        driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
+
+
+
 
 
         driver.quit();
