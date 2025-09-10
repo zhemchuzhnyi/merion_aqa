@@ -54,6 +54,7 @@ public class Task6 {
 
         driver.findElement(By.cssSelector(".shopping_cart_link")).click();
         driver.findElement(By.cssSelector("#checkout")).click();
+        WebDriver.Timeouts timeouts4 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         driver.findElement(By.cssSelector("#first-name")).click();
         driver.findElement(By.cssSelector("#first-name")).sendKeys("Alex");
@@ -61,9 +62,6 @@ public class Task6 {
         driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
         driver.findElement(By.cssSelector("#postal-code")).click();
         driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
-
-
-
 
 
         driver.quit();
