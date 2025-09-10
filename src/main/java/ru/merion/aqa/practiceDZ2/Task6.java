@@ -52,7 +52,7 @@ public class Task6 {
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
         WebDriver.Timeouts timeouts3 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        driver.findElement(By.cssSelector("#shopping_cart_link")).click();
+        driver.findElement(By.cssSelector(".shopping_cart_link")).click();
         driver.findElement(By.cssSelector("#checkout")).click();
 
         driver.findElement(By.cssSelector("#first-name")).click();
