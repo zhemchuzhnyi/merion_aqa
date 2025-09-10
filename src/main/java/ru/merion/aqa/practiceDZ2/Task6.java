@@ -29,7 +29,10 @@ package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
+
+import java.time.Duration;
 
 public class Task6 {
 
@@ -39,6 +42,7 @@ public class Task6 {
         driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("#login-button")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
