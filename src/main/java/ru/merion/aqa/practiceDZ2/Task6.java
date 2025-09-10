@@ -40,30 +40,29 @@ public class Task6 {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = WebDriverFactory.create("chrome");
+
+        //Настраиваю не явные ожидания
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+
+        //Переход в магазин и авторизация
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("#login-button")).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
+        //Добавление товаров в корзину
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
-        WebDriver.Timeouts timeouts = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
-        WebDriver.Timeouts timeouts2 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
-        WebDriver.Timeouts timeouts3 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
+        //Переход в корзину
         driver.findElement(By.cssSelector(".shopping_cart_link")).click();
         driver.findElement(By.cssSelector("#checkout")).click();
-        WebDriver.Timeouts timeouts4 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        driver.findElement(By.cssSelector("#first-name")).click();
         driver.findElement(By.cssSelector("#first-name")).sendKeys("Alex");
-        driver.findElement(By.cssSelector("#last-name")).click();
         driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
-        driver.findElement(By.cssSelector("#postal-code")).click();
         driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
-        WebDriver.Timeouts timeouts5 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         driver.findElement(By.cssSelector("#continue")).click();
 
