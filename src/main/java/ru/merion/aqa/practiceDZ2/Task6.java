@@ -40,6 +40,10 @@ public class Task6 {
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("#login-button")).click();
 
+        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
+        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
+
+
 
 
     }
