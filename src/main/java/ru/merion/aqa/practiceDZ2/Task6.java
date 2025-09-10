@@ -60,12 +60,15 @@ public class Task6 {
         driver.findElement(By.cssSelector(".shopping_cart_link")).click();
         driver.findElement(By.cssSelector("#checkout")).click();
 
+        //Заполнение формы
         driver.findElement(By.cssSelector("#first-name")).sendKeys("Alex");
         driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
         driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
 
+        //Продолжение
         driver.findElement(By.cssSelector("#continue")).click();
 
+        //Подсчет стоимости и вывод в консоль
         WebElement total = driver.findElement(By.cssSelector(".summary_total_label"));
         String totalText = total.getText();
         driver.close();
