@@ -23,6 +23,7 @@ Total
  */
 package ru.merion.aqa.practiceDZ2;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -31,6 +32,7 @@ public class Task6 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.cssSelector("#user-name")).sendKeys();
 
     }
 }
