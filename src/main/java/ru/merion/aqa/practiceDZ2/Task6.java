@@ -32,7 +32,9 @@ public class Task6 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.cssSelector("#user-name")).sendKeys();
+        driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
+        driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
+
 
     }
 }
