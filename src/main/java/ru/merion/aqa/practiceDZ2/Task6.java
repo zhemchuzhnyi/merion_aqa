@@ -29,6 +29,7 @@ package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -36,7 +37,7 @@ import java.time.Duration;
 
 public class Task6 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
@@ -45,8 +46,11 @@ public class Task6 {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
+        WebDriver.Timeouts timeouts = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
+        WebDriver.Timeouts timeouts2 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
+        WebDriver.Timeouts timeouts3 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
         driver.findElement(By.cssSelector("#shopping_cart_link")).click();
         driver.findElement(By.cssSelector("#checkout")).click();
@@ -63,9 +67,6 @@ public class Task6 {
 
 
         driver.quit();
-
-
-
 
     }
 }
