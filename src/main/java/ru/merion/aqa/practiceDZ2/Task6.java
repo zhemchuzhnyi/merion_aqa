@@ -30,6 +30,7 @@ public class Task6 {
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
+        driver.get("https://www.saucedemo.com/");
 
     }
 }
