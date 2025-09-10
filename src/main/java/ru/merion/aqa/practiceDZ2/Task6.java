@@ -70,7 +70,7 @@ public class Task6 {
         WebElement total = driver.findElement(By.cssSelector(".summary_total_label"));
         String totalText = total.getText();
         driver.close();
-        System.out.println("Total text: " + totalText);
+        System.out.println(totalText);
 
 
         driver.quit();
