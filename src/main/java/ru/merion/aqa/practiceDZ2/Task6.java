@@ -71,11 +71,8 @@ public class Task6 {
         //Подсчет стоимости и вывод в консоль
         WebElement total = driver.findElement(By.cssSelector(".summary_total_label"));
         String totalText = total.getText();
-        driver.close();
-        System.out.println(totalText);
-
-
         driver.quit();
+        System.out.println(totalText);
 
     }
 }
