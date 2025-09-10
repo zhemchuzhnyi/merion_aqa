@@ -62,6 +62,9 @@ public class Task6 {
         driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
         driver.findElement(By.cssSelector("#postal-code")).click();
         driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
+        WebDriver.Timeouts timeouts5 = driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
+        driver.findElement(By.cssSelector("#continue")).click();
 
 
         driver.quit();
