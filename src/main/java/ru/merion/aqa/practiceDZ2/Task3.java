@@ -13,9 +13,7 @@ package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -33,8 +31,6 @@ public class Task3 {
         System.out.println("Атрибут src 3й картинки" + src);
 
         driver.quit();
-
-
 
     }
 }
