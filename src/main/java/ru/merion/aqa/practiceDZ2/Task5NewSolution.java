@@ -1,5 +1,6 @@
 /*
 Не бест практикс, просто как вариант
+Это пример
  */
 package ru.merion.aqa.practiceDZ2;
 
