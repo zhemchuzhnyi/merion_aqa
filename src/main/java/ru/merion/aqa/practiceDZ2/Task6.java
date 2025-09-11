@@ -35,6 +35,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
+import java.util.List;
 
 public class Task6 {
 
@@ -51,13 +52,15 @@ public class Task6 {
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("#login-button")).click();
 
+        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item"));
+
         //Добавление товаров в корзину
-        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
-        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
-        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
+        items.get(0).findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
+        items.get(2).findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
+        items.get(4).findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
 
         //Переход в корзину
-        driver.findElement(By.cssSelector(".shopping_cart_link")).click();
+        driver.get("https://www.saucedemo.com/cart.html");
         driver.findElement(By.cssSelector("#checkout")).click();
 
         //Заполнение формы
