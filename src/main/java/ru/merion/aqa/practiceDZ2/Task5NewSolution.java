@@ -16,7 +16,7 @@ import java.util.List;
 public class Task5NewSolution {
 
     public static void main(String[] args) {
-        int timeout = 7;
+        int timeout = 45;
 
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
