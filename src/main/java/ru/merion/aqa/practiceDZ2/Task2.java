@@ -19,10 +19,9 @@ public class Task2 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/textinput");
-        driver.findElement(By.cssSelector("#newButtonName")).click();
+
         driver.findElement(By.cssSelector("#newButtonName")).sendKeys("Merion");
         driver.findElement(By.cssSelector("#updatingButton")).click();
-
         String content = driver.findElement(By.cssSelector("#updatingButton")).getText();
         System.out.println("Текст кнопки: " + content);
 
