@@ -37,6 +37,8 @@ public class Task5NewSolution {
         String result = driver.findElement(By.cssSelector(".screen")).getText();
         System.out.println(result);
 
+        driver.quit();
+
 
 
 
