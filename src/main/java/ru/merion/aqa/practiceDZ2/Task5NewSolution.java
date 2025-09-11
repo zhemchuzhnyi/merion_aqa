@@ -1,3 +1,6 @@
+/*
+Не бест практикс, просто как вариант
+ */
 package ru.merion.aqa.practiceDZ2;
 
 import org.openqa.selenium.By;
