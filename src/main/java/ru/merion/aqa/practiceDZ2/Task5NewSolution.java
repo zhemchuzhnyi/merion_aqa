@@ -35,7 +35,7 @@ public class Task5NewSolution {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#spinner")));
 
         String result = driver.findElement(By.cssSelector(".screen")).getText();
-        System.out.println(result);
+        System.out.println("Результат сложения: " + result);
 
         driver.quit();
 
