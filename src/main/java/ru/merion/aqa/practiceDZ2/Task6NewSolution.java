@@ -42,6 +42,14 @@ public class Task6NewSolution {
         driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
         driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
 
+        driver.findElement(By.cssSelector("#continue")).click();
+
+        String total = driver.findElement(By.cssSelector(".summary_info_label.summary_total_label")).getText();
+        driver.quit();
+
+        System.out.println(total);
+
+
 
 
     }
