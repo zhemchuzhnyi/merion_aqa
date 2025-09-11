@@ -27,13 +27,12 @@ public class Task1 {
     public static void main(String[] args) {
 
         WebDriver driver = WebDriverFactory.create("chrome");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
+
         driver.get("http://uitestingplayground.com/ajax");
         driver.findElement(By.cssSelector("#ajaxButton")).click();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(16));
-        WebElement text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".bg-success")));
-        String result = text.getText();
-        System.out.println(result);
+        String content  = driver.findElement(By.cssSelector("#content p")).getText();
+        System.out.println(content);
 
         driver.quit();
 
