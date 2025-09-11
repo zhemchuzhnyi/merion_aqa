@@ -35,19 +35,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Task6 {
 
     public static void main(String[] args) throws InterruptedException {
-        
-        Set<String> itemNames = new HashSet<>();
-        itemNames.add("Sauce Labs Backpack");
-        itemNames.add("Sauce Labs Bolt T-Shirt");
-        itemNames.add("Sauce Labs Onesie");
-        
         WebDriver driver = WebDriverFactory.create("chrome");
 
         //Настраиваю не явные ожидания
@@ -60,17 +51,13 @@ public class Task6 {
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("#login-button")).click();
 
-        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item"));
-
-        for (WebElement item : items) {
-           String productName = item.findElement(By.cssSelector(".inventory_item_name")).getText();
-           if (itemNames.contains(productName)) {
-               item.findElement(By.cssSelector("button")).click();
-           }
-        }
+        //Добавление товаров в корзину
+        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-backpack")).click();
+        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-bolt-t-shirt")).click();
+        driver.findElement(By.cssSelector("#add-to-cart-sauce-labs-onesie")).click();
 
         //Переход в корзину
-        driver.get("https://www.saucedemo.com/cart.html");
+        driver.findElement(By.cssSelector(".shopping_cart_link")).click();
         driver.findElement(By.cssSelector("#checkout")).click();
 
         //Заполнение формы
