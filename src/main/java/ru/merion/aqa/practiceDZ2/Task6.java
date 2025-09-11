@@ -42,8 +42,8 @@ public class Task6 {
         WebDriver driver = WebDriverFactory.create("chrome");
 
         //Настраиваю не явные ожидания
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
 
         //Переход в магазин и авторизация
         driver.get("https://www.saucedemo.com/");
