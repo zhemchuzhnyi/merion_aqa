@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
-import java.util.List;
 
 public class Task5NewSolution {
 
