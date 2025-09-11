@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.merion.aqa.WebDriverFactory;
 
+import java.util.List;
+
 public class Task5NewSolution {
 
     public static void main(String[] args) {
@@ -17,6 +19,10 @@ public class Task5NewSolution {
         driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(timeout));
 
         WebElement keyboard = driver.findElement(By.cssSelector(".keys"));
+
+        List<WebElement> digits = keyboard.findElements(By.cssSelector(".btn-outline-primary"));
+        List<WebElement> operators = keyboard.findElements(By.cssSelector(".btn-outline-success"));
+
 
     }
 }
