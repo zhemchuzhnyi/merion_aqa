@@ -22,6 +22,7 @@ public class Task5NewSolution {
 
         List<WebElement> digits = keyboard.findElements(By.cssSelector(".btn-outline-primary"));
         List<WebElement> operators = keyboard.findElements(By.cssSelector(".btn-outline-success"));
+        WebElement equal = keyboard.findElement(By.cssSelector(".btn-outline-warning"));
 
 
     }
