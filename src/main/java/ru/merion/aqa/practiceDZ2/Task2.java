@@ -14,10 +14,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
+import java.time.Duration;
+
 public class Task2 {
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+
         driver.get("http://uitestingplayground.com/textinput");
 
         driver.findElement(By.cssSelector("#newButtonName")).sendKeys("Merion");
