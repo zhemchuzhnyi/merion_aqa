@@ -38,13 +38,13 @@ public class Task4 {
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
-        driver.findElement(By.cssSelector("input[name='first-name']")).sendKeys("Иван");
-        driver.findElement(By.cssSelector("input[name='last-name']")).sendKeys("Петров");
-        driver.findElement(By.cssSelector("input[name='address']")).sendKeys("Ленина, 55-3");
-        driver.findElement(By.cssSelector("input[name='city']")).sendKeys("Москва");
-        driver.findElement(By.cssSelector("input[name='country']")).sendKeys("Россия");
-        driver.findElement(By.cssSelector("input[name='job-position']")).sendKeys("QA");
-        driver.findElement(By.cssSelector("input[name='company']")).sendKeys("Merion");
+        driver.findElement(By.cssSelector("[name='first-name']")).sendKeys("Иван");
+        driver.findElement(By.cssSelector("[name='last-name']")).sendKeys("Петров");
+        driver.findElement(By.cssSelector("[name='address']")).sendKeys("Ленина, 55-3");
+        driver.findElement(By.cssSelector("[name='city']")).sendKeys("Москва");
+        driver.findElement(By.cssSelector("[name='country']")).sendKeys("Россия");
+        driver.findElement(By.cssSelector("[name='job-position']")).sendKeys("QA");
+        driver.findElement(By.cssSelector("[name='company']")).sendKeys("Merion");
 
         driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
