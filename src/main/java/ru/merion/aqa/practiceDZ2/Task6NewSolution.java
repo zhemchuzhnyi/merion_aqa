@@ -47,7 +47,7 @@ public class Task6NewSolution {
         String total = driver.findElement(By.cssSelector(".summary_total_label")).getText();
         driver.quit();
 
-        System.out.println("Результат: " + tot);
+        System.out.println("Результат: " + tota);
 
 
 
