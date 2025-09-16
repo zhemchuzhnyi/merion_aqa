@@ -23,22 +23,23 @@ public class KeyboardActions {
 
         Keys cmdCtrl = Platform.getCurrent().is(Platform.MAC) ? COMMAND : CONTROL;
 
+        long pause = 1000L;
         new Actions(driver)
                 .keyDown(LEFT_SHIFT)
                 .sendKeys(driver.findElement(locator),"merion")
                 .keyUp(LEFT_SHIFT)
-                .pause(1000L)
+                .pause(pause)
                 .keyDown(LEFT_SHIFT)
                 .sendKeys(ARROW_UP)
                 .keyUp(LEFT_SHIFT)
                 .keyDown(cmdCtrl)
                 .sendKeys("c")
-                .pause(1000L)
+                .pause(pause)
                 .sendKeys("vv")
-                .pause(1000L)
+                .pause(pause)
                 .sendKeys("v")
                 .keyUp(cmdCtrl)
-                .pause(1000L)
+                .pause(pause)
                 .perform();
 
         driver.quit();
