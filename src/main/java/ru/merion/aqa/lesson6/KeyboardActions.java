@@ -4,29 +4,30 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import ru.merion.aqa.WebDriverFactory;
-
-import java.security.Key;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.openqa.selenium.Keys.*;
 
 public class KeyboardActions {
 
     public static void main(String[] args) {
-        WebDriver driver = WebDriverFactory.create("chrome");
-        driver.get("http://uitestingplayground.com/textinput");
+        // Настройка WebDriverManager
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
 
-        Actions act = new Actions(driver);
+        driver.get("http://uitestingplayground.com/textinput");
 
         By locator = By.cssSelector("#newButtonName");
 
         Keys cmdCtrl = Platform.getCurrent().is(Platform.MAC) ? COMMAND : CONTROL;
 
         long pause = 1000L;
+
         new Actions(driver)
                 .keyDown(LEFT_SHIFT)
-                .sendKeys(driver.findElement(locator),"merion")
+                .sendKeys(driver.findElement(locator), "merion")
                 .keyUp(LEFT_SHIFT)
                 .pause(pause)
                 .keyDown(LEFT_SHIFT)
@@ -43,6 +44,5 @@ public class KeyboardActions {
                 .perform();
 
         driver.quit();
-
     }
 }
