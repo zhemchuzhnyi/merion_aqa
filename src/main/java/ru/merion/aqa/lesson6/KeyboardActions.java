@@ -27,12 +27,18 @@ public class KeyboardActions {
                 .keyDown(LEFT_SHIFT)
                 .sendKeys(driver.findElement(locator),"merion")
                 .keyUp(LEFT_SHIFT)
+                .pause(1000L)
                 .keyDown(LEFT_SHIFT)
                 .sendKeys(ARROW_UP)
                 .keyUp(LEFT_SHIFT)
                 .keyDown(cmdCtrl)
-                .sendKeys("cvvv")
+                .sendKeys("c")
+                .pause(1000L)
+                .sendKeys("vv")
+                .pause(1000L)
+                .sendKeys("v")
                 .keyUp(cmdCtrl)
+                .pause(1000L)
                 .perform();
 
         driver.quit();
