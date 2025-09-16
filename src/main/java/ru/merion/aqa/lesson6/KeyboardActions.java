@@ -2,9 +2,14 @@ package ru.merion.aqa.lesson6;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import ru.merion.aqa.WebDriverFactory;
+
+import java.security.Key;
+
+import static org.openqa.selenium.Keys.*;
 
 public class KeyboardActions {
 
@@ -16,12 +21,18 @@ public class KeyboardActions {
 
         By locator = By.cssSelector("#newButtonName");
 
-        act
-                .keyDown(Keys.LEFT_SHIFT)
+        Keys cmdCtrl = Platform.getCurrent().is(Platform.MAC) ? COMMAND : CONTROL;
+
+        new Actions(driver)
+                .keyDown(LEFT_SHIFT)
                 .sendKeys(driver.findElement(locator),"merion")
-                .keyUp(Keys.LEFT_SHIFT)
-                .keyDown(Keys.LEFT_SHIFT)
-                .sendKeys(Keys.ARROW_UP)
+                .keyUp(LEFT_SHIFT)
+                .keyDown(LEFT_SHIFT)
+                .sendKeys(ARROW_UP)
+                .keyUp(LEFT_SHIFT)
+                .keyDown(cmdCtrl)
+                .sendKeys("cvvv")
+                .keyUp(cmdCtrl)
                 .perform();
 
         driver.quit();
