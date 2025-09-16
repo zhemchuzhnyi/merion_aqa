@@ -20,6 +20,8 @@ public class KeyboardActions {
                 .keyDown(Keys.LEFT_SHIFT)
                 .sendKeys(driver.findElement(locator),"merion")
                 .keyUp(Keys.LEFT_SHIFT)
+                .keyDown(Keys.LEFT_SHIFT)
+                .sendKeys(Keys.ARROW_UP)
                 .perform();
 
         driver.quit();
