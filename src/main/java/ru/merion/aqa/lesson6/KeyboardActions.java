@@ -13,8 +13,6 @@ import static org.openqa.selenium.Keys.*;
 public class KeyboardActions {
 
     public static void main(String[] args) {
-        // Настройка WebDriverManager
-        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
 
         driver.get("http://uitestingplayground.com/textinput");
