@@ -6,7 +6,6 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 import static org.openqa.selenium.Keys.*;
 
