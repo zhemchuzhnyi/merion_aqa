@@ -38,7 +38,7 @@ public class KeyboardActions {
                 .sendKeys("v")
                 .keyUp(cmdCtrl)
                 .pause(pause)
-                .perform()
+                .perform();
 
 
         driver.quit();
