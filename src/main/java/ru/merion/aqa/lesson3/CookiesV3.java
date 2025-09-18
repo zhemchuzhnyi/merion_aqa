@@ -2,8 +2,10 @@ package ru.merion.aqa.lesson3;
 
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
+import java.time.Duration;
 import java.util.Set;
 
 public class CookiesV3 {
