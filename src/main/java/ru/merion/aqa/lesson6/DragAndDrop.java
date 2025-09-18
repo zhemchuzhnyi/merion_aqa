@@ -25,6 +25,7 @@ public class DragAndDrop {
         List<WebElement> cards = columns.get(0).findElements(By.cssSelector("li[data-testid=list-cards]"));
 
 
+
         driver.quit();
 
     }
