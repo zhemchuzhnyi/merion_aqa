@@ -1,6 +1,7 @@
 package ru.merion.aqa.lesson6;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,6 +17,7 @@ public class MouseActions {
         WebElement tools = driver.findElement(By.cssSelector(".tools"));
         WebElement brush = tools.findElement(By.cssSelector("[title='Кисть']"));
         WebElement paint = tools.findElement(By.cssSelector("[title = 'Заливка']"));
+        WebElement rect = tools.findElement(By.cssSelector("[title='Прямоугольник']"));
         WebElement color = driver.findElement(By.cssSelector("[data-color = 'rgb(128,128,255)']"));
 
 
@@ -34,9 +36,26 @@ public class MouseActions {
                 .release(canvas)
                 .perform();
 
-        new Actions(driver).moveByOffset(-100,100).perform(); // перемещаем курсор
+        new Actions(driver)
+                .moveByOffset(-100,100)
+                .perform(); // перемещаем курсор
 
-        new Actions(driver).click(paint).click(color).moveToElement(canvas, 10,-10).click().perform();
+        new Actions(driver)
+                .click(paint)
+                .click(color)
+                .moveToElement(canvas, 10,-10)
+                .click()
+                .perform();
+
+        new Actions(driver)
+                .click(rect)
+                .moveToElement(canvas)
+                .keyDown(Keys.LEFT_SHIFT)
+                .clickAndHold()
+                .moveByOffset(-150, 150)
+                .release()
+                .keyUp(Keys.LEFT_SHIFT)
+                .perform();
 
         driver.quit();
 
