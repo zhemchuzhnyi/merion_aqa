@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class MouseActions {
 
@@ -12,7 +13,11 @@ public class MouseActions {
         driver.get("https://jspaint.app/#local:f027a292cdf1");
 
         WebElement canvas = driver.findElement(By.cssSelector(".main-canvas"));
-        canvas.click();
+
+        new Actions(driver)
+                .clickAndHold(canvas)
+                        .moveByOffset(100, -50)
+                                .perform();
 
         driver.quit();
 
