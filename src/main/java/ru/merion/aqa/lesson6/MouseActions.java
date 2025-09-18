@@ -16,10 +16,19 @@ public class MouseActions {
         WebElement tools = driver.findElement(By.cssSelector(".tools"));
         WebElement brush = driver.findElement(By.cssSelector("[title='Кисть']"));
 
+        long pause = 1000l;
         new Actions(driver)
+                .click(brush)
                 .clickAndHold(canvas)
-                        .moveByOffset(100, -50)
-                                .perform();
+                .pause(pause)
+                .moveByOffset(0, -150)
+                .pause(pause)
+                .moveByOffset(150,0)
+                .pause(pause)
+                .moveByOffset(0,150)
+                .pause(pause)
+                .moveByOffset(-150,0)
+                .perform();
 
         driver.quit();
 
