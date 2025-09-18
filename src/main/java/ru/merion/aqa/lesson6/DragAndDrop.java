@@ -5,28 +5,58 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
 import java.util.List;
 
 public class DragAndDrop {
-
     public static void main(String[] args) {
-        String token = "eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNzM4Nzk0ODc0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6YzQwOThjMmUtNmZhZC00OGEzLTg5ZDMtZmFmYzA5MzM1MGU5IiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTc1ODIzMTg0OCwicmVmcmVzaFRpbWVvdXQiOjE3NTgyMzI1MzMsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiIwZDJmMTA3MC0xZjI1LTRiNzgtYWVlYi02YjQxMmFjOGQ0YmYiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzU4MjMxOTMzLCJleHAiOjE3NjA4MjM5MzMsImlhdCI6MTc1ODIzMTkzMywiZW1haWwiOiJhcmVzaGtpbi5vbmRyZXlAZ21haWwuY29tIiwianRpIjoiMGQyZjEwNzAtMWYyNS00Yjc4LWFlZWItNmI0MTJhYzhkNGJmIn0.hNmKjKjLYeCpdw5HwPufNCslvxESLsaYtZKZv5gQzS3iMy-epUiGBkdo-LZS51NdDZhQVBdgOtGpcG9O0KL2bgu8JmiS9Fl8b4OFwai9E9qWmFL-TkRc05285LnjO5aoPwtEdbTLeW7xvwJXgxjwXU1TJUToMZZ4EyLR-FKfPDJUK9r3LIeN9PhEVAIfHVav6qbO51QaC1yEtSUgQtP8Qz8l6BBe6HKpnNMdKVv_2OlmrzU26wkigp5lmW1Oim_ePGSkfEteHfSacc3wO8Ik-OSHekufKxOm0azSZx9FMYCLGUVCfOa-msp1ImKf9vSFNt6b78lQVVYUkLn8bpg65g";
+        String token = "eyJraWQiOiJzZXNzaW9uLXNlcnZpY2UvcHJvZC0xNzM4Nzk0ODc0IiwiYWxnIjoiUlMyNTYifQ.eyJhc3NvY2lhdGlvbnMiOltdLCJzdWIiOiI3MTIwMjA6YzQwOThjMmUtNmZhZC00OGEzLTg5ZDMtZmFmYzA5MzM1MGU5IiwiZW1haWxEb21haW4iOiJnbWFpbC5jb20iLCJpbXBlcnNvbmF0aW9uIjpbXSwiY3JlYXRlZCI6MTc1ODIzMzcwNywicmVmcmVzaFRpbWVvdXQiOjE3NTgyMzQ3MDAsInZlcmlmaWVkIjp0cnVlLCJpc3MiOiJzZXNzaW9uLXNlcnZpY2UiLCJzZXNzaW9uSWQiOiJlODZlMzJhNi0yYTVjLTRmNWEtYWFhZS1jMDdlZGQ0NTM4ZTEiLCJzdGVwVXBzIjpbXSwiYXVkIjoiYXRsYXNzaWFuIiwibmJmIjoxNzU4MjM0MTAwLCJleHAiOjE3NjA4MjYxMDAsImlhdCI6MTc1ODIzNDEwMCwiZW1haWwiOiJhcmVzaGtpbi5vbmRyZXlAZ21haWwuY29tIiwianRpIjoiZTg2ZTMyYTYtMmE1Yy00ZjVhLWFhYWUtYzA3ZWRkNDUzOGUxIn0.HE6EYJJJA11i0ot4iFknkiSzcSzD2eTDoeAB_xoxfLRh8USGlmmZyX2AROCa9eqoC0lt5lkbaj5HPBvNAuDlwYV2TmWqD0KeV4pSsJwB8LY-zXBDbx6i27eXTVJBcyG5ImmH2FpzW5DCldxFxq4Nuq-SxHw3WgnWkZmmXTJPVtAjNoOMemaEfRScSq-aTIAIktdoW3x4w-oQpJpeI4PBQ7n_wjKfVUzDAICCWL7y72I2HIjxRKnz5TKAtvfjRTt-l0OTN6sEI_kLsQ6SCgzRLHBRZyJOjc5WjQ3q2KRJWxp3z4zIH4ALy6o510T3eBixIWGC5NIppPYiZ-LPpZfOPQ";
 
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-        driver.get("https://trello.com");
-        driver.manage().addCookie(new Cookie("cloud.session.token", token));
-        driver.get("https://trello.com/b/esQuklgl/test");
+        try {
+            driver.get("https://trello.com");
+            driver.manage().addCookie(new Cookie("cloud.session.token", token));
+            driver.get("https://trello.com/b/esQuklgl/test");
 
-        List<WebElement> columns = driver.findElements(By.cssSelector("li[data-testid=list-wrapper]"));
-        List<WebElement> cards = columns.get(0).findElements(By.cssSelector("li[data-testid=list-cards]"));
+            // Ожидание загрузки колонок
+            wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.cssSelector("li[data-testid=list-wrapper]")));
 
+            List<WebElement> columns = driver.findElements(By.cssSelector("li[data-testid=list-wrapper]"));
 
+            // Ожидание загрузки карточек в первой колонке
+            WebElement firstColumn = columns.get(0);
+            wait.until(ExpectedConditions.presenceOfNestedElementLocatedBy(
+                    firstColumn, By.cssSelector("li[data-testid=list-card]")));
 
-        driver.quit();
+            List<WebElement> cards = firstColumn.findElements(By.cssSelector("li[data-testid=list-card]"));
 
+            // Находим область для drop в целевой колонке
+            WebElement targetColumn = columns.get(2);
+            WebElement dropArea = targetColumn.findElement(By.cssSelector("ol[data-testid=list-cards]"));
+
+            // Выполняем drag and drop
+            new Actions(driver)
+                    .clickAndHold(cards.get(0))
+                    .pause(Duration.ofMillis(500))
+                    .moveToElement(dropArea)
+                    .pause(Duration.ofMillis(500))
+                    .release()
+                    .perform();
+
+            // Ожидание завершения операции
+            Thread.sleep(2000);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            driver.quit();
+        }
     }
 }
