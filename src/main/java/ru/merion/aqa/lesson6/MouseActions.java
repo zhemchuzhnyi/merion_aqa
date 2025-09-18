@@ -7,7 +7,9 @@ public class MouseActions {
 
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
-        driver
+        driver.get("https://jspaint.app/#local:f027a292cdf1");
+
+
 
     }
 }
