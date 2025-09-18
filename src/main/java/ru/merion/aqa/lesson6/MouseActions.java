@@ -19,7 +19,7 @@ public class MouseActions {
         long pause = 1000l;
         new Actions(driver)
                 .click(brush)
-                .clickAndHold(canvas)
+                .clickAndHold(canvas) // зажимает кнопку
                 .pause(pause)
                 .moveByOffset(0, -150)
                 .pause(pause)
@@ -28,9 +28,10 @@ public class MouseActions {
                 .moveByOffset(0,150)
                 .pause(pause)
                 .moveByOffset(-150,0)
+                .release(canvas)
                 .perform();
 
-        new Actions(driver).moveByOffset(-100,100).perform();
+        new Actions(driver).moveByOffset(-100,100).perform(); // перемещаем курсор
 
         driver.quit();
 
