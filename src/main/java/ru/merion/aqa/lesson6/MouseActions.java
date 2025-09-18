@@ -11,7 +11,7 @@ public class MouseActions {
         WebDriver driver = new ChromeDriver();
         driver.get("https://jspaint.app/#local:f027a292cdf1");
 
-        WebElement canvas = driver.findElement(By.cssSelector("#main-canvas"));
+        WebElement canvas = driver.findElement(By.cssSelector(".main-canvas"));
         canvas.click();
 
         driver.quit();
