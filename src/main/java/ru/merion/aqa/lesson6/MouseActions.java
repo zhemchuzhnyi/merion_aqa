@@ -14,7 +14,10 @@ public class MouseActions {
 
         WebElement canvas = driver.findElement(By.cssSelector(".main-canvas"));
         WebElement tools = driver.findElement(By.cssSelector(".tools"));
-        WebElement brush = driver.findElement(By.cssSelector("[title='Кисть']"));
+        WebElement brush = tools.findElement(By.cssSelector("[title='Кисть']"));
+        WebElement paint = tools.findElement(By.cssSelector("[title = 'Заливка']"));
+        WebElement color = driver.findElement(By.cssSelector("[data-color = 'rgb(128,128,255)']"));
+
 
         long pause = 1000l;
         new Actions(driver)
@@ -32,6 +35,8 @@ public class MouseActions {
                 .perform();
 
         new Actions(driver).moveByOffset(-100,100).perform(); // перемещаем курсор
+
+        new Actions(driver).click(paint).click(color).moveToElement(canvas, 10,-10).click().perform();
 
         driver.quit();
 
