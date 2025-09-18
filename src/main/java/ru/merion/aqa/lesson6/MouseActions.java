@@ -30,6 +30,8 @@ public class MouseActions {
                 .moveByOffset(-150,0)
                 .perform();
 
+        new Actions(driver).moveByOffset(-100,100).perform();
+
         driver.quit();
 
 
