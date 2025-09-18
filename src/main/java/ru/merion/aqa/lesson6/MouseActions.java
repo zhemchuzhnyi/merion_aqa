@@ -13,6 +13,8 @@ public class MouseActions {
         driver.get("https://jspaint.app/#local:f027a292cdf1");
 
         WebElement canvas = driver.findElement(By.cssSelector(".main-canvas"));
+        WebElement tools = driver.findElement(By.cssSelector(".tools"));
+        WebElement brush = driver.findElement(By.cssSelector("[title='Кисть']"));
 
         new Actions(driver)
                 .clickAndHold(canvas)
