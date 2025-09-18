@@ -1,10 +1,13 @@
 package ru.merion.aqa.lesson6;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.List;
 
 public class DragAndDrop {
 
@@ -17,6 +20,10 @@ public class DragAndDrop {
         driver.get("https://trello.com");
         driver.manage().addCookie(new Cookie("cloud.session.token", token));
         driver.get("https://trello.com/b/esQuklgl/test");
+
+        List<WebElement> columns = driver.findElements(By.cssSelector("li[data-testid=list-wrapper]"));
+        List<WebElement> cards = columns.get(0).findElements(By.cssSelector("li[data-testid=list-cards]"));
+
 
         driver.quit();
 
