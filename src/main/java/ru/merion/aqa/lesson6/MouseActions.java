@@ -52,7 +52,7 @@ public class MouseActions {
                 .moveToElement(canvas)
                 .keyDown(Keys.LEFT_SHIFT)
                 .clickAndHold()
-                .moveByOffset(-150, 150)
+                .moveByOffset(-300, 150)
                 .release()
                 .keyUp(Keys.LEFT_SHIFT)
                 .perform();
