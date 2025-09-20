@@ -59,7 +59,7 @@ public class MouseActions {
 
 
 
-        driver.quit();
+        driver.quit()
 
 
 
