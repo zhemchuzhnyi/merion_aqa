@@ -10,6 +10,6 @@ public class ScrollActions {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("");
+        driver.get("")
     }
 }
