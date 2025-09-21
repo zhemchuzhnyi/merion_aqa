@@ -56,7 +56,7 @@ public class DragAndDrop {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            driver.quit();
+            driver.quit()
         }
     }
 }
