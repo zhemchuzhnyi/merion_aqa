@@ -66,6 +66,17 @@ public class DragAndDrop {
                     .release()                           // Отпускаем карточку (завершаем перетаскивание)
                     .perform();                          // Выполняем всю цепочку действий
 
+            cards = columns.get(0).findElements(By.cssSelector("li[data-testid=list-card]"));
+            new Actions(driver)
+                    .clickAndHold(cards.get(0))
+                            .release(columns.get(2))
+                                    .perform();
+
+            cards = columns.get(0).findElements(By.cssSelector("li[data-testid=list-card]"));
+            new Actions(driver)
+                    .dragAndDrop(cards.get(0),columns.get(2) )
+                            .perform();
+
             // Ожидание завершения операции перетаскивания
             // Thread.sleep используется для ожидания анимации и обновления UI
             Thread.sleep(2000);
