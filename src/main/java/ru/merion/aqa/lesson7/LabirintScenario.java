@@ -19,7 +19,7 @@ public class LabirintScenario {
         driver.get("https://www.labirint.ru/");
         Cookie cookie = new Cookie("cookie_policy", "1");
         driver.manage().addCookie(cookie);
-        driver.navigate().refresh();
+        driver.manage().window().maximize();
         driver.get("https://www.labirint.ru/");
 
         WebElement element = driver.findElement(By.cssSelector("#search-field"));
