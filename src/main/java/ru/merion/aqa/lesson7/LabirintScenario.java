@@ -38,15 +38,15 @@ public class LabirintScenario {
                 // Игнорируем ошибки и продолжаем
             }
         }
-        WebElement cartIcon = driver.findElement(By.cssSelector(".b-header-b-personal-e-icon-wrapper-m-cart"));
+        WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
         String cartIconCounter = cartIcon.getText();
-        System.out.println("Счетчик товаров в иконке Корзина" + cartIconCounter);
+        System.out.println("Счетчик товаров в иконке Корзине" + cartIconCounter);
         cartIcon.click();
 
-        String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText();
+        String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText().trim();
         System.out.println("Счетчик товаров в корзине" + cartCounter);
 
-        String price = driver.findElement(By.cssSelector("#basket-default-prod-price")).getText();
+        String price = driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText().trim();
         System.out.println("Цена = " + price);
 
 
