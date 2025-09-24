@@ -29,10 +29,19 @@ public class LabirintScenario {
 
         List<WebElement> cards = driver.findElements(By.cssSelector(".product-card"));
         for (WebElement card : cards) {
-            card.findElement(By.cssSelector(".buy-link")).click();
+            try {
+                List<WebElement> buyLinks = card.findElements(By.cssSelector(".buy-link"));
+                if (!buyLinks.isEmpty()) {
+                    buyLinks.get(0).click();
+                }
+            } catch (Exception e) {
+                // Игнорируем ошибки и продолжаем
+            }
         }
+        WebElement cartIcon = driver.findElement(By.cssSelector(".b-header-b-personal-e-icon-wrapper-m-cart"));
+        String cartCounter = cartIcon.getText();
+        cartIcon.click();
 
         driver.quit();
-
     }
 }
