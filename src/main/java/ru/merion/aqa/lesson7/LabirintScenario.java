@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
+import java.util.List;
 
 public class LabirintScenario {
 
@@ -22,24 +23,16 @@ public class LabirintScenario {
         driver.manage().window().maximize();
         driver.get("https://www.labirint.ru/");
 
-        driver.findElement(By.cssSelector("#search-field")).sendKeys("Java");
         WebElement form = driver.findElement(By.cssSelector("#searchform"));
+        form.findElement(By.cssSelector("#search-field")).sendKeys("Java");
+        form.submit();
 
-        driver.findElement(By.cssSelector("#buy979032")).click();
-        driver.findElement(By.cssSelector("#buy660316")).click();
-        driver.findElement(By.cssSelector("#buy638778")).click();
-        driver.findElement(By.cssSelector("#buy615911")).click();
-        driver.findElement(By.cssSelector("#buy483189")).click();
-
-        driver.get("https://www.labirint.ru/cart/");
-        driver.findElement(By.cssSelector(".basket-checkout-btn.start-checkout-js")).click();
-
-
-
-
+        List<WebElement> cards = driver.findElements(By.cssSelector(".product-card"));
+        for (WebElement card : cards) {
+            card.findElement(By.cssSelector(".buy-link")).click();
+        }
 
         driver.quit();
-
 
     }
 }
