@@ -33,6 +33,7 @@ public class LabirintScenario {
         driver.findElement(By.cssSelector("#buy483189")).click();
 
         driver.get("https://www.labirint.ru/cart/");
+        driver.findElement(By.cssSelector(".basket-checkout-btn.start-checkout-js")).click();
 
 
 
