@@ -40,6 +40,7 @@ public class LabirintScenario {
         }
         WebElement cartIcon = driver.findElement(By.cssSelector(".b-header-b-personal-e-icon-wrapper-m-cart"));
         String cartCounter = cartIcon.getText();
+        System.out.println("Счетчик товаров в иконке Корзина" + cartCounter);
         cartIcon.click();
 
         driver.quit();
