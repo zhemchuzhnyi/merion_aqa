@@ -32,6 +32,9 @@ public class LabirintScenario {
         driver.findElement(By.cssSelector("#buy615911")).click();
         driver.findElement(By.cssSelector("#buy483189")).click();
 
+        driver.get("https://www.labirint.ru/cart/");
+
+
 
 
 
