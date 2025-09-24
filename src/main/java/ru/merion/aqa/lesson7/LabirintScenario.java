@@ -26,6 +26,12 @@ public class LabirintScenario {
         element.sendKeys("Java");
         driver.findElement(By.cssSelector(".b-header-b-search-e-btn")).click();
 
+        driver.findElement(By.cssSelector("#buy979032")).click();
+        driver.findElement(By.cssSelector("#buy660316")).click();
+        driver.findElement(By.cssSelector("#buy638778")).click();
+        driver.findElement(By.cssSelector("#buy615911")).click();
+        driver.findElement(By.cssSelector("#buy483189")).click();
+
 
 
 
