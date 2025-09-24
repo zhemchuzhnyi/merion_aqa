@@ -22,8 +22,7 @@ public class LabirintScenario {
         driver.manage().window().maximize();
         driver.get("https://www.labirint.ru/");
 
-        WebElement element = driver.findElement(By.cssSelector("#search-field"));
-        element.sendKeys("Java");
+        driver.findElement(By.cssSelector("#search-field")).sendKeys("Java");
         driver.findElement(By.cssSelector(".b-header-b-search-e-btn")).click();
 
         driver.findElement(By.cssSelector("#buy979032")).click();
