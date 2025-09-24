@@ -46,6 +46,9 @@ public class LabirintScenario {
         String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText();
         System.out.println("Счетчик товаров в корзине" + cartCounter);
 
+        String price = driver.findElement(By.cssSelector("#basket-default-prod-price")).getText();
+        System.out.println("Цена = " + price);
+
 
 
         driver.quit();
