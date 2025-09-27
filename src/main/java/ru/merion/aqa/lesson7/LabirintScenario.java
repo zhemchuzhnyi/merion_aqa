@@ -51,5 +51,6 @@ public class LabirintScenario {
 
 
 
+        driver.close();
     }
 }
