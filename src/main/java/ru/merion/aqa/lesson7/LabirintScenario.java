@@ -10,9 +10,6 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 
 public class LabirintScenario {
 
-    public static WebDriver driver;
-    private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
-
     public static void main(String[] args) {
 
         // Создаём экземпляр Chrome драйвера через фабрику
