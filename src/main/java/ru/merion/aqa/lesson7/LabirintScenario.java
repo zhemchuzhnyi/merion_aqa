@@ -86,12 +86,12 @@ public class LabirintScenario {
 
     }
 
-    public static void searchFor () {
+    public static void searchFor (String term) {
         // Находим форму поиска на странице
         WebElement form = driver.findElement(By.cssSelector("#searchform"));
 
         // Находим поле ввода поиска и вводим текст "Java"
-        form.findElement(By.cssSelector("#search-field")).sendKeys("Java");
+        form.findElement(By.cssSelector("#search-field")).sendKeys(term);
 
         // Отправляем форму поиска
         form.submit();
