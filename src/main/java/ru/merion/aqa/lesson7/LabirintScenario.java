@@ -5,7 +5,6 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
@@ -15,7 +14,8 @@ public class LabirintScenario {
 
     public static void main(String[] args) {
         WebDriver driver = WebDriverFactory.create("chrome");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        // Уменьшаем implicitWait до минимума
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
         driver.get("https://www.labirint.ru/");
         Cookie cookie = new Cookie("cookie_policy", "1");
@@ -27,22 +27,25 @@ public class LabirintScenario {
         form.findElement(By.cssSelector("#search-field")).sendKeys("Java");
         form.submit();
 
+        // Временно отключаем implicitWait для быстрой проверки элементов
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(0));
+
         List<WebElement> cards = driver.findElements(By.cssSelector(".product-card"));
         for (WebElement card : cards) {
-            // Проверяем, есть ли элемент "Ожидается"
-            List<WebElement> waitingElements = card.findElements(By.xpath(".//span[contains(@class, 'product-card__controls-text') and text()='Ожидается']"));
-
-            // Если элемент "Ожидается" найден, пропускаем эту карточку
-            if (!waitingElements.isEmpty()) {
+            // Быстрая проверка на "Ожидается"
+            if (!card.findElements(By.xpath(".//span[contains(@class, 'product-card__controls-text') and text()='Ожидается']")).isEmpty()) {
                 continue;
             }
 
-            // Дополнительная проверка наличия кнопки buy-link
+            // Быстрая проверка и клик по buy-link
             List<WebElement> buyButtons = card.findElements(By.cssSelector(".buy-link"));
             if (!buyButtons.isEmpty()) {
                 buyButtons.get(0).click();
             }
         }
+
+        // Возвращаем небольшой implicitWait для остальных элементов
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
         WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
         String cartIconCounter = cartIcon.getText();
