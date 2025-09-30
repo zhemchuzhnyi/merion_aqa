@@ -13,51 +13,81 @@ import java.util.List;
 public class LabirintScenario {
 
     public static void main(String[] args) {
+        // Создаём экземпляр Chrome драйвера через фабрику
         WebDriver driver = WebDriverFactory.create("chrome");
-        // Уменьшаем implicitWait до минимума
+
+        // Устанавливаем неявное ожидание 500 миллисекунд для поиска элементов
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
+        // Открываем главную страницу Лабиринт
         driver.get("https://www.labirint.ru/");
+
+        // Добавляем cookie для принятия политики использования cookies
         Cookie cookie = new Cookie("cookie_policy", "1");
         driver.manage().addCookie(cookie);
+
+        // Разворачиваем окно браузера на весь экран
         driver.manage().window().maximize();
+
+        // Перезагружаем страницу, чтобы применились cookies
         driver.get("https://www.labirint.ru/");
 
+        // Находим форму поиска на странице
         WebElement form = driver.findElement(By.cssSelector("#searchform"));
+
+        // Находим поле ввода поиска и вводим текст "Java"
         form.findElement(By.cssSelector("#search-field")).sendKeys("Java");
+
+        // Отправляем форму поиска
         form.submit();
 
-        // Временно отключаем implicitWait для быстрой проверки элементов
+        // Отключаем неявное ожидание для быстрой проверки элементов в цикле
+        // Это критично для производительности, чтобы не ждать 500ms на каждый несуществующий элемент
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(0));
 
+        // Получаем список всех карточек товаров на странице результатов поиска
         List<WebElement> cards = driver.findElements(By.cssSelector(".product-card"));
+
+        // Проходим по каждой карточке товара
         for (WebElement card : cards) {
-            // Быстрая проверка на "Ожидается"
+            // Проверяем, есть ли в карточке элемент с текстом "Ожидается"
+            // Если товар ожидается, его нельзя добавить в корзину
             if (!card.findElements(By.xpath(".//span[contains(@class, 'product-card__controls-text') and text()='Ожидается']")).isEmpty()) {
+                // Пропускаем эту карточку и переходим к следующей
                 continue;
             }
 
-            // Быстрая проверка и клик по buy-link
+            // Ищем кнопку "Купить" (buy-link) в карточке товара
             List<WebElement> buyButtons = card.findElements(By.cssSelector(".buy-link"));
+
+            // Если кнопка найдена, кликаем по ней для добавления товара в корзину
             if (!buyButtons.isEmpty()) {
                 buyButtons.get(0).click();
             }
         }
 
-        // Возвращаем небольшой implicitWait для остальных элементов
+        // Возвращаем неявное ожидание 500ms для остальных операций
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
+        // Находим иконку корзины со счётчиком товаров
         WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
+
+        // Получаем и выводим количество товаров из счётчика на иконке корзины
         String cartIconCounter = cartIcon.getText();
         System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
+
+        // Кликаем по иконке корзины для перехода на страницу корзины
         cartIcon.click();
 
+        // Находим и выводим счётчик товаров на странице корзины
         String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText().trim();
         System.out.println("Счетчик товаров в корзине = " + cartCounter);
 
+        // Находим и выводим общую стоимость товаров в корзине со скидкой
         String price = driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText().trim();
         System.out.println("Цена = " + price);
 
+        // Закрываем браузер и завершаем сессию WebDriver
         driver.close();
     }
 }
