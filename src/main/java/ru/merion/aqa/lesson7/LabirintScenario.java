@@ -21,6 +21,15 @@ public class LabirintScenario {
         // Создаём экземпляр Chrome драйвера через фабрику
         driver = WebDriverFactory.create("chrome");
 
+        open();
+        searchFor("Java");
+        addAllItemsToCart();
+        checkIconText();
+        openCart();
+        checkCartCounter();
+        checkCartPrice();
+
+
         // Закрываем браузер и завершаем сессию WebDriver
         driver.close();
     }
@@ -97,7 +106,7 @@ public class LabirintScenario {
         System.out.println("Добавлено товаров в корзину: " + counter);
     }
 
-    public static void checkIcontext() {
+    public static void checkIconText() {
 
         // Получаем и выводим количество товаров из счётчика на иконке корзины
         String cartIconCounter = driver.findElement(cartIconLocator).getText();
