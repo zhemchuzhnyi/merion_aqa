@@ -29,8 +29,21 @@ public class LabirintScenario {
 
         List<WebElement> cards = driver.findElements(By.cssSelector(".product-card"));
         for (WebElement card : cards) {
-             card.findElement(By.cssSelector(".buy-link")).click();
+            // Проверяем, есть ли элемент "Ожидается"
+            List<WebElement> waitingElements = card.findElements(By.xpath(".//span[contains(@class, 'product-card__controls-text') and text()='Ожидается']"));
+
+            // Если элемент "Ожидается" найден, пропускаем эту карточку
+            if (!waitingElements.isEmpty()) {
+                continue;
+            }
+
+            // Дополнительная проверка наличия кнопки buy-link
+            List<WebElement> buyButtons = card.findElements(By.cssSelector(".buy-link"));
+            if (!buyButtons.isEmpty()) {
+                buyButtons.get(0).click();
+            }
         }
+
         WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
         String cartIconCounter = cartIcon.getText();
         System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
@@ -41,7 +54,6 @@ public class LabirintScenario {
 
         String price = driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText().trim();
         System.out.println("Цена = " + price);
-
 
         driver.close();
     }
