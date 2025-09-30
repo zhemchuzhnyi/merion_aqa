@@ -62,4 +62,9 @@ public class ResultPage {
         String cartIconCounter = driver.findElement(cartIconLocator).getText();
         System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
     }
+
+    public void checkEmptyResult() {
+        String message = driver.findElement(By.cssSelector("h1")).getText();
+        System.out.println(message);
+    }
 }
