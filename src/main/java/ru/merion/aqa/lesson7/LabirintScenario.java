@@ -27,6 +27,8 @@ public class LabirintScenario {
         mainPage.searchFor("Java");
 
         ResultPage resultPage = new ResultPage(driver);
+        resultPage.addAllItemsToCart();
+        resultPage.checkIconText();
 
         openCart();
         checkCartCounter();
