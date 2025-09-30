@@ -17,20 +17,6 @@ public class LabirintScenario {
         // Создаём экземпляр Chrome драйвера через фабрику
         driver = WebDriverFactory.create("chrome");
 
-
-        // Возвращаем неявное ожидание 500ms для остальных операций
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
-
-        // Находим иконку корзины со счётчиком товаров
-        WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
-
-        // Получаем и выводим количество товаров из счётчика на иконке корзины
-        String cartIconCounter = cartIcon.getText();
-        System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
-
-        // Кликаем по иконке корзины для перехода на страницу корзины
-        cartIcon.click();
-
         // Находим и выводим счётчик товаров на странице корзины
         String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText().trim();
         System.out.println("Счетчик товаров в корзине = " + cartCounter);
@@ -73,7 +59,7 @@ public class LabirintScenario {
         form.submit();
     }
 
-    public static void addAllItemsToCart() {
+    public static void addAllItemsToCart () {
         int counter = 0;
         // Отключаем неявное ожидание для быстрой проверки элементов в цикле
         // Это критично для производительности, чтобы не ждать 500ms на каждый несуществующий элемент
@@ -110,5 +96,19 @@ public class LabirintScenario {
 
         // Выводим количество добавленных товаров
         System.out.println("Добавлено товаров в корзину: " + counter);
+    }
+
+    public static void checkIcontext () {
+        // Находим иконку корзины со счётчиком товаров
+        WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
+        // Получаем и выводим количество товаров из счётчика на иконке корзины
+        String cartIconCounter = driver.findElement(By.cssSelector(".j-cart-count")).getText();
+        System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
+
+    }
+
+    public static void openCart () {
+        driver.findElement(By.cssSelector(".j-cart-count")).click();
+
     }
 }
