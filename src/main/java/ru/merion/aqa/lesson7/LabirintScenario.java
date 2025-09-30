@@ -84,9 +84,10 @@ public class LabirintScenario {
 
         // Проходим по каждой карточке товара
         for (WebElement card : cards) {
-            // Проверяем, есть ли в карточке элемент с текстом "Ожидается"
-            // Если товар ожидается, его нельзя добавить в корзину
-            if (!card.findElements(By.xpath(".//span[contains(@class, 'product-card__controls-text') and text()='Ожидается']")).isEmpty()) {
+            // Проверяем, есть ли в карточке элемент с классом product-card__controls-text
+            // Этот элемент появляется у товаров со статусом "Ожидается"
+            List<WebElement> controlsText = card.findElements(By.cssSelector(".product-card__controls-text"));
+            if (!controlsText.isEmpty() && controlsText.get(0).getText().contains("Ожидается")) {
                 // Пропускаем эту карточку и переходим к следующей
                 continue;
             }
@@ -97,9 +98,17 @@ public class LabirintScenario {
             // Если кнопка найдена, кликаем по ней для добавления товара в корзину
             if (!buyButtons.isEmpty()) {
                 buyButtons.get(0).click();
+                counter++;
             }
         }
-        counter++;
 
+        // Возвращаем неявное ожидание 500ms для остальных операций
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+
+        // Находим иконку корзины со счётчиком товаров
+        WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
+
+        // Выводим количество добавленных товаров
+        System.out.println("Добавлено товаров в корзину: " + counter);
     }
 }
