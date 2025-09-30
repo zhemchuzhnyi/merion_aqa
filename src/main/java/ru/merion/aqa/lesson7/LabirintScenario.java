@@ -50,7 +50,6 @@ public class LabirintScenario {
         System.out.println("Цена = " + price);
 
 
-
         driver.close();
     }
 }
