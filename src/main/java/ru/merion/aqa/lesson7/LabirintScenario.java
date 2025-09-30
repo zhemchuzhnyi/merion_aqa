@@ -5,6 +5,8 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.merion.aqa.WebDriverFactory;
+import ru.merion.aqa.lesson7.page.MainPage;
+import ru.merion.aqa.lesson7.page.ResultPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -12,16 +14,20 @@ import java.util.List;
 
 public class LabirintScenario {
 
-    static WebDriver driver;
+    public static WebDriver driver;
     private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
 
     public static void main(String[] args) {
 
         // Создаём экземпляр Chrome драйвера через фабрику
-        driver = WebDriverFactory.create("chrome");
+        WebDriver driver = WebDriverFactory.create("chrome");
 
-        open();
-        searchFor("Java");
+        MainPage mainPage = new MainPage(driver);
+        mainPage.open();
+        mainPage.searchFor("Java");
+
+        ResultPage resultPage = new ResultPage(driver);
+
         addAllItemsToCart();
         checkIconText();
         openCart();
@@ -30,38 +36,6 @@ public class LabirintScenario {
 
         // Закрываем браузер и завершаем сессию WebDriver
         driver.close();
-    }
-
-    public static void open () {
-
-        // Устанавливаем неявное ожидание 500 миллисекунд для поиска элементов
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
-
-        // Открываем главную страницу Лабиринт
-        driver.get("https://www.labirint.ru/");
-
-        // Добавляем cookie для принятия политики использования cookies
-        Cookie cookie = new Cookie("cookie_policy", "1");
-        driver.manage().addCookie(cookie);
-
-        // Разворачиваем окно браузера на весь экран
-        driver.manage().window().maximize();
-
-        // Перезагружаем страницу, чтобы применились cookies
-        driver.get("https://www.labirint.ru/");
-
-    }
-
-    public static void searchFor (String term) {
-
-        // Находим форму поиска на странице
-        WebElement form = driver.findElement(By.cssSelector("#searchform"));
-
-        // Находим поле ввода поиска и вводим текст "Java"
-        form.findElement(By.cssSelector("#search-field")).sendKeys(term);
-
-        // Отправляем форму поиска
-        form.submit();
     }
 
     public static void addAllItemsToCart () {
