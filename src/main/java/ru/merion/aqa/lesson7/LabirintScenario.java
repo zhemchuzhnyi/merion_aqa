@@ -12,34 +12,10 @@ import java.util.List;
 
 public class LabirintScenario {
 
+    static WebDriver driver;
     public static void main(String[] args) {
         // Создаём экземпляр Chrome драйвера через фабрику
-        WebDriver driver = WebDriverFactory.create("chrome");
-
-        // Устанавливаем неявное ожидание 500 миллисекунд для поиска элементов
-        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
-
-        // Открываем главную страницу Лабиринт
-        driver.get("https://www.labirint.ru/");
-
-        // Добавляем cookie для принятия политики использования cookies
-        Cookie cookie = new Cookie("cookie_policy", "1");
-        driver.manage().addCookie(cookie);
-
-        // Разворачиваем окно браузера на весь экран
-        driver.manage().window().maximize();
-
-        // Перезагружаем страницу, чтобы применились cookies
-        driver.get("https://www.labirint.ru/");
-
-        // Находим форму поиска на странице
-        WebElement form = driver.findElement(By.cssSelector("#searchform"));
-
-        // Находим поле ввода поиска и вводим текст "Java"
-        form.findElement(By.cssSelector("#search-field")).sendKeys("Java");
-
-        // Отправляем форму поиска
-        form.submit();
+        driver = WebDriverFactory.create("chrome");
 
         // Отключаем неявное ожидание для быстрой проверки элементов в цикле
         // Это критично для производительности, чтобы не ждать 500ms на каждый несуществующий элемент
@@ -89,5 +65,35 @@ public class LabirintScenario {
 
         // Закрываем браузер и завершаем сессию WebDriver
         driver.close();
+    }
+
+    public static void open () {
+        // Устанавливаем неявное ожидание 500 миллисекунд для поиска элементов
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
+
+        // Открываем главную страницу Лабиринт
+        driver.get("https://www.labirint.ru/");
+
+        // Добавляем cookie для принятия политики использования cookies
+        Cookie cookie = new Cookie("cookie_policy", "1");
+        driver.manage().addCookie(cookie);
+
+        // Разворачиваем окно браузера на весь экран
+        driver.manage().window().maximize();
+
+        // Перезагружаем страницу, чтобы применились cookies
+        driver.get("https://www.labirint.ru/");
+
+    }
+
+    public static void searchFor () {
+        // Находим форму поиска на странице
+        WebElement form = driver.findElement(By.cssSelector("#searchform"));
+
+        // Находим поле ввода поиска и вводим текст "Java"
+        form.findElement(By.cssSelector("#search-field")).sendKeys("Java");
+
+        // Отправляем форму поиска
+        form.submit();
     }
 }
