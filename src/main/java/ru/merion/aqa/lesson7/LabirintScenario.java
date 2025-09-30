@@ -29,14 +29,7 @@ public class LabirintScenario {
 
         List<WebElement> cards = driver.findElements(By.cssSelector(".product-card"));
         for (WebElement card : cards) {
-            try {
-                List<WebElement> buyLinks = card.findElements(By.cssSelector(".buy-link"));
-                if (!buyLinks.isEmpty()) {
-                    buyLinks.get(0).click();
-                }
-            } catch (Exception e) {
-                // Игнорируем ошибки и продолжаем
-            }
+             card.findElement(By.cssSelector(".buy-link")).click();
         }
         WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
         String cartIconCounter = cartIcon.getText();
