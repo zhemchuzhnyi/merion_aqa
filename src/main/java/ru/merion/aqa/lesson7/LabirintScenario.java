@@ -10,26 +10,23 @@ import ru.merion.aqa.WebDriverFactory;
 import java.time.Duration;
 import java.util.List;
 
+
 public class LabirintScenario {
 
     static WebDriver driver;
+    private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
+
     public static void main(String[] args) {
+
         // Создаём экземпляр Chrome драйвера через фабрику
         driver = WebDriverFactory.create("chrome");
-
-        // Находим и выводим счётчик товаров на странице корзины
-        String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText().trim();
-        System.out.println("Счетчик товаров в корзине = " + cartCounter);
-
-        // Находим и выводим общую стоимость товаров в корзине со скидкой
-        String price = driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText().trim();
-        System.out.println("Цена = " + price);
 
         // Закрываем браузер и завершаем сессию WebDriver
         driver.close();
     }
 
     public static void open () {
+
         // Устанавливаем неявное ожидание 500 миллисекунд для поиска элементов
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(500));
 
@@ -49,6 +46,7 @@ public class LabirintScenario {
     }
 
     public static void searchFor (String term) {
+
         // Находим форму поиска на странице
         WebElement form = driver.findElement(By.cssSelector("#searchform"));
 
@@ -60,6 +58,7 @@ public class LabirintScenario {
     }
 
     public static void addAllItemsToCart () {
+
         int counter = 0;
         // Отключаем неявное ожидание для быстрой проверки элементов в цикле
         // Это критично для производительности, чтобы не ждать 500ms на каждый несуществующий элемент
@@ -98,17 +97,29 @@ public class LabirintScenario {
         System.out.println("Добавлено товаров в корзину: " + counter);
     }
 
-    public static void checkIcontext () {
-        // Находим иконку корзины со счётчиком товаров
-        WebElement cartIcon = driver.findElement(By.cssSelector(".j-cart-count"));
-        // Получаем и выводим количество товаров из счётчика на иконке корзины
-        String cartIconCounter = driver.findElement(By.cssSelector(".j-cart-count")).getText();
-        System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
+    public static void checkIcontext() {
 
+        // Получаем и выводим количество товаров из счётчика на иконке корзины
+        String cartIconCounter = driver.findElement(cartIconLocator).getText();
+        System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
     }
 
-    public static void openCart () {
-        driver.findElement(By.cssSelector(".j-cart-count")).click();
+    public static void openCart() {
 
+        // Кликаем по иконке корзины для перехода на страницу корзины
+        driver.findElement(cartIconLocator).click();
+    }
+    public static void checkCartCounter () {
+
+        // Находим и выводим счётчик товаров на странице корзины
+        String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText().trim();
+        System.out.println("Счетчик товаров в корзине = " + cartCounter);
+    }
+
+    public static void checkCartPrice () {
+
+        // Находим и выводим общую стоимость товаров в корзине со скидкой
+        String price = driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText().trim();
+        System.out.println("Цена = " + price);
     }
 }
