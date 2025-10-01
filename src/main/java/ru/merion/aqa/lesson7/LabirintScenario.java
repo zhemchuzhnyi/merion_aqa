@@ -38,6 +38,6 @@ public class LabirintScenario {
         cartPage.checkCartPrice();
 
         // Закрываем браузер и завершаем сессию WebDriver
-        driver.quit();
+
     }
 }
