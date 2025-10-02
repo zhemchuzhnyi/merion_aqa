@@ -39,7 +39,7 @@ public class MainPage {
         // Находим форму поиска на странице
         WebElement form = driver.findElement(By.cssSelector("#searchform"));
 
-        // Находим поле ввода поиска и вводим текст "Java"
+        // Находим поле ввода поиска и вводим текст (например "Java")
         form.findElement(By.cssSelector("#search-field")).sendKeys(term);
 
         // Отправляем форму поиска
