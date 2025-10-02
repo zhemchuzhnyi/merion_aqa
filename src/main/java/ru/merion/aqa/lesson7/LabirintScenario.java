@@ -29,11 +29,9 @@ public class LabirintScenario {
         // Проверяем счётчик товаров на иконке корзины
         resultPage.header.checkIconText();
 
-        // Создаём объект страницы корзины
-        CartPage cartPage = new CartPage(driver);
         // Открываем страницу корзины (кликаем по иконке корзины)
-        cartPage.header.clickCartIcon();
-        // Проверяем и выводим количество товаров в корзине
+        CartPage cartPage = resultPage.header.clickCartIcon();
+        // Проверяем счётчик товаров в корзине
         cartPage.checkCartCounter();
         // Проверяем и выводим общую стоимость товаров в корзине
         cartPage.checkCartPrice();

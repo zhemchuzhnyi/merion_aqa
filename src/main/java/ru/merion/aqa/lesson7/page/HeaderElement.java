@@ -13,16 +13,14 @@ public class HeaderElement {
         this.driver = driver;
     }
 
-    public void searchFor (String term) {
-
+    public ResultPage searchFor (String term) {
         // Находим форму поиска на странице
         WebElement form = driver.findElement(By.cssSelector("#searchform"));
-
         // Находим поле ввода поиска и вводим текст (например "Java")
         form.findElement(By.cssSelector("#search-field")).sendKeys(term);
-
         // Отправляем форму поиска
         form.submit();
+        return new ResultPage(driver);
     }
 
     public void checkIconText() {
@@ -32,9 +30,10 @@ public class HeaderElement {
         System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
     }
 
-    public void clickCartIcon() {
+    public CartPage clickCartIcon() {
         // Кликаем по иконке корзины для перехода на страницу корзины
         driver.findElement(cartIconLocator).click();
+        return new CartPage(driver);
     }
 
 }
