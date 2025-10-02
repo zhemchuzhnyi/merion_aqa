@@ -31,4 +31,5 @@ public class MainPage extends BasePage {
         // Перезагружаем страницу, чтобы применились cookies
         driver.get("https://www.labirint.ru/");
     }
+
 }

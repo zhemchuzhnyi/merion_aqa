@@ -4,12 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HeaderElement extends BasePage {
+public class HeaderElement {
+    private final WebDriver driver;
 
     private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
 
     public HeaderElement(WebDriver driver) {
-        super(driver);
+        this.driver = driver;
     }
 
     public void searchFor (String term) {

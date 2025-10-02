@@ -20,20 +20,19 @@ public class LabirintScenario {
         // Открываем главную страницу сайта Лабиринт
         mainPage.open();
         // Выполняем поиск по ключевому слову "Java"
-        HeaderElement headerElement = new HeaderElement(driver);
-        headerElement.searchFor("Java");
+        mainPage.header.searchFor("Java");
 
         // Создаём объект страницы результатов поиска
         ResultPage resultPage = new ResultPage(driver);
         // Добавляем все доступные товары из результатов поиска в корзину
         resultPage.addAllItemsToCart();
         // Проверяем счётчик товаров на иконке корзины
-        headerElement.checkIconText();
+        resultPage.header.checkIconText();
 
         // Создаём объект страницы корзины
         CartPage cartPage = new CartPage(driver);
         // Открываем страницу корзины (кликаем по иконке корзины)
-        headerElement.clickCartIcon();
+        cartPage.header.clickCartIcon();
         // Проверяем и выводим количество товаров в корзине
         cartPage.checkCartCounter();
         // Проверяем и выводим общую стоимость товаров в корзине
