@@ -7,13 +7,12 @@ import org.openqa.selenium.WebElement;
 import java.time.Duration;
 import java.util.List;
 
-public class ResultPage {
-    private final WebDriver driver;
+public class ResultPage extends BasePage {
 
     private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
 
     public ResultPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public  void addAllItemsToCart () {

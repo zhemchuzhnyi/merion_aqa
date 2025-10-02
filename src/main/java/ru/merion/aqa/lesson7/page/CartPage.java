@@ -3,12 +3,12 @@ package ru.merion.aqa.lesson7.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CartPage {
-    private final WebDriver driver;
+public class CartPage extends BasePage{
+
     private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
 
     public CartPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
     public void open() {
 
