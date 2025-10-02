@@ -13,9 +13,7 @@ public class MainPage {
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
-
     }
-
 
     public void open () {
 
@@ -34,7 +32,6 @@ public class MainPage {
 
         // Перезагружаем страницу, чтобы применились cookies
         driver.get("https://www.labirint.ru/");
-
     }
 
     public void searchFor (String term) {
