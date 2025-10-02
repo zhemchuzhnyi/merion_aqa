@@ -3,6 +3,7 @@ package ru.merion.aqa.lesson7;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
+import ru.merion.aqa.lesson7.page.HeaderElement;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
@@ -19,19 +20,20 @@ public class LabirintScenario {
         // Открываем главную страницу сайта Лабиринт
         mainPage.open();
         // Выполняем поиск по ключевому слову "Java"
-        mainPage.searchFor("Java");
+        HeaderElement headerElement = new HeaderElement(driver);
+        headerElement.searchFor("Java");
 
         // Создаём объект страницы результатов поиска
         ResultPage resultPage = new ResultPage(driver);
         // Добавляем все доступные товары из результатов поиска в корзину
         resultPage.addAllItemsToCart();
         // Проверяем счётчик товаров на иконке корзины
-        resultPage.checkIconText();
+        headerElement.checkIconText();
 
         // Создаём объект страницы корзины
         CartPage cartPage = new CartPage(driver);
         // Открываем страницу корзины (кликаем по иконке корзины)
-        cartPage.open();
+        headerElement.clickCartIcon();
         // Проверяем и выводим количество товаров в корзине
         cartPage.checkCartCounter();
         // Проверяем и выводим общую стоимость товаров в корзине

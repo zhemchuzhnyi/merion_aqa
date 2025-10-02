@@ -31,17 +31,4 @@ public class MainPage extends BasePage {
         // Перезагружаем страницу, чтобы применились cookies
         driver.get("https://www.labirint.ru/");
     }
-
-    public void searchFor (String term) {
-
-        // Находим форму поиска на странице
-        WebElement form = driver.findElement(By.cssSelector("#searchform"));
-
-        // Находим поле ввода поиска и вводим текст (например "Java")
-        form.findElement(By.cssSelector("#search-field")).sendKeys(term);
-
-        // Отправляем форму поиска
-        form.submit();
-    }
-
 }

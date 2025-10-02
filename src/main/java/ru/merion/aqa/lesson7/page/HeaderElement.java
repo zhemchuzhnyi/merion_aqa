@@ -1,0 +1,39 @@
+package ru.merion.aqa.lesson7.page;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class HeaderElement extends BasePage {
+
+    private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
+
+    public HeaderElement(WebDriver driver) {
+        super(driver);
+    }
+
+    public void searchFor (String term) {
+
+        // Находим форму поиска на странице
+        WebElement form = driver.findElement(By.cssSelector("#searchform"));
+
+        // Находим поле ввода поиска и вводим текст (например "Java")
+        form.findElement(By.cssSelector("#search-field")).sendKeys(term);
+
+        // Отправляем форму поиска
+        form.submit();
+    }
+
+    public void checkIconText() {
+
+        // Получаем и выводим количество товаров из счётчика на иконке корзины
+        String cartIconCounter = driver.findElement(cartIconLocator).getText();
+        System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
+    }
+
+    public void clickCartIcon() {
+        // Кликаем по иконке корзины для перехода на страницу корзины
+        driver.findElement(cartIconLocator).click();
+    }
+
+}

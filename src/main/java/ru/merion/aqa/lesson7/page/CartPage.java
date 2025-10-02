@@ -5,16 +5,10 @@ import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage{
 
-    private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
-
     public CartPage(WebDriver driver) {
         super(driver);
     }
-    public void open() {
 
-        // Кликаем по иконке корзины для перехода на страницу корзины
-        driver.findElement(cartIconLocator).click();
-    }
     public void checkCartCounter () {
 
         // Находим и выводим счётчик товаров на странице корзины
