@@ -37,7 +37,5 @@ public class LabirintScenario {
         // Проверяем и выводим общую стоимость товаров в корзине
         cartPage.checkCartPrice();
 
-        // Закрываем браузер и завершаем сессию WebDriver
-        driver.quit();
     }
 }
