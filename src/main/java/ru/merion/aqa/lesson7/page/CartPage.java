@@ -9,17 +9,19 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-    public void checkCartCounter () {
+    public CartPage checkCartCounter () {
 
         // Находим и выводим счётчик товаров на странице корзины
         String cartCounter = driver.findElement(By.cssSelector("#basket-default-prod-count2")).getText().trim();
         System.out.println("Счетчик товаров в корзине = " + cartCounter);
+        return this;
     }
 
-    public void checkCartPrice () {
+    public CartPage checkCartPrice () {
 
         // Находим и выводим общую стоимость товаров в корзине со скидкой
         String price = driver.findElement(By.cssSelector("#basket-default-sumprice-discount")).getText().trim();
         System.out.println("Цена = " + price);
+        return this;
     }
 }
