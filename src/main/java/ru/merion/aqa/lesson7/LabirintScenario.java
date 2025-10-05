@@ -37,6 +37,5 @@ public class LabirintScenario {
 
 
     }
-    // Закрываем браузер и завершаем сессию WebDriver
-        driver.quit();
+
 }
