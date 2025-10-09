@@ -31,8 +31,11 @@ public class LabirintScenario {
         CartPage cartPage = resultPage.header.clickCartIcon();
         // Проверяем счётчик товаров в корзине
         // Проверяем и выводим общую стоимость товаров в корзине
-        cartPage.getCartCounter();
-        cartPage.getCartPrice();
+        String price = cartPage.getCartCounter();
+        String counter = cartPage.getCartPrice();
+
+        System.out.println("price : " + price);
+        System.out.println("counter: " + counter);
 
         // Закрываем браузер и завершаем сессию WebDriver
         driver.quit();
