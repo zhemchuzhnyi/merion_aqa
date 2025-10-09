@@ -25,7 +25,7 @@ public class LabirintScenario {
         // Добавляем все доступные товары из результатов поиска в корзину
         resultPage.addAllItemsToCart();
         // Проверяем счётчик товаров на иконке корзины
-        resultPage.header.checkIconText();
+        resultPage.header.getIconText();
 
         // Открываем страницу корзины (кликаем по иконке корзины)
         CartPage cartPage = resultPage.header.clickCartIcon();
