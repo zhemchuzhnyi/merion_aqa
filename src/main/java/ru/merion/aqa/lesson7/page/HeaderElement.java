@@ -35,7 +35,7 @@ public class HeaderElement {
         this.driver = driver;
         // PageFactory инициализирует все элементы, помеченные @FindBy
         // ОШИБКА: должно быть initElements(driver, this), а не HeaderElement.class
-        PageFactory.initElements(driver, HeaderElement.class);
+        PageFactory.initElements(driver, this);
     }
 
     /**
