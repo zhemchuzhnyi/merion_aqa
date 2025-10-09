@@ -51,7 +51,7 @@ public class HeaderElement {
         form.submit();
 
         // Создаём и возвращаем объект страницы с результатами
-        return new ResultPage(driver);
+        return PageFactory.initElements(driver, ResultPage.class);
     }
 
     /**
@@ -72,6 +72,6 @@ public class HeaderElement {
         cartIcon.click();
 
         // Создаём и возвращаем объект страницы корзины
-        return new CartPage(driver);
+        return PageFactory.initElements(driver, CartPage.class);
     }
 }
