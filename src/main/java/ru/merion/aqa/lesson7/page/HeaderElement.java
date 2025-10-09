@@ -23,11 +23,10 @@ public class HeaderElement {
         return new ResultPage(driver);
     }
 
-    public void getIconText() {
+    public String getIconText() {
 
         // Получаем и выводим количество товаров из счётчика на иконке корзины
-        String cartIconCounter = driver.findElement(cartIconLocator).getText();
-        System.out.println("Счетчик товаров в иконке Корзине = " + cartIconCounter);
+        return driver.findElement(cartIconLocator).getText();
     }
 
     public CartPage clickCartIcon() {
