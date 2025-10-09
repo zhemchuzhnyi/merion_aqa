@@ -35,5 +35,9 @@ public class LabirintScenario {
                 .checkCartCounter()
                 .checkCartPrice();
 
+        // Закрываем браузер и завершаем сессию WebDriver
+        driver.quit();
+
+
     }
 }
