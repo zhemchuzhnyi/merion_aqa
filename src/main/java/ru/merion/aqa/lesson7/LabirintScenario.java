@@ -13,7 +13,7 @@ public class LabirintScenario {
     public static void main(String[] args) {
 
         // Создаём экземпляр Chrome драйвера через фабрику
-        WebDriver driver = WebDriverFactory.create("chrome");
+        WebDriver driver = WDFactory.create("chrome");
 
         // Создаём объект главной страницы и передаём в него драйвер
         MainPage mainPage = new MainPage(driver);
