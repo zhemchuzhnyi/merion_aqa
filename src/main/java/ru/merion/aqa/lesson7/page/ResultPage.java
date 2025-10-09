@@ -3,11 +3,15 @@ package ru.merion.aqa.lesson7.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.time.Duration;
 import java.util.List;
 
 public class ResultPage extends BasePage {
+
+    @FindBy(css = "h1")
+    private WebElement emptyResultMessage;
 
     private static By cartIconLocator = (By.cssSelector(".j-cart-count"));
 
@@ -55,8 +59,8 @@ public class ResultPage extends BasePage {
         System.out.println("Добавлено товаров в корзину: " + counter);
     }
 
-    public void checkEmptyResult() {
-        String message = driver.findElement(By.cssSelector("h1")).getText();
-        System.out.println(message);
+    public String getEmptyResultMessage () {
+        return emptyResultMessage.getText();
+
     }
 }
