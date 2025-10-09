@@ -74,4 +74,8 @@ public class HeaderElement {
         // Создаём и возвращаем объект страницы корзины
         return PageFactory.initElements(driver, CartPage.class);
     }
+
+    public WebElement getCartIcon() {
+        return this.cartIcon;
+    }
 }
