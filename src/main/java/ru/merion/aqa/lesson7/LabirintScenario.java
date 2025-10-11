@@ -35,6 +35,13 @@ public class LabirintScenario {
         String price = cartPage.getCartCounter();
         String counter = cartPage.getCartPrice();
 
+        System.out.println("price : " + price);
+        System.out.println("counter: " + counter);
+
+        // Закрываем браузер и завершаем сессию WebDriver
+        driver.quit();
+
+
 
     }
 }
