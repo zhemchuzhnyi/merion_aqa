@@ -9,7 +9,7 @@ public class Task2 {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
-        WebElement element = driver.findElement(By.cssSelector());
+        WebElement element = driver.findElement(By.cssSelector(""));
 
 
         driver.quit();
