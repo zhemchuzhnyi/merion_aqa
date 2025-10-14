@@ -8,6 +8,8 @@ public class Task2 {
         WebDriver driver = new ChromeDriver();
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
 
+        driver.quit();
+
 
     }
 }
