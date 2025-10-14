@@ -8,7 +8,9 @@ public class Task3 {
         WebDriver driver = new ChromeDriver();
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
 
+
         driver.quit();
+
 
     }
 }
