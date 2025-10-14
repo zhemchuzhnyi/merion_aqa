@@ -9,6 +9,8 @@ public class Task1 {
         WebDriver driver = new ChromeDriver();
         driver.get("http://uitestingplayground.com/textinput");
 
+        driver.quit();
+
 
     }
 }
