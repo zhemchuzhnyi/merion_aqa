@@ -54,6 +54,8 @@ public class Task2 {
         driver.findElement(By.cssSelector("[name = 'job-position']")).sendKeys("QA");
         driver.findElement(By.cssSelector("[name = 'company']")).sendKeys("Merion");
 
+        driver.findElement(By.cssSelector(".btn-outline-primary")).click();
+
 
         driver.quit();
 
