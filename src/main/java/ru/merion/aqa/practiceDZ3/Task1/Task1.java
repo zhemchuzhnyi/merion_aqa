@@ -11,6 +11,7 @@ public class Task1 {
         WebDriver driver = new ChromeDriver();
         driver.get("http://uitestingplayground.com/textinput");
         driver.findElement(By.cssSelector(".form-control")).sendKeys("Merion");
+        driver.findElement(By.cssSelector(".btn-primary")).click();
 
         driver.quit();
 
