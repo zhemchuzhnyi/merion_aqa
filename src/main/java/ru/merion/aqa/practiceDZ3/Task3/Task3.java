@@ -39,6 +39,9 @@ public class Task3 {
         driver.findElement(By.xpath("//span[text() = '8']")).click();
         driver.findElement(By.xpath("//span[text() = '=']")).click();
 
+        String result = driver.findElement(By.cssSelector(".screen")).getText();
+        System.out.println("Result: " + result);
+
 
 
         driver.quit();
