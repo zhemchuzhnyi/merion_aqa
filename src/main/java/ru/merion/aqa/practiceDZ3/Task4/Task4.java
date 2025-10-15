@@ -2,9 +2,13 @@ package ru.merion.aqa.practiceDZ3.Task4;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Напишите скрипт для работы с интернет-магазином. Шаги
@@ -34,13 +38,36 @@ import java.time.Duration;
 
 public class Task4 {
     public static void main(String[] args) {
+
+        Set<String> itemNames = new HashSet<>();
+        itemNames.add("Sauce Labs Backpack");
+        itemNames.add("Sauce Labs Bolt T-Shirt");
+        itemNames.add("Sauce Labs Onesie");
+
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
-        driver.findElement(By.cssSelector("#secret_sauce")).sendKeys("secret_sauce");
+        driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
+        driver.findElement(By.cssSelector("#login-button")).click();
+
+        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item"));
+        for (WebElement item : items) {
+            String productName = item.findElement(By.cssSelector(".inventory_item_name")).getText();
+            if (itemNames.contains(productName)) {
+                item.findElement(By.cssSelector("button")).click();
+            }
+        }
+
+        driver.get("https://www.saucedemo.com/cart.html");
+        driver.findElement(By.cssSelector("#checkout")).click();
+
+        driver.findElement(By.cssSelector("#first-name")).sendKeys("Alex");
 
 
+
+
+        driver.quit();
     }
 }
