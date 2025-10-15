@@ -12,6 +12,9 @@ public class Task1 {
         driver.get("http://uitestingplayground.com/textinput");
         driver.findElement(By.cssSelector(".form-control")).sendKeys("Merion");
         driver.findElement(By.cssSelector(".btn-primary")).click();
+        String btn = driver.findElement(By.cssSelector(".btn-primary")).getText();
+
+        System.out.println(btn);
 
         driver.quit();
 
