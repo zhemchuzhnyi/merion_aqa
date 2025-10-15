@@ -56,12 +56,17 @@ public class Task2 {
 
         driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
-        driver.findElement(By.cssSelector("#zip-code")).getCssValue("background-color");
+        String zip = driver.findElement(By.cssSelector("#zip-code")).getCssValue("background-color");
+        System.out.println("Цвет: " + zip);
 
+        String mail = driver.findElement(By.cssSelector("#e-mail")).getCssValue("background-color");
+        System.out.println("Цвет: " + mail);
+
+        String phone = driver.findElement(By.cssSelector("#phone")).getCssValue("background-color");
+        System.out.println("Цвет: " + phone);
 
 
         driver.quit();
-
 
     }
 }
