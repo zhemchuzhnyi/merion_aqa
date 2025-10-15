@@ -64,6 +64,8 @@ public class Task4 {
         driver.findElement(By.cssSelector("#checkout")).click();
 
         driver.findElement(By.cssSelector("#first-name")).sendKeys("Alex");
+        driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
+        driver.findElement(By.cssSelector("#postal-code")).sendKeys("404546");
 
 
 
