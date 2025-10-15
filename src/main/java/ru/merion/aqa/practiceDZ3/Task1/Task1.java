@@ -7,6 +7,17 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
+/**
+ * Переименовать кнопку
+ *
+ * Напишите скрипт. Шаги:
+ *
+ * Перейти на сайт http://uitestingplayground.com/textinput
+ * Указать в поле ввода текст "Merion"
+ * Нажать на синюю кнопку
+ * Получить текст кнопки и вывести в консоль (Merion)
+ */
+
 public class Task1 {
 
     public static void main(String[] args) {
