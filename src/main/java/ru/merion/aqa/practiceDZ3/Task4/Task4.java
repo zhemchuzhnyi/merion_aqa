@@ -67,9 +67,12 @@ public class Task4 {
         driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
         driver.findElement(By.cssSelector("#postal-code")).sendKeys("404546");
 
+        driver.findElement(By.cssSelector("#continue")).click();
+        String total = driver.findElement(By.cssSelector(".summary_total_label")).getText();
 
+        driver.close();
 
+        System.out.println("Итоговая стоимость: " + total);
 
-        driver.quit();
     }
 }
