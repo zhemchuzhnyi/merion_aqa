@@ -56,6 +56,9 @@ public class Task2 {
 
         driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
+        driver.findElement(By.cssSelector("#zip-code")).getCssValue("background-color");
+
+
 
         driver.quit();
 
