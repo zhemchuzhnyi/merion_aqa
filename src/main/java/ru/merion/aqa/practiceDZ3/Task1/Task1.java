@@ -10,7 +10,7 @@ public class Task1 {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.get("http://uitestingplayground.com/textinput");
-        WebElement element = driver.findElement(By.cssSelector(".form-control")).sendKeys("Merion");
+        driver.findElement(By.cssSelector(".form-control")).sendKeys("Merion");
 
         driver.quit();
 
