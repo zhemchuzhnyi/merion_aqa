@@ -18,6 +18,8 @@ import java.time.Duration;
  * Получить текст кнопки и вывести в консоль (Merion)
  */
 
+// TODO - переделать в PageObject
+
 public class Task1 {
 
     public static void main(String[] args) {
