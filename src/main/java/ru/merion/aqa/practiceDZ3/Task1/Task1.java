@@ -1,14 +1,13 @@
 package ru.merion.aqa.practiceDZ3.Task1;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.practiceDZ3.Task1.pages.TextInputPage;
 
 import java.time.Duration;
 
 /**
- * Переименовать кнопку
+ * Переименовать кнопку (версия с Page Object)
  *
  * Напишите скрипт. Шаги:
  *
@@ -18,9 +17,7 @@ import java.time.Duration;
  * Получить текст кнопки и вывести в консоль (Merion)
  */
 
-// TODO - переделать в PageObject
-
-public class Task1 {
+public class Task1Refactored {
 
     public static void main(String[] args) {
 
@@ -28,16 +25,15 @@ public class Task1 {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
         TextInputPage textInputPage = new TextInputPage(driver);
+
         String buttonText = textInputPage
                 .open()
-                        .entrText("Merion")
-                                .clickButton()
-                                        .getButtonText();
+                .enterText("Merion")
+                .clickButton()
+                .getButtonText();
 
         System.out.println(buttonText);
 
         driver.quit();
-
-
     }
 }
