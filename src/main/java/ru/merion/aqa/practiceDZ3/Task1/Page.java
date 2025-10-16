@@ -1,39 +1,42 @@
-package ru.merion.aqa.practiceDZ3.Task1;
+package ru.merion.aqa.practiceDZ3.Task1.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Page {
-    public class TextInputPage{
-        private WebDriver driver;
+/**
+ * Page Object для страницы Text Input
+ */
+public class TextInputPage {
 
-        private By inputField = By.cssSelector(".form-control");
-        private By primaryButton = By.cssSelector(".btn-primary");
+    private WebDriver driver;
 
-        public TextInputPage(WebDriver driver) {
-            this.driver = driver;
-        }
-        public WebElement TextInputPage open() {
-            driver.get("http://uitestingplayground.com/textinput");
-            return this;
-        }
-        public TextInputPage enterText(String text) {
-            driver.findElement(inputField).sendKeys(text);
-            return this;
-        }
-        public TextInputPage enterText(String text) {
-            driver.findElement(inputField).sendKeys(text);
-            return this;
-        }
-        public TextInputPage clickButton() {
-            driver.findElement(primaryButton).click();
-            return this;
-        }
-        public String getButtonText() {
-            return driver.findElement(primaryButton).getText();
+    // Локаторы
+    private By inputField = By.cssSelector(".form-control");
+    private By primaryButton = By.cssSelector(".btn-primary");
 
-        }
+    // Конструктор
+    public TextInputPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
+    // Методы для взаимодействия со страницей
+    public TextInputPage open() {
+        driver.get("http://uitestingplayground.com/textinput");
+        return this;
+    }
+
+    public TextInputPage enterText(String text) {
+        driver.findElement(inputField).sendKeys(text);
+        return this;
+    }
+
+    public TextInputPage clickButton() {
+        driver.findElement(primaryButton).click();
+        return this;
+    }
+
+    public String getButtonText() {
+        return driver.findElement(primaryButton).getText();
     }
 }
