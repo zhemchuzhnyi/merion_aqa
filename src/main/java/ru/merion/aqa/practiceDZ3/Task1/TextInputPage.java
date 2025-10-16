@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Page Object для страницы Text Input
  */
-public class Page {
+public class TextInputPage {
 
     private WebDriver driver;
 
@@ -15,22 +15,22 @@ public class Page {
     private By primaryButton = By.cssSelector(".btn-primary");
 
     // Конструктор
-    public Page(WebDriver driver) {
+    public TextInputPage(WebDriver driver) {
         this.driver = driver;
     }
 
     // Методы для взаимодействия со страницей
-    public Page open() {
+    public TextInputPage open() {
         driver.get("http://uitestingplayground.com/textinput");
         return this;
     }
 
-    public Page enterText(String text) {
+    public TextInputPage enterText(String text) {
         driver.findElement(inputField).sendKeys(text);
         return this;
     }
 
-    public Page clickButton() {
+    public TextInputPage clickButton() {
         driver.findElement(primaryButton).click();
         return this;
     }

@@ -23,7 +23,7 @@ public class Task1 {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
-        Page textInputPage = new Page(driver);
+        TextInputPage textInputPage = new TextInputPage(driver);
 
         String buttonText = textInputPage
                 .open()
