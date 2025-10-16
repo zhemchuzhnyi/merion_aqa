@@ -17,7 +17,7 @@ import java.time.Duration;
  * Получить текст кнопки и вывести в консоль (Merion)
  */
 
-public class Task1Refactored {
+public class Task1 {
 
     public static void main(String[] args) {
 
