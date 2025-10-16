@@ -29,6 +29,10 @@ public class Task1 {
 
         TextInputPage textInputPage = new TextInputPage(driver);
         String buttonText = textInputPage
+                .open()
+                        .entrText("Merion")
+                                .clickButton()
+                                        .getButtonText();
 
         System.out.println(buttonText);
 
