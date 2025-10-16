@@ -27,12 +27,10 @@ public class Task1 {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
-        driver.get("http://uitestingplayground.com/textinput");
-        driver.findElement(By.cssSelector(".form-control")).sendKeys("Merion");
-        driver.findElement(By.cssSelector(".btn-primary")).click();
-        String btn = driver.findElement(By.cssSelector(".btn-primary")).getText();
+        TextInputPage textInputPage = new TextInputPage(driver);
+        String buttonText = textInputPage
 
-        System.out.println(btn);
+        System.out.println(buttonText);
 
         driver.quit();
 
