@@ -2,7 +2,6 @@ package ru.merion.aqa.practiceDZ3.Task1;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.merion.aqa.practiceDZ3.Task1.pages.TextInputPage;
 
 import java.time.Duration;
 

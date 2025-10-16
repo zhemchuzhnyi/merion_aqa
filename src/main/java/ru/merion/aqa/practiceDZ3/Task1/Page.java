@@ -1,4 +1,4 @@
-package ru.merion.aqa.practiceDZ3.Task1.pages;
+package ru.merion.aqa.practiceDZ3.Task1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 /**
  * Page Object для страницы Text Input
  */
-public class TextInputPage {
+class TextInputPage {
 
     private WebDriver driver;
 
