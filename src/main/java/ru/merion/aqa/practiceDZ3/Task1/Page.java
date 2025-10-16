@@ -2,12 +2,11 @@ package ru.merion.aqa.practiceDZ3.Task1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 /**
  * Page Object для страницы Text Input
  */
-class TextInputPage {
+public class Page {
 
     private WebDriver driver;
 
@@ -16,22 +15,22 @@ class TextInputPage {
     private By primaryButton = By.cssSelector(".btn-primary");
 
     // Конструктор
-    public TextInputPage(WebDriver driver) {
+    public Page(WebDriver driver) {
         this.driver = driver;
     }
 
     // Методы для взаимодействия со страницей
-    public TextInputPage open() {
+    public Page open() {
         driver.get("http://uitestingplayground.com/textinput");
         return this;
     }
 
-    public TextInputPage enterText(String text) {
+    public Page enterText(String text) {
         driver.findElement(inputField).sendKeys(text);
         return this;
     }
 
-    public TextInputPage clickButton() {
+    public Page clickButton() {
         driver.findElement(primaryButton).click();
         return this;
     }
