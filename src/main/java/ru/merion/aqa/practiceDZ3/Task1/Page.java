@@ -18,6 +18,22 @@ public class Page {
             driver.get("http://uitestingplayground.com/textinput");
             return this;
         }
+        public TextInputPage enterText(String text) {
+            driver.findElement(inputField).sendKeys(text);
+            return this;
+        }
+        public TextInputPage enterText(String text) {
+            driver.findElement(inputField).sendKeys(text);
+            return this;
+        }
+        public TextInputPage clickButton() {
+            driver.findElement(primaryButton).click();
+            return this;
+        }
+        public String getButtonText() {
+            return driver.findElement(primaryButton).getText();
+
+        }
 
     }
 }
