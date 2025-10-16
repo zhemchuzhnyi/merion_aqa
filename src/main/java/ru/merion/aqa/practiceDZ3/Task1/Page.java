@@ -7,7 +7,7 @@ public class Page {
     public class TextInputPage{
         private WebDriver driver;
 
-        private By inputField = By.ByCssSelector(".form-control");
+        private By inputField = By.cssSelector(".form-control");
         private By primaryButton = By.cssSelector(".btn-primary");
 
     }
