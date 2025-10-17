@@ -22,6 +22,18 @@ public class DataTypesPage {
     private By companyField = By.cssSelector("[name = 'company']");
     private By submitButton = By.cssSelector(".btn-outline-primary");
 
+    // Заполнение разом
+    public DataTypesPage fillForm (String firstName, String lastName, String address, String city, String country, String jobPosition, String company) {
+        fillFirstName(firstName);
+        fillLastName(lastName);
+        fillAddress(address);
+        fillCity(city);
+        fillCountry(country);
+        fillJobPosition(jobPosition);
+        fillCompany(company);
+        return this;
+    }
+
     // заполняем поля
     public DataTypesPage (WebDriver driver) {
         this.driver = driver;
