@@ -12,7 +12,7 @@ public class DataTypesPage {
         return this;
     }
 
-    // Локаторы
+    // Локаторы полей формы
     private By firstNameField = By.cssSelector("[name = 'first-name']");
     private By lastNameField = By.cssSelector("[name = 'last-name']");
     private By addressField = By.cssSelector("[name = 'address']");
@@ -21,11 +21,6 @@ public class DataTypesPage {
     private By jobPositionField = By.cssSelector("[name = 'job-position']");
     private By companyField = By.cssSelector("[name = 'company']");
     private By submitButton = By.cssSelector(".btn-outline-primary");
-
-    // проверка цвета
-    private By zipCodeResult = By.cssSelector("#zip-code");
-    private By emaiResult = By.cssSelector("#e-mail");
-    private By phoneResult = By.cssSelector("#phone");
 
     // заполняем поля
     public DataTypesPage (WebDriver driver) {
@@ -63,6 +58,25 @@ public class DataTypesPage {
     // жмем на кнопку
     public DataTypesPage fillSubmit (String submit) {
         driver.findElement(submitButton).click();
+        return this;
+    }
+
+    // Локаторы проверки цвета
+    private By zipCodeResult = By.cssSelector("#zip-code");
+    private By emaiResult = By.cssSelector("#e-mail");
+    private By phoneResult = By.cssSelector("#phone");
+
+    // Цвет подложки
+    public DataTypesPage fillZipCode (String zipCode) {
+        driver.findElement(zipCodeResult).getCssValue("background-color");
+        return this;
+    }
+    public DataTypesPage fillEmail (String email) {
+        driver.findElement(emaiResult).getCssValue("background-color");
+        return this;
+    }
+    public DataTypesPage fillPhone (String phone) {
+        driver.findElement(phoneResult).getCssValue("background-color");
         return this;
     }
 }
