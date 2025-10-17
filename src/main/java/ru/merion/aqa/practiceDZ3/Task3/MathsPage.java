@@ -15,4 +15,8 @@ public class MathsPage {
     private By num8 = By.xpath("//span[text() = '8']");
     private By equal = By.xpath("//span[text() = '=']");
 
+    public MathsPage(Driver driver) {
+        this.driver = driver;
+    }
+
 }

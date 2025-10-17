@@ -34,6 +34,8 @@ public class Task3 {
         int timeout = 45;
         WebDriver driver = new ChromeDriver();
 
+        MathsPage page = new MathsPage(driver);
+
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
         driver.findElement(By.cssSelector("#delay")).clear();
 
@@ -49,6 +51,7 @@ public class Task3 {
 
         String result = driver.findElement(By.cssSelector(".screen")).getText();
         System.out.println("Result: " + result);
+
 
         driver.quit();
     }
