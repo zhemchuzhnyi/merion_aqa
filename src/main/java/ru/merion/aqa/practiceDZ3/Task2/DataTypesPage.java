@@ -6,6 +6,13 @@ import org.openqa.selenium.WebDriver;
 
 public class DataTypesPage {
 
+    public DataTypesPage open() {
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
+        return this;
+    }
+
+
+
     private WebDriver driver;
 
     // Локаторы
@@ -22,7 +29,6 @@ public class DataTypesPage {
     private By zipCodeResult = By.cssSelector("#zip-code");
     private By emaiResult = By.cssSelector("#e-mail");
     private By phoneResult = By.cssSelector("#phone");
-
 
 
 

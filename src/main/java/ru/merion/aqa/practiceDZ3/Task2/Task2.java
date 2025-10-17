@@ -45,7 +45,7 @@ public class Task2 {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
+        //driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         //driver.findElement(By.cssSelector("[name = 'first-name']")).sendKeys("Иван");
         //driver.findElement(By.cssSelector("[name = 'last-name']")).sendKeys("Петров");
         //driver.findElement(By.cssSelector("[name = 'address']")).sendKeys("Ленина, 55-3");
@@ -56,14 +56,16 @@ public class Task2 {
 
         // driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
-        String zip = driver.findElement(By.cssSelector("#zip-code")).getCssValue("background-color");
-        System.out.println("Цвет: " + zip);
+       // String zip = driver.findElement(By.cssSelector("#zip-code")).getCssValue("background-color");
+        //System.out.println("Цвет: " + zip);
 
-        String mail = driver.findElement(By.cssSelector("#e-mail")).getCssValue("background-color");
-        System.out.println("Цвет: " + mail);
+        //String mail = driver.findElement(By.cssSelector("#e-mail")).getCssValue("background-color");
+        //System.out.println("Цвет: " + mail);
 
-        String phone = driver.findElement(By.cssSelector("#phone")).getCssValue("background-color");
-        System.out.println("Цвет: " + phone);
+        //String phone = driver.findElement(By.cssSelector("#phone")).getCssValue("background-color");
+        //System.out.println("Цвет: " + phone);
+
+        String colorResult =
 
 
         driver.quit();
