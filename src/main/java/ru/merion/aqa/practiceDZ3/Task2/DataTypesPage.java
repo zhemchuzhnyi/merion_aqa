@@ -3,27 +3,128 @@ package ru.merion.aqa.practiceDZ3.Task2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
+/**
+ * Page Object для страницы с формой Data Types
+ */
 public class DataTypesPage {
     private WebDriver driver;
 
+    // Локаторы полей формы
+    private By firstNameField = By.cssSelector("[name='first-name']");
+    private By lastNameField = By.cssSelector("[name='last-name']");
+    private By addressField = By.cssSelector("[name='address']");
+    private By cityField = By.cssSelector("[name='city']");
+    private By countryField = By.cssSelector("[name='country']");
+    private By jobPositionField = By.cssSelector("[name='job-position']");
+    private By companyField = By.cssSelector("[name='company']");
+    private By submitButton = By.cssSelector(".btn-outline-primary");
+
+    // Локаторы для проверки цвета
+    private By zipCodeResult = By.cssSelector("#zip-code");
+    private By emailResult = By.cssSelector("#e-mail");
+    private By phoneResult = By.cssSelector("#phone");
+
+    public DataTypesPage(WebDriver driver) {
+        this.driver = driver;
+    }
+
+    /**
+     * Открыть страницу
+     */
     public DataTypesPage open() {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         return this;
     }
 
-    // Локаторы полей формы
-    private By firstNameField = By.cssSelector("[name = 'first-name']");
-    private By lastNameField = By.cssSelector("[name = 'last-name']");
-    private By addressField = By.cssSelector("[name = 'address']");
-    private By cityField = By.cssSelector("[name = 'city']");
-    private By countryField = By.cssSelector("[name = 'country']");
-    private By jobPositionField = By.cssSelector("[name = 'job-position']");
-    private By companyField = By.cssSelector("[name = 'company']");
-    private By submitButton = By.cssSelector(".btn-outline-primary");
+    /**
+     * Заполнить имя
+     */
+    public DataTypesPage fillFirstName(String firstName) {
+        driver.findElement(firstNameField).sendKeys(firstName);
+        return this;
+    }
 
-    // Заполнение разом
-    public DataTypesPage fillForm (String firstName, String lastName, String address, String city, String country, String jobPosition, String company) {
+    /**
+     * Заполнить фамилию
+     */
+    public DataTypesPage fillLastName(String lastName) {
+        driver.findElement(lastNameField).sendKeys(lastName);
+        return this;
+    }
+
+    /**
+     * Заполнить адрес
+     */
+    public DataTypesPage fillAddress(String address) {
+        driver.findElement(addressField).sendKeys(address);
+        return this;
+    }
+
+    /**
+     * Заполнить город
+     */
+    public DataTypesPage fillCity(String city) {
+        driver.findElement(cityField).sendKeys(city);
+        return this;
+    }
+
+    /**
+     * Заполнить страну
+     */
+    public DataTypesPage fillCountry(String country) {
+        driver.findElement(countryField).sendKeys(country);
+        return this;
+    }
+
+    /**
+     * Заполнить должность
+     */
+    public DataTypesPage fillJobPosition(String jobPosition) {
+        driver.findElement(jobPositionField).sendKeys(jobPosition);
+        return this;
+    }
+
+    /**
+     * Заполнить компанию
+     */
+    public DataTypesPage fillCompany(String company) {
+        driver.findElement(companyField).sendKeys(company);
+        return this;
+    }
+
+    /**
+     * Нажать кнопку Submit
+     */
+    public void submit() {
+        driver.findElement(submitButton).click();
+    }
+
+    /**
+     * Получить цвет поля Zip Code
+     */
+    public String getZipCodeColor() {
+        return driver.findElement(zipCodeResult).getCssValue("background-color");
+    }
+
+    /**
+     * Получить цвет поля E-mail
+     */
+    public String getEmailColor() {
+        return driver.findElement(emailResult).getCssValue("background-color");
+    }
+
+    /**
+     * Получить цвет поля Phone
+     */
+    public String getPhoneColor() {
+        return driver.findElement(phoneResult).getCssValue("background-color");
+    }
+
+    /**
+     * Заполнить всю форму разом (удобный метод)
+     */
+    public DataTypesPage fillForm(String firstName, String lastName, String address,
+                                  String city, String country, String jobPosition, String company) {
         fillFirstName(firstName);
         fillLastName(lastName);
         fillAddress(address);
@@ -32,60 +133,5 @@ public class DataTypesPage {
         fillJobPosition(jobPosition);
         fillCompany(company);
         return this;
-    }
-
-    // заполняем поля
-    public DataTypesPage (WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public DataTypesPage fillFirstName (String firstName) {
-        driver.findElement(firstNameField).sendKeys(firstName);
-        return this;
-    }
-    public DataTypesPage fillLastName (String lastName) {
-        driver.findElement(lastNameField).sendKeys(lastName);
-        return this;
-    }
-    public DataTypesPage fillAddress (String address) {
-        driver.findElement(addressField).sendKeys(address);
-        return this;
-    }
-    public DataTypesPage fillCity (String city) {
-        driver.findElement(cityField).sendKeys(city);
-        return this;
-    }
-    public DataTypesPage fillCountry (String country) {
-        driver.findElement(countryField).sendKeys(country);
-        return this;
-    }
-    public DataTypesPage fillJobPosition (String jobPosition) {
-        driver.findElement(jobPositionField).sendKeys(jobPosition);
-        return this;
-    }
-    public DataTypesPage fillCompany (String company) {
-        driver.findElement(companyField).sendKeys(company);
-        return this;
-    }
-    // жмем на кнопку
-    public DataTypesPage fillSubmit (String submit) {
-        driver.findElement(submitButton).click();
-        return this;
-    }
-
-    // Локаторы проверки цвета
-    private By zipCodeResult = By.cssSelector("#zip-code");
-    private By emaiResult = By.cssSelector("#e-mail");
-    private By phoneResult = By.cssSelector("#phone");
-
-    // Цвет подложки
-    public String getZipCodeResult () {
-        return driver.findElement(zipCodeResult).getCssValue("background-color");
-    }
-    public String getEmailResult () {
-        return driver.findElement(emaiResult).getCssValue("background-color");
-    }
-    public String getPhoneResult () {
-        return driver.findElement(phoneResult).getCssValue("background-color");
     }
 }
