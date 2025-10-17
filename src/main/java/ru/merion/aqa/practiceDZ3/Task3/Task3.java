@@ -36,15 +36,14 @@ public class Task3 {
 
         MathsPage page = new MathsPage(driver);
 
-        driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
-        driver.findElement(By.cssSelector("#delay")).clear();
+        //driver.findElement(By.cssSelector("#delay")).clear();
 
-        driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(timeout));
+        //driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(timeout));
 
-        driver.findElement(By.xpath("//span[text() = '7']")).click();
-        driver.findElement(By.xpath("//span[text() = '+']")).click();
-        driver.findElement(By.xpath("//span[text() = '8']")).click();
-        driver.findElement(By.xpath("//span[text() = '=']")).click();
+        //driver.findElement(By.xpath("//span[text() = '7']")).click();
+        //driver.findElement(By.xpath("//span[text() = '+']")).click();
+        //driver.findElement(By.xpath("//span[text() = '8']")).click();
+        //driver.findElement(By.xpath("//span[text() = '=']")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#spinner")));

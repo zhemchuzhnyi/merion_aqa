@@ -8,7 +8,7 @@ public class MathsPage {
     private Driver driver;
 
     // Локаторы
-    private By del = By.cssSelector("#delay");
+    private By delete = By.cssSelector("#delay");
 
     private By num7 = By.xpath("//span[text() = '7']");
     private By sign = By.xpath("//span[text() = '+']");
@@ -17,6 +17,21 @@ public class MathsPage {
 
     public MathsPage(Driver driver) {
         this.driver = driver;
+    }
+
+    // открыть страницу
+    public MathsPage open() {
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
+        return this;
+    }
+
+    // очистка поля
+    public void delete() {
+        driver.findElement(delete).clear();
+    }
+
+    public void Wait() {
+        driver.findElement(delete).sendKeys(String.valueOf(timeout));
     }
 
 }
