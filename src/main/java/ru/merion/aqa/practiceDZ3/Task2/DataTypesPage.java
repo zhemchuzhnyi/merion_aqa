@@ -27,6 +27,7 @@ public class DataTypesPage {
     private By emaiResult = By.cssSelector("#e-mail");
     private By phoneResult = By.cssSelector("#phone");
 
+    // заполняем поля
     public DataTypesPage (WebDriver driver) {
         this.driver = driver;
     }
@@ -59,6 +60,7 @@ public class DataTypesPage {
         driver.findElement(companyField).sendKeys(company);
         return this;
     }
+    // жмем на кнопку
     public DataTypesPage fillSubmit (String submit) {
         driver.findElement(submitButton).click();
         return this;

@@ -48,9 +48,17 @@ public class Task2 {
         DataTypesPage page = new DataTypesPage(driver);
 
         page.open()
+                .fillFirstName("Иван")
+                        .fillLastName("Петров")
+                                .fillAddress("Ленина, 55-3")
+                                        .fillCity("Москва")
+                                                .fillCountry("Россия")
+                                                        .fillJobPosition("QA")
+                                                                .fillCompany("Merion");
 
-
-
+        System.out.println();
+        System.out.println();
+        System.out.println();
 
         driver.quit();
 
