@@ -11,5 +11,12 @@ public class DataTypesPage {
     // Локаторы
     private By firstNameField = By.cssSelector("[name = 'first-name']");
     private By lastNameField = By.cssSelector("[name = 'last-name']");
+    private By addressField = By.cssSelector("[name = 'address']");
+    private By cityField = By.cssSelector("[name = 'city']");
+    private By countryField = By.cssSelector("[name = 'country']");
+    private By jobpositionField =By.cssSelector("[name = 'job-position']");
+    private By companyField = By.cssSelector("[name = 'company']");
+
+
 
 }

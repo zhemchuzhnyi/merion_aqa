@@ -47,12 +47,12 @@ public class Task2 {
 
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         //driver.findElement(By.cssSelector("[name = 'first-name']")).sendKeys("Иван");
-        driver.findElement(By.cssSelector("[name = 'last-name']")).sendKeys("Петров");
-        driver.findElement(By.cssSelector("[name = 'address']")).sendKeys("Ленина, 55-3");
-        driver.findElement(By.cssSelector("[name = 'city']")).sendKeys("Москва");
-        driver.findElement(By.cssSelector("[name = 'country']")).sendKeys("Россия");
-        driver.findElement(By.cssSelector("[name = 'job-position']")).sendKeys("QA");
-        driver.findElement(By.cssSelector("[name = 'company']")).sendKeys("Merion");
+        //driver.findElement(By.cssSelector("[name = 'last-name']")).sendKeys("Петров");
+        //driver.findElement(By.cssSelector("[name = 'address']")).sendKeys("Ленина, 55-3");
+        //driver.findElement(By.cssSelector("[name = 'city']")).sendKeys("Москва");
+        //driver.findElement(By.cssSelector("[name = 'country']")).sendKeys("Россия");
+        //driver.findElement(By.cssSelector("[name = 'job-position']")).sendKeys("QA");
+        //driver.findElement(By.cssSelector("[name = 'company']")).sendKeys("Merion");
 
         driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
