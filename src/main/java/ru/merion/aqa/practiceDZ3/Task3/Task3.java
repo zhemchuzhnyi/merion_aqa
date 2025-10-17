@@ -28,8 +28,6 @@ import java.time.Duration;
  * =
  */
 
-// TODO - переделать в PageObject
-
 public class Task3 {
     private static final Logger log = LoggerFactory.getLogger(Task3.class);
 
@@ -42,24 +40,13 @@ public class Task3 {
 
         page.open()
                 .clearDelay()
+                .setDelay(timeout)
                 .clickNumber7()
                 .clickSign()
                 .clickNumber8()
                 .clickEqual();
 
-        //driver.findElement(By.cssSelector("#delay")).clear();
-
-        //driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(timeout));
-
-        //driver.findElement(By.xpath("//span[text() = '7']")).click();
-        //driver.findElement(By.xpath("//span[text() = '+']")).click();
-        //driver.findElement(By.xpath("//span[text() = '8']")).click();
-        //driver.findElement(By.xpath("//span[text() = '=']")).click();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#spinner")));
-
-        String result = driver.findElement(By.cssSelector(".screen")).getText();
+        String result = page.getResult(timeout);
         System.out.println("Result: " + result);
 
 
