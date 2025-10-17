@@ -31,8 +31,36 @@ public class DataTypesPage {
         this.driver = driver;
     }
 
-
-
-
-
+    public DataTypesPage fillFirstName (String firstName) {
+        driver.findElement(firstNameField).sendKeys(firstName);
+        return this;
+    }
+    public DataTypesPage fillLastName (String lastName) {
+        driver.findElement(lastNameField).sendKeys(lastName);
+        return this;
+    }
+    public DataTypesPage fillAddress (String address) {
+        driver.findElement(addressField).sendKeys(address);
+        return this;
+    }
+    public DataTypesPage fillCity (String city) {
+        driver.findElement(cityField).sendKeys(city);
+        return this;
+    }
+    public DataTypesPage fillCountry (String country) {
+        driver.findElement(countryField).sendKeys(country);
+        return this;
+    }
+    public DataTypesPage fillJobPosition (String jobPosition) {
+        driver.findElement(jobPositionField).sendKeys(jobPosition);
+        return this;
+    }
+    public DataTypesPage fillCompany (String company) {
+        driver.findElement(companyField).sendKeys(company);
+        return this;
+    }
+    public DataTypesPage fillSubmit (String submit) {
+        driver.findElement(submitButton).click();
+        return this;
+    }
 }
