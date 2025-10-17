@@ -42,10 +42,10 @@ public class Task3 {
 
         page.open()
                 .clearDelay()
-                .()
-                .sign()
-                .number8()
-                .equal();
+                .clickNumber7()
+                .clickSign()
+                .clickNumber8()
+                .clickEqual();
 
         //driver.findElement(By.cssSelector("#delay")).clear();
 
