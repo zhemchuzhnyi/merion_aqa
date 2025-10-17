@@ -54,7 +54,7 @@ public class Task2 {
         //driver.findElement(By.cssSelector("[name = 'job-position']")).sendKeys("QA");
         //driver.findElement(By.cssSelector("[name = 'company']")).sendKeys("Merion");
 
-        driver.findElement(By.cssSelector(".btn-outline-primary")).click();
+        // driver.findElement(By.cssSelector(".btn-outline-primary")).click();
 
         String zip = driver.findElement(By.cssSelector("#zip-code")).getCssValue("background-color");
         System.out.println("Цвет: " + zip);

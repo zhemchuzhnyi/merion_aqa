@@ -14,8 +14,9 @@ public class DataTypesPage {
     private By addressField = By.cssSelector("[name = 'address']");
     private By cityField = By.cssSelector("[name = 'city']");
     private By countryField = By.cssSelector("[name = 'country']");
-    private By jobpositionField =By.cssSelector("[name = 'job-position']");
+    private By jobPositionField = By.cssSelector("[name = 'job-position']");
     private By companyField = By.cssSelector("[name = 'company']");
+    private By submitButton = By.cssSelector(".btn-outline-primary");
 
 
 
