@@ -119,11 +119,8 @@ public class DataTypesPage {
     public String getPhoneColor() {
         return driver.findElement(phoneResult).getCssValue("background-color");
     }
-
-    /**
-     * Заполнить всю форму разом (удобный метод)
-     */
-    public DataTypesPage fillForm(String firstName, String lastName, String address,
+    /* удобный метод - заполняет поля разом
+     public DataTypesPage fillForm(String firstName, String lastName, String address,
                                   String city, String country, String jobPosition, String company) {
         fillFirstName(firstName);
         fillLastName(lastName);
@@ -133,5 +130,5 @@ public class DataTypesPage {
         fillJobPosition(jobPosition);
         fillCompany(company);
         return this;
-    }
+     */
 }
