@@ -18,6 +18,10 @@ public class DataTypesPage {
     private By companyField = By.cssSelector("[name = 'company']");
     private By submitButton = By.cssSelector(".btn-outline-primary");
 
+    // проверка цвета
+    private By zipCodeResult = By.cssSelector("#zip-code");
+
+
 
 
 }
