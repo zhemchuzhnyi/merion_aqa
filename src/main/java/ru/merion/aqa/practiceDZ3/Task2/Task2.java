@@ -38,8 +38,6 @@ import java.time.Duration;
  *  (background-color)
  */
 
-// TODO - переделать в PageObject
-
 public class Task2 {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
