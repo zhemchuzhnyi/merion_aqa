@@ -20,6 +20,8 @@ public class DataTypesPage {
 
     // проверка цвета
     private By zipCodeResult = By.cssSelector("#zip-code");
+    private By emaiResult = By.cssSelector("#e-mail");
+    private By phoneResult = By.cssSelector("#phone");
 
 
 
