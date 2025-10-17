@@ -7,6 +7,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -29,12 +31,21 @@ import java.time.Duration;
 // TODO - переделать в PageObject
 
 public class Task3 {
+    private static final Logger log = LoggerFactory.getLogger(Task3.class);
+
     public static void main(String[] args) {
 
         int timeout = 45;
         WebDriver driver = new ChromeDriver();
 
         MathsPage page = new MathsPage(driver);
+
+        page.open()
+                .clearDelay()
+                .()
+                .sign()
+                .number8()
+                .equal();
 
         //driver.findElement(By.cssSelector("#delay")).clear();
 

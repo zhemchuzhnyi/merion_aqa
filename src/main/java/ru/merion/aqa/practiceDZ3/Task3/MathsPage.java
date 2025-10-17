@@ -1,21 +1,21 @@
 package ru.merion.aqa.practiceDZ3.Task3;
 
 import org.openqa.selenium.By;
-
-import java.sql.Driver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class MathsPage {
-    private Driver driver;
+    private WebDriver driver;
 
     // Локаторы
-    private By delete = By.cssSelector("#delay");
+    private By delay = By.cssSelector("#delay");
 
-    private By num7 = By.xpath("//span[text() = '7']");
+    private By number7 = By.xpath("//span[text() = '7']");
     private By sign = By.xpath("//span[text() = '+']");
-    private By num8 = By.xpath("//span[text() = '8']");
+    private By number8 = By.xpath("//span[text() = '8']");
     private By equal = By.xpath("//span[text() = '=']");
 
-    public MathsPage(Driver driver) {
+    public MathsPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -26,12 +26,35 @@ public class MathsPage {
     }
 
     // очистка поля
-    public void delete() {
-        driver.findElement(delete).clear();
+    public MathsPage clearDelay() {
+        driver.findElement(delay).clear();
+        return this;
     }
 
-    public void Wait() {
-        driver.findElement(delete).sendKeys(String.valueOf(timeout));
+    // ожидание
+    public MathsPage Wait(int timeout) {
+        WebElement delayElement = driver.findElement(delay);
+        delayField.clear();
+        delayField.sendKeys(String.valueOf(timeout));
+        return this;
+    }
+
+    // клики
+    public MathsPage clickNumber7() {
+        driver.findElement(number7).click();
+        return this;
+    }
+    public MathsPage clickSign() {
+        driver.findElement(sign).click();
+        return this;
+    }
+    public MathsPage clickNumber8() {
+        driver.findElement(number8).click();
+        return this;
+    }
+    public MathsPage clickEqual() {
+        driver.findElement(equal).click();
+        return this;
     }
 
 }
