@@ -39,9 +39,9 @@ public class MathsPage {
 
     // ожидание
     public MathsPage setDelay(int timeout) {
-        WebElement delay = driver.findElement(delayField);
-        delay.clear();
-        delay.sendKeys(String.valueOf(timeout));
+        WebElement delayElement = driver.findElement(delay);
+        delayElement.clear();
+        delayElement.sendKeys(String.valueOf(timeout));
         return this;
     }
 
