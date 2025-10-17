@@ -3,9 +3,7 @@ package ru.merion.aqa.practiceDZ3.Task2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-/**
- * Page Object для страницы с формой Data Types
- */
+//Page Object для страницы с формой Data Types
 public class DataTypesPage {
     private WebDriver driver;
 
@@ -34,7 +32,7 @@ public class DataTypesPage {
         return this;
     }
 
-    //Заполняем поля
+    //Заполнить поля
     public DataTypesPage fillFirstName(String firstName) {
         driver.findElement(firstNameField).sendKeys(firstName);
         return this;
