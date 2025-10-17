@@ -28,97 +28,67 @@ public class DataTypesPage {
         this.driver = driver;
     }
 
-    /**
-     * Открыть страницу
-     */
+    //Открыть страницу
     public DataTypesPage open() {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         return this;
     }
 
-    /**
-     * Заполнить имя
-     */
+    //Заполняем поля
     public DataTypesPage fillFirstName(String firstName) {
         driver.findElement(firstNameField).sendKeys(firstName);
         return this;
     }
 
-    /**
-     * Заполнить фамилию
-     */
     public DataTypesPage fillLastName(String lastName) {
         driver.findElement(lastNameField).sendKeys(lastName);
         return this;
     }
 
-    /**
-     * Заполнить адрес
-     */
     public DataTypesPage fillAddress(String address) {
         driver.findElement(addressField).sendKeys(address);
         return this;
     }
 
-    /**
-     * Заполнить город
-     */
     public DataTypesPage fillCity(String city) {
         driver.findElement(cityField).sendKeys(city);
         return this;
     }
 
-    /**
-     * Заполнить страну
-     */
     public DataTypesPage fillCountry(String country) {
         driver.findElement(countryField).sendKeys(country);
         return this;
     }
 
-    /**
-     * Заполнить должность
-     */
     public DataTypesPage fillJobPosition(String jobPosition) {
         driver.findElement(jobPositionField).sendKeys(jobPosition);
         return this;
     }
 
-    /**
-     * Заполнить компанию
-     */
     public DataTypesPage fillCompany(String company) {
         driver.findElement(companyField).sendKeys(company);
         return this;
     }
 
-    /**
-     * Нажать кнопку Submit
-     */
+    //Нажать кнопку Submit
     public void submit() {
         driver.findElement(submitButton).click();
     }
 
-    /**
-     * Получить цвет поля Zip Code
-     */
+    //Получить цвет полей
     public String getZipCodeColor() {
         return driver.findElement(zipCodeResult).getCssValue("background-color");
     }
 
-    /**
-     * Получить цвет поля E-mail
-     */
     public String getEmailColor() {
         return driver.findElement(emailResult).getCssValue("background-color");
     }
 
-    /**
-     * Получить цвет поля Phone
-     */
     public String getPhoneColor() {
         return driver.findElement(phoneResult).getCssValue("background-color");
     }
+
+
     /* удобный метод - заполняет поля разом
      public DataTypesPage fillForm(String firstName, String lastName, String address,
                                   String city, String country, String jobPosition, String company) {
@@ -131,4 +101,5 @@ public class DataTypesPage {
         fillCompany(company);
         return this;
      */
+
 }
