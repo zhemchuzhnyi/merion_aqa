@@ -79,16 +79,13 @@ public class DataTypesPage {
     private By phoneResult = By.cssSelector("#phone");
 
     // Цвет подложки
-    public DataTypesPage fillZipCode (String zipCode) {
-        driver.findElement(zipCodeResult).getCssValue("background-color");
-        return this;
+    public String getZipCodeResult () {
+        return driver.findElement(zipCodeResult).getCssValue("background-color");
     }
-    public DataTypesPage fillEmail (String email) {
-        driver.findElement(emaiResult).getCssValue("background-color");
-        return this;
+    public String getEmailResult () {
+        return driver.findElement(emaiResult).getCssValue("background-color");
     }
-    public DataTypesPage fillPhone (String phone) {
-        driver.findElement(phoneResult).getCssValue("background-color");
-        return this;
+    public String getPhoneResult () {
+        return driver.findElement(phoneResult).getCssValue("background-color");
     }
 }

@@ -56,7 +56,7 @@ public class Task2 {
                                                         .fillJobPosition("QA")
                                                                 .fillCompany("Merion");
 
-        System.out.println();
+        System.out.println("Цвет Zip Code: " + page.fillZipCode());
         System.out.println();
         System.out.println();
 
