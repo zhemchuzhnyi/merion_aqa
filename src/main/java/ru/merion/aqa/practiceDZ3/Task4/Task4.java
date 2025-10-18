@@ -46,7 +46,7 @@ public class Task4 {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
+/**
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
@@ -69,6 +69,16 @@ public class Task4 {
 
         driver.findElement(By.cssSelector("#continue")).click();
         String total = driver.findElement(By.cssSelector(".summary_total_label")).getText();
+**/
+        driver.get("https://www.saucelabs.com/");
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.addItemsToCart(itemsToAdd);
+        System.out.println("✓ Товары добавлены в корзину");
+
 
         driver.close();
 
