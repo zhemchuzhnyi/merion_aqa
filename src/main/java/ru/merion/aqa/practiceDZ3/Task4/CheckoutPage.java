@@ -1,41 +1,31 @@
-package ru.merion.aqa.practiceDZ3.Task4;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class CheckoutPage {
     private WebDriver driver;
-    private WebDriverWait wait;
 
-    @FindBy(css = "#first-name")
-    private WebElement firstNameField;
-
-    @FindBy(css = "#last-name")
-    private WebElement lastNameField;
-
-    @FindBy(css = "#postal-code")
-    private WebElement postalCodeField;
-
-    @FindBy(css = "#continue")
-    private WebElement continueButton;
+    private By firstNameField = By.cssSelector("#first-name");
+    private By lastNameField = By.cssSelector("#last-name");
+    private By postalCodeField = By.cssSelector("#postal-code");
+    private By continueButton = By.cssSelector("#continue");
+    private By totalLabel = By.cssSelector(".summary_total_label");
 
     public CheckoutPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver, this);
     }
 
-    public void fillCheckoutInfo(String firstName, String lastName, String postalCode) {
-        firstNameField.sendKeys(firstName);
-        lastNameField.sendKeys(lastName);
-        postalCodeField.sendKeys(postalCode);
+    public void fillPersonalInfo(String firstName, String lastName, String postalCode) {
+        driver.findElement(firstNameField).sendKeys(firstName);
+        driver.findElement(lastNameField).sendKeys(lastName);
+        driver.findElement(postalCodeField).sendKeys(postalCode);
     }
+
     public void clickContinue() {
-        continueButton.click();
+        driver.findElement(continueButton).click();
+    }
+
+    public String getTotalAmount() {
+        return driver.findElement(totalLabel).getText();
     }
 }

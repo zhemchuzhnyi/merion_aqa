@@ -1,14 +1,13 @@
-package ru.merion.aqa.practiceDZ2;
+package ru.merion.aqa.practiceDZ3.Task4;
 
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
-import ru.merion.aqa.practiceDZ2.pages.*;
 
 import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Task6WithPageObject {
+public class Task4 {
 
     public static void main(String[] args) {
         Set<String> itemNames = new HashSet<>();
