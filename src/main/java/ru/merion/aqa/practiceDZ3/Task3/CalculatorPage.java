@@ -46,7 +46,7 @@ public class CalculatorPage {
     }
 
     public void waitForCalculationComplete(int timeout) {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.invisibilityOf(spinner));
     }
 
