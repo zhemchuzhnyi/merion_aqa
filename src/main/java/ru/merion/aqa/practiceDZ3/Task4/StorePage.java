@@ -24,4 +24,8 @@ public class StorePage {
         PageFactory.initElements(driver, this);
     }
 
+    public void open() {
+        driver.get("https://www.saucedemo.com/cart.html");
+    }
+
 }
