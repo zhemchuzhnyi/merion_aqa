@@ -37,6 +37,6 @@ public class Task4 {
         String total = checkoutPage.getTotalAmount();
         driver.quit();
 
-        System.out.println("Результат: " + total);
+        System.out.println(total);
     }
 }
