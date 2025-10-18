@@ -28,4 +28,13 @@ public class StorePage {
         driver.get("https://www.saucedemo.com/cart.html");
     }
 
+    @FindBy(css = "#user-name")
+    private WebElement userName;
+
+    @FindBy(css = "#password")
+    private WebElement getPassword;
+
+    @FindBy(css = "#login-button")
+    private WebElement login;
+
 }
