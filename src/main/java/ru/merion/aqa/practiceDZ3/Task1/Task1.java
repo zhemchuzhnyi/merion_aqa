@@ -20,6 +20,19 @@ public class Task1 {
 
     public static void main(String[] args) {
 
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
+        TextInputPage textInputPage = new TextInputPage(driver);
+
+        String buttonText = textInputPage
+                .open()
+                .enterText("Merion")
+                .clickButton()
+                .getButtonText();
+
+        System.out.println(buttonText);
+
+        driver.quit();
     }
 }
