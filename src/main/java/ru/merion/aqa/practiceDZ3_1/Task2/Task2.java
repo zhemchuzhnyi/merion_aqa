@@ -10,14 +10,10 @@ public class Task2 {
 
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-
-        driver.get("http://uitestingplayground.com/textinput");
-
-        driver.findElement(By.cssSelector("#newButtonName")).sendKeys("Merion");
-        driver.findElement(By.cssSelector("#updatingButton")).click();
-        String content = driver.findElement(By.cssSelector("#updatingButton")).getText();
-        System.out.println("Текст кнопки: " + content);
+        String text = new TextInputPage(driver)
+                .open()
+                        .setButtonName("Merion")
+                                .getButtonText();
 
         driver.quit();
 
