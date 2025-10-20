@@ -10,7 +10,7 @@ import java.time.Duration;
 public class Task2 {
 
     public static void main(String[] args) {
-        WebDriver driver = WebDriverFactory.create("chrome");
+        WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
         driver.get("http://uitestingplayground.com/textinput");
