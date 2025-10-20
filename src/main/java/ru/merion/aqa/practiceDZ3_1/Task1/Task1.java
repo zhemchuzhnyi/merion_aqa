@@ -9,5 +9,12 @@ public class Task1 {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
+
+        AjaxPage = new AjaxPage(driver);
+        page.open();
+        page.clickTheButton();
+        String content = page.getContent();
+
+        System.out.println("content = " + content);
     }
 }
