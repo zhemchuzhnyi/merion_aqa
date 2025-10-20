@@ -14,7 +14,7 @@ public class TextInputPage {
         driver.get("http://uitestingplayground.com/textinput");
         return this;
     }
-    public TextInputPage setButtonName(String name) {
+    public TextInputPage setButtonName(String newName) {
         driver.findElement(By.cssSelector("#newButtonName")).sendKeys("newName");
         driver.findElement(By.cssSelector("#updatingButton")).click();
         return this;
