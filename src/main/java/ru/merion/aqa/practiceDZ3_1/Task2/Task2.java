@@ -15,6 +15,8 @@ public class Task2 {
                         .setButtonName("Merion")
                                 .getButtonText();
 
+        System.out.println("text = " + text);
+
         driver.quit();
 
 
