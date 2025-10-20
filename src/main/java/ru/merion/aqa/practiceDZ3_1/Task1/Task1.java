@@ -10,7 +10,7 @@ public class Task1 {
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
 
-        AjaxPage = new AjaxPage(driver);
+        AjaxPage page = new AjaxPage(driver);
         page.open();
         page.clickTheButton();
         String content = page.getContent();
