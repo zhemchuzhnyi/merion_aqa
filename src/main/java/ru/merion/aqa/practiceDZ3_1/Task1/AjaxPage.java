@@ -19,6 +19,6 @@ public class AjaxPage {
         driver.findElement(By.cssSelector("#ajaxButton")).click();
     }
 
-    public String getContent() { return driver.findElement(By.cssSelector("#ajaxContent")).getText(); }
+    public String getContent() { return driver.findElement(By.cssSelector("#content p")).getText(); }
 
 }
