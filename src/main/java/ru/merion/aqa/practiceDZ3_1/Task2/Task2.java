@@ -3,7 +3,6 @@ package ru.merion.aqa.practiceDZ3_1.Task2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
 
