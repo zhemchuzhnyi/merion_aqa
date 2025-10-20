@@ -12,7 +12,7 @@ public class AjaxPage {
     }
 
     public void open() {
-        driver.get("http://uitestingplayground.com/textinput");
+        driver.get("http://uitestingplayground.com/ajax");
     }
 
     public void clickTheButton(){
