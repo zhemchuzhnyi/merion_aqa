@@ -8,24 +8,32 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
+
 public class CalculatorPage {
-    private f
-}
+    private final WebDriver driver;
 
-public CalculatoPage open() {
-    driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
-    WebElement keyboard = driver.findElement(By.cssSelector(".keys"));
-    return this;
-}
+    private WebElement keyboard;
 
-public void setDelay(int delay) {
-    river.findElement(By.cssSelector("#delay")).clear();
-    driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(delay));
-    this.delay = delay;
-}
+    private int delay = 0;
 
-public String getResult() {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(delay));
-    wait.until(invisibilityOfElementLocated(By.cssSelector("#spinner")));
-    return driver.findElement(By.ByCssSelector("#screen")).getText();
+    public CalculatorPage(WebDriver driver) {this.driver = driver;}
+
+    public CalculatorPage open() {
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
+        WebElement keyboard = driver.findElement(By.cssSelector(".keys"));
+        return this;
+    }
+
+    public void setDelay(int delay) {
+        driver.findElement(By.cssSelector("#delay")).clear();
+        driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(delay));
+        this.delay = delay;
+    }
+
+    public String getResult() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(delay));
+        wait.until(invisibilityOfElementLocated(By.cssSelector("#spinner")));
+        return driver.findElement(By.cssSelector("#screen")).getText();
+    }
 }
