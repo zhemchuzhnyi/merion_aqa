@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfElementsToBeMoreThan;
 
 public class ImageGalleryPage {
@@ -22,6 +23,7 @@ public class ImageGalleryPage {
 
     public ImageGalleryPage open() {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
+        wait.until(invisibilityOfElementLocated(By.cssSelector(("#spinner"))));
 
 
         return this;
