@@ -2,7 +2,6 @@ package ru.merion.aqa.practiceDZ3_1.Task5;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.merion.aqa.practiceDZ3.Task3.CalculatorPage;
 
 public class Task5 {
     public static void main(String[] args) {
@@ -19,6 +18,5 @@ public class Task5 {
         System.out.println(result);
 
         driver.quit();
-
     }
 }
