@@ -12,8 +12,8 @@ public class Task2 {
         WebDriver driver = new ChromeDriver();
         String text = new TextInputPage(driver)
                 .open()
-                        .setButtonName("Merion")
-                                .getButtonText();
+                .setButtonName("Merion")
+                .getButtonText();
 
         System.out.println("text = " + text);
 
