@@ -22,5 +22,11 @@ public class Task4 {
         String phone_bg = page.getCssProperty("#phone", "background-color");
         String email_bg = page.getCssProperty("#e-mail", "background-color");
         String zip_code_bg = page.getCssProperty("#zip-code", "background-color");
+
+        System.out.println(phone_bg);
+        System.out.println(email_bg);
+        System.out.println(zip_code_bg);
+
+        driver.quit();
     }
 }
