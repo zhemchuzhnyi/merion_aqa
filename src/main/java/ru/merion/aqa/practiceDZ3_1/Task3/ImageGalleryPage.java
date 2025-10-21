@@ -28,7 +28,7 @@ public class ImageGalleryPage {
     }
 
     public String getImageProperty(int imageIndex, String propertyName) {
-        List<WebElement> images = wait.until(numberOfElementsToBeMoreThan(By.cssSelector("#image-container img")), imageIndex);
+        List<WebElement> images = wait.until(numberOfElementsToBeMoreThan(By.cssSelector("#image-container img"), imageIndex));
         return images.get(imageIndex).getAttribute(propertyName);
 
 
