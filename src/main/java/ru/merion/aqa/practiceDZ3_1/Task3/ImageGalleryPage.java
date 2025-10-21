@@ -14,4 +14,13 @@ public class ImageGalleryPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
+
+    public ImageGalleryPage open() {
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
+
+
+        return this;
+    }
+
+
 }
