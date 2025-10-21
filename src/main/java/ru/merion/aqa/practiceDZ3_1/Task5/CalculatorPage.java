@@ -20,7 +20,7 @@ public class CalculatorPage {
 
     public CalculatorPage open() {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
-        this.keyboard = driver.findElement(By.cssSelector(".keys")); // Исправлено!
+        this.keyboard = driver.findElement(By.cssSelector(".keys"));
         return this;
     }
 
@@ -49,6 +49,6 @@ public class CalculatorPage {
     public String getResult() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(delay));
         wait.until(invisibilityOfElementLocated(By.cssSelector("#spinner")));
-        return driver.findElement(By.cssSelector("#screen")).getText();
+        return driver.findElement(By.cssSelector(".screen")).getText();
     }
 }
