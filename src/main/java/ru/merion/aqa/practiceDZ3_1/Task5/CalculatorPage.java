@@ -15,7 +15,7 @@ public class CalculatorPage {
 
     private WebElement keyboard;
 
-    private int delay = 0;
+    private int delay = 5;
 
     public CalculatorPage(WebDriver driver) {this.driver = driver;}
 
@@ -30,6 +30,11 @@ public class CalculatorPage {
         driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(delay));
         this.delay = delay;
     }
+
+    public void press_7() {keyboard.findElement(By.xpath("//*[text() = '7']")).click();}
+    public void press_plus() {keyboard.findElement(By.xpath("//*[text() = '+']")).click();}
+    public void press_8() {keyboard.findElement(By.xpath("//*[text() = '8']")).click();}
+    public void press_eq {keyboard.findElement(By.xpath("//*[text() = '=']")).click();}
 
     public String getResult() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(delay));
