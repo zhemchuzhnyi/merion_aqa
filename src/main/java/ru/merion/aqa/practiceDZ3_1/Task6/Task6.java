@@ -20,10 +20,8 @@ public class Task6 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
-        driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.cssSelector("#user-name")).sendKeys("standard_user");
-        driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
-        driver.findElement(By.cssSelector("#login-button")).click();
+        AuthPage auth = new AuthPage(driver).open();
+        auth.loginAs("standart_user","secret_sauce");
 
         List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item"));
 
