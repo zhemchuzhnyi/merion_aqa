@@ -14,6 +14,7 @@ public class Task6 {
     public static void main(String[] args) {
         AuthPage auth;
         CatalogPage catalog;
+        CartCheckoutPage cartCheckout;
 
         Set<String> itemNames = new HashSet<>();
         itemNames.add("Sauce Labs Backpack");
@@ -27,18 +28,7 @@ public class Task6 {
         catalog = auth.loginAs("standart_user","secret_sauce");
         catalog.addItems(itemNames);
 
-
-        driver.get("https://www.saucedemo.com/cart.html");
-        driver.findElement(By.cssSelector("#checkout")).click();
-
-        driver.findElement(By.cssSelector("#first-name")).sendKeys("Alex");
-        driver.findElement(By.cssSelector("#last-name")).sendKeys("Smith");
-        driver.findElement(By.cssSelector("#postal-code")).sendKeys("12345");
-
-        driver.findElement(By.cssSelector("#continue")).click();
-
-        String total = driver.findElement(By.cssSelector(".summary_total_label")).getText();
-        driver.quit();
+        cartCheckout = new CartCheckoutPage(driver).open();
 
         System.out.println("Результат: " + total);
 
