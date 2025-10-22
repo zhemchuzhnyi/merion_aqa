@@ -25,15 +25,8 @@ public class Task6 {
 
         auth = new AuthPage(driver).open();
         catalog = auth.loginAs("standart_user","secret_sauce");
+        catalog.addItems(itemNames);
 
-        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item"));
-
-        for (WebElement item : items) {
-            String productName =item.findElement(By.cssSelector(".inventory_item_name")).getText();
-            if (itemNames.contains(productName)) {
-                item.findElement(By.cssSelector("button")).click();
-            }
-        }
 
         driver.get("https://www.saucedemo.com/cart.html");
         driver.findElement(By.cssSelector("#checkout")).click();
