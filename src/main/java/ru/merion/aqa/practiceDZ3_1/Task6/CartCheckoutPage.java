@@ -14,15 +14,21 @@ public class CartCheckoutPage {
         return this;
     }
 
-    public void clickChekout() {
+    public CartCheckoutPage clickCheckout() {
         driver.findElement(By.cssSelector("#checkout")).click();
+        return this;
     }
 
-    public void setContactData(String firstName,String lastName, String zip) {
+    public CartCheckoutPage setContactData(String firstName,String lastName, String zip) {
         driver.findElement(By.cssSelector("#first-name")).sendKeys(firstName);
         driver.findElement(By.cssSelector("#last-name")).sendKeys(lastName);
         driver.findElement(By.cssSelector("#postal-code")).sendKeys(zip);
+        driver.findElement(By.cssSelector("#continue")).click();
+        return this;
     }
 
+    public String getTotalPrice() {
+        return driver.findElement(By.cssSelector(".summary_total_label")).getText();
+    }
 }
 

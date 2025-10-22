@@ -1,13 +1,10 @@
 package ru.merion.aqa.practiceDZ3_1.Task6;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Task6 {
@@ -28,16 +25,15 @@ public class Task6 {
         catalog = auth.loginAs("standart_user","secret_sauce");
         catalog.addItems(itemNames);
 
-        cartCheckout = new CartCheckoutPage(driver).open();
-        cartCheckout.clickChekout();
-        cartCheckout.setContactData("Иван","Иванов","1234567");
+        String total = new CartCheckoutPage(driver)
+                .open()
+                .clickCheckout()
+                .setContactData("Иван","Иванов","1234567")
+                .getTotalPrice();
 
-
+        driver.quit();
 
         System.out.println("Результат: " + total);
-
-
-
 
     }
 }
