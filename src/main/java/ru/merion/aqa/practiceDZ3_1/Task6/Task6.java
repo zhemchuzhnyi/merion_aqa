@@ -12,6 +12,9 @@ import java.util.Set;
 
 public class Task6 {
     public static void main(String[] args) {
+        AuthPage auth;
+        CatalogPage catalog;
+
         Set<String> itemNames = new HashSet<>();
         itemNames.add("Sauce Labs Backpack");
         itemNames.add("Sauce Labs Bolt T-Shirt");
@@ -20,8 +23,8 @@ public class Task6 {
         WebDriver driver = WebDriverFactory.create("chrome");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
-        AuthPage auth = new AuthPage(driver).open();
-        auth.loginAs("standart_user","secret_sauce");
+        auth = new AuthPage(driver).open();
+        catalog = auth.loginAs("standart_user","secret_sauce");
 
         List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item"));
 

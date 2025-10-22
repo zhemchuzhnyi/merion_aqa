@@ -15,10 +15,11 @@ public class AuthPage {
         return this;
     }
 
-    public void loginAs(String username, String password) {
+    public CatalogPage loginAs(String username, String password) {
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys(username);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
         driver.findElement(By.cssSelector("#login-button")).click();
+        return new CatalogPage(driver);
     }
 }
