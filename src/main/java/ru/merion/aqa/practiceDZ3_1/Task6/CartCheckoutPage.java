@@ -13,5 +13,16 @@ public class CartCheckoutPage {
         driver.get("https://www.saucedemo.com/cart.html");
         return this;
     }
+
+    public void clickChekout() {
+        driver.findElement(By.cssSelector("#checkout")).click();
+    }
+
+    public void setContactData(String firstName,String lastName, String zip) {
+        driver.findElement(By.cssSelector("#first-name")).sendKeys(firstName);
+        driver.findElement(By.cssSelector("#last-name")).sendKeys(lastName);
+        driver.findElement(By.cssSelector("#postal-code")).sendKeys(zip);
+    }
+
 }
 

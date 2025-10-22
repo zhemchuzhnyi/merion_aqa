@@ -29,6 +29,10 @@ public class Task6 {
         catalog.addItems(itemNames);
 
         cartCheckout = new CartCheckoutPage(driver).open();
+        cartCheckout.clickChekout();
+        cartCheckout.setContactData("Иван","Иванов","1234567");
+
+
 
         System.out.println("Результат: " + total);
 
