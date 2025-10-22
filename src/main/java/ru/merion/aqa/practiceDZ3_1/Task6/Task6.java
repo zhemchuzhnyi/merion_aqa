@@ -11,7 +11,6 @@ public class Task6 {
     public static void main(String[] args) {
         AuthPage auth;
         CatalogPage catalog;
-        CartCheckoutPage cartCheckout;
 
         Set<String> itemNames = new HashSet<>();
         itemNames.add("Sauce Labs Backpack");
