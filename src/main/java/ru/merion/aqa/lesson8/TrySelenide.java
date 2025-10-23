@@ -17,9 +17,9 @@ public class TrySelenide {
         open("http://uitestingplayground.com/textinput");
 
         $(By.cssSelector("#newButtonName")).val("Welcome!");
-        $(By.cssSelector("#newButtonName")).val(" To site!");
         $(By.cssSelector("#newButtonName")).press(Keys.chord(Keys.LEFT_SHIFT, Keys.ARROW_UP));
         $(By.cssSelector("#newButtonName")).press(Keys.BACK_SPACE);
+        $(By.cssSelector("#newButtonName")).setValue("Selenide");
         $(By.cssSelector("#updatingButton")).click();
 
     }
