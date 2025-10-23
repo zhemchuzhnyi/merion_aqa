@@ -2,8 +2,7 @@ package ru.merion.aqa.lesson8;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class LabirintScenarioSelenide {
     public static void main(String[] args) {
@@ -13,6 +12,8 @@ public class LabirintScenarioSelenide {
 
         open("https://www.labirint.ru/");
         $("#search-field").val("Java").pressEnter();
+
+        $$(".product-card").forEach(card -> card.find(".buy-link").click());
 
 
 
