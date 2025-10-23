@@ -24,7 +24,7 @@ public class LabirintScenarioSelenide {
                 .shouldHave(text(String.valueOf(cardsWithBuyButton.size())))
                 .click();
 
-        String price = $(".j-cart-count").text();
+        String price = $("#basket-default-sumprice-discount").text();
         System.out.println(price);
 
         Selenide.closeWebDriver();
