@@ -21,7 +21,7 @@ public class Task6 {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
         auth = new AuthPage(driver).open();
-        catalog = auth.loginAs("standart_user","secret_sauce");
+        catalog = auth.loginAs("standard_user","secret_sauce");
         catalog.addItems(itemNames);
 
         String total = new CartCheckoutPage(driver)

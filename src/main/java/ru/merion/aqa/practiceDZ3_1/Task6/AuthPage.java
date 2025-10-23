@@ -16,7 +16,6 @@ public class AuthPage {
     }
 
     public CatalogPage loginAs(String username, String password) {
-        driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys(username);
         driver.findElement(By.cssSelector("#password")).sendKeys(password);
         driver.findElement(By.cssSelector("#login-button")).click();
