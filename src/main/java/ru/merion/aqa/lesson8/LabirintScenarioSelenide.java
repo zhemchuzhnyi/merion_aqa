@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson8;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
 
@@ -19,8 +20,13 @@ public class LabirintScenarioSelenide {
         ElementsCollection cardsWithBuyButton = $$(".product-card:has(.buy-link)");
         cardsWithBuyButton.forEach(card -> card.find(".buy-link").click());
 
-        $(".j-cart-count").shouldHave(text(String.valueOf(cardsWithBuyButton.size())));
+        $(".j-cart-count").shouldHave(text(String.valueOf(cardsWithBuyButton.size())))
+                .shouldHave(text(String.valueOf(cardsWithBuyButton.size())))
+                .click();
 
+        String price = $(".j-cart-count").text();
+        System.out.println(price);
 
+        Selenide.closeWebDriver();
     }
 }
