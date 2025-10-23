@@ -1,4 +1,5 @@
 package ru.merion.aqa.lesson8;
+import com.codeborne.selenide.HighlightOptions;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -21,6 +22,8 @@ public class TrySelenide {
         $(By.cssSelector("#newButtonName")).press(Keys.BACK_SPACE);
         $(By.cssSelector("#newButtonName")).setValue("Selenide");
         $(By.cssSelector("#updatingButton")).click();
+
+        $(By.cssSelector("#newButtonName")).highlight(HighlightOptions.background());
 
     }
 }
