@@ -1,7 +1,10 @@
 package ru.merion.aqa.lesson8;
 import com.codeborne.selenide.HighlightOptions;
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+
+import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,9 +25,11 @@ public class TrySelenide {
         $(By.cssSelector("#newButtonName")).setValue("Selenide");
         $(By.cssSelector("#updatingButton")).click();
 
-        $(By.cssSelector("#updatingButton")).shouldHave(text("nide"));
+        $(By.cssSelector("#updatingButton")).shouldHave(exactText("Selenide"));
 
         $(By.cssSelector("#updatingButton")).highlight(HighlightOptions.background());
+
+        Selenide.closeWebDriver();
 
     }
 }
