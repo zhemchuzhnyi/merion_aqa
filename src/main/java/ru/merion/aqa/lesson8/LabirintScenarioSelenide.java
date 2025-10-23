@@ -12,7 +12,9 @@ public class LabirintScenarioSelenide {
         WebDriverRunner.getWebDriver().manage().addCookie(cookie);
 
         open("https://www.labirint.ru/");
-        $("#search-field").val("Java");
+        $("#search-field").val("Java").pressEnter();
+
+
 
 
 
