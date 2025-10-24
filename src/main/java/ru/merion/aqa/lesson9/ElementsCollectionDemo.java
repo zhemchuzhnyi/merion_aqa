@@ -30,6 +30,8 @@ public class ElementsCollectionDemo {
         List<String> javaBooks = cards.exclude(Condition.text("JavaScript")).texts();
         System.out.println(javaBooks.size());
 
+        List<String> names = $$(".product-card .product-card__name").texts();
+        System.out.println(names);
 
 
         Selenide.closeWebDriver();
