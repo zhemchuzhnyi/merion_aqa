@@ -17,7 +17,7 @@ public class ConfigDemo {
         Configuration.fastSetValue = true; // Быстрый ввод текста через JavaScript
         Configuration.baseUrl = "https://habr.com/ru"; // Базовый URL для всех относительных путей
 
-        open("https://habr.com/ru");
+        open("/ru");
         System.out.println(title());
 
         Selenide.closeWebDriver();
