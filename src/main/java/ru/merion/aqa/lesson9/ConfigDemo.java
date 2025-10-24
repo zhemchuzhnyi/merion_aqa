@@ -10,10 +10,11 @@ import static com.codeborne.selenide.Selenide.title;
 public class ConfigDemo {
 
     public static void main(String[] args) {
-        Configuration.timeout = 1000*8; // настройка ожидания (по умолчанию 4 сек)
-        Configuration.headless = true; // - не показывает интерфейс
-        Configuration.browser = "chrome"; // - настройка браузера
-        Configuration.assertionMode = AssertionMode.SOFT; // -
+        Configuration.timeout = 1000*8; // Таймаут ожидания элементов - 8 секунд
+        Configuration.headless = true; // Запуск браузера в фоновом режиме (без GUI)
+        Configuration.browser = "chrome"; // Использовать Chrome браузер
+        Configuration.assertionMode = AssertionMode.SOFT; // Продолжать тест после падения проверок
+        Configuration.fastSetValue = true; // Быстрый ввод текста через JavaScript
 
         open("https://habr.com/ru");
         System.out.println(title());
