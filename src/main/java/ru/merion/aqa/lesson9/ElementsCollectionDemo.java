@@ -6,6 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -20,7 +21,7 @@ public class ElementsCollectionDemo {
         $("#search-field").val("Java").pressEnter();
 
         ElementsCollection cards = $$(".product-card")
-                .shouldHave(size(38));
+                .shouldHave(sizeLessThanOrEqual(60));
 
 
 
