@@ -26,8 +26,9 @@ public class ElementsCollectionDemo {
         List<String> attributeValues = cards.attributes("data-product-id");
 
         List<String> jsBooks = cards.filter(Condition.text("JavaScript")).texts();
-        System.out.println(jsBooks.size());
-        System.out.println(jsBooks);
+
+        List<String> javaBooks = cards.exclude(Condition.text("JavaScript")).texts();
+        System.out.println(javaBooks.size());
 
 
 
