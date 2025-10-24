@@ -1,9 +1,6 @@
 package ru.merion.aqa.lesson9;
 
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
+import com.codeborne.selenide.*;
 import org.openqa.selenium.Cookie;
 
 import java.util.List;
@@ -27,7 +24,10 @@ public class ElementsCollectionDemo {
                 .shouldHave(sizeLessThanOrEqual(60));
 
         List<String> attributeValues = cards.attributes("data-product-id");
-        System.out.println(attributeValues);
+
+        List<String> jsBooks = cards.filter(Condition.text("JavaScript")).texts();
+        System.out.println(jsBooks.size());
+        System.out.println(jsBooks);
 
 
 
