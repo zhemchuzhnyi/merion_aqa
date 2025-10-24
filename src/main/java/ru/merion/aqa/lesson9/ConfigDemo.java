@@ -15,6 +15,7 @@ public class ConfigDemo {
         Configuration.browser = "chrome"; // Использовать Chrome браузер
         Configuration.assertionMode = AssertionMode.SOFT; // Продолжать тест после падения проверок
         Configuration.fastSetValue = true; // Быстрый ввод текста через JavaScript
+        Configuration.baseUrl = "https://habr.com/ru"; // Базовый URL для всех относительных путей
 
         open("https://habr.com/ru");
         System.out.println(title());
