@@ -2,8 +2,11 @@ package ru.merion.aqa.lesson9;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
+
+import java.util.List;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.CollectionCondition.sizeLessThanOrEqual;
@@ -22,6 +25,9 @@ public class ElementsCollectionDemo {
 
         ElementsCollection cards = $$(".product-card")
                 .shouldHave(sizeLessThanOrEqual(60));
+
+        List<String> attributeValues = cards.attributes("data-product-id");
+        System.out.println(attributeValues);
 
 
 
