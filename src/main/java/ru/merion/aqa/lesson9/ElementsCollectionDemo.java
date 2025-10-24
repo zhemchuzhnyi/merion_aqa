@@ -30,8 +30,17 @@ public class ElementsCollectionDemo {
         List<String> javaBooks = cards.exclude(Condition.text("JavaScript")).texts();
         System.out.println(javaBooks.size());
 
+        long start = System.currentTimeMillis();
         List<String> names = $$(".product-card .product-card__name").texts();
-        System.out.println(names);
+        System.out.println(System.currentTimeMillis() - start);
+
+        start = System.currentTimeMillis();
+        List<String> strings = cards.asDynamicIterable().stream()
+                .map(card -> card.find(".product-card__name"))
+                .filter(element -> element.exists())
+                .map(element -> element.text())
+                .toList();
+        System.out.println(System.currentTimeMillis() - start);
 
 
         Selenide.closeWebDriver();
