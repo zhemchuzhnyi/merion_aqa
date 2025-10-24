@@ -35,7 +35,7 @@ public class ElementsCollectionDemo {
         System.out.println(System.currentTimeMillis() - start);
 
         start = System.currentTimeMillis();
-        List<String> strings = cards.asDynamicIterable().stream()
+        List<String> strings = cards.asFixedIterable().stream()
                 .map(card -> card.find(".product-card__name"))
                 .filter(element -> element.exists())
                 .map(element -> element.text())
