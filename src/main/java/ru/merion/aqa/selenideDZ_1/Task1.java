@@ -21,6 +21,7 @@ public class Task1 {
 
         open("http://uitestingplayground.com/ajax");
         $(By.cssSelector("#ajaxButton")).click();
+        $(By.cssSelector(".bg-success")).
 
 
     }
