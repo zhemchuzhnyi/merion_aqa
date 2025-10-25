@@ -1,4 +1,7 @@
 package ru.merion.aqa.selenideDZ_1;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 /*
@@ -17,6 +20,8 @@ public class Task1 {
     public static void main(String[] args) {
 
         open("http://uitestingplayground.com/ajax");
+        $(By.cssSelector("#ajaxButton")).click();
+
 
     }
 }
