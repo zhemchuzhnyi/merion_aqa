@@ -25,7 +25,7 @@ public class Task1 {
 
         open("http://uitestingplayground.com/ajax");
         $(By.cssSelector("#ajaxButton")).click();
-        String text = $(By.cssSelector(".bg-success")).text();
+        String text = $(By.cssSelector("p")).text();
         System.out.println(text);
 
         Selenide.closeWebDriver();
