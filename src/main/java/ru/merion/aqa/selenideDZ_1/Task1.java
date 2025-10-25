@@ -3,8 +3,12 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static java.awt.SystemColor.text;
 
 /*
 Нажатие на кнопку
@@ -21,12 +25,10 @@ import static com.codeborne.selenide.Selenide.open;
 public class Task1 {
     public static void main(String[] args) {
 
-        Configuration.timeout = 15000;
-
         open("http://uitestingplayground.com/ajax");
         $(By.cssSelector("#ajaxButton")).click();
-        String text = $(By.cssSelector("p")).text();
-        System.out.println(text);
+        String content = $(By.cssSelector("#content p")).shouldBe(visible, Duration.ofSeconds(16)).getText();
+        System.out.println(content);
 
         Selenide.closeWebDriver();
 
