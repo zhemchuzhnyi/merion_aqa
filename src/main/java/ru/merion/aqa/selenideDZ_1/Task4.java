@@ -50,10 +50,13 @@ public class Task4 {
         $(By.cssSelector(".btn-outline-primary")).click();
 
         String zip = $(By.cssSelector("#zip-code")).getCssValue("background-color");
-        System.out.println(zip);
+        System.out.println("Цвет: " + zip);
 
         String mail = $(By.cssSelector("#e-mail")).getCssValue("background-color");
-        System.out.println(mail);
+        System.out.println("Цвет: " + mail);
+
+        String phone = $(By.cssSelector("#phone")).getCssValue("background-color");
+        System.out.println("Цвет: " + phone);
 
 
 
