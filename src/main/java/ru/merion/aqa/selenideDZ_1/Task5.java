@@ -20,26 +20,30 @@ package ru.merion.aqa.selenideDZ_1;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Task5 {
     public static void main(String[] args) {
         int timeout = 10;
         open("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
-        $(By.cssSelector("#delay")).clear();
-        $(By.cssSelector("#delay")).val(Integer.toString(timeout));
+        $(("#delay")).val(Integer.toString(timeout));
 
-        $(By.xpath("//*[text() = '7']")).click();
-        $(By.xpath("//*[text() = '+']")).click();
-        $(By.xpath("//*[text() = '8']")).click();
-        $(By.xpath("//*[text() = '=']")).click();
+        SelenideElement keyboard = $(".keys");
+
+        keyboard.$x(("*[text() = '7']")).click();
+        keyboard.$x(("*[text() = '+']")).click();
+        keyboard.$x(("*[text() = '8']")).click();
+        keyboard.$x(("*[text() = '=']")).click();
         
-        $(By.cssSelector("#spinner")).shouldBe(Condition.disappear);
+        $(("#spinner")).shouldNotBe(visible, Duration.ofSeconds(timeout+1));
+        String result = $((".screen")).text();
+        System.out.println("Результат: " + result);
 
         Selenide.closeWebDriver();
 
