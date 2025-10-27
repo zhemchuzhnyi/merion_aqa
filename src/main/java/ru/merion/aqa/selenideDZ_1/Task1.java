@@ -19,7 +19,6 @@ import static java.awt.SystemColor.text;
 Нажать на синюю кнопку
 Получить текст из зеленой плашки
 Вывести его в консоль (”Data loaded with AJAX get request.”)
-Переименовать кнопку
  */
 
 public class Task1 {
