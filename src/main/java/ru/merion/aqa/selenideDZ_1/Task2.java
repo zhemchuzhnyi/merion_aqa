@@ -21,6 +21,7 @@ public class Task2 {
         open("http://uitestingplayground.com/textinput");
         $(By.cssSelector(".form-control")).val("Merion");
         $(By.cssSelector(".btn-primary")).click();
+        String content = $(By.cssSelector(".btn-primary")).getText();
 
 
 
