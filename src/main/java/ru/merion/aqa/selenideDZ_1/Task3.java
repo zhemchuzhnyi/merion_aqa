@@ -12,6 +12,7 @@ src - у 3й картинки
 Вывести значение в консоль
  */
 
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
@@ -25,6 +26,7 @@ public class Task3 {
         open("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
         String picture = $(By.cssSelector("#award")).shouldBe(visible, Duration.ofSeconds(15)).getText();
         System.out.println(picture);
+        Selenide.closeWebDriver();
 
 
 
