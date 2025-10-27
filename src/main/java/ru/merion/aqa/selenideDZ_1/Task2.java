@@ -11,11 +11,18 @@ package ru.merion.aqa.selenideDZ_1;
 Получить текст кнопки и вывести в консоль (Merion)
  */
 
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class Task2 {
     public static void main(String[] args) {
         open("http://uitestingplayground.com/textinput");
+        $(By.cssSelector(".form-control")).val("Merion");
+
+
+
 
     }
 }
