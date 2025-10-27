@@ -13,11 +13,20 @@ src
 Вывести значение в консоль
  */
 
+import org.openqa.selenium.By;
+
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class Task3 {
     public static void main(String[] args) {
         open("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
+        String picture = $(By.cssSelector("#award")).shouldBe(visible, Duration.ofSeconds(15)).getText();
+
+
 
     }
 }
