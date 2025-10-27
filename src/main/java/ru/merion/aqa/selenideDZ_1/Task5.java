@@ -17,8 +17,11 @@ package ru.merion.aqa.selenideDZ_1;
 Дождаться результата. Вывести его в консоль.
  */
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -28,6 +31,13 @@ public class Task5 {
         open("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
         $(By.cssSelector("#delay")).clear();
         $(By.cssSelector("#delay")).val("10");
+
+        $(By.xpath("//*[text() = '7']")).click();
+        $(By.xpath("//*[text() = '+']")).click();
+        $(By.xpath("//*[text() = '8']")).click();
+        $(By.xpath("//*[text() = '=']")).click();
+        
+        String result = $(By.cssSelector("#spinner")).shouldBe(visibble, Duration.ofSeconds(10));
 
         Selenide.closeWebDriver();
 
