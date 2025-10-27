@@ -31,6 +31,7 @@ Phone
  (background-color)
  */
 
+import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -57,6 +58,8 @@ public class Task4 {
 
         String phone = $(By.cssSelector("#phone")).getCssValue("background-color");
         System.out.println("Цвет: " + phone);
+
+        Selenide.closeWebDriver();
 
 
 
