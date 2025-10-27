@@ -31,6 +31,12 @@ Phone
  (background-color)
  */
 
+import static com.codeborne.selenide.Selenide.open;
+
 public class Task4 {
-    public static void main(String[] args) {}
+    public static void main(String[] args) {
+
+        open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
+
+    }
 }
