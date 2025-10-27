@@ -41,13 +41,21 @@ public class Task4 {
 
         open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         $(By.cssSelector("[name = 'first-name']")).val("Иван");
-        $(By.cssSelector("[]")).val("");
-        $(By.cssSelector("[]")).val("");
-        $(By.cssSelector("[]")).val("");
-        $(By.cssSelector("[]")).val("");
-        $(By.cssSelector("[]")).val("");
-        $(By.cssSelector("[]")).val("");
-        $(By.cssSelector("[]")).val("");
+        $(By.cssSelector("[name = 'last-name']")).val("Петров");
+        $(By.cssSelector("[name = 'address']")).val("Ленина, 55-3");
+        $(By.cssSelector("[name = 'city']")).val("Москва");
+        $(By.cssSelector("[name = 'country']")).val("Россия");
+        $(By.cssSelector("[name = 'job-position']")).val("QA");
+        $(By.cssSelector("[name = 'company']")).val("Merion");
+        $(By.cssSelector(".btn-outline-primary")).click();
+
+        String zip = $(By.cssSelector("#zip-code")).getCssValue("background-color");
+        System.out.println(zip);
+
+        String mail = $(By.cssSelector("#e-mail")).getCssValue("background-color");
+        System.out.println(mail);
+
+
 
     }
 }
