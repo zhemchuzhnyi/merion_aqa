@@ -8,8 +8,7 @@ package ru.merion.aqa.selenideDZ_1;
 Перейти на сайт https://bonigarcia.dev/selenium-webdriver-java/loading-images.html
 Дождаться загрузки 3й картинки
 Получить значение атрибута
-src
- у 3й картинки
+src - у 3й картинки
 Вывести значение в консоль
  */
 
@@ -25,6 +24,8 @@ public class Task3 {
     public static void main(String[] args) {
         open("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
         String picture = $(By.cssSelector("#award")).shouldBe(visible, Duration.ofSeconds(15)).getText();
+        System.out.println(picture);
+
 
 
 
