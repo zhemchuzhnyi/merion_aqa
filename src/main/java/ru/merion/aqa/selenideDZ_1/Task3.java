@@ -24,8 +24,8 @@ import static com.codeborne.selenide.Selenide.open;
 public class Task3 {
     public static void main(String[] args) {
         open("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
-        String picture = $(By.cssSelector("#award")).shouldBe(visible, Duration.ofSeconds(15)).getText();
-        System.out.println(picture);
+        String picture = $(By.cssSelector("#award")).shouldBe(visible, Duration.ofSeconds(15)).getAttribute("src");
+        System.out.println("Атрибут картинки: " + picture);
         Selenide.closeWebDriver();
 
 
