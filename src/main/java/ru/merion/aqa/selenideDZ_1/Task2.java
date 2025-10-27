@@ -22,10 +22,6 @@ public class Task2 {
         $(By.cssSelector(".form-control")).val("Merion");
         $(By.cssSelector(".btn-primary")).click();
         String content = $(By.cssSelector(".btn-primary")).getText();
-
-
-
-
-
+        System.out.println(content);
     }
 }
