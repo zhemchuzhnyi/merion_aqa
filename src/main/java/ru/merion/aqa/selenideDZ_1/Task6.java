@@ -52,6 +52,10 @@ public class Task6 {
             }
         });
 
+        open("https://www.saucedemo.com/cart.html");
+        $("#checkout").click();
+
+
 
 
 
