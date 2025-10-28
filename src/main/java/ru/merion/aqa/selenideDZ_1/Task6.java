@@ -25,7 +25,6 @@ Total
  */
 
 import com.codeborne.selenide.Selenide;
-import java.util.HashSet;
 import java.util.Set;
 
 import static com.codeborne.selenide.Selenide.*;
