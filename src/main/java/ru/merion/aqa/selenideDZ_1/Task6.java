@@ -24,10 +24,7 @@ Total
 Вывести в консоль итоговую стоимость `
  */
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,10 +32,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class Task6 {
     public static void main(String[] args) {
-        Set<String> itemNames = new HashSet<>();
-        itemNames.add("Sauce Labs Backpack");
-        itemNames.add("Sauce Labs Bolt T-Shirt");
-        itemNames.add("Sauce Labs Onesie");
+        Set<String> itemNames = Set.of("Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt", "Sauce Labs Onesie");
 
         open("https://www.saucedemo.com/");
         $(("#user-name")).val("standard_user");
