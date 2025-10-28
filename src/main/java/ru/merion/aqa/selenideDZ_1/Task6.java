@@ -58,9 +58,10 @@ public class Task6 {
         $("#first-name").val("Ivan");
         $("#last-name").val("Ivanov");
         $("#postal-code").val("12345");
+        $("#continue").click();
 
-
-
+        String total = $(".summary_total_label").getText();
+        System.out.println("Total : " + total);
 
 
         Selenide.closeWebDriver();
