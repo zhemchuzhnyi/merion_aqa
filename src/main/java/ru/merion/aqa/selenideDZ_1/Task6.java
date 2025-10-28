@@ -24,13 +24,18 @@ Total
 Вывести в консоль итоговую стоимость `
  */
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 import java.util.Set;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class Task6 {
     public static void main(String[] args) {
+        Configuration.browserCapabilities = new ChromeOptions().addArguments("--guest");
+
         Set<String> itemNames = Set.of("Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt", "Sauce Labs Onesie");
 
         open("https://www.saucedemo.com/");
