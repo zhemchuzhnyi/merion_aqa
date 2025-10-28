@@ -14,13 +14,8 @@ src - у 3й картинки
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
-
 import java.time.Duration;
-
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Task3 {
