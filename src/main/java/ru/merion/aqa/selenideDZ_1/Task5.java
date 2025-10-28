@@ -17,12 +17,8 @@ package ru.merion.aqa.selenideDZ_1;
 Дождаться результата. Вывести его в консоль.
  */
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
-
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
