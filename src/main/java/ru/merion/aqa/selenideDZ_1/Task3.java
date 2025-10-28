@@ -19,6 +19,7 @@ import org.openqa.selenium.By;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -27,10 +28,7 @@ public class Task3 {
 
         open("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
 
-        SelenideElement spinner = $("#spinner");
-        spinner.shouldNotBe(visible, Duration.ofSeconds(10));
-
-        ElementsCollection images = $$("#image-container img");
+        ElementsCollection images = $$("#image-container img").shouldHave(sizeGreaterThan(2), Duration.ofSeconds(10));
         String src = images.get(2).attr("src");
 
         System.out.println("Атрибут картинки: " + src);
