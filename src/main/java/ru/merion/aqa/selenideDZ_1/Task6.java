@@ -31,8 +31,7 @@ import org.openqa.selenium.By;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Task6 {
     public static void main(String[] args) {
@@ -45,6 +44,14 @@ public class Task6 {
         $(("#user-name")).val("standard_user");
         $(("#password")).val("secret_sauce");
         $(("#login-button")).click();
+
+        $$(".inventory_item").forEach(item -> {
+            String productName = item.find(".inventory_item_name").text();
+            if (itemNames.contains(productName)) {
+                item.find("button").click();
+            }
+        });
+
 
 
 
