@@ -24,13 +24,20 @@ Total
 Вывести в консоль итоговую стоимость `
  */
 
+import com.codeborne.selenide.Selenide;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class Task6 {
     public static void main(String[] args) {
 
         open("https://www.saucedemo.com/");
+        $(By.cssSelector("#user-name")).val("standard_user");
+        $(By.cssSelector("#password")).val("secret_sauce");
+        $(By.cssSelector("#login-button")).click();
 
-
+        Selenide.closeWebDriver();
     }
 }
