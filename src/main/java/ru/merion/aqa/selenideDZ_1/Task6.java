@@ -42,8 +42,8 @@ public class Task6 {
         itemNames.add("Sauce Labs Onesie");
 
         open("https://www.saucedemo.com/");
-        $(("#user-name")).setValue("standard_user");
-        $(("#password")).setValue("secret_sauce");
+        $(("#user-name")).val("standard_user");
+        $(("#password")).val("secret_sauce");
         $(("#login-button")).click();
 
 
