@@ -32,8 +32,6 @@ Phone
  */
 
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -41,22 +39,22 @@ public class Task4 {
     public static void main(String[] args) {
 
         open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
-        $(By.cssSelector("[name = 'first-name']")).val("Иван");
-        $(By.cssSelector("[name = 'last-name']")).val("Петров");
-        $(By.cssSelector("[name = 'address']")).val("Ленина, 55-3");
-        $(By.cssSelector("[name = 'city']")).val("Москва");
-        $(By.cssSelector("[name = 'country']")).val("Россия");
-        $(By.cssSelector("[name = 'job-position']")).val("QA");
-        $(By.cssSelector("[name = 'company']")).val("Merion");
-        $(By.cssSelector(".btn-outline-primary")).click();
+        $(("[name = 'first-name']")).val("Иван");
+        $(("[name = 'last-name']")).val("Петров");
+        $(("[name = 'address']")).val("Ленина, 55-3");
+        $(("[name = 'city']")).val("Москва");
+        $(("[name = 'country']")).val("Россия");
+        $(("[name = 'job-position']")).val("QA");
+        $(("[name = 'company']")).val("Merion");
+        $((".btn-outline-primary")).click();
 
-        String zip = $(By.cssSelector("#zip-code")).getCssValue("background-color");
+        String zip = $(("#zip-code")).getCssValue("background-color");
         System.out.println("Цвет: " + zip);
 
-        String mail = $(By.cssSelector("#e-mail")).getCssValue("background-color");
+        String mail = $(("#e-mail")).getCssValue("background-color");
         System.out.println("Цвет: " + mail);
 
-        String phone = $(By.cssSelector("#phone")).getCssValue("background-color");
+        String phone = $(("#phone")).getCssValue("background-color");
         System.out.println("Цвет: " + phone);
 
         Selenide.closeWebDriver();
