@@ -12,6 +12,7 @@ package ru.merion.aqa.selenideDZ_1;
  */
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -19,11 +20,15 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class Task2 {
     public static void main(String[] args) {
+        SelenideElement button = $(("#updatingButton"));
+
         open("http://uitestingplayground.com/textinput");
-        $(By.cssSelector(".form-control")).val("Merion");
-        $(By.cssSelector(".btn-primary")).click();
+
+        $(("#newButtonName")).val("Merion");
+        button.click();
         String content = $(By.cssSelector(".btn-primary")).getText();
         System.out.println(content);
+
         Selenide.closeWebDriver();
     }
 }
