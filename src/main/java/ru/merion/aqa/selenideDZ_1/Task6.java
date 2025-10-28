@@ -61,7 +61,7 @@ public class Task6 {
         $("#continue").click();
 
         String total = $(".summary_total_label").getText();
-        System.out.println("Total : " + total);
+        System.out.println(total);
 
 
         Selenide.closeWebDriver();
