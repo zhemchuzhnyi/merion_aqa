@@ -55,6 +55,10 @@ public class Task6 {
         open("https://www.saucedemo.com/cart.html");
         $("#checkout").click();
 
+        $("#first-name").val("Ivan");
+        $("#last-name").val("Ivanov");
+        $("#postal-code").val("12345");
+
 
 
 
