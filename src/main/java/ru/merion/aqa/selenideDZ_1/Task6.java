@@ -24,8 +24,13 @@ Total
 Вывести в консоль итоговую стоимость `
  */
 
+import static com.codeborne.selenide.Selenide.open;
+
 public class Task6 {
     public static void main(String[] args) {
+
+        open("https://www.saucedemo.com/");
+
 
     }
 }
