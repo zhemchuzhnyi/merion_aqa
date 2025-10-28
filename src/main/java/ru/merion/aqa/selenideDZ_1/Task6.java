@@ -41,13 +41,12 @@ public class Task6 {
         itemNames.add("Sauce Labs Bolt T-Shirt");
         itemNames.add("Sauce Labs Onesie");
 
-        Configuration.browser = "chrome";
-        Configuration.timeout = 40000;
-
         open("https://www.saucedemo.com/");
-        $(By.cssSelector("#user-name")).val("standard_user");
-        $(By.cssSelector("#password")).val("secret_sauce");
-        $(By.cssSelector("#login-button")).click();
+        $(("#user-name")).setValue("standard_user");
+        $(("#password")).setValue("secret_sauce");
+        $(("#login-button")).click();
+
+
 
         Selenide.closeWebDriver();
     }
