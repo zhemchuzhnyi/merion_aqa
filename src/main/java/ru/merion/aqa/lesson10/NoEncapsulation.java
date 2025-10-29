@@ -4,14 +4,16 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.Cookie;
+import ru.merion.aqa.lesson10.midlevel_page.MainPage;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class NoEncapsulation {
     public static void main(String[] args) {
-        open("https://www.labirint.ru/");
-        Cookie cookie = new Cookie("cookie_policy", "1");
-        WebDriverRunner.getWebDriver().manage().addCookie(cookie);
+
+        MainPage main = new MainPage();
+        main.open();
 
         open("https://www.labirint.ru/");
         $("#search-field").val("Java").pressEnter();
