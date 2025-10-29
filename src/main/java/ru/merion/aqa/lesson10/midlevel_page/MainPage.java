@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class MainPage {
 
     public void open() {
-        Selenide.open("https://www.labirint.ru/");
+        Selenide.open("/");
         Cookie cookie = new Cookie("cookie_policy", "1");
         WebDriverRunner.getWebDriver().manage().addCookie(cookie);
 
