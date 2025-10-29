@@ -5,6 +5,6 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CartPage {
-    public SelenideElement getCartPrice() {return $("#basket-default-sumprice-discount");}
+    public SelenideElement getCartPrice() {return $("#j-cart-count");}
 
 }
