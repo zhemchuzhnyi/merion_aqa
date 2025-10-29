@@ -1,25 +1,20 @@
 package ru.merion.aqa.lesson10.midlevel_page;
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
-import org.openqa.selenium.Cookie;
-
+import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage {
+    private final SelenideElement searchField = $("#search-field");
 
-    public void open() {
+    public MainPage open() {
         Selenide.open("/");
-        Cookie cookie = new Cookie("cookie_policy", "1");
-        WebDriverRunner.getWebDriver().manage().addCookie(cookie);
-
-        Selenide.open("/");
+        return this;
     }
 
-    public void searchFor(String term) {
-        $("#search-field").val(term).pressEnter();
+    public ResultPage searchFor(String query) {
+        searchField.val(query).pressEnter();
+        return new ResultPage();
     }
-
-
 }
