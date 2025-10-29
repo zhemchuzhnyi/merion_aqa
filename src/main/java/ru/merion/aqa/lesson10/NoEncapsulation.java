@@ -14,16 +14,7 @@ public class NoEncapsulation {
 
         MainPage main = new MainPage();
         main.open();
-
-        open("https://www.labirint.ru/");
-        $("#search-field").val("Java").pressEnter();
-
-        ElementsCollection cardsWithBuyButton = $$(".product-card:has(.buy-link)");
-        cardsWithBuyButton.forEach(card -> card.find(".buy-link").click());
-
-        $(".j-cart-count").shouldHave(text(String.valueOf(cardsWithBuyButton.size())))
-                .shouldHave(text(String.valueOf(cardsWithBuyButton.size())))
-                .click();
+        main.searchFor("Java");
 
         String price = $("#basket-default-sumprice-discount").text();
         System.out.println(price);

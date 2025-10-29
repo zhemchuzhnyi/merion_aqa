@@ -17,7 +17,9 @@ public class MainPage {
         Selenide.open("/");
     }
 
-    public void search(String term) {
+    public void searchFor(String term) {
         $("#search-field").val(term).pressEnter();
     }
+
+
 }
