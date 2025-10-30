@@ -6,18 +6,20 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CartPage {
-    private final SelenideElement totalPrice = $("#basket-default-sumprice-discount");
+    public String totalPrice() {
+        return $("#basket-default-sumprice-discount").text();
+    }
 
     public CartPage open() {
         Selenide.open("/cart/");
         return this;
     }
 
-    public SelenideElement getCartPrice() {
-        return totalPrice;
+    public getCartPrice open() {
+        return getCartPrice;
     }
 
-    public String getTotalPrice() {
+    public getTotalPrice open() {
         return totalPrice.text();
     }
 }
