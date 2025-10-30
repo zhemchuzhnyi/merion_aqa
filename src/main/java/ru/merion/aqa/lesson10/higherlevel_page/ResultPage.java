@@ -7,7 +7,7 @@ import java.util.List;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ResultPage extends BasePage {
-    private final ElementsCollection cards = $$(".product-card");
+    private final ElementsCollection cards = $$(".product-card:has(.btn-tocart.buy-link)");
 
     public void addAllItemsToCart() {
         List<CardElement> cardsList = cards.asDynamicIterable().stream().map(CardElement::new).toList();
