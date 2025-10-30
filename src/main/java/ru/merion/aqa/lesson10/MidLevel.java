@@ -8,7 +8,7 @@ import ru.merion.aqa.lesson10.midlevel_page.CartPage;
 import ru.merion.aqa.lesson10.midlevel_page.MainPage;
 import ru.merion.aqa.lesson10.midlevel_page.ResultPage;
 
-public class NoEncapsulation {
+public class MidLevel {
     public static void main(String[] args) {
         Configuration.baseUrl = "https://www.labirint.ru";
 
