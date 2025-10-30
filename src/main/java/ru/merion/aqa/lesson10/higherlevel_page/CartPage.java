@@ -5,21 +5,14 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CartPage {
-    public String totalPrice() {
-        return $("#basket-default-sumprice-discount").text();
+public class CartPage extends BasePage{
+    private final SelenideElement cartIcon = $("#basket-default-sumprice-discount");
+    public String getCartPrice() {
+        return cartIcon.text();
     }
 
     public CartPage open() {
-        Selenide.open("/cart/");
+        Selenide.open("/cart");
         return this;
-    }
-
-    public getCartPrice open() {
-        return getCartPrice;
-    }
-
-    public getTotalPrice open() {
-        return totalPrice.text();
     }
 }
