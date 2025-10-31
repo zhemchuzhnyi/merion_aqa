@@ -1,4 +1,4 @@
-package ru.merion.aqa.selenideDZ_2_Page;
+package ru.merion.aqa.selenideDZ_2_Page.Task6;
 
 /*
 Напишите скрипт для работы с интернет-магазином. Шаги
