@@ -1,4 +1,4 @@
-package ru.merion.aqa.practiceDZ3_1.Task6;
+package ru.merion.aqa.practiceDZ3_1_WebDriver_Page.Task6;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
