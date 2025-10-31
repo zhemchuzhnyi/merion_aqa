@@ -1,4 +1,4 @@
-package ru.merion.aqa.selenideDZ_2_Page;
+package ru.merion.aqa.selenideDZ_2_Page.Task4;
 
 /*
 Скрипт заполнения формы
