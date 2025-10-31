@@ -1,4 +1,4 @@
-package ru.merion.aqa.selenideDZ_2_Page;
+package ru.merion.aqa.selenideDZ_2_Page.Task1;
 
 /*
 Нажатие на кнопку
@@ -16,5 +16,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class Task1 {
     public static void main(String[] args) {
         open("http://uitestingplayground.com/ajax");
+
     }
 }
