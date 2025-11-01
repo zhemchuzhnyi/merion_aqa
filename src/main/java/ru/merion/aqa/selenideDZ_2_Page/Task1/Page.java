@@ -20,6 +20,5 @@ public class Page {
 
     public String getAjaxLoadedText() {
         return ajaxContent.getText();
-        Selenide.closeWebDriver();
     }
 }

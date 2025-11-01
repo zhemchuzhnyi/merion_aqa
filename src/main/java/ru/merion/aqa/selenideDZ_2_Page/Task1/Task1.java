@@ -28,5 +28,6 @@ public class Task1 {
         String content = $(By.cssSelector("#content p")).shouldBe(visible, Duration.ofSeconds(16)).getText();
         System.out.println(content);
         Selenide.closeWebDriver();
+        Selenide.closeWebDriver();
     }
 }
