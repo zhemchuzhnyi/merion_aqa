@@ -2,6 +2,8 @@ package ru.merion.aqa.selenideDZ_2_Page.Task1;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.$;
+
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 public class Page {
@@ -18,5 +20,6 @@ public class Page {
 
     public String getAjaxLoadedText() {
         return ajaxContent.getText();
+        Selenide.closeWebDriver();
     }
 }
