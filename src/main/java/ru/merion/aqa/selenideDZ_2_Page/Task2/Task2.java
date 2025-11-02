@@ -11,11 +11,15 @@ package ru.merion.aqa.selenideDZ_2_Page.Task2;
 Получить текст кнопки и вывести в консоль (Merion)
  */
 
+import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class Task2 {
     public static void main(String[] args) {
+        SelenideElement button = $(("#updatingButton"));
+
         open("http://uitestingplayground.com/textinput");
         $(".form-control").val("Merion");
         $(".form-control").click();
