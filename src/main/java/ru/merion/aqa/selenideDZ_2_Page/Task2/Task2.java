@@ -19,5 +19,7 @@ public class Task2 {
         open("http://uitestingplayground.com/textinput");
         $(".form-control").val("Merion");
         $(".form-control").click();
+        String content = $(".form-control").getText();
+        System.out.println(content);
     }
 }
