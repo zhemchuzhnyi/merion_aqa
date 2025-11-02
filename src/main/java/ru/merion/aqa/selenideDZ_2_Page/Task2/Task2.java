@@ -11,6 +11,7 @@ package ru.merion.aqa.selenideDZ_2_Page.Task2;
 Получить текст кнопки и вывести в консоль (Merion)
  */
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -25,5 +26,6 @@ public class Task2 {
         button.click();
         String content = $(".form-control").getText();
         System.out.println(content);
+        Selenide.closeWebDriver();
     }
 }
