@@ -26,6 +26,7 @@ public class Task2 {
         button.click();
         String content = $(".form-control").getText();
         System.out.println(content);
+
         Selenide.closeWebDriver();
     }
 }
