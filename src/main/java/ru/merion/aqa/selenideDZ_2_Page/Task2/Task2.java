@@ -18,5 +18,6 @@ public class Task2 {
     public static void main(String[] args) {
         open("http://uitestingplayground.com/textinput");
         $(".form-control").val("Merion");
+        $(".form-control").click();
     }
 }
