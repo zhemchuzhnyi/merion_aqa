@@ -17,10 +17,12 @@ package ru.merion.aqa.selenideDZ_2_Page.Task5;
 Дождаться результата. Вывести его в консоль.
  */
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class Task5 {
     public static void main(String[] args) {
         open("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
+        $("");
     }
 }
