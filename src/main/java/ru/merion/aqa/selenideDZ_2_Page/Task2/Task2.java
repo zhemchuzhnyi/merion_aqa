@@ -12,20 +12,16 @@ package ru.merion.aqa.selenideDZ_2_Page.Task2;
  */
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class Task2 {
     public static void main(String[] args) {
-        SelenideElement button = $(("#updatingButton"));
 
-        open("http://uitestingplayground.com/textinput");
-        $(".form-control").val("Merion");
-        button.click();
-        String content = $(".form-control").getText();
-        System.out.println(content);
+        AuthPage authPage = new AuthPage();
+        authPage.open();
+        authPage.setForm();
+        authPage.clickButton();
+        System.out.println("content = " + authPage.getText());
 
         Selenide.closeWebDriver();
     }

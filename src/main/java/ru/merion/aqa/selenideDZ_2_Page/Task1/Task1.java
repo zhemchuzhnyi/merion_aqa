@@ -23,7 +23,6 @@ public class Task1 {
         page.open();
         page.clickTheButton();
 
-
         System.out.println("content = " + page.getContent());
         Selenide.closeWebDriver();
 
