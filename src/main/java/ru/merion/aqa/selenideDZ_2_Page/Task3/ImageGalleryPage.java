@@ -2,13 +2,7 @@ package ru.merion.aqa.selenideDZ_2_Page.Task3;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
-
-import java.time.Duration;
-import java.util.Collection;
-
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ImageGalleryPage {
