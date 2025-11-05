@@ -14,7 +14,6 @@ src - у 3й картинки
 
 import com.codeborne.selenide.Selenide;
 
-
 public class Task3 {
     public static void main(String[] args) {
         ImageGalleryPage gallery = new ImageGalleryPage().open();
