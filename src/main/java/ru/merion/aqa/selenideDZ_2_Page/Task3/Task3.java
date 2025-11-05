@@ -12,23 +12,13 @@ src - у 3й картинки
 Вывести значение в консоль
  */
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class Task3 {
     public static void main(String[] args) {
-
-        open("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
-
-        ElementsCollection images = $$("#image-container img").shouldHave(sizeGreaterThan(2), Duration.ofSeconds(10));
-        String src = images.get(2).attr("src");
-
+        ImageGalleryPage gallery = new ImageGalleryPage().open();
+        String src = gallery.getImageProperty(2, "src");
         System.out.println("Атрибут картинки: " + src);
 
         Selenide.closeWebDriver();
