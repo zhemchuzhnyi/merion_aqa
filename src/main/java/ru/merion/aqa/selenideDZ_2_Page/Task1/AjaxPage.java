@@ -5,8 +5,8 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 public class AjaxPage {
-    private final SelenideElement button = $("ajaxButton");
-    private final SelenideElement content = $("content p");
+    private final SelenideElement button = $("#ajaxButton");
+    private final SelenideElement content = $("#content p");
 
     public void open() {
         Selenide.open("http://uitestingplayground.com/ajax");
