@@ -14,6 +14,10 @@ public class Page {
     private final SelenideElement job = $(("[name = 'job-position']"));
     private final SelenideElement company = $(("[name = 'company']"));
     private final SelenideElement button = $((".btn-outline-primary"));
+    private final SelenideElement zip = $(("#zip-code")).getCssValue("background-color");
+    private final SelenideElement mail = $(("#e-mail")).getCssValue("background-color");
+    private final SelenideElement phone = $(("#phone")).getCssValue("background-color");
+
 
     public void open(){
         Selenide.open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
