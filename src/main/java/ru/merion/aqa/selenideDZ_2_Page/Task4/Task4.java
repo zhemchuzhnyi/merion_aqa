@@ -38,9 +38,9 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class Task4 {
     public static void main(String[] args) {
-
-
-        $((".btn-outline-primary")).click();
+        Page page = new Page();
+        page.open();
+        page.
 
         String zip = $(("#zip-code")).getCssValue("background-color");
         System.out.println("Цвет: " + zip);

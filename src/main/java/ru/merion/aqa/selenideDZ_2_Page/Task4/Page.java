@@ -22,10 +22,4 @@ public class Page {
     public void clickButton(){
         button.click();
     }
-
-
-
-
-
-
 }
