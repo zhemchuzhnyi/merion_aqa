@@ -1,5 +1,10 @@
 package ru.merion.aqa.selenideDZ_2_Page.Task4;
 
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selenide.$;
+
 public class Page {
+    private final SelenideElement first = $(("[name = 'first-name']")).val("Иван");
 
 }
