@@ -33,8 +33,6 @@ Phone
 
 import com.codeborne.selenide.Selenide;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class Task4 {
     public static void main(String[] args) {
         Page page = new Page();
