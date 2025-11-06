@@ -17,7 +17,6 @@ public class Page {
 
     public void open(){
         Selenide.open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
-
     }
 
     public void clickButton(){
