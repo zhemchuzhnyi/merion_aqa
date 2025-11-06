@@ -42,14 +42,9 @@ public class Task4 {
         page.setForm();
         page.clickButton();
 
-        String zip = $(("#zip-code")).getCssValue("background-color");
-        System.out.println("Цвет: " + zip);
-
-        String mail = $(("#e-mail")).getCssValue("background-color");
-        System.out.println("Цвет: " + mail);
-
-        String phone = $(("#phone")).getCssValue("background-color");
-        System.out.println("Цвет: " + phone);
+        System.out.println("Цвет: " + page.getZipCss());
+        System.out.println("Цвет: " + page.getMailCss());
+        System.out.println("Цвет: " + page.getPhoneCss());
 
         Selenide.closeWebDriver();
     }
