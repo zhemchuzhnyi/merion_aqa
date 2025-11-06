@@ -1,5 +1,6 @@
 package ru.merion.aqa.selenideDZ_2_Page.Task4;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -12,6 +13,11 @@ public class Page {
     private final SelenideElement country = $(("[name = 'country']")).val("Россия");
     private final SelenideElement job = $(("[name = 'job-position']")).val("QA");
     private final SelenideElement company = $(("[name = 'company']")).val("Merion");
+
+    public void open(){
+        Selenide.open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
+
+    }
 
 
 

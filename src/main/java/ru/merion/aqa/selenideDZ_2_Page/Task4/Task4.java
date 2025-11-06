@@ -40,7 +40,6 @@ public class Task4 {
     public static void main(String[] args) {
         open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
 
-        $(("[name = 'company']")).val("Merion");
         $((".btn-outline-primary")).click();
 
         String zip = $(("#zip-code")).getCssValue("background-color");
