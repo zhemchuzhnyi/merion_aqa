@@ -11,6 +11,8 @@ public class Page {
     private final SelenideElement city = $(("[name = 'city']")).val("Москва");
     private final SelenideElement country = $(("[name = 'country']")).val("Россия");
     private final SelenideElement job = $(("[name = 'job-position']")).val("QA");
+    private final SelenideElement company = $(("[name = 'company']")).val("Merion");
+
 
 
 
