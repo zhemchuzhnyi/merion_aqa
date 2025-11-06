@@ -10,9 +10,9 @@ public class Page {
     private final SelenideElement last = $(("[name = 'last-name']"));
     private final SelenideElement address = $(("[name = 'address']"));
     private final SelenideElement city = $(("[name = 'city']"));
-    private final SelenideElement country = $(("[name = 'country']")).val("Россия");
-    private final SelenideElement job = $(("[name = 'job-position']")).val("QA");
-    private final SelenideElement company = $(("[name = 'company']")).val("Merion");
+    private final SelenideElement country = $(("[name = 'country']"));
+    private final SelenideElement job = $(("[name = 'job-position']"));
+    private final SelenideElement company = $(("[name = 'company']"));
     private final SelenideElement button = $((".btn-outline-primary"));
 
     public void open(){
@@ -24,8 +24,9 @@ public class Page {
         last.val("Петров");
         address.val("Ленина, 55-3");
         city.val("Москва");
-
-
+        country.val("Россия");
+        job.val("QA");
+        company.val("Merion");
     }
 
     public void clickButton(){
