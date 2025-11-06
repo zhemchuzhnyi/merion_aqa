@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Selenide.$;
 public class Page {
     private final SelenideElement first = $(("[name = 'first-name']"));
     private final SelenideElement last = $(("[name = 'last-name']"));
-    private final SelenideElement address = $(("[name = 'address']")).val("Ленина, 55-3");
-    private final SelenideElement city = $(("[name = 'city']")).val("Москва");
+    private final SelenideElement address = $(("[name = 'address']"));
+    private final SelenideElement city = $(("[name = 'city']"));
     private final SelenideElement country = $(("[name = 'country']")).val("Россия");
     private final SelenideElement job = $(("[name = 'job-position']")).val("QA");
     private final SelenideElement company = $(("[name = 'company']")).val("Merion");
@@ -22,6 +22,9 @@ public class Page {
     public void setForm(){
         first.val("Иван");
         last.val("Петров");
+        address.val("Ленина, 55-3");
+        city.val("Москва");
+
 
     }
 
