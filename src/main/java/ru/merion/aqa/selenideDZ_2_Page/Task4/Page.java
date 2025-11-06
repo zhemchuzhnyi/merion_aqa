@@ -37,9 +37,15 @@ public class Page {
         button.click();
     }
 
-    public String getCss(){
+    public String getZipCss(){
         return zip.getCssValue("background-color");
-        return mail.getCssValue("background-color");
 
+    }
+    public String getMailCss(){
+        return mail.getCssValue("background-color");
+    }
+
+    public String getPhoneCss(){
+        return phone.getCssValue("background-color");
     }
 }
