@@ -6,5 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Page {
     private final SelenideElement first = $(("[name = 'first-name']")).val("Иван");
+    private final SelenideElement last = $(("[name = 'last-name']")).val("Петров");
+
 
 }
