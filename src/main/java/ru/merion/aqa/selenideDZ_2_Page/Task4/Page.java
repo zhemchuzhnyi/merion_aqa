@@ -38,8 +38,8 @@ public class Page {
     }
 
     public String getCss(){
-        zip.val("background-color");
-        mail.val("background-color");
-        phone.val("background-color");
+        return zip.getCssValue("background-color");
+        return mail.getCssValue("background-color");
+
     }
 }
