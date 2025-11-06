@@ -14,9 +14,9 @@ public class Page {
     private final SelenideElement job = $(("[name = 'job-position']"));
     private final SelenideElement company = $(("[name = 'company']"));
     private final SelenideElement button = $((".btn-outline-primary"));
-    private final SelenideElement zip = $(("#zip-code")).getCssValue("background-color");
-    private final SelenideElement mail = $(("#e-mail")).getCssValue("background-color");
-    private final SelenideElement phone = $(("#phone")).getCssValue("background-color");
+    private final SelenideElement zip = $(("#zip-code"));
+    private final SelenideElement mail = $(("#e-mail"));
+    private final SelenideElement phone = $(("#phone"));
 
 
     public void open(){
@@ -35,5 +35,11 @@ public class Page {
 
     public void clickButton(){
         button.click();
+    }
+
+    public String getCss(){
+        zip.val("background-color");
+        mail.val("background-color");
+        phone.val("background-color");
     }
 }
