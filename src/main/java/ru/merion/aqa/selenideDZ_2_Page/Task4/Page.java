@@ -8,6 +8,8 @@ public class Page {
     private final SelenideElement first = $(("[name = 'first-name']")).val("Иван");
     private final SelenideElement last = $(("[name = 'last-name']")).val("Петров");
     private final SelenideElement address = $(("[name = 'address']")).val("Ленина, 55-3");
+    private final SelenideElement city = $(("[name = 'city']")).val("Москва");
+
 
 
 }

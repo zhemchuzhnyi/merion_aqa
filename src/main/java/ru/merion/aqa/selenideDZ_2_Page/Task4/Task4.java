@@ -39,9 +39,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class Task4 {
     public static void main(String[] args) {
         open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
-        $(("[name = 'first-name']")).val("Иван");
-        $(("[name = 'last-name']")).val("Петров");
-        $(("[name = 'address']")).val("Ленина, 55-3");
+
         $(("[name = 'city']")).val("Москва");
         $(("[name = 'country']")).val("Россия");
         $(("[name = 'job-position']")).val("QA");
