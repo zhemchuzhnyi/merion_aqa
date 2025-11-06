@@ -6,8 +6,8 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Page {
-    private final SelenideElement first = $(("[name = 'first-name']")).val("Иван");
-    private final SelenideElement last = $(("[name = 'last-name']")).val("Петров");
+    private final SelenideElement first = $(("[name = 'first-name']"));
+    private final SelenideElement last = $(("[name = 'last-name']"));
     private final SelenideElement address = $(("[name = 'address']")).val("Ленина, 55-3");
     private final SelenideElement city = $(("[name = 'city']")).val("Москва");
     private final SelenideElement country = $(("[name = 'country']")).val("Россия");
@@ -17,6 +17,12 @@ public class Page {
 
     public void open(){
         Selenide.open("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
+    }
+
+    public void setForm(){
+        first.val("Иван");
+        last.val("Петров");
+
     }
 
     public void clickButton(){
