@@ -40,7 +40,7 @@ public class Task4 {
     public static void main(String[] args) {
         Page page = new Page();
         page.open();
-
+        page.setForm();
         page.clickButton();
 
         String zip = $(("#zip-code")).getCssValue("background-color");
