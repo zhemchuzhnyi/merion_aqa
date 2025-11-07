@@ -17,4 +17,11 @@ public class CalculatorPage {
         return this;
     }
 
+    public void setDelay(int delay) {
+        $(("#delay")).val(String.valueOf(delay));
+        this.delay = delay;
+    }
+
+
+
 }
