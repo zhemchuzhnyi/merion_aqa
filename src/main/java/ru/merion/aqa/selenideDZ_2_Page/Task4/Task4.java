@@ -43,7 +43,5 @@ public class Task4 {
         System.out.println("Цвет: " + page.getZipCss());
         System.out.println("Цвет: " + page.getMailCss());
         System.out.println("Цвет: " + page.getPhoneCss());
-
-        Selenide.closeWebDriver();
     }
 }
