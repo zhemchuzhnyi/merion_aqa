@@ -45,6 +45,5 @@ public class Task4 {
         System.out.println("Цвет: " + page.getPhoneCss());
 
         Selenide.closeWebDriver();
-
     }
 }
