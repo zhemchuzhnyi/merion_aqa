@@ -43,5 +43,8 @@ public class Task5 {
         String result = $((".screen")).text();
         System.out.println("Результат: " + result);
 
+        Selenide.closeWebDriver();
+
+
     }
 }
