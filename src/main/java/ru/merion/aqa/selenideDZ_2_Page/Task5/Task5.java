@@ -44,6 +44,5 @@ public class Task5 {
         System.out.println("Результат: " + result);
 
         Selenide.closeWebDriver();
-
     }
 }
