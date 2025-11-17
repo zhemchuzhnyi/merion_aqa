@@ -39,6 +39,12 @@ public class Task5 {
         keyboard.$x(("*[text() = '8']")).click();
         keyboard.$x(("*[text() = '=']")).click();
 
+        $(("#spinner")).shouldNotBe(visible, Duration.ofSeconds(timeout+1));
+        String result = $((".screen")).text();
+        System.out.println("Результат: " + result);
+
+        Selenide.closeWebDriver();
+
 
 
     }
