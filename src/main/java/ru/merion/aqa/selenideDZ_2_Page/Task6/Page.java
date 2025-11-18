@@ -39,7 +39,6 @@ public class Page {
         String total = $(".summary_total_label").getText();
         System.out.println(total);
 
-
         Selenide.closeWebDriver();
     }
 }
