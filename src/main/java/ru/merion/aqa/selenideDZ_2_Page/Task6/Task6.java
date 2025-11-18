@@ -61,7 +61,6 @@ public class Task6 {
         String total = $(".summary_total_label").getText();
         System.out.println(total);
 
-
         Selenide.closeWebDriver();
     }
 }
