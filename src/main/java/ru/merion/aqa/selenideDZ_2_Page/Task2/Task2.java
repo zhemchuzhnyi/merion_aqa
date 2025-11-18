@@ -12,7 +12,6 @@ package ru.merion.aqa.selenideDZ_2_Page.Task2;
  */
 
 import com.codeborne.selenide.Selenide;
-import static com.codeborne.selenide.Selenide.$;
 
 public class Task2 {
     public static void main(String[] args) {
