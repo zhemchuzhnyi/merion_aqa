@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import static com.codeborne.selenide.Selenide.$;
 
 public class AuthPage {
-    private static final Logger log = LoggerFactory.getLogger(AuthPage.class);
     private final SelenideElement login = $("#user-name");
     private final SelenideElement pass = $("#password");
     private final SelenideElement button = $("#login-button");

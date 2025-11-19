@@ -25,6 +25,7 @@ public class CartCheckoutPage {
         firstNameInput.val(firstName);
         lastNameInput.val(lastName);
         postalCode.val(zip);
+        continueButton.click();
         return this;
     }
 
