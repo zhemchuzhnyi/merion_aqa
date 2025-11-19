@@ -9,7 +9,7 @@ import java.util.Set;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
-public class Page {
+public class CatalogPage {
 
     public static void main(String[] args) {
         Configuration.browserCapabilities = new ChromeOptions().addArguments("--guest");
