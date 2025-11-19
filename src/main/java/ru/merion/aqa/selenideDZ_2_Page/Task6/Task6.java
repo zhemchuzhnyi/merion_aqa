@@ -36,20 +36,17 @@ public class Task6 {
         AuthPage auth;
         CatalogPage catalog;
 
-        Set<String> itemNames = Set.of("Sauce Labs Backpac", "Sauce Labs Bolt T-Shirt", "Sauce Labs Onesie");
+        Set<String> itemNames = Set.of("Sauce Labs Backpack", "Sauce Labs Bolt T-Shirt", "Sauce Labs Onesie");
 
         auth = new AuthPage().open();
-        catalog = auth.logiAs("standard_user", "secret_sauce");
+        catalog = auth.loginAs("standard_user", "secret_sauce");
         catalog.addItems(itemNames);
 
         String total = new CartCheckoutPage()
                 .open()
-                        .clickCheckout()
-                                .setContactData("Иван","Иванов","1234567")
-                                        .getTotalPrice();
-
-        System.out.println(total);
-
+                .clickCheckout()
+                .setContactData("Иван", "Иванов", "123457")
+                .getTotalPrice();
 
         Selenide.closeWebDriver();
     }

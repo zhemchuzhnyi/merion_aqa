@@ -1,8 +1,6 @@
 package ru.merion.aqa.selenideDZ_2_Page.Task6;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -16,7 +14,7 @@ public class AuthPage {
         return this;
     }
 
-    public CatalogPage logiAs (String username, String password) {
+    public CatalogPage loginAs (String username, String password) {
         login.val(username);
         pass.val(password);
         button.click();
