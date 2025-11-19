@@ -48,6 +48,8 @@ public class Task6 {
                 .setContactData("Иван", "Иванов", "123457")
                 .getTotalPrice();
 
+        System.out.println(total);
+
         Selenide.closeWebDriver();
     }
 }
