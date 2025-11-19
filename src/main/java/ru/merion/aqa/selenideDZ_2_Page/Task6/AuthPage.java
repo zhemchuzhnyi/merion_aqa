@@ -1,5 +1,4 @@
 package ru.merion.aqa.selenideDZ_2_Page.Task6;
-
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.slf4j.Logger;

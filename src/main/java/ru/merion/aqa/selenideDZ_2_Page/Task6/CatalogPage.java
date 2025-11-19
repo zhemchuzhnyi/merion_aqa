@@ -1,15 +1,7 @@
 package ru.merion.aqa.selenideDZ_2_Page.Task6;
-
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.util.Collection;
-import java.util.Set;
-
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
 
 public class CatalogPage {
     private final ElementsCollection items = $$(".inventory-item");
