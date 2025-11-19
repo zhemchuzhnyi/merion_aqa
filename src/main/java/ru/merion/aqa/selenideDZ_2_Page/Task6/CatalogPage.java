@@ -4,12 +4,12 @@ import java.util.Collection;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CatalogPage {
-    private final ElementsCollection items = $$(".inventory-item");
+    private final ElementsCollection items = $$(".inventory_item");
 
     public void addItems(Collection<String> itemNames) {
         items.forEach(item -> {
-            String productName = item.find(".inventory-item-name").text();
-            if(itemNames.contains(productName)) {
+            String productName = item.find(".inventory_item_name").text();
+            if (itemNames.contains(productName)) {
                 item.find("button").click();
             }
         });
