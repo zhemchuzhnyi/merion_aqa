@@ -27,10 +27,7 @@ Total
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import java.util.Set;
-
-import static com.codeborne.selenide.Selenide.*;
 
 public class Task6 {
     public static void main(String[] args) {
@@ -44,6 +41,14 @@ public class Task6 {
         auth = new AuthPage().open();
         catalog = auth.logiAs("standard_user", "secret_sauce");
         catalog.addItems(itemNames);
+
+        String total = new CartCheckoutPage()
+                .open()
+                        .clickCheckout()
+                                .setContactData("Иван","Иванов","1234567")
+                                        .getTotalPrice();
+
+        System.out.println(total);
 
 
         Selenide.closeWebDriver();
