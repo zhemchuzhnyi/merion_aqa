@@ -10,18 +10,19 @@ public class CartCheckoutPage {
     private final SelenideElement continueButton = $("#continue");
     private final SelenideElement priceText = $("[data-test=total-label]");
 
+
     public CartCheckoutPage open() {
-       Selenide.open("https://www.saucedemo.com/cart.html");
-       return this;
+        Selenide.open("https://www.saucedemo.com/cart.html");
+        return this;
     }
 
     public CartCheckoutPage clickCheckout() {
         $("#checkout").click();
-        System.out.println("clicked checkout");
+        System.out.println("clicked");
         return this;
     }
 
-    public CartCheckoutPage setContactData (String firstName, String lastName, String zip) {
+    public CartCheckoutPage setContactData(String firstName, String lastName, String zip) {
         firstNameInput.val(firstName);
         lastNameInput.val(lastName);
         postalCode.val(zip);
@@ -32,9 +33,4 @@ public class CartCheckoutPage {
     public String getTotalPrice() {
         return priceText.getText();
     }
-
-
-
-
-
 }
