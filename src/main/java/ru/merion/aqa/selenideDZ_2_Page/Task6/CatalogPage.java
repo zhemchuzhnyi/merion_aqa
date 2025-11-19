@@ -28,7 +28,6 @@ public class CatalogPage {
             }
         });
 
-        open("https://www.saucedemo.com/cart.html");
         $("#checkout").click();
 
         $("#first-name").val("Ivan");
