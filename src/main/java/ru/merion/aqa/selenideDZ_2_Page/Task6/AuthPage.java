@@ -14,7 +14,7 @@ public class AuthPage {
         return this;
     }
 
-    public CatalogPage loginAs (String username, String password) {
+    public CatalogPage loginAs(String username, String password) {
         login.val(username);
         pass.val(password);
         button.click();
