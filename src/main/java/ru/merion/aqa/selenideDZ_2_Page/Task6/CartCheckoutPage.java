@@ -18,6 +18,25 @@ public class CartCheckoutPage {
        return this;
     }
 
+    public CartCheckoutPage clickCheckout() {
+        $("#checkout").click();
+        System.out.println("clicked checkout");
+        return this;
+    }
+
+    public CartCheckoutPage setContactData (String firstName, String lastName, String zip) {
+        firstNameInput.val(firstName);
+        lastNameInput.val(lastName);
+        postalCode.val(zip);
+        return this;
+    }
+
+    public String getTotalPrice() {
+        return priceText.getText();
+    }
+
+
+
 
 
 }
