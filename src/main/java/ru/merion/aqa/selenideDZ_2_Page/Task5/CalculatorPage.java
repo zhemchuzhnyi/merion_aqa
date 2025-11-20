@@ -70,7 +70,7 @@ public class CalculatorPage {
     }
 
     public String getResult() {
-        Configuration.timeout = delay * 1000 + 100;
+        Configuration.timeout = delay * 1100;
         $("#spinner").shouldBe(not(visible));
         return $(".screen").text();
     }
