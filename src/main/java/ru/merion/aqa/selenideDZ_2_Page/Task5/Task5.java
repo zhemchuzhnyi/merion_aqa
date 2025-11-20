@@ -18,13 +18,6 @@ package ru.merion.aqa.selenideDZ_2_Page.Task5;
  */
 
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
-
-import java.time.Duration;
-
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class Task5 {
     public static void main(String[] args) {
