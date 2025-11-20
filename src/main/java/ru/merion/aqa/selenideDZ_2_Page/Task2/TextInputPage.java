@@ -17,7 +17,8 @@ public class TextInputPage {
     public TextInputPage setButtonName(String newName) {
         input.val(newName);
         button.click();
-        return this;}
+        return this;
+    }
 
     public String getText() {
         return button.text();
