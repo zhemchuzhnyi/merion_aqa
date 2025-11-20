@@ -16,7 +16,7 @@ import com.codeborne.selenide.Selenide;
 public class Task2 {
     public static void main(String[] args) {
 
-        AuthPage authPage = new AuthPage();
+        TextInputPage authPage = new TextInputPage();
         authPage.open();
         authPage.setForm();
         authPage.clickButton();

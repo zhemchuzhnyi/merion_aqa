@@ -5,12 +5,13 @@ import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class AuthPage {
+public class TextInputPage {
     private final SelenideElement button = $(("#updatingButton"));
     private final SelenideElement form = $(".form-control");
 
-    public void open() {
+    public TextInputPage open() {
         Selenide.open("http://uitestingplayground.com/textinput");
+        return this;
     }
 
     public void setForm() {
