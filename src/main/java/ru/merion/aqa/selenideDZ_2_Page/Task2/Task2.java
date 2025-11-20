@@ -20,11 +20,7 @@ public class Task2 {
                 .setButtonName("Merion")
                 .getButtonText();
 
-        TextInputPage authPage = new TextInputPage();
-        authPage.open();
-        authPage.setForm();
-        authPage.clickButton();
-        System.out.println("content = " + authPage.getText());
+        System.out.println("content = " + text);
 
         Selenide.closeWebDriver();
     }
