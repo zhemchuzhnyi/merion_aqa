@@ -15,6 +15,10 @@ import com.codeborne.selenide.Selenide;
 
 public class Task2 {
     public static void main(String[] args) {
+        String text = new TextInputPage()
+                .open()
+                .setButtonName("Merion")
+                .getButtonText();
 
         TextInputPage authPage = new TextInputPage();
         authPage.open();

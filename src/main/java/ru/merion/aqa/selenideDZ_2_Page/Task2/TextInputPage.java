@@ -20,7 +20,7 @@ public class TextInputPage {
         return this;
     }
 
-    public String getText() {
+    public String getButtonText() {
         return button.text();
     }
 }
