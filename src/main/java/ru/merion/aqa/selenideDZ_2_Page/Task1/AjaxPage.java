@@ -16,6 +16,6 @@ public class AjaxPage {
     }
 
     public String getContent() {
-        return content.getText();
+        return content.text();
     }
 }
