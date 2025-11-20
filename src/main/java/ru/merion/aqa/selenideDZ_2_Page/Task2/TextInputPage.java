@@ -14,15 +14,12 @@ public class TextInputPage {
         return this;
     }
 
-    public void setForm() {
-        form.val("Merion");
-    }
-
-    public void clickButton() {
+    public TextInputPage setButtonName(String newName) {
+        input.val(newName);
         button.click();
-    }
+        return this;}
 
     public String getText() {
-        return button.getText();
+        return button.text();
     }
 }
