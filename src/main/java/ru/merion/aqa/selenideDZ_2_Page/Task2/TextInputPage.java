@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class TextInputPage {
     private final SelenideElement button = $(("#updatingButton"));
-    private final SelenideElement input = $(".newButtonName");
+    private final SelenideElement input = $("#newButtonName");
 
     public TextInputPage open() {
         Selenide.open("http://uitestingplayground.com/textinput");
