@@ -49,5 +49,7 @@ public class Task6 {
                 .getTotalPrice();
 
         System.out.println(total);
+
+        Selenide.closeWebDriver();
     }
 }
