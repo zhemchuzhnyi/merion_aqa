@@ -47,5 +47,6 @@ public class Task6 {
                 .clickCheckout()
                 .setContactData("Иван", "Иванов", "123457")
                 .getTotalPrice();
+
     }
 }
