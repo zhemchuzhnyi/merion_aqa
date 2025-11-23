@@ -47,9 +47,5 @@ public class Task6 {
                 .clickCheckout()
                 .setContactData("Иван", "Иванов", "123457")
                 .getTotalPrice();
-
-        System.out.println(total);
-
-        Selenide.closeWebDriver();
     }
 }
