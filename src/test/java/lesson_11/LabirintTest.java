@@ -1,12 +1,12 @@
-package ru.merion.aqa.lesson7;
+package lesson_11;
 
 import org.openqa.selenium.WebDriver;
+import ru.merion.aqa.lesson7.WDFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
-
-public class LabirintScenario {
+public class LabirintTest {
 
     public static void main(String[] args) {
 
