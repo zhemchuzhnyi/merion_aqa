@@ -23,18 +23,18 @@ public class LabirintTest {
         String iconText = resultPage.header.getIconText();
 
         //System.out.println("iconText: " + iconText);
-        if (iconText.equals("37")){
+        if (iconText.equals("60")){
             System.out.println("Проверили текст иконки");
         } else {
-            System.err.println("Текст иконки не равен 37");
+            System.err.println("Текст иконки не равен 60");
         }
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
-        if (counter.equals("37")){
+        if (counter.equals("60")){
             System.out.println("Проверили текст корзины");
         } else {
-            System.err.println("Счетчик корзины не равен 37");
+            System.err.println("Счетчик корзины не равен 60");
         }
         //System.out.println("counter: " + counter);
 
