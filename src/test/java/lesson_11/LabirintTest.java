@@ -25,7 +25,7 @@ public class LabirintTest {
         if (iconText.equals("37")){
             System.out.println("Проверили текст иконки");
         } else {
-            System.err.println("Текст иконки не равен 60");
+            System.err.println("Текст иконки не равен 37");
         }
 
         CartPage cartPage = resultPage.header.clickCartIcon();
@@ -33,11 +33,9 @@ public class LabirintTest {
         if (counter.equals("37")){
             System.out.println("Проверили текст корзины");
         } else {
-            System.err.println("счетчик корзины не равен 60");
+            System.err.println("Счетчик корзины не равен 37");
         }
-
         //System.out.println("counter: " + counter);
-        System.out.println(counter.equals("37 товаров"));
 
         driver.quit();
     }
