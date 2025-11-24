@@ -22,7 +22,11 @@ public class LabirintTest {
         String iconText = resultPage.header.getIconText();
 
         //System.out.println("iconText: " + iconText);
-        System.out.println(iconText.equals("37"));
+        if (iconText.equals("37")){
+            System.out.println("Проверили текст иконки");
+        } else {
+            System.err.println("Текст иконки не равен 60");
+        }
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
