@@ -43,7 +43,7 @@ public class LabirintTest {
         mainPage.open();
 
 
-        ResultPage resultPage = mainPage.header.searchFor("uqwyegwqh");
+        ResultPage resultPage = mainPage.header.searchFor("jfjkskhahk943029480923");
         String msg = resultPage.getEmptyResultMessage();
         System.out.println("msg = " + msg);
 
