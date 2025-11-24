@@ -28,6 +28,9 @@ public class CartPage extends BasePage {
     @FindBy(css = "#basket-default-prod-count2")
     private WebElement totalPrice;
 
+    @FindBy(css = ".g-alttext-small.g-alttext-grey.g-alttext-head")
+    private WebElement emptyCartMessage;
+
     /**
      * Конструктор класса - создаёт объект страницы корзины.
      * Вызывает конструктор родительского класса BasePage,
@@ -60,5 +63,9 @@ public class CartPage extends BasePage {
         // Получаем текст из элемента с общей стоимостью
         // trim() удаляет пробелы и переносы строк в начале и конце текста
         return totalPrice.getText().trim();
+    }
+
+    public String getEmptyCartMessage() {
+        return emptyCartMessage.getText();
     }
 }
