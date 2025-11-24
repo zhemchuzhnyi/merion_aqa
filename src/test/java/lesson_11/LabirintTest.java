@@ -58,7 +58,8 @@ public class LabirintTest {
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
 
-        System.out.println("counter: " + counter);
+        //System.out.println("counter: " + counter);
+        System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
 
         driver.quit();
     }
