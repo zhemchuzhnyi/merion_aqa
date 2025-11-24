@@ -25,12 +25,13 @@ public class LabirintTest {
         resultPage.addAllItemsToCart();
 
         String iconText = resultPage.header.getIconText();
-        System.out.println("iconText: " + iconText);
+        //System.out.println("iconText: " + iconText);
+        System.out.println(iconText.equals("60"));
 
         CartPage cartPage = resultPage.header.clickCartIcon();
-        String counter = cartPage.getCartPrice();
-
-        System.out.println("counter: " + counter);
+        String counter = cartPage.getCartCounter();
+        //System.out.println("counter: " + counter);
+        System.out.println(counter.equals("60 товаров"));
 
         driver.quit();
     }
@@ -45,12 +46,14 @@ public class LabirintTest {
 
         ResultPage resultPage = mainPage.header.searchFor("          ");
         String msg = resultPage.getEmptyResultMessage();
-        System.out.println("msg = " + msg);
+        //System.out.println("msg = " + msg);
+        System.out.println(msg.equals("Все, что мы нашли в Лабиринте по запросу"));
 
         resultPage.addAllItemsToCart();
 
         String iconText = resultPage.header.getIconText();
-        System.out.println("iconText: " + iconText);
+        //System.out.println("iconText: " + iconText);
+        System.out.println(iconText.equals("0"));
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
