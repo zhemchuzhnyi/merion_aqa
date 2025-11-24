@@ -22,7 +22,6 @@ public class LabirintTest {
         resultPage.addAllItemsToCart();
         String iconText = resultPage.header.getIconText();
 
-        //System.out.println("iconText: " + iconText);
         if (iconText.equals("60")){
             System.out.println("Проверили текст иконки");
         } else {
@@ -36,7 +35,6 @@ public class LabirintTest {
         } else {
             System.err.println("Счетчик корзины не равен 60");
         }
-        //System.out.println("counter: " + counter);
 
         driver.quit();
     }
@@ -48,19 +46,16 @@ public class LabirintTest {
         mainPage.open();
         ResultPage resultPage = mainPage.header.searchFor("          ");
         String msg = resultPage.getEmptyResultMessage();
-        //System.out.println("msg = " + msg);
 
         System.out.println(msg.equals("Все, что мы нашли в Лабиринте по запросу"));
         resultPage.addAllItemsToCart();
 
         String iconText = resultPage.header.getIconText();
-        //System.out.println("iconText: " + iconText);
         System.out.println(iconText.equals("0"));
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
 
-        //System.out.println("counter: " + counter);
         System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
 
         driver.quit();
