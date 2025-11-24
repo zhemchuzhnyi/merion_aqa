@@ -16,39 +16,32 @@ public class LabirintTest {
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = new MainPage(driver);
-
         mainPage.open();
-
-
         ResultPage resultPage = mainPage.header.searchFor("Java");
-
         resultPage.addAllItemsToCart();
-
         String iconText = resultPage.header.getIconText();
+
         //System.out.println("iconText: " + iconText);
-        System.out.println(iconText.equals("60"));
+        System.out.println(iconText.equals("37"));
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
+
         //System.out.println("counter: " + counter);
-        System.out.println(counter.equals("60 товаров"));
+        System.out.println(counter.equals("37 товаров"));
 
         driver.quit();
     }
 
     public static void test2(){
         WebDriver driver = WDFactory.create("chrome");
-
         MainPage mainPage = new MainPage(driver);
-
         mainPage.open();
-
-
         ResultPage resultPage = mainPage.header.searchFor("          ");
         String msg = resultPage.getEmptyResultMessage();
         //System.out.println("msg = " + msg);
-        System.out.println(msg.equals("Все, что мы нашли в Лабиринте по запросу"));
 
+        System.out.println(msg.equals("Все, что мы нашли в Лабиринте по запросу"));
         resultPage.addAllItemsToCart();
 
         String iconText = resultPage.header.getIconText();
