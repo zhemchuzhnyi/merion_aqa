@@ -53,7 +53,7 @@ public class LabirintTest {
         System.out.println("iconText: " + iconText);
 
         CartPage cartPage = resultPage.header.clickCartIcon();
-        String counter = cartPage.getCartPrice();
+        String counter = cartPage.getEmptyCartMessage();
 
         System.out.println("counter: " + counter);
 
