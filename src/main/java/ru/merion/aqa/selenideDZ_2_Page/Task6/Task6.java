@@ -50,5 +50,7 @@ public class Task6 {
 
         System.out.println(total);
 
+        Selenide.closeWebDriver();
+
     }
 }
