@@ -13,6 +13,7 @@ public class LabirintTest {
         test2();
     }
     public static void test1(){
+        System.out.println("Test1");
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = new MainPage(driver);
@@ -41,6 +42,7 @@ public class LabirintTest {
     }
 
     public static void test2(){
+        System.out.println("Test2");
         WebDriver driver = WDFactory.create("chrome");
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
