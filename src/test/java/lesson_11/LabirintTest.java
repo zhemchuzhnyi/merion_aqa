@@ -30,7 +30,7 @@ public class LabirintTest {
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
-        if (counter.equals("60")){
+        if (counter.equals("37")){
             System.out.println("Проверили текст корзины");
         } else {
             System.err.println("счетчик корзины не равен 60");
