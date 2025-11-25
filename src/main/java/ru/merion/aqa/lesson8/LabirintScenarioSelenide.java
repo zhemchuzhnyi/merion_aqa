@@ -6,7 +6,6 @@ import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
-import static org.apache.commons.lang3.BooleanUtils.forEach;
 
 public class LabirintScenarioSelenide {
     public static void main(String[] args) {
