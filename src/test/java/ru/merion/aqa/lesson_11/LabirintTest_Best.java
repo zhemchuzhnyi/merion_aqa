@@ -1,4 +1,4 @@
-package lesson_11;
+package ru.merion.aqa.lesson_11;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
