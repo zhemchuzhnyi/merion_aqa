@@ -10,6 +10,8 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 public class LabirintTest {
 
     public static void main(String[] args) {
+        test_1();
+        test_2();
 
     }
 
