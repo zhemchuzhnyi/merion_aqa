@@ -15,7 +15,7 @@ public class LabirintTest {
     }
 
     public static void test_1() {
-        System.out.println("Начинаем проводить Тест_1\n");
+        System.out.println("Начинаем проводить Тест_1");
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
@@ -34,13 +34,13 @@ public class LabirintTest {
         String counter = cartPage.getCartPrice();
 
         System.out.println("price : " + price);
-        System.out.println(counter.equals("37 товаров"));
+        System.out.println(counter.equals("37 товаров\n"));
 
         driver.quit();
     }
 
     public static void test_2() {
-        System.out.println("Начинаем проводить Тест_2\n");
+        System.out.println("Начинаем проводить Тест_2");
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
