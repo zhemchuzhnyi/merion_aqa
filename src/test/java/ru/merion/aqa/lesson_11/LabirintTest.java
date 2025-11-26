@@ -40,7 +40,7 @@ public class LabirintTest {
     }
 
     public static void test_2() {
-        System.out.println("Начинаем проводить Тест_2");
+        System.out.println("\nНачинаем проводить Тест_2");
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
