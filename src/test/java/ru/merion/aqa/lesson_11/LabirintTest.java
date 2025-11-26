@@ -34,7 +34,7 @@ public class LabirintTest {
         String counter = cartPage.getCartPrice();
 
         System.out.println("price : " + price);
-        System.out.println(counter.equals("37 товаров\n"));
+        System.out.println(counter.equals("37 товаров"));
 
         driver.quit();
     }
