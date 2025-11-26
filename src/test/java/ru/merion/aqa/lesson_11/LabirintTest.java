@@ -26,7 +26,7 @@ public class LabirintTest {
         resultPage.addAllItemsToCart();
 
         String iconText = resultPage.header.getIconText();
-        System.out.println("iconText: " + iconText);
+        System.out.println(iconText.equals("37"));
 
         CartPage cartPage = resultPage.header.clickCartIcon();
 
@@ -34,7 +34,7 @@ public class LabirintTest {
         String counter = cartPage.getCartPrice();
 
         System.out.println("price : " + price);
-        System.out.println("counter: " + counter);
+        System.out.println(counter.equals("37 товаров"));
 
         driver.quit();
     }
