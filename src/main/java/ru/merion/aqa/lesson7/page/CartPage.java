@@ -17,7 +17,7 @@ public class CartPage extends BasePage {
      * CSS селектор "#basket-default-sumprice-discount" находит элемент по id.
      * Пример текста: "3 товара" или "5 товаров"
      */
-    @FindBy(css = "#basket-default-sumprice-discount")
+    @FindBy(css = "#basket-default-prod-count2")
     private WebElement productCounter;
 
     /**
@@ -25,7 +25,7 @@ public class CartPage extends BasePage {
      * CSS селектор "#basket-default-prod-count2" находит элемент по id.
      * Пример текста: "1 250 ₽" или "3 999 ₽"
      */
-    @FindBy(css = "#basket-default-prod-count2")
+    @FindBy(css = "#basket-default-sumprice-discount")
     private WebElement totalPrice;
 
     @FindBy(css = ".g-alttext-small.g-alttext-grey.g-alttext-head")

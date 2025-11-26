@@ -43,7 +43,7 @@ public class LabirintTest {
         Thread.sleep(3000); // 2 сек для загрузки корзины
 
         String counter = cartPage.getCartCounter();
-        if (counter.equals("37")){
+        if (counter.equals("37 товаров")){
             System.out.println("Проверили текст корзины");
         } else {
             System.err.println("Счетчик в корзине не равен 37!");
