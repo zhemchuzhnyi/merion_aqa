@@ -23,21 +23,20 @@ public class LabirintTest {
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
-
         String iconText = resultPage.header.getIconText();
         if (iconText.equals("37")){
-            System.out.println("Тест пройден, проверили текст иконки");
+            System.out.println("Проверили текст иконки");
         } else {
             System.err.println("Текст иконки не равен 37!");
         }
 
         CartPage cartPage = resultPage.header.clickCartIcon();
-
-        String price = cartPage.getCartCounter();
         String counter = cartPage.getCartPrice();
-
-        System.out.println("price : " + price);
-        System.out.println(counter.equals("37 товаров"));
+        if (counter.equals("37")){
+            System.out.println("Проверили текст корзины");
+        } else {
+            System.err.println("Счетчик в корзине не равен 37!");
+        }
 
         driver.quit();
     }
