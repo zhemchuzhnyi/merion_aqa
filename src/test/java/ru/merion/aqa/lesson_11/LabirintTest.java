@@ -15,6 +15,7 @@ public class LabirintTest {
     }
 
     public static void test_1() {
+        System.out.println("Начинаем проводить Тест_1\n");
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
@@ -39,6 +40,7 @@ public class LabirintTest {
     }
 
     public static void test_2() {
+        System.out.println("Начинаем проводить Тест_2\n");
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
@@ -47,17 +49,17 @@ public class LabirintTest {
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
 
         String msg = resultPage.getEmptyResultMessage();
-        System.out.println("msg: " + msg);
         System.out.println(msg.equals("Мы ничего не нашли по вашему запросу! Что делать?"));
 
         String iconText = resultPage.header.getIconText();
-        System.out.println("iconText: " + iconText);
+        System.out.println(iconText.equals("0"));
 
         CartPage cartPage = resultPage.header.clickCartIcon();
 
         String counter = cartPage.getEmptyCartMessage();
 
         System.out.println("counter: " + counter);
+        System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
 
         driver.quit();
     }
