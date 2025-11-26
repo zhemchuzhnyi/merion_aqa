@@ -15,7 +15,6 @@ public class LabirintTest {
     }
 
     public static void test_1() {
-        // Создаём экземпляр Chrome драйвера через фабрику
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
@@ -49,6 +48,7 @@ public class LabirintTest {
 
         String msg = resultPage.getEmptyResultMessage();
         System.out.println("msg: " + msg);
+        System.out.println(msg.equals("Мы ничего не нашли по вашему запросу! Что делать?"));
 
         String iconText = resultPage.header.getIconText();
         System.out.println("iconText: " + iconText);
