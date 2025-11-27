@@ -14,12 +14,9 @@ public class LabirintTest {
         try {
             test_1();
         } catch (Exception ex) {
-            System.out.println("Тест упал");
-            System.err.println(ex);
+            printExeption(ex);
         } finally {
-            if (driver != null) {
-                driver.quit();
-            }
+            quitDriver(driver);
         }
 
         System.out.println("\n");
@@ -27,13 +24,21 @@ public class LabirintTest {
         try {
             test_2();
         } catch (Exception ex) {
-            System.out.println("Тест упал");
-            System.err.println(ex);
+            printExeption(ex);
         } finally {
-            if (driver != null) {
-                driver.quit();
-            }
+            quitDriver(driver);
         }
+    }
+
+    private static void quitDriver(WebDriver driver) {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    private static void printExeption(Exception ex) {
+        System.out.println("Тест упал");
+        System.err.println(ex);
     }
 
     public static void test_1() {
