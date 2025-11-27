@@ -57,7 +57,6 @@ public class LabirintTest {
         }
 
         CartPage cartPage = resultPage.header.clickCartIcon();
-
         String counter = cartPage.getCartCounter();
         if (counter.equals("37 товаров")) {
             System.out.println("Проверили текст корзины");
