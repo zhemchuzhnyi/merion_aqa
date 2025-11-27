@@ -13,15 +13,18 @@ public class TestRunner {
 
         LabirintTest testClass = new LabirintTest();
         Method [] methods = testClass.getClass().getMethods();
+
         for (Method testMethod : methods) {
             try {
-            driver = WDFactory.create("chrome");
-                System.out.println(testMethod.getName());
-            testMethod.invoke(testClass, driver);
+                if (testMethod.getName().contains("test")) {
+                    System.out.println("\n----------------------------------------------------------------------------------");
+                    System.out.println("testMethod.getName()");
+                    testMethod.invoke(testClass, WDFactory.create("chrome"));
+
+                }
         } catch (Exception ex) {
             printExeption(ex);
         } finally {
-                System.out.println("\n----------------------------------------------------------------------------------");
             quitDriver();
         }
     }
