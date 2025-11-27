@@ -13,6 +13,7 @@ public class LabirintTest {
 
     public static void main(String[] args) throws InterruptedException {
         test_1();
+        System.out.println("\n");
         test_2();
     }
 
@@ -63,7 +64,7 @@ public class LabirintTest {
     }
 
     public static void test_2() {
-        System.out.println("\nНачинаем проводить негативный тест на поиск по сайту");
+        System.out.println("Начинаем проводить негативный тест на поиск по сайту");
         WebDriver driver = WDFactory.create("chrome");
 
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
