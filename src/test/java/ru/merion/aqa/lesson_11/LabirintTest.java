@@ -10,14 +10,26 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 public class LabirintTest {
 
     public static void main(String[] args) {
-        test_1();
+        try {
+            test_1();
+        } catch (Exception ex) {
+            System.out.println("Тест упал");
+            System.err.println(ex);
+        }
+
         System.out.println("\n");
-        test_2();
+
+        try {
+            test_2();
+        } catch (Exception ex) {
+            System.out.println("Тест упал");
+            System.err.println(ex);
+        }
     }
 
     public static void test_1() {
         WebDriver driver = null;
-
+        try {
             System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
             driver = WDFactory.create("chrome");
 
@@ -42,30 +54,40 @@ public class LabirintTest {
             } else {
                 System.err.println("Счетчик в корзине не равен 37!");
             }
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
+        }
     }
 
     public static void test_2() {
-        System.out.println("Начинаем проводить негативный тест на поиск по сайту");
-        WebDriver driver = WDFactory.create("chrome");
+        WebDriver driver = null;
+        try {
+            System.out.println("Начинаем проводить негативный тест на поиск по сайту");
+            driver = WDFactory.create("chrome");
 
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.open();
+            MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
+            mainPage.open();
 
-        ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
+            ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
 
-        String msg = resultPage.getEmptyResultMessage();
-        System.out.println(msg.equals("Мы ничего не нашли по вашему запросу! Что делать?"));
+            String msg = resultPage.getEmptyResultMessage();
+            System.out.println(msg.equals("Мы ничего не нашли по вашему запросу! Что делать?"));
 
-        String iconText = resultPage.header.getIconText();
-        System.out.println(iconText.equals("0"));
+            String iconText = resultPage.header.getIconText();
+            System.out.println(iconText.equals("0"));
 
-        CartPage cartPage = resultPage.header.clickCartIcon();
+            CartPage cartPage = resultPage.header.clickCartIcon();
 
-        String counter = cartPage.getEmptyCartMessage();
+            String counter = cartPage.getEmptyCartMessage();
 
-        System.out.println("counter: " + counter);
-        System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
-
-        driver.quit();
+            System.out.println("counter: " + counter);
+            System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
+        } finally {
+            if (driver != null) {
+                driver.quit();
+            }
+        }
     }
 }
