@@ -17,7 +17,7 @@ public class LabirintTest {
     }
 
     public static void test_1() throws InterruptedException {
-        WebDriver driver;
+        WebDriver driver = null;
         try {
 
             System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
@@ -52,10 +52,13 @@ public class LabirintTest {
                 System.err.println("Счетчик в корзине не равен 37!");
             }
 
-            driver.quit();
         } catch (Exception ex) {
             System.out.println("Тест упал");
             System.err.println(ex);
+        } finally {
+            if (driver != null){
+                driver.quit();
+            }
         }
     }
 
