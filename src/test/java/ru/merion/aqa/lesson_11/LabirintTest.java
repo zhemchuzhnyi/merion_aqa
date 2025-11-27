@@ -8,8 +8,6 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 
 public class LabirintTest {
 
-    public Object test_1;
-
     public void test_1(WebDriver driver) {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.open();
