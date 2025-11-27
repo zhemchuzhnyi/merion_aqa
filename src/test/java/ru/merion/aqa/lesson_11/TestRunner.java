@@ -16,11 +16,12 @@ public class TestRunner {
         for (Method testMethod : methods) {
             try {
             driver = WDFactory.create("chrome");
+                System.out.println(testMethod.getName());
             testMethod.invoke(testClass, driver);
         } catch (Exception ex) {
             printExeption(ex);
         } finally {
-                System.out.println("\n");
+                System.out.println("\n----------------------------------------------------------------------------------");
             quitDriver();
         }
     }
