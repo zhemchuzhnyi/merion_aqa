@@ -13,7 +13,8 @@ public class LabirintTest {
         try {
             test_1();
         } catch (Exception ex) {
-            printExeption(ex);
+            System.out.println("Тест упал");
+            System.err.println(ex);
         }
 
         System.out.println("\n");
@@ -21,17 +22,9 @@ public class LabirintTest {
         try {
             test_2();
         } catch (Exception ex) {
-            printExeption(ex);
+            System.out.println("Тест упал");
+            System.err.println(ex);
         }
-    }
-
-    private static void printExeption(Exception ex) {
-        extracted(ex);
-    }
-
-    private static void extracted(Exception ex) {
-        System.out.println("Тест упал");
-        System.err.println(ex);
     }
 
     public static void test_1() {
