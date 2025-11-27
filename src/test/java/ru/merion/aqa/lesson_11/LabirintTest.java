@@ -74,6 +74,8 @@ public class LabirintTest {
     }
 
 
+
+
     private static void quitDriver() {
         if (driver != null) {
             driver.quit();
