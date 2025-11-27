@@ -9,8 +9,7 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 public class LabirintTest {
 
     public void test_1(WebDriver driver) {
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.open();
+        MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
@@ -31,8 +30,7 @@ public class LabirintTest {
     }
 
     public void test_2(WebDriver driver) {
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.open();
+        MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
         String msg = resultPage.getEmptyResultMessage();
@@ -45,5 +43,15 @@ public class LabirintTest {
         String counter = cartPage.getEmptyCartMessage();
 
         System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
+    }
+
+    public void test_3(WebDriver driver) {
+        System.out.println("Вызвали 3й тест");
+    }
+
+    private MainPage openMainPage(WebDriver driver) {
+        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
+        mainPage.open();
+        return mainPage;
     }
 }
