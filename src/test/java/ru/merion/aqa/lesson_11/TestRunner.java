@@ -29,16 +29,6 @@ public class TestRunner {
                 quitDriver();
             }
         }
-
-        try {
-            System.out.println("Начинаем проводить негативный теcт на поиск");
-            driver = WDFactory.create("chrome");
-            testClass.test_2(driver);
-        } catch (Exception ex) {
-            printException(ex);
-        } finally {
-            quitDriver();
-        }
     }
 
     private static void quitDriver() {
