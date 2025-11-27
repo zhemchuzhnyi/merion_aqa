@@ -7,7 +7,6 @@ import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
 public class LabirintTest {
-    static WebDriver driver = null;
 
     public void test_1(WebDriver driver) {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
