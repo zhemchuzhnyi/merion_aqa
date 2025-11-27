@@ -7,34 +7,26 @@ import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
-import java.time.Duration;
-
 public class LabirintTest {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         test_1();
         System.out.println("\n");
         test_2();
     }
 
-    public static void test_1() throws InterruptedException {
+    public static void test_1() {
         WebDriver driver = null;
         try {
 
             System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
             driver = WDFactory.create("chrome");
 
-// Установить неявное ожидание для всех элементов
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
             MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
             mainPage.open();
 
             ResultPage resultPage = mainPage.header.searchFor("Java");
             resultPage.addAllItemsToCart();
-
-// Небольшая пауза после добавления всех товаров
-            Thread.sleep(2000); // 2 секунды
 
             String iconText = resultPage.header.getIconText();
             if (iconText.equals("37")) {
@@ -44,7 +36,6 @@ public class LabirintTest {
             }
 
             CartPage cartPage = resultPage.header.clickCartIcon();
-            Thread.sleep(3000); // 2 сек для загрузки корзины
 
             String counter = cartPage.getCartCounter();
             if (counter.equals("37 товаров")) {
