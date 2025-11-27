@@ -3,8 +3,6 @@ package ru.merion.aqa.lesson_11;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.lesson7.WDFactory;
 
-import static ru.merion.aqa.lesson_11.LabirintTest.*;
-
 public class TestRunner {
     static WebDriver driver = null;
 
