@@ -8,29 +8,31 @@ import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
 public class LabirintTest {
+    static WebDriver driver = null;
 
     public static void main(String[] args) {
-        WebDriver driver = null;
         try {
-            test_1();
+            System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
+            driver = WDFactory.create("chrome");
+            test_1(driver);
         } catch (Exception ex) {
             printExeption(ex);
         } finally {
-            quitDriver(driver);
+            quitDriver();
         }
 
         System.out.println("\n");
 
         try {
-            test_2();
+            test_2(driver);
         } catch (Exception ex) {
             printExeption(ex);
         } finally {
-            quitDriver(driver);
+            quitDriver();
         }
     }
 
-    private static void quitDriver(WebDriver driver) {
+    private static void quitDriver() {
         if (driver != null) {
             driver.quit();
         }
@@ -41,17 +43,12 @@ public class LabirintTest {
         System.err.println(ex);
     }
 
-    public static void test_1() {
-        WebDriver driver = null;
-        System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
-        driver = WDFactory.create("chrome");
-
+    public static void test_1(WebDriver driver) {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.open();
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
-
         String iconText = resultPage.header.getIconText();
         if (iconText.equals("37")) {
             System.out.println("Проверили текст иконки");
@@ -69,11 +66,7 @@ public class LabirintTest {
         }
     }
 
-    public static void test_2() {
-        WebDriver driver = null;
-        System.out.println("Начинаем проводить негативный тест на поиск по сайту");
-        driver = WDFactory.create("chrome");
-
+    public static void test_2(WebDriver driver) {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.open();
 
