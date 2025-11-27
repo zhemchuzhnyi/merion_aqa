@@ -10,31 +10,7 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 public class LabirintTest {
     static WebDriver driver = null;
 
-    public static void main(String[] args) {
-        try {
-            System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
-            driver = WDFactory.create("chrome");
-            test_1(driver);
-        } catch (Exception ex) {
-            printExeption(ex);
-        } finally {
-            quitDriver();
-        }
-
-        System.out.println("\n");
-
-        try {
-            System.out.println("Начинаем проводить негативный теcт на поиск");
-            driver = WDFactory.create("chrome");
-            test_2(driver);
-        } catch (Exception ex) {
-            printExeption(ex);
-        } finally {
-            quitDriver();
-        }
-    }
-
-    public static void test_1(WebDriver driver) {
+    public void test_1(WebDriver driver) {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.open();
 
@@ -56,7 +32,7 @@ public class LabirintTest {
         }
     }
 
-    public static void test_2(WebDriver driver) {
+    public void test_2(WebDriver driver) {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.open();
 
@@ -71,15 +47,5 @@ public class LabirintTest {
         String counter = cartPage.getEmptyCartMessage();
 
         System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
-    }
-
-    private static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-    private static void printExeption(Exception ex) {
-        System.err.println("Тест упал");
-        System.err.println(ex);
     }
 }
