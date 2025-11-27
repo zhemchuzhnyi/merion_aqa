@@ -18,23 +18,24 @@ public class TestRunner {
             try {
                 if (testMethod.getName().contains("test")) {
                     System.out.println("\n----------------------------------------------------------------------------------");
-                    System.out.println("testMethod.getName()");
-                    testMethod.invoke(testClass, WDFactory.create("chrome"));
+                    System.out.println(testMethod.getName());
+                    driver = WDFactory.create("chrome");
+                    testMethod.invoke(testClass, driver);
 
                 }
-        } catch (Exception ex) {
-            printExeption(ex);
-        } finally {
-            quitDriver();
+            } catch (Exception ex) {
+                printException(ex);
+            } finally {
+                quitDriver();
+            }
         }
-    }
 
         try {
             System.out.println("Начинаем проводить негативный теcт на поиск");
             driver = WDFactory.create("chrome");
             testClass.test_2(driver);
         } catch (Exception ex) {
-            printExeption(ex);
+            printException(ex);
         } finally {
             quitDriver();
         }
@@ -45,7 +46,7 @@ public class TestRunner {
             driver.quit();
         }
     }
-    private static void printExeption(Exception ex) {
+    private static void printException(Exception ex) {
         System.err.println("Тест упал");
         System.err.println(ex);
     }
