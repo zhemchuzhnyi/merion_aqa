@@ -71,7 +71,6 @@ public class LabirintTest {
         mainPage.open();
 
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
-
         String msg = resultPage.getEmptyResultMessage();
         System.out.println(msg.equals("Мы ничего не нашли по вашему запросу! Что делать?"));
 
@@ -79,10 +78,8 @@ public class LabirintTest {
         System.out.println(iconText.equals("0"));
 
         CartPage cartPage = resultPage.header.clickCartIcon();
-
         String counter = cartPage.getEmptyCartMessage();
 
-        System.out.println("counter: " + counter);
         System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
     }
 }
