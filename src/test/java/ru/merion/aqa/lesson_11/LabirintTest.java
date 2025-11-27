@@ -17,7 +17,6 @@ public class LabirintTest {
 
     public static void test_1() {
         WebDriver driver = null;
-        try {
 
             System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
             driver = WDFactory.create("chrome");
@@ -43,15 +42,6 @@ public class LabirintTest {
             } else {
                 System.err.println("Счетчик в корзине не равен 37!");
             }
-
-        } catch (Exception ex) {
-            System.out.println("Тест упал");
-            System.err.println(ex);
-        } finally {
-            if (driver != null){
-                driver.quit();
-            }
-        }
     }
 
     public static void test_2() {
