@@ -24,23 +24,14 @@ public class LabirintTest {
         System.out.println("\n");
 
         try {
+            System.out.println("Начинаем проводить негативный тет на поиск");
+            driver = WDFactory.create("chrome");
             test_2(driver);
         } catch (Exception ex) {
             printExeption(ex);
         } finally {
             quitDriver();
         }
-    }
-
-    private static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-    private static void printExeption(Exception ex) {
-        System.out.println("Тест упал");
-        System.err.println(ex);
     }
 
     public static void test_1(WebDriver driver) {
@@ -80,5 +71,17 @@ public class LabirintTest {
         String counter = cartPage.getEmptyCartMessage();
 
         System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
+    }
+
+
+    private static void quitDriver() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    private static void printExeption(Exception ex) {
+        System.out.println("Тест упал");
+        System.err.println(ex);
     }
 }
