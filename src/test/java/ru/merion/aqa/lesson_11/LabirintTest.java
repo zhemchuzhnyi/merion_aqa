@@ -17,39 +17,45 @@ public class LabirintTest {
     }
 
     public static void test_1() throws InterruptedException {
-        System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
-        WebDriver driver = WDFactory.create("chrome");
+        try {
+
+            System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
+            WebDriver driver = WDFactory.create("chrome");
 
 // Установить неявное ожидание для всех элементов
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.open();
+            MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
+            mainPage.open();
 
-        ResultPage resultPage = mainPage.header.searchFor("Java");
-        resultPage.addAllItemsToCart();
+            ResultPage resultPage = mainPage.header.searchFor("Java");
+            resultPage.addAllItemsToCart();
 
 // Небольшая пауза после добавления всех товаров
-        Thread.sleep(2000); // 2 секунды
+            Thread.sleep(2000); // 2 секунды
 
-        String iconText = resultPage.header.getIconText();
-        if (iconText.equals("37")){
-            System.out.println("Проверили текст иконки");
-        } else {
-            System.err.println("Текст иконки не равен 37!");
+            String iconText = resultPage.header.getIconText();
+            if (iconText.equals("37")) {
+                System.out.println("Проверили текст иконки");
+            } else {
+                System.err.println("Текст иконки не равен 37!");
+            }
+
+            CartPage cartPage = resultPage.header.clickCartIcon();
+            Thread.sleep(3000); // 2 сек для загрузки корзины
+
+            String counter = cartPage.getCartCounter();
+            if (counter.equals("37 товаров")) {
+                System.out.println("Проверили текст корзины");
+            } else {
+                System.err.println("Счетчик в корзине не равен 37!");
+            }
+
+            driver.quit();
+        } catch (Exception ex) {
+            System.out.println("Тест упал");
+            System.err.println(ex);
         }
-
-        CartPage cartPage = resultPage.header.clickCartIcon();
-        Thread.sleep(3000); // 2 сек для загрузки корзины
-
-        String counter = cartPage.getCartCounter();
-        if (counter.equals("37 товаров")){
-            System.out.println("Проверили текст корзины");
-        } else {
-            System.err.println("Счетчик в корзине не равен 37!");
-        }
-
-        driver.quit();
     }
 
     public static void test_2() {
