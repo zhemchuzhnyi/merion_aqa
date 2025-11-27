@@ -17,10 +17,11 @@ public class LabirintTest {
     }
 
     public static void test_1() throws InterruptedException {
+        WebDriver driver;
         try {
 
             System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
-            WebDriver driver = WDFactory.create("chrome");
+            driver = WDFactory.create("chrome");
 
 // Установить неявное ожидание для всех элементов
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
