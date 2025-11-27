@@ -79,7 +79,6 @@ public class LabirintTest {
             driver.quit();
         }
     }
-
     private static void printExeption(Exception ex) {
         System.out.println("Тест упал");
         System.err.println(ex);
