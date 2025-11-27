@@ -3,24 +3,27 @@ package ru.merion.aqa.lesson_11;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.lesson7.WDFactory;
 
+import java.lang.reflect.Method;
+
 public class TestRunner {
     static WebDriver driver = null;
 
     public static void main(String[] args) {
         System.out.println("Run Tests");
 
-    LabirintTest testClass = new LabirintTest();
-        try {
-            System.out.println("Начинаем проводить позитивный тест на поиск по сайту");
+        LabirintTest testClass = new LabirintTest();
+        Method [] methods = testClass.getClass().getMethods();
+        for (Method testMethod : methods) {
+            try {
             driver = WDFactory.create("chrome");
-            testClass.test_1(driver);
+            testMethod.invoke(testClass, driver);
         } catch (Exception ex) {
             printExeption(ex);
         } finally {
+                System.out.println("\n");
             quitDriver();
         }
-
-        System.out.println("\n");
+    }
 
         try {
             System.out.println("Начинаем проводить негативный теcт на поиск");
