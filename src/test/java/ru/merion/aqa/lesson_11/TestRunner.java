@@ -16,8 +16,8 @@ public class TestRunner {
 
         for (Method testMethod : methods) {
             try {
-                if (testMethod.getName().contains("test")) {
-                    System.out.println("\n----------------------------------------------------------------------------------");
+                if (testMethod.isAnnotationPresent(Test.class)) {
+                    System.out.println("----------------------------------------------------------------------------------");
                     System.out.println(testMethod.getName());
                     driver = WDFactory.create("chrome");
                     testMethod.invoke(testClass, driver);

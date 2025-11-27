@@ -8,7 +8,8 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 
 public class LabirintTest {
 
-    public void test_1(WebDriver driver) {
+    @Test
+    public void positiveScenario(WebDriver driver) {
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
@@ -29,7 +30,8 @@ public class LabirintTest {
         }
     }
 
-    public void test_2(WebDriver driver) {
+    @Test
+    public void negativeTest(WebDriver driver) {
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
@@ -45,7 +47,8 @@ public class LabirintTest {
         System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
     }
 
-    public void test_3(WebDriver driver) {
+    @Test
+    public void emptyScenario(WebDriver driver) {
         System.out.println("Вызвали 3й тест");
     }
 
