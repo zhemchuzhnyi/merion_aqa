@@ -24,7 +24,7 @@ public class LabirintTest {
         System.out.println("\n");
 
         try {
-            System.out.println("Начинаем проводить негативный тет на поиск");
+            System.out.println("Начинаем проводить негативный теcт на поиск");
             driver = WDFactory.create("chrome");
             test_2(driver);
         } catch (Exception ex) {
@@ -73,16 +73,13 @@ public class LabirintTest {
         System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
     }
 
-
-
-
     private static void quitDriver() {
         if (driver != null) {
             driver.quit();
         }
     }
     private static void printExeption(Exception ex) {
-        System.out.println("Тест упал");
+        System.err.println("Тест упал");
         System.err.println(ex);
     }
 }
