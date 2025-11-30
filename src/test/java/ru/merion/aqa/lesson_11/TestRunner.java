@@ -49,5 +49,6 @@ public class TestRunner {
     }
     private static void printException(Exception ex) {
         System.err.println("Тест упал");
+        System.err.println(ex);
     }
 }
