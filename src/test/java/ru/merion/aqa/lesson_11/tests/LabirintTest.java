@@ -29,6 +29,24 @@ public class LabirintTest {
         driver.quit();
     }
 
+    @Test
+    public void negativeTest() {
+        WebDriver driver = WDFactory.create("chrome");
+        MainPage mainPage = openMainPage(driver);
+
+        ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
+        String msg = resultPage.getEmptyResultMessage();
+        System.out.println(msg.equals("Мы ничего не нашли по вашему запросу! Что делать?"));
+
+        String iconText = resultPage.header.getIconText();
+        System.out.println(iconText.equals("0"));
+
+        CartPage cartPage = resultPage.header.clickCartIcon();
+        String counter = cartPage.getEmptyCartMessage();
+
+        System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
+    }
+
     private MainPage openMainPage(WebDriver driver) {
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
         mainPage.open();
