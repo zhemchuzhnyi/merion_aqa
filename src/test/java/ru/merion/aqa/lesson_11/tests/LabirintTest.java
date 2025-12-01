@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson_11.tests;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,13 @@ public class LabirintTest {
         driver = WDFactory.create("chrome");
     }
 
+    @AfterEach
+    public void tearDown(){
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
     @Test
     public void positiveScenario() {
         MainPage mainPage = openMainPage(driver);
@@ -29,13 +37,10 @@ public class LabirintTest {
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
         assert counter.equals("35 товаров");
-
-        driver.quit();
     }
 
     @Test
     public void emptySearchResult() {
-        WebDriver driver = WDFactory.create("chrome");
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
@@ -49,8 +54,6 @@ public class LabirintTest {
         String counter = cartPage.getEmptyCartMessage();
 
         assert counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?");
-
-        driver.quit();
     }
 
     @Test
