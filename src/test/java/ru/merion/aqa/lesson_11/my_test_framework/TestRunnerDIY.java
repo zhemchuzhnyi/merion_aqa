@@ -1,4 +1,4 @@
-package ru.merion.aqa.lesson_11;
+package ru.merion.aqa.lesson_11.my_test_framework;
 
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.lesson7.WDFactory;
@@ -7,13 +7,13 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
-public class TestRunner {
+public class TestRunnerDIY {
     static WebDriver driver = null;
 
     public static void main(String[] args) {
         System.out.println("Run Tests");
 
-        LabirintTest testClass = new LabirintTest();
+        LabirintTestDIY testClass = new LabirintTestDIY();
         Method [] methods = testClass.getClass().getDeclaredMethods();
         int testsTotal = 0;
         Set<Method> success = new HashSet<>();

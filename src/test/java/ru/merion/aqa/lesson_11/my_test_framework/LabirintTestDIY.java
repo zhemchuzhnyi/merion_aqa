@@ -1,4 +1,4 @@
-package ru.merion.aqa.lesson_11;
+package ru.merion.aqa.lesson_11.my_test_framework;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -6,7 +6,7 @@ import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
-public class LabirintTest {
+public class LabirintTestDIY {
 
     @Test
     public void positiveScenario(WebDriver driver) {
@@ -23,11 +23,7 @@ public class LabirintTest {
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
-        if (counter.equals("37 товаров")) {
-            System.out.println("Проверили текст корзины");
-        } else {
-            System.err.println("Счетчик в корзине не равен 37!");
-        }
+        assert counter.equals("37 товаров");
     }
 
     @Test

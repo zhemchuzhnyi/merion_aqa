@@ -1,4 +1,4 @@
-package ru.merion.aqa.lesson_11;
+package ru.merion.aqa.lesson_11.my_test_framework;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
