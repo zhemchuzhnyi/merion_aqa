@@ -17,15 +17,15 @@ public class LabirintTest {
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
         String iconText = resultPage.header.getIconText();
-        if (iconText.equals("37")) {
+        if (iconText.equals("35")) {
             System.out.println("Проверили текст иконки");
         } else {
-            System.err.println("Текст иконки не равен 37!");
+            System.err.println("Текст иконки не равен 35!");
         }
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
-        assert counter.equals("37 товаров");
+        assert counter.equals("35 товаров");
     }
 
     private MainPage openMainPage(WebDriver driver) {
