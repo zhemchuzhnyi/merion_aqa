@@ -33,7 +33,7 @@ public class LabirintTest_Best {
         }
     }
 
-    @Test
+    @TestDIY
     @DisplayName("Позитивный тест: поиск товаров и добавление в корзину")
     @Tags({@Tag("positive"), @Tag("search")})
     public void positiveSearchTest() {
@@ -54,7 +54,7 @@ public class LabirintTest_Best {
         Assertions.assertFalse(counter.isEmpty(), "Счетчик корзины не должен быть пустым");
     }
 
-    @Test
+    @TestDIY
     @DisplayName("Негативный тест: поиск с пустым запросом")
     @Tags({@Tag("negative"), @Tag("search")})
     public void negativeSearchTest() {

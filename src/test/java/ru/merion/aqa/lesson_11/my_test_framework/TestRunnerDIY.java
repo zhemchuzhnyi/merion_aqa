@@ -21,7 +21,7 @@ public class TestRunnerDIY {
 
         for (Method testMethod : methods) {
             try {
-                if (testMethod.isAnnotationPresent(Test.class)) {
+                if (testMethod.isAnnotationPresent(TestDIY.class)) {
                     testsTotal++;
                     System.out.println("----------------------------------------------------------------------------------");
                     System.out.println(testMethod.getName());
