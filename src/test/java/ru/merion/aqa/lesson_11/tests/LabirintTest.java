@@ -22,6 +22,7 @@ public class LabirintTest {
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
         assert counter.equals("35 товаров");
+
         driver.quit();
     }
 
@@ -32,7 +33,7 @@ public class LabirintTest {
 
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
         String msg = resultPage.getEmptyResultMessage();
-        System.out.println(msg.equals("Мы ничего не нашли по вашему запросу! Что делать?"));
+        assert msg.equals("Мы ничего не нашли по вашему запросу! Что делать?");
 
         String iconText = resultPage.header.getIconText();
         System.out.println(iconText.equals("0"));
@@ -40,7 +41,7 @@ public class LabirintTest {
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
 
-        System.out.println(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
+        assert counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?");
     }
 
     private MainPage openMainPage(WebDriver driver) {
