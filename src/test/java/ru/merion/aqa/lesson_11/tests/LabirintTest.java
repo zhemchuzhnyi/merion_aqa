@@ -26,6 +26,7 @@ public class LabirintTest {
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
         assert counter.equals("35 товаров");
+        driver.quit();
     }
 
     private MainPage openMainPage(WebDriver driver) {
