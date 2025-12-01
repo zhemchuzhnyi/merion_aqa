@@ -1,4 +1,4 @@
-/*package ru.merion.aqa.lesson_11.tests;
+package ru.merion.aqa.lesson_11.tests;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LabirintTest {
+
     @Test
     public void positiveScenario() {
         WebDriver driver = WDFactory.create("chrome");
@@ -45,6 +46,8 @@ public class LabirintTest {
         String counter = cartPage.getEmptyCartMessage();
 
         assert counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?");
+
+        driver.quit();
     }
 
     @Test
@@ -57,10 +60,11 @@ public class LabirintTest {
         mainPage.open();
         return mainPage;
     }
+}
 
-*/
 
 
+/*
 package ru.merion.aqa.lesson_11.tests;
 
 import org.junit.jupiter.api.*;
@@ -158,3 +162,4 @@ public class LabirintTest {
         return mainPage;
     }
 }
+*/
