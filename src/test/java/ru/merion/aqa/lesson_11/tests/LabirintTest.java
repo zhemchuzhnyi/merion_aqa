@@ -17,7 +17,7 @@ public class LabirintTest {
     }
     @AfterAll
     public static void globalTearDown() {
-        driver.quit();
+        System.out.println("Finish tests");
     }
 
     @BeforeEach
