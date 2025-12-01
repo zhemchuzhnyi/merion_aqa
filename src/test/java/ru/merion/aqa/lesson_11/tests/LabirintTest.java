@@ -36,12 +36,17 @@ public class LabirintTest {
         assert msg.equals("Мы ничего не нашли по вашему запросу! Что делать?");
 
         String iconText = resultPage.header.getIconText();
-        System.out.println(iconText.equals("0"));
+        assert iconText.equals("0");
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
 
         assert counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?");
+    }
+
+    @Test
+    public void searchResult() {
+        System.out.println("test_3");
     }
 
     private MainPage openMainPage(WebDriver driver) {
