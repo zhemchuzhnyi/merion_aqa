@@ -1,8 +1,6 @@
 package ru.merion.aqa.lesson_11.tests;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import ru.merion.aqa.lesson7.WDFactory;
@@ -11,7 +9,16 @@ import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
 public class LabirintTest {
-    private WebDriver driver;
+    private static WebDriver driver;
+
+    @BeforeAll
+    public static void globalSetup() {
+        System.out.println("Run tests");
+    }
+    @AfterAll
+    public static void globalTearDown() {
+        driver.quit();
+    }
 
     @BeforeEach
     public void setUp(){
@@ -26,6 +33,7 @@ public class LabirintTest {
     }
 
     @Test
+    @Order(1)
     public void positiveScenario() {
         MainPage mainPage = openMainPage(driver);
 
@@ -40,6 +48,7 @@ public class LabirintTest {
     }
 
     @Test
+    @Order(2)
     public void emptySearchResult() {
         MainPage mainPage = openMainPage(driver);
 
@@ -57,6 +66,7 @@ public class LabirintTest {
     }
 
     @Test
+    @Order(3)
     public void searchResult() {
         System.out.println("test_3");
     }
