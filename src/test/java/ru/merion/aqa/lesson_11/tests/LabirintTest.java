@@ -17,11 +17,7 @@ public class LabirintTest {
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
         String iconText = resultPage.header.getIconText();
-        if (iconText.equals("35")) {
-            System.out.println("Проверили текст иконки");
-        } else {
-            System.err.println("Текст иконки не равен 35!");
-        }
+        assert iconText.equals("35");
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
@@ -30,7 +26,7 @@ public class LabirintTest {
     }
 
     @Test
-    public void negativeTest() {
+    public void emptySearchResult() {
         WebDriver driver = WDFactory.create("chrome");
         MainPage mainPage = openMainPage(driver);
 
