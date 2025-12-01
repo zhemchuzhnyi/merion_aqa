@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson_11.tests;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -8,14 +9,16 @@ import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 public class LabirintTest {
+    private WebDriver driver;
+
+    @BeforeEach
+    public void setUp(){
+        driver = WDFactory.create("chrome");
+    }
 
     @Test
     public void positiveScenario() {
-        WebDriver driver = WDFactory.create("chrome");
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
