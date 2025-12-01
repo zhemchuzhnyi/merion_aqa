@@ -2,8 +2,8 @@ package ru.merion.aqa.lesson_11.tests;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import ru.merion.aqa.lesson7.WDFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
@@ -11,7 +11,7 @@ import ru.merion.aqa.lesson7.page.ResultPage;
 public class LabirintTest {
     @Test
     public void positiveScenario() {
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = WDFactory.create("chrome");
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
