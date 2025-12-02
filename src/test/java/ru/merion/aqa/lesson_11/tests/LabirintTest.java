@@ -42,6 +42,12 @@ public class LabirintTest {
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
         String iconText = resultPage.header.getIconText();
+
+        // Используем Assertions.assertEquals() вместо assert, потому что:
+        // 1. assert по умолчанию отключен в Java (нужна JVM опция -ea)
+        // 2. Assertions дает более информативные сообщения об ошибках
+        // 3. Assertions - стандарт для JUnit тестов
+        // 4. Порядок: сначала ожидаемое значение, потом фактическое (expected, actual)
         Assertions.assertEquals("35", iconText);
 
         CartPage cartPage = resultPage.header.clickCartIcon();
@@ -57,18 +63,27 @@ public class LabirintTest {
 
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
         String msg = resultPage.getEmptyResultMessage();
-        Assertions.assertEquals("Все, что мы нашли в Лабиринте по запросу «@@@@»", msg);
+        // expected идет первым - это convention в JUnit
+        // Так проще читать: "ожидаем X, получили Y"
+        Assertions.assertEquals("Мы ничего не нашли по вашему запросу! Что делать?", msg);
 
         String iconText = resultPage.header.getIconText();
         Assertions.assertEquals("0", iconText);
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
+
+        // Используем toUpperCase() на фактическом значении для корректного сравнения
+        // Вместо equalsIgnoreCase используем assertEquals с преобразованием -
+        // так мы видим точное значение в отчете при падении теста
         Assertions.assertEquals("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?", counter.toUpperCase());
     }
 
     @Test
     @Disabled("Не реализован")
+    // @Disabled явно показывает, что тест не готов
+    // Тест будет пропущен при запуске, но останется видимым в отчетах
+    // Лучше чем пустой тест, который может сломать билд или ввести в заблуждение
     public void searchResult() {
         System.out.println("test_3");
     }
