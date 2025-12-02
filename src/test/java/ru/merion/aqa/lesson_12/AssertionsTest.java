@@ -24,8 +24,14 @@ public class AssertionsTest {
     @Test
     public void arraysNonEqualityDemo() {
         int[] arrA = {1,2,3,4,5};
-        int[] arrB = {1,2,3,4,5,9};
+        int[] arrB = {1,2,3,4,9};
         assertFalse(Arrays.equals(arrA, arrB));
     }
 
+    @Test
+    public void checkTwoObjectEquality() {
+        User userFromXml = new User(1,"Tester name", "TEST");
+        User userFromDb = new User(1,"Tester name", "TEST");
+        assertEquals(userFromXml, userFromDb);
+    }
 }
