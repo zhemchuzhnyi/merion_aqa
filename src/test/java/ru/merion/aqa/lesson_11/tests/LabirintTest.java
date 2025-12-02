@@ -15,6 +15,7 @@ public class LabirintTest {
     public static void globalSetup() {
         System.out.println("Run tests");
     }
+
     @AfterAll
     public static void globalTearDown() {
         System.out.println("Finish tests");
@@ -33,40 +34,41 @@ public class LabirintTest {
     }
 
     @Test
-    @Order(1)
+    @DisplayName("Поиск товаров на сайте и добавление в корзину")
+    @Tags({@Tag("positive"),@Tag("search")})
     public void positiveScenario() {
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
         String iconText = resultPage.header.getIconText();
-        assert iconText.equals("35");
+        Assertions.assertEquals("35", iconText);
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
-        assert counter.equals("35 товаров");
+        Assertions.assertEquals("35 товаров", counter);
     }
 
     @Test
-    @Order(2)
+    @Tags({@Tag("negative"),@Tag("search")})
+    @DisplayName("Поиск на сайте без результатов")
     public void emptySearchResult() {
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
         String msg = resultPage.getEmptyResultMessage();
-        assert msg.equals("Мы ничего не нашли по вашему запросу! Что делать?");
+        Assertions.assertEquals("Все, что мы нашли в Лабиринте по запросу «@@@@»", msg);
 
         String iconText = resultPage.header.getIconText();
-        assert iconText.equals("0");
+        Assertions.assertEquals("0", iconText);
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
-
-        assert counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?");
+        Assertions.assertEquals("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?", counter.toUpperCase());
     }
 
     @Test
-    @Order(3)
+    @Disabled("Не реализован")
     public void searchResult() {
         System.out.println("test_3");
     }
