@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson_11.tests;
 
+import jdk.jfr.Enabled;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -65,7 +66,7 @@ public class LabirintTest {
         String msg = resultPage.getEmptyResultMessage();
         // expected идет первым - это convention в JUnit
         // Так проще читать: "ожидаем X, получили Y"
-        Assertions.assertEquals("Мы ничего не нашли по вашему запросу! Что делать?", msg);
+        Assertions.assertEquals("Все, что мы нашли в Лабиринте по запросу «@@@@", msg);
 
         String iconText = resultPage.header.getIconText();
         Assertions.assertEquals("0", iconText);
@@ -80,10 +81,10 @@ public class LabirintTest {
     }
 
     @Test
-    @Disabled("Не реализован")
+    @DisplayName("Не реализован")
     // @Disabled явно показывает, что тест не готов
     // Тест будет пропущен при запуске, но останется видимым в отчетах
-    // Лучше чем пустой тест, который может сломать билд или ввести в заблуждение
+    // Лучше, чем пустой тест, который может сломать билд или ввести в заблуждение
     public void searchResult() {
         System.out.println("test_3");
     }
