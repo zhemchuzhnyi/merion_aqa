@@ -34,4 +34,9 @@ public class AssertionsTest {
         User userFromDb = new User(1,"Tester name", "TEST");
         assertEquals(userFromXml, userFromDb);
     }
+    @Test
+    public void checkConnectionIsSecure() {
+        String url = "http://google.com";
+        assertFalse(url.contains("https://"));
+    }
 }
