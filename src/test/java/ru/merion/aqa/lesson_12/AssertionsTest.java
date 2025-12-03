@@ -66,14 +66,14 @@ public class AssertionsTest {
     }
 
     /**
-     * Тест с ошибочной логикой - проверяет, что URL НЕ содержит "http"
-     * (на самом деле содержит, тест должен упасть)
+     * Тест проверяет, что соединение НЕ защищено (URL использует http, а не https)
      */
     @Test
     public void checkConnectionIsNotSecure() {
-        String url = "https://the-internet.herokuapp.com/";
-        // Проверяем, что URL НЕ содержит "http" (это неверно, тест провалится)
-        assertFalse(url.contains("http"));
+        String url = "http://the-internet.herokuapp.com/";
+        // Проверяем, что URL НЕ содержит "https" (только "http" без 's')
+        // Тест пройдет, так как url содержит "http://", но не "https://"
+        assertFalse(url.contains("https"));
     }
 
     /**
@@ -83,6 +83,7 @@ public class AssertionsTest {
     public void checkConnectionIsSecure() {
         String url = "https://the-internet.herokuapp.com/";
         // Проверяем, что URL содержит "https" (безопасное соединение)
+        // Тест пройдет успешно
         assertTrue(url.contains("https"));
     }
 
