@@ -52,4 +52,11 @@ public class AssertionsTest {
     public void checkDriverIsNull() {
         assertNotNull(driver);
     }
+
+    @Test
+    public void checkThrows() {
+        assertThrows(NullPointerException.class, () -> {
+            driver.get("https://ya.ru");
+        });
+    }
 }
