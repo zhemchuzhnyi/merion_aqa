@@ -35,8 +35,14 @@ public class AssertionsTest {
         assertEquals(userFromXml, userFromDb);
     }
     @Test
+    public void checkConnectionIsNotSecure() {
+        String url = "https://the-internet.herokuapp.com/";
+        assertFalse(url.contains("http"));
+    }
+
+    @Test
     public void checkConnectionIsSecure() {
-        String url = "http://google.com";
-        assertFalse(url.contains("https://"));
+        String url = "https://the-internet.herokuapp.com/";
+        assertTrue(url.contains("https"));
     }
 }
