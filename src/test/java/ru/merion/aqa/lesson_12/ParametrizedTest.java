@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class ParametrizedTest {
     private WebDriver driver;
 
@@ -28,7 +30,8 @@ public class ParametrizedTest {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("Test");
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
         driver.findElement(By.cssSelector("#login")).click();
+
+        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
+        assertEquals("Welcome, Test!", msg);
     }
-
-
 }
