@@ -2,6 +2,8 @@ package ru.merion.aqa.lesson_12;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
@@ -20,5 +22,13 @@ public class ParametrizedTest {
             driver.quit();
         }
     }
+
+    @Test
+    public void happyPath() {
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("Test");
+        driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
+        driver.findElement(By.cssSelector("#login")).click();
+    }
+
 
 }
