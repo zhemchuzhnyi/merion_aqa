@@ -27,11 +27,12 @@ public class ParametrizedTest {
 
     @Test
     public void happyPath() {
-        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("Test");
+        String username = "Test";
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("username");
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
         driver.findElement(By.cssSelector("#login")).click();
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
-        assertEquals("Welcome, Test!", msg);
+        assertEquals("Welcome, " + username + "!", msg);
     }
 }
