@@ -1,6 +1,7 @@
 package ru.merion.aqa.lesson_12;
 
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 
@@ -44,5 +45,11 @@ public class AssertionsTest {
     public void checkConnectionIsSecure() {
         String url = "https://the-internet.herokuapp.com/";
         assertTrue(url.contains("https"));
+    }
+
+    WebDriver driver;
+    @Test
+    public void checkDriverIsNull() {
+        assertNotNull(driver);
     }
 }
