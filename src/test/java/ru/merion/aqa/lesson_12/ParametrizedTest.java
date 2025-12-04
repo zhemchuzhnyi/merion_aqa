@@ -30,14 +30,17 @@ public class ParametrizedTest {
         tryToAuth("","");
     }
 
+    @Test
     public void unauthorized2() {
         tryToAuth("","pwd");
     }
 
+    @Test
     public void unauthorized3() {
         tryToAuth("Test","");
     }
 
+    @Test
     public void unauthorized4() {
         tryToAuth("Test","pwd");
     }
