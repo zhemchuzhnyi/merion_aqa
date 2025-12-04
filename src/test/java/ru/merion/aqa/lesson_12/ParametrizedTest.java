@@ -30,7 +30,7 @@ public class ParametrizedTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Test", "Тест","_","12345"})
+    @ValueSource(strings = {"Test", "Тест", "_", "12345", "mail@mail.ru"})
     public void happyTest(String username) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(username);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
