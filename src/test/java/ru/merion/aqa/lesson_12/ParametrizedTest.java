@@ -2,6 +2,7 @@ package ru.merion.aqa.lesson_12;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,24 +27,20 @@ public class ParametrizedTest {
     }
 
     @Test
-    public void unauthorized1() {
-        tryToAuth("","");
-    }
+    @DisplayName("Пустые поля")
+    public void unauthorized1() {tryToAuth("","");}
 
     @Test
-    public void unauthorized2() {
-        tryToAuth("","pwd");
-    }
+    @DisplayName("Вход только с паролем")
+    public void unauthorized2() {tryToAuth("","pwd");}
 
     @Test
-    public void unauthorized3() {
-        tryToAuth("Test","");
-    }
+    @DisplayName("Вход только с логином")
+    public void unauthorized3() {tryToAuth("Test","");}
 
     @Test
-    public void unauthorized4() {
-        tryToAuth("Test","pwd");
-    }
+    @DisplayName("Вход по корректным данным")
+    public void unauthorized4() {tryToAuth("Test","pwd");}
 
     private void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
