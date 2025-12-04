@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
@@ -27,9 +29,9 @@ public class ParametrizedTest {
         }
     }
 
-    @Test
-    public void test() {
-        String username = "Test";
+    @ParameterizedTest
+    @ValueSource(strings = {"Test", "Тест","_","12345"})
+    public void happyTest(String username) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(username);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
         driver.findElement(By.cssSelector("#login")).click();
