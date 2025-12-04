@@ -26,9 +26,36 @@ public class ParametrizedTest {
     }
 
     @Test
-    public void unauthorized() {
+    public void unauthorized1() {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("");
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys("");
+        driver.findElement(By.cssSelector("#login")).click();
+
+        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
+        assertEquals("Invalid username/password", msg);
+    }
+
+    public void unauthorized2() {
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("");
+        driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
+        driver.findElement(By.cssSelector("#login")).click();
+
+        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
+        assertEquals("Invalid username/password", msg);
+    }
+
+    public void unauthorized3() {
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("Test");
+        driver.findElement(By.cssSelector("[name=Password]")).sendKeys("");
+        driver.findElement(By.cssSelector("#login")).click();
+
+        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
+        assertEquals("Invalid username/password", msg);
+    }
+
+    public void unauthorized() {
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("Test");
+        driver.findElement(By.cssSelector("[name=Password]")).sendKeys("_pwd_");
         driver.findElement(By.cssSelector("#login")).click();
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
