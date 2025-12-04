@@ -4,6 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
@@ -27,22 +28,35 @@ public class ParametrizedTest {
     }
 
     @Test
-    @DisplayName("Пустые поля")
-    public void unauthorized1() {tryToAuth("","");}
+    public void test() {
+        String username = "Test";
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(username);
+        driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
+        driver.findElement(By.cssSelector("#login")).click();
 
-    @Test
-    @DisplayName("Вход только с паролем")
-    public void unauthorized2() {tryToAuth("","pwd");}
+        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
+        assertEquals("Welcome, " + username + "!", msg);
+    }
 
-    @Test
-    @DisplayName("Вход только с логином")
-    public void unauthorized3() {tryToAuth("Test","");}
+//    @Test
+//    @DisplayName("Пустые поля")
+//    public void unauthorized1() {tryToAuth("","");}
+//
+//    @Test
+//    @DisplayName("Вход только с паролем")
+//    public void unauthorized2() {tryToAuth("","pwd");}
+//
+//    @Test
+//    @DisplayName("Вход только с логином")
+//    public void unauthorized3() {tryToAuth("Test","");}
+//
+//    @Test
+//    @DisplayName("Вход по корректным данным")
+//    public void unauthorized4() {tryToAuth("Test","pwd");}
 
-    @Test
-    @DisplayName("Вход по корректным данным")
-    public void unauthorized4() {tryToAuth("Test","pwd");}
+    @ParameterizedTest
 
-    private void tryToAuth(String login, String pass) {
+    public void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
         driver.findElement(By.cssSelector("#login")).click();
@@ -50,4 +64,5 @@ public class ParametrizedTest {
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
         assertEquals("Invalid username/password", msg);
     }
+
 }
