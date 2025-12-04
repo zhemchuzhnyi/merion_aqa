@@ -26,9 +26,9 @@ public class ParametrizedTest {
     }
 
     @Test
-    public void happyPath() {
+    public void unauthorized() {
         String username = "Test";
-        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("username");
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(username);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
         driver.findElement(By.cssSelector("#login")).click();
 
