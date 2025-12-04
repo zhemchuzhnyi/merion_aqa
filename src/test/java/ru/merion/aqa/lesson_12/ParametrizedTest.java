@@ -53,9 +53,18 @@ public class ParametrizedTest {
         assertEquals("Invalid username/password", msg);
     }
 
-    public void unauthorized() {
+    public void unauthorized4() {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys("Test");
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys("_pwd_");
+        driver.findElement(By.cssSelector("#login")).click();
+
+        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
+        assertEquals("Invalid username/password", msg);
+    }
+
+    private void tryToAuth(String login, String pass) {
+        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
+        driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
         driver.findElement(By.cssSelector("#login")).click();
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
