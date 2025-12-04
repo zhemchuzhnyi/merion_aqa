@@ -39,7 +39,7 @@ public class ParametrizedTest {
     }
 
     public void unauthorized4() {
-        tryToAuth("Test","_pwd_");
+        tryToAuth("Test","pwd");
     }
 
     private void tryToAuth(String login, String pass) {
