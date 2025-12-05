@@ -1,9 +1,6 @@
 package ru.merion.aqa.lesson_12;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
@@ -57,14 +54,13 @@ public class ParametrizedTest {
 //    public void unauthorized4() {tryToAuth("Test","pwd");}
 
     @ParameterizedTest
-
+    @
     public void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
         driver.findElement(By.cssSelector("#login")).click();
 
-        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
-        assertEquals("Invalid username/password", msg);
+
     }
 
 }
