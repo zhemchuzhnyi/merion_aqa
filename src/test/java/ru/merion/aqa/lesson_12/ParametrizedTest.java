@@ -54,7 +54,7 @@ public class ParametrizedTest {
 //    public void unauthorized4() {tryToAuth("Test","pwd");}
 
     @ParameterizedTest
-    @
+    @ValueSource(strings = {"Test", "Тест", "_", "12345", "mail@mail.ru"})
     public void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
