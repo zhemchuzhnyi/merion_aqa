@@ -2,6 +2,7 @@ package ru.merion.aqa.lesson_12;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 import org.openqa.selenium.By;
@@ -54,7 +55,13 @@ public class ParametrizedTest {
 //    public void unauthorized4() {tryToAuth("Test","pwd");}
 
     @ParameterizedTest
-    @ValueSource(strings = {"Test", "Тест", "_", "12345", "mail@mail.ru"})
+    @CsvSource({
+            "Test,      pass123",
+            "Тест,      пароль",
+            "_,         _",
+            "12345,     54321",
+            "mail@mail.ru, qwerty"
+    })
     public void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
