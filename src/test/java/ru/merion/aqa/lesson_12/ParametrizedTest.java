@@ -67,6 +67,7 @@ public class ParametrizedTest {
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
         driver.findElement(By.cssSelector("#login")).click();
 
+
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
         assertEquals("Invalid username/password", msg);
     }
