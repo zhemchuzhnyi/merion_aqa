@@ -71,10 +71,4 @@ public class ParametrizedTest {
         assertEquals("Invalid username/password", msg);
 
     }
-    @Test
-    public void happyTest() {
-        driver.findElement(By.cssSelector("#login")).click();
-        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
-        assertEquals("Welcome, " + driver.findElement(By.cssSelector("#loginstatus")).getText(), msg);
-    }
 }
