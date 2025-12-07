@@ -69,5 +69,6 @@ public class ParametrizedTest {
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
         assertEquals("Invalid username/password", msg);
+
     }
 }
