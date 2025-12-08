@@ -50,14 +50,14 @@ public class ParametrizedTestNotGood {
     }
     static Stream<Arguments> loginAndPassProvider() {
         return Stream.of(
-                arguments("Test", "pwd"),
-                arguments("Тест", "pwd"),
-                arguments("12345", "pwd"),
-                arguments("mail@mail.ru", "pwd"),
-                arguments("", ""),
-                arguments("", "pwd"),
-                arguments("Test",""),
-                arguments("Test","_pwd_")
+                arguments("Test", "pwd" , true),
+                arguments("Тест", "pwd",true),
+                arguments("12345", "pwd", true),
+                arguments("mail@mail.ru", "pwd", true),
+                arguments("", "", false),
+                arguments("", "pwd", false),
+                arguments("Test","", false),
+                arguments("Test","_pwd_", false)
         );
     }
 }
