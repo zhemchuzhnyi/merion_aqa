@@ -8,8 +8,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.merion.aqa.WebDriverFactory;
 import ru.merion.aqa.lesson_12.ext.BeforeAndAfterEachCallbacks;
+import ru.merion.aqa.lesson_12.ext.InjectWebDriver;
 
 import java.util.stream.Stream;
 
@@ -17,22 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @ExtendWith(BeforeAndAfterEachCallbacks.class)
+@InjectWebDriver
 
 public class ParametrizedTest {
-    private WebDriver driver;
+    public WebDriver driver;
 
     @BeforeEach
     public void setUp() {
         System.out.println("Стартуем драйвер");
-        driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/sampleapp");
-    }
-
-    @AfterEach
-    public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
     }
 
     @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0}")

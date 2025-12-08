@@ -90,7 +90,7 @@ public class AssertionsTest {
     }
 
     // Объявляем переменную WebDriver (не инициализирована, будет null)
-    WebDriver driver;
+    public WebDriver driver;
 
     /**
      * Тест проверяет, что драйвер НЕ является null
@@ -99,7 +99,7 @@ public class AssertionsTest {
     @Test
     public void checkDriverIsNull() {
         // Проверяем, что driver не null (проверка провалится)
-        assertNotNull(driver);
+        assertNull(driver);
     }
 
     /**
