@@ -40,8 +40,6 @@ public class ParametrizedTestNotGood {
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
         driver.findElement(By.cssSelector("#login")).click();
 
-
-
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
         assertEquals("Welcome, + " + login + "!", msg);
         assertEquals("Invalid username/password", msg);
