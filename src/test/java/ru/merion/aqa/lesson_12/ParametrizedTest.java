@@ -44,22 +44,6 @@ public class ParametrizedTest {
         assertEquals("Welcome, " + username + "!", msg);
     }
 
-//    @Test
-//    @DisplayName("Пустые поля")
-//    public void unauthorized1() {tryToAuth("","");}
-//
-//    @Test
-//    @DisplayName("Вход только с паролем")
-//    public void unauthorized2() {tryToAuth("","pwd");}
-//
-//    @Test
-//    @DisplayName("Вход только с логином")
-//    public void unauthorized3() {tryToAuth("Test","");}
-//
-//    @Test
-//    @DisplayName("Вход по корректным данным")
-//    public void unauthorized4() {tryToAuth("Test","pwd");}
-
     @ParameterizedTest
     @MethodSource("loginAndPassProvider")
     public void tryToAuth(String login, String pass) {
