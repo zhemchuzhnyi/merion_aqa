@@ -30,7 +30,8 @@ public class ParametrizedTest {
         }
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0}")
+    @DisplayName("Успешная авторизация")
     @ValueSource(strings = {"Test", "Тест", "_", "12345", "mail@mail.ru"})
     public void happyTest(String username) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(username);
