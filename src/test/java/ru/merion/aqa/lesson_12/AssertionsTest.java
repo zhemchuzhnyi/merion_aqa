@@ -3,6 +3,7 @@ package ru.merion.aqa.lesson_12;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
+import ru.merion.aqa.lesson_12.ext.BeforeAndAfterEachCallbacks;
 
 import java.util.Arrays;
 

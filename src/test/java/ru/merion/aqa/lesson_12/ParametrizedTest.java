@@ -9,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
+import ru.merion.aqa.lesson_12.ext.BeforeAndAfterEachCallbacks;
 
 import java.util.stream.Stream;
 
