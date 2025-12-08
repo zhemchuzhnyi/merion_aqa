@@ -1,6 +1,8 @@
 package ru.merion.aqa.lesson_12;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.lesson_12.ext.WebDriverInjector;
@@ -9,6 +11,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(WebDriverInjector.class)
+@TestMethodOrder(MethodOrderer.MethodName.class)
 
 /**
  * Класс для демонстрации различных типов assertions (утверждений) в JUnit 5
