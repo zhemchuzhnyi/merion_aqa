@@ -36,16 +36,13 @@ public class ParametrizedTestNotGood {
     @DisplayName("Успешная авторизация")
     @ValueSource(strings = {"Test", "Тест", "_", "12345", "mail@mail.ru"})
     public void happyTest(String username) {
-        driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(username);
-        driver.findElement(By.cssSelector("[name=Password]")).sendKeys("pwd");
-        driver.findElement(By.cssSelector("#login")).click();
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
         assertEquals("Welcome, " + username + "!", msg);
     }
 
     @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0} и пароля {1} | {argumentsWithNames}")
-    @DisplayName("Неуспешная авторизация")
+    @DisplayName("Авторизация")
     @MethodSource("loginAndPassProvider")
     public void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
@@ -54,10 +51,15 @@ public class ParametrizedTestNotGood {
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
         assertEquals("Invalid username/password", msg);
+        assertEquals("Welcome, + " + login + "!", msg);
 
     }
     static Stream<Arguments> loginAndPassProvider() {
         return Stream.of(
+                arguments("Test", "pwd"),
+                arguments("Тест", "pwd"),
+                arguments("12345", "pwd"),
+                arguments("mail@mail.ru", "pwd"),
                 arguments("", ""),
                 arguments("", "pwd"),
                 arguments("Test",""),
