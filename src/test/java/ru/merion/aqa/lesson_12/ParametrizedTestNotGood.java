@@ -43,7 +43,7 @@ public class ParametrizedTestNotGood {
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
 
         if (isHappyPass) {
-            assertEquals("Welcome, + " + login + "!", msg);
+            assertEquals("Welcome, " + login + "!", msg);
         } else {
             assertEquals("Invalid username/password", msg);
         }
