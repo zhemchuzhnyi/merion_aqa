@@ -16,9 +16,11 @@ public class WebDriverInjector implements BeforeEachCallback, AfterEachCallback 
             Field[] fields = testInstance.getClass().getDeclaredFields();
             for (Field field : fields) {
                 if (field.getType().equals(WebDriver.class)) {
+                    boolean before = field.canAccess(testInstance);
                     field.setAccessible(true);
                     driver = WebDriverFactory.create("chrome");
                     field.set(testInstance, driver);
+                    field.setAccessible(before);
                 }
             }
         }
