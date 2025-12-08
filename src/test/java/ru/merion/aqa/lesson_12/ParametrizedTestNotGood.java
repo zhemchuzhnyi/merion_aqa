@@ -35,15 +35,18 @@ public class ParametrizedTestNotGood {
     @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0} и пароля {1} | {argumentsWithNames}")
     @DisplayName("Авторизация")
     @MethodSource("loginAndPassProvider")
-    public void tryToAuth(String login, String pass) {
+    public void tryToAuth(String login, String pass, boolean isHappyPass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
         driver.findElement(By.cssSelector("#login")).click();
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
-        assertEquals("Welcome, + " + login + "!", msg);
-        assertEquals("Invalid username/password", msg);
 
+        if (isHappyPass) {
+            assertEquals("Welcome, + " + login + "!", msg);
+        } else {
+            assertEquals("Invalid username/password", msg);
+        }
     }
     static Stream<Arguments> loginAndPassProvider() {
         return Stream.of(
