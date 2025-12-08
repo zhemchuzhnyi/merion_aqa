@@ -32,15 +32,6 @@ public class ParametrizedTestNotGood {
         }
     }
 
-    @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0}")
-    @DisplayName("Успешная авторизация")
-    @ValueSource(strings = {"Test", "Тест", "_", "12345", "mail@mail.ru"})
-    public void happyTest(String username) {
-
-        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
-        assertEquals("Welcome, " + username + "!", msg);
-    }
-
     @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0} и пароля {1} | {argumentsWithNames}")
     @DisplayName("Авторизация")
     @MethodSource("loginAndPassProvider")
@@ -48,6 +39,8 @@ public class ParametrizedTestNotGood {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
         driver.findElement(By.cssSelector("#login")).click();
+
+
 
         String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
         assertEquals("Welcome, + " + login + "!", msg);
