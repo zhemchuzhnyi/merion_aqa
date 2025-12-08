@@ -41,7 +41,7 @@ public class ParametrizedTest {
         assertEquals("Welcome, " + username + "!", msg);
     }
 
-    @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0} и пароля {1}")
+    @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина {0} и пароля {1} | {argumentsWithNames}")
     @DisplayName("Неуспешная авторизация")
     @MethodSource("loginAndPassProvider")
     public void tryToAuth(String login, String pass) {
