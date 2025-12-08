@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 import java.lang.reflect.Field;
 
-public class BeforeAndAfterEachCallbacks implements BeforeEachCallback, AfterEachCallback {
+public class WebDriverInjector implements BeforeEachCallback, AfterEachCallback {
 
     private WebDriver driver = null;
 
@@ -13,7 +13,7 @@ public class BeforeAndAfterEachCallbacks implements BeforeEachCallback, AfterEac
     public void beforeEach(ExtensionContext context) throws Exception {
         Object testInstance = context.getTestInstance().get();
         if (testInstance.getClass().isAnnotationPresent(InjectWebDriver.class)) {
-            Field[] fields = testInstance.getClass().getFields();
+            Field[] fields = testInstance.getClass().getDeclaredFields();
             for (Field field : fields) {
                 if (field.getType().equals(WebDriver.class)) {
                     driver = WebDriverFactory.create("chrome");

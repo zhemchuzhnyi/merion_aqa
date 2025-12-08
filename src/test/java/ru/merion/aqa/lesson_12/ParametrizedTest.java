@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.merion.aqa.lesson_12.ext.BeforeAndAfterEachCallbacks;
+import ru.merion.aqa.lesson_12.ext.WebDriverInjector;
 import ru.merion.aqa.lesson_12.ext.InjectWebDriver;
 
 import java.util.stream.Stream;
@@ -16,11 +16,11 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-@ExtendWith(BeforeAndAfterEachCallbacks.class)
+@ExtendWith(WebDriverInjector.class)
 @InjectWebDriver
 
 public class ParametrizedTest {
-    public WebDriver driver;
+    private WebDriver driver;
 
     @BeforeEach
     public void setUp() {
