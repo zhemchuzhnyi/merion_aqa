@@ -1,17 +1,18 @@
 package ru.merion.aqa.lesson_12;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
+@ExtendWith(BeforeAndAfterEachCallbacks.class)
 
 /**
  * Класс для демонстрации различных типов assertions (утверждений) в JUnit 5
  */
 public class AssertionsTest {
-
     /**
      * Тест проверяет базовое равенство чисел
      */
