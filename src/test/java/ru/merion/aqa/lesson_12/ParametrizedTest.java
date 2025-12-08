@@ -1,6 +1,7 @@
 package ru.merion.aqa.lesson_12;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -14,11 +15,14 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
+@ExtendWith(BeforeAndAfterEachCallbacks.class)
+
 public class ParametrizedTest {
     private WebDriver driver;
 
     @BeforeEach
     public void setUp() {
+        System.out.println("Стартуем драйвер");
         driver = WebDriverFactory.create("chrome");
         driver.get("http://uitestingplayground.com/sampleapp");
     }
