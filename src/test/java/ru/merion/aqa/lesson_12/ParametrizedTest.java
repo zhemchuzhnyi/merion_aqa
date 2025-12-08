@@ -2,14 +2,20 @@ package ru.merion.aqa.lesson_12;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Validate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.WebDriverFactory;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class ParametrizedTest {
     private WebDriver driver;
@@ -55,13 +61,7 @@ public class ParametrizedTest {
 //    public void unauthorized4() {tryToAuth("Test","pwd");}
 
     @ParameterizedTest
-    @CsvSource({
-            "Test,      pass123",
-            "Тест,      пароль",
-            "_,         _",
-            "12345,     54321",
-            "mail@mail.ru, qwerty"
-    })
+    @MethodSource("loginAndPassProvider")
     public void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
         driver.findElement(By.cssSelector("[name=Password]")).sendKeys(pass);
@@ -71,10 +71,12 @@ public class ParametrizedTest {
         assertEquals("Invalid username/password", msg);
 
     }
-    @Test
-    public void happyTest() {
-        driver.findElement(By.cssSelector("#login")).click();
-        String msg = driver.findElement(By.cssSelector("#loginstatus")).getText();
-        assertEquals("Welcome, " + driver.findElement(By.cssSelector("#loginstatus")).getText(), msg);
+    static Stream<Arguments> loginAndPassProvider() {
+        return Stream.of(
+                arguments("", ""),
+                arguments("", "pwd"),
+                arguments("Test",""),
+                arguments("Test","_pwd_")
+        );
     }
 }
