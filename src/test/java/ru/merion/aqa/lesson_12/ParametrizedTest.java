@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @ExtendWith(WebDriverInjector.class)
-@InjectWebDriver
+@InjectWebDriver(browserName = "librewolf")
 
 public class ParametrizedTest {
     private WebDriver driver;
