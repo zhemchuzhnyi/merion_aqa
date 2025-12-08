@@ -13,12 +13,15 @@ public class WebDriverInjector implements BeforeEachCallback, AfterEachCallback 
     public void beforeEach(ExtensionContext context) throws Exception {
         Object testInstance = context.getTestInstance().get();
         if (testInstance.getClass().isAnnotationPresent(InjectWebDriver.class)) {
+
+           String browserName = testInstance.getClass().getAnnotation(InjectWebDriver.class).browserName();
+
             Field[] fields = testInstance.getClass().getDeclaredFields();
             for (Field field : fields) {
                 if (field.getType().equals(WebDriver.class)) {
                     boolean before = field.canAccess(testInstance);
                     field.setAccessible(true);
-                    driver = WebDriverFactory.create("chrome");
+                    driver = WebDriverFactory.create(browserName);
                     field.set(testInstance, driver);
                     field.setAccessible(before);
                 }

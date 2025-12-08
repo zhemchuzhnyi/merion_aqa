@@ -28,9 +28,14 @@ public class WebDriverFactory {
                 return create(new EdgeOptions());
             case "safari":
                 return create(new SafariOptions());
+            case "yandex":
+                return createYandex();
+            case "librewolf":
+                return createLibreWolf();
             default:
                 throw new IllegalArgumentException(
-                        "Неподдерживаемый тип браузера: " + browserName + ". Ожидается: chrome, firefox, edge или safari");
+                        "Неподдерживаемый тип браузера: " + browserName +
+                                ". Ожидается: chrome, firefox, edge, safari, yandex или librewolf");
         }
     }
 
@@ -42,24 +47,41 @@ public class WebDriverFactory {
         return new FirefoxDriver(options);
     }
 
-    public static WebDriver create(ChromeOptions options) {
-        // Используем переданные options вместо создания новых
-        File extension = new File(getChromeExtensionPath());
-        if (extension.exists()) {
-            options.addExtensions(extension);
-        } else {
-            throw new IllegalStateException("Файл расширения Chrome не найден: " + extension.getAbsolutePath());
-        }
-        return new ChromeDriver(options);
-    }
-
     public static WebDriver create(EdgeOptions options) {
         return new EdgeDriver(options);
     }
 
+    public static WebDriver create(ChromeOptions options) {
+        File extension = new File(getChromeExtensionPath());
+        if (extension.exists()) {
+            options.addExtensions(extension);
+        }
+        return new ChromeDriver(options);
+    }
+
+    // Яндекс.Браузер (основан на Chromium)
+    public static WebDriver createYandex() {
+        ChromeOptions options = new ChromeOptions();
+        String yandexPath = "/Applications/Yandex.app/Contents/MacOS/Yandex";
+        options.setBinary(yandexPath);
+        File extension = new File(getChromeExtensionPath());
+        if (extension.exists()) {
+            options.addExtensions(extension);
+        }
+
+        return new ChromeDriver(options);
+    }
+
+    // LibreWolf (основан на Firefox)
+    public static WebDriver createLibreWolf() {
+        FirefoxOptions options = new FirefoxOptions();
+        String librewolfPath = "/Applications/LibreWolf.app/Contents/MacOS/librewolf";
+        options.setBinary(librewolfPath);
+        return new FirefoxDriver(options);
+    }
+
     // Метод для получения пути к расширению Chrome (можно настроить через конфигурацию)
     private static String getChromeExtensionPath() {
-        // Пример: можно задать путь через системную переменную или конфигурацию
         String defaultPath = "src/main/resources/chrome_ext/User-Agent-Switcher-for-Chrome-Chrome.crx";
         return System.getProperty("chrome.extension.path", defaultPath);
     }

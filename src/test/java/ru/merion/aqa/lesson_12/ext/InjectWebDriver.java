@@ -8,5 +8,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface InjectWebDriver {
-    String browser() default "chrome";
+    //(chrome | firefox | safari | edge | librewolf | yandex)
+    String browserName() default "chrome";
 }
