@@ -41,7 +41,8 @@ public class ParametrizedTest {
         assertEquals("Welcome, " + username + "!", msg);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{index} -> Авторизуемся со значением логина и пароля")
+    @DisplayName("Неуспешная авторизация")
     @MethodSource("loginAndPassProvider")
     public void tryToAuth(String login, String pass) {
         driver.findElement(By.cssSelector("[name=UserName]")).sendKeys(login);
