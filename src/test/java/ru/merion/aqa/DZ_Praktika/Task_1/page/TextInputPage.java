@@ -1,11 +1,7 @@
 package ru.merion.aqa.DZ_Praktika.Task_1.page;
 
-import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.conditions.Text;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import static com.codeborne.selenide.Selenide.$;
 
 public class TextInputPage {
     private final WebDriver driver;
