@@ -1,5 +1,7 @@
 package ru.merion.aqa.DZ_Praktika.Task_1;
 
+import org.openqa.selenium.WebDriver;
+
 /**
  Переименовать кнопку
 
@@ -12,5 +14,7 @@ package ru.merion.aqa.DZ_Praktika.Task_1;
  **/
 
 public class Task_1_Test {
+    private static final String BUTTON_NAME = "Merion";
+    private WebDriver driver;
 
 }
