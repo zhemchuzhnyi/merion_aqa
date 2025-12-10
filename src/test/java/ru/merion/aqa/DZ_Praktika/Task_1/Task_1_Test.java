@@ -1,8 +1,13 @@
 package ru.merion.aqa.DZ_Praktika.Task_1;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.selenideDZ_2_Page.Task2.TextInputPage;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  Переименовать кнопку
@@ -22,6 +27,19 @@ public class Task_1_Test {
     @BeforeEach
     public void open() {
         driver = new ChromeDriver();
+    }
+
+    @AfterEach
+    public void close() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+    @Test
+    public void iCanRenameTheButton() {
+        String text = new TextInputPage(driver).open().setButtonName(BUTTON_NAME).getButtonText();
+        assertEquals(BUTTON_NAME, text);
     }
 
 }
