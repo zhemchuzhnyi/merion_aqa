@@ -12,4 +12,5 @@ package ru.merion.aqa.DZ_Praktika.Task_1;
  **/
 
 public class Task_1_Test {
+
 }
