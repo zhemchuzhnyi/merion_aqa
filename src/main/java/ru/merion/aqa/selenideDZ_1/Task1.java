@@ -1,5 +1,4 @@
 package ru.merion.aqa.selenideDZ_1;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
@@ -8,7 +7,6 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static java.awt.SystemColor.text;
 
 /*
 Нажатие на кнопку
