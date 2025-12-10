@@ -14,5 +14,10 @@ public class TextInputPage {
         this.driver = driver;
     }
 
+    public TextInputPage open() {
+        driver.get("http://uitestingplayground.com/textinput");
+        return this;
+    }
+
 
 }
