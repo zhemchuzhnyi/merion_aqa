@@ -1,6 +1,8 @@
 package ru.merion.aqa.DZ_Praktika.Task_1;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 /**
  Переименовать кнопку
@@ -16,5 +18,10 @@ import org.openqa.selenium.WebDriver;
 public class Task_1_Test {
     private static final String BUTTON_NAME = "Merion";
     private WebDriver driver;
+
+    @BeforeEach
+    public void open() {
+        driver = new ChromeDriver();
+    }
 
 }
