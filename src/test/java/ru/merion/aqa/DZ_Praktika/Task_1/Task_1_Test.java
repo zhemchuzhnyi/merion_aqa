@@ -30,13 +30,6 @@ public class Task_1_Test {
         driver = new ChromeDriver();
     }
 
-    @AfterEach
-    public void close() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
     @Test
     public void iCanRenameTheButton() {
         String text = new TextInputPage(driver).open().setButtonName(BUTTON_NAME).getButtonText();
