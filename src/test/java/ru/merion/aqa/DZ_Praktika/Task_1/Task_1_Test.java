@@ -25,6 +25,11 @@ public class Task_1_Test {
     private static final String BUTTON_NAME = "Merion";
     private WebDriver driver;
 
+    @BeforeEach
+    public void open() {
+        driver = new ChromeDriver();
+    }
+
     @AfterEach
     public void close() {
         if (driver != null) {
