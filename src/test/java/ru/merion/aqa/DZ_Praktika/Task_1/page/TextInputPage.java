@@ -20,9 +20,4 @@ public class TextInputPage {
         driver.findElement(By.cssSelector("#updatingButton")).click();
         return this;
     }
-
-    public String getButtonText() {
-        return driver.findElement(By.cssSelector("#updatingButton")).getText();
-
-    }
 }
