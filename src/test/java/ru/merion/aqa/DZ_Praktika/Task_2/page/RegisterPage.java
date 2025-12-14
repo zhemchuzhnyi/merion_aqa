@@ -14,4 +14,8 @@ public class RegisterPage {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         return this;
     }
+
+    public void set(String field, String value) {
+        driver.findElement(By.cssSelector("[name=" + field + "]")).sendKeys(value);
+    }
 }
