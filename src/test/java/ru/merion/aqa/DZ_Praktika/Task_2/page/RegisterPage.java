@@ -15,4 +15,7 @@ public class RegisterPage {
         return this;
     }
 
+    public void set(String field, String value) {
+        driver.findElement(By.cssSelector("[name=" + field + "]")).sendKeys(value);
+    }
 }
