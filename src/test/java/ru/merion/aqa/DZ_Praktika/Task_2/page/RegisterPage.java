@@ -9,4 +9,9 @@ public class RegisterPage {
         this.driver = driver;
     }
 
+    public RegisterPage open() {
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
+        return this;
+    }
+
 }
