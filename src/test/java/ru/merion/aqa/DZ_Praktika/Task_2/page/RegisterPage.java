@@ -1,5 +1,6 @@
 package ru.merion.aqa.DZ_Praktika.Task_2.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class RegisterPage {
@@ -12,6 +13,10 @@ public class RegisterPage {
     public RegisterPage open() {
         driver.get("https://bonigarcia.dev/selenium-webdriver-java/data-types.html");
         return this;
+    }
+
+    public void set(String field, String value) {
+        driver.findElement(By.cssSelector("[name=" + field + "]")).sendKeys(value);
     }
 
 }
