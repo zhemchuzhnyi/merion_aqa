@@ -2,8 +2,10 @@ package ru.merion.aqa.DZ_Praktika.Task_2;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.DZ_Praktika.Task_2.page.RegisterPage;
 
 /**
  * Скрипт заполнения формы
@@ -49,6 +51,13 @@ public class Task_2_Test {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    @Test
+    public void checkValidatorError() {
+        RegisterPage page = new RegisterPage(driver).open();
+
+        page.set();
     }
 
 
