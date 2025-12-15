@@ -23,5 +23,7 @@ public class RegisterPage {
         driver.findElement(By.cssSelector("[type = submit]")).click();
     }
 
-
+    public String getCssProperty(String field, String cssProperty) {
+        return driver.findElement(By.cssSelector((field))).getCssValue(cssProperty);
+    }
 }
