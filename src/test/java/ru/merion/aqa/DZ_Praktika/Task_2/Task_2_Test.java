@@ -57,7 +57,16 @@ public class Task_2_Test {
     public void checkValidatorError() {
         RegisterPage page = new RegisterPage(driver).open();
 
-        page.set();
+        page.set("first-name", "Иван");
+        page.set("last-name", "Иванов");
+        page.set("job-position", "QA");
+        page.set("address", "Ленина 55-3");
+        page.set("city", "Москва");
+        page.set("country", "Россия");
+        page.set("company","Merion");
+
+        page.submitForm();
+
     }
 
 
