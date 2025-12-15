@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.selenideDZ_2_Page.Task5.CalculatorPage;
+import ru.merion.aqa.selenideDZ_2_Page.Task6.CatalogPage;
 
 /**
  * Скрипт на калькулятор
@@ -39,5 +41,10 @@ public class Task_3_Test {
     }
 
     @Test
+    public void checkSlowCalculator() {
+        CalculatorPage page = new CalculatorPage().open();
+
+
+    }
 
 }
