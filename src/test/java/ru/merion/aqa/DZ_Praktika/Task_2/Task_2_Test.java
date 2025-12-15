@@ -1,5 +1,9 @@
 package ru.merion.aqa.DZ_Praktika.Task_2;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 /**
  * Скрипт заполнения формы
  *
@@ -32,4 +36,12 @@ package ru.merion.aqa.DZ_Praktika.Task_2;
  */
 
 public class Task_2_Test {
+    private WebDriver driver;
+
+    @BeforeEach
+    public void open() {
+        driver = new ChromeDriver();
+    }
+
+
 }
