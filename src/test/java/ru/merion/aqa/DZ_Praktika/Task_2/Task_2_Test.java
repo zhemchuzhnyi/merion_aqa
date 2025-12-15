@@ -1,5 +1,6 @@
 package ru.merion.aqa.DZ_Praktika.Task_2;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -42,6 +43,14 @@ public class Task_2_Test {
     public void open() {
         driver = new ChromeDriver();
     }
+
+    @AfterEach
+    public void close() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
 
 
 }
