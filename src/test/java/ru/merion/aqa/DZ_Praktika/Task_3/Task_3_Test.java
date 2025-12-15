@@ -42,7 +42,7 @@ public class Task_3_Test {
 
     @Test
     public void checkSlowCalculator() {
-        CalculatorPage page = new CalculatorPage().open();
+        CalculatorPage calculator = new CalculatorPage().open();
 
         calculator.setDelay(10);
         calculator.press_7();
