@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.DZ_Praktika.Task_2.page.RegisterPage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * Скрипт заполнения формы
  *
@@ -67,6 +69,13 @@ public class Task_2_Test {
 
         page.submitForm();
 
+        String phone_bg = page.getCssProperty("#phone", "background-color");
+        String email_bg = page.getCssProperty("#e-mail", "background-color");
+        String zip_code_bg = page.getCssProperty("#zip-code", "background-color");
+
+        assertEquals("rgba(248, 215, 218, 1)", zip_code_bg);
+        assertEquals("rgba(248, 215, 218, 1)", email_bg);
+        assertEquals("rgba(248, 215, 218, 1)", phone_bg);
     }
 
 
