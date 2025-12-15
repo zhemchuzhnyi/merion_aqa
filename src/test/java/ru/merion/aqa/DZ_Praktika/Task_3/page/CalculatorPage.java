@@ -4,10 +4,14 @@ import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.not;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 
 public class CalculatorPage {
     private final WebDriver driver;
@@ -75,13 +79,13 @@ public class CalculatorPage {
     }
 
     private void press(String val) {
-        keyboard.$x("*[text() = '" + val + "']").click();
+        keyboard.findElement(By.xpath("*[text() = '" + val + "']")).click();
     }
 
     public String getResult() {
-        Configuration.timeout = delay * 1100;
-        $("#spinner").shouldBe(not(visible));
-        return $(".screen").text();
-    }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(delay));
+        wait.until(invisibilityOfElementLocated(By.cssSelector("#spinner")));
 
+        return driver.findElement(By.cssSelector(".screen")).getText();
+    }
 }
