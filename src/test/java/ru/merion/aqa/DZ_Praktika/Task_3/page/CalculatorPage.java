@@ -19,4 +19,10 @@ public class CalculatorPage {
         return this;
     }
 
+    public void setDelay(int delay) {
+        driver.findElement(By.cssSelector("#delay")).clear();
+        driver.findElement(By.cssSelector("#delay")).sendKeys(String.valueOf(delay));
+        this.delay = delay;
+    }
+
 }
