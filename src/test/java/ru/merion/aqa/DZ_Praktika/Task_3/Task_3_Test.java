@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.selenideDZ_2_Page.Task5.CalculatorPage;
 import ru.merion.aqa.selenideDZ_2_Page.Task6.CatalogPage;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * Скрипт на калькулятор
  *
@@ -44,7 +46,12 @@ public class Task_3_Test {
     public void checkSlowCalculator() {
         CalculatorPage page = new CalculatorPage().open();
 
+        calculator.setDelay(10);
+        calculator.press_7();
+        calculator.press_plus();
+        calculator.press_8();
+        calculator.press_eq();
 
+        assertEquals("15", calculator.getResult());
     }
-
 }
