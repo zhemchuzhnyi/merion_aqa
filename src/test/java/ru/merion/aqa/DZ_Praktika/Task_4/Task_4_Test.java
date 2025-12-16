@@ -32,4 +32,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Task_4_Test {
     private WebDriver driver;
 
+    @BeforeEach
+    public void open() {
+        driver = new ChromeDriver();
+    }
 }
