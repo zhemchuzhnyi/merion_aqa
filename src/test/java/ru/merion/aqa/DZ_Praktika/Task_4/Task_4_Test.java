@@ -36,4 +36,11 @@ public class Task_4_Test {
     public void open() {
         driver = new ChromeDriver();
     }
+
+    @AfterEach
+    public void close() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
 }
