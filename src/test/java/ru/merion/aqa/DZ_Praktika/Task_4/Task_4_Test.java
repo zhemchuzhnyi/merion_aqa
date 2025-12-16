@@ -1,5 +1,10 @@
 package ru.merion.aqa.DZ_Praktika.Task_4;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 /**
  * Напишите скрипт для работы с интернет-магазином. Шаги
  *
@@ -25,4 +30,6 @@ package ru.merion.aqa.DZ_Praktika.Task_4;
  */
 
 public class Task_4_Test {
+    private WebDriver driver;
+
 }
