@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CartCheckoutPage {
+
     private final WebDriver driver;
 
     public CartCheckoutPage(WebDriver driver) {
         this.driver = driver;
     }
+
 
     public CartCheckoutPage open() {
         driver.get("https://www.saucedemo.com/cart.html");
@@ -31,5 +33,4 @@ public class CartCheckoutPage {
     public String getTotalPrice() {
         return driver.findElement(By.cssSelector("[data-test=total-label]")).getText();
     }
-
 }

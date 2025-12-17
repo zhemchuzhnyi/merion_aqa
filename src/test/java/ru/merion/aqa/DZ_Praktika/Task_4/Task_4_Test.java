@@ -5,6 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.DZ_Praktika.Task_4.page.AuthPage;
+import ru.merion.aqa.DZ_Praktika.Task_4.page.CatalogPage;
+import ru.merion.aqa.practiceDZ3_1_WebDriver_Page.Task6.CartCheckoutPage;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -12,41 +15,18 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Напишите скрипт для работы с интернет-магазином. Шаги
- *
- * Открыть сайт магазина https://www.saucedemo.com/
- * Авторизоваться под пользователем
- * standard_user
- * Добавить в корзину товары:
- * Sauce Labs Backpack
- * Sauce Labs Bolt T-Shirt
- * Sauce Labs Onesie
- * Перейти в корзину
- * Нажать Checkout
- * Заполнить форму данными:
- * Имя
- * Фамилия
- * Почтовый индекс
- * Нажать continue
- * Прочитать со стрницы итоговую стоимость (
- * Total
- *  )
- * Закрыть браузер
- * Провеьте, что итоговая стоимость равна 55.28
- */
-
 public class Task_4_Test {
+
     private WebDriver driver;
 
     @BeforeEach
-    public void open() {
+    public void open(){
         driver = new ChromeDriver();
     }
 
     @AfterEach
-    public void close() {
-        if (driver != null) {
+    public void close(){
+        if(driver != null){
             driver.quit();
         }
     }
@@ -54,27 +34,26 @@ public class Task_4_Test {
     @Test
     public void happyPath() {
         AuthPage auth;
-        CalculatorPage catalog;
+        CatalogPage catalog;
 
-        Set<String> itemNames = new HashSet<>();
-        itemNames.add("Sause Labs Backpack");
+        Set<String> itemNames = new HashSet<>(); // из файла, по сети, из бд
+        itemNames.add("Sauce Labs Backpack");
         itemNames.add("Sauce Labs Bolt T-Shirt");
-        itemNames.add("Sauce Labs Bolt Oneside");
+        itemNames.add("Sauce Labs Onesie");
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
         auth = new AuthPage(driver).open();
-        catalog = auth.loginAs("standart_user", "secret_sause");
+        catalog = auth.loginAs("standard_user", "secret_sauce");
         catalog.addItems(itemNames);
-
 
         String total = new CartCheckoutPage(driver)
                 .open()
                 .clickCheckout()
-                .setContactData("Иван", "Иванов","123456")
-                .getTotakPrice();
+                .setContactData("Иван", "Иванов", "123457")
+                .getTotalPrice();
 
         assertTrue(total.endsWith("$58.29"));
-
     }
+
 }
