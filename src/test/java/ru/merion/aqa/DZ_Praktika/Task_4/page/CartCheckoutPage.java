@@ -1,5 +1,6 @@
 package ru.merion.aqa.DZ_Praktika.Task_4.page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CartCheckoutPage {
@@ -11,6 +12,11 @@ public class CartCheckoutPage {
 
     public CartCheckoutPage open() {
         driver.get("https://www.saucedemo.com/cart.html");
+        return this;
+    }
+
+    public CartCheckoutPage clickCheckout() {
+        driver.findElement(By.cssSelector("#checkout")).click();
         return this;
     }
 
