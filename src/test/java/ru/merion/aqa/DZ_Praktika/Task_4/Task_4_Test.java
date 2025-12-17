@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.DZ_Praktika.Task_3.page.CalculatorPage;
+import ru.merion.aqa.selenideDZ_2_Page.Task6.AuthPage;
 
 /**
  * Напишите скрипт для работы с интернет-магазином. Шаги
@@ -46,5 +48,9 @@ public class Task_4_Test {
     }
 
     @Test
-    public void
+    public void happyPath() {
+        AuthPage auth;
+        CalculatorPage catalog;
+
+    }
 }
