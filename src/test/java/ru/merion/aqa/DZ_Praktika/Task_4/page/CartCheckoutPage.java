@@ -20,4 +20,16 @@ public class CartCheckoutPage {
         return this;
     }
 
+    public CartCheckoutPage setContactData(String firstName, String lastName, String zip) {
+        driver.findElement(By.cssSelector("#first-name")).sendKeys(firstName);
+        driver.findElement(By.cssSelector("#last-name")).sendKeys(lastName);
+        driver.findElement(By.cssSelector("#postal-code")).sendKeys(zip);
+        driver.findElement(By.cssSelector("#continue")).click();
+        return this;
+    }
+
+    public String getTotalPrice() {
+        return driver.findElement(By.cssSelector("[data-test=total-label]")).getText();
+    }
+
 }
