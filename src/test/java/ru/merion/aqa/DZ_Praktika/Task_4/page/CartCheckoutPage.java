@@ -8,4 +8,10 @@ public class CartCheckoutPage {
     public CartCheckoutPage(WebDriver driver) {
         this.driver = driver;
     }
+
+    public CartCheckoutPage open() {
+        driver.get("https://www.saucedemo.com/cart.html");
+        return this;
+    }
+
 }
