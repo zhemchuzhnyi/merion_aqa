@@ -12,6 +12,8 @@ import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * Напишите скрипт для работы с интернет-магазином. Шаги
  *
@@ -73,6 +75,8 @@ public class Task_4_Test {
                 .clickCheckout()
                 .setContactData("Иван", "Иванов","123456")
                 .getTotakPrice();
+
+        assertTrue(total.endsWith("$58.29"));
 
     }
 }
