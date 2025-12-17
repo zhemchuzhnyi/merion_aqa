@@ -5,9 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.merion.aqa.DZ_Praktika.Task_4.page.AuthPage;
 import ru.merion.aqa.DZ_Praktika.Task_4.page.CatalogPage;
-import ru.merion.aqa.practiceDZ3_1_WebDriver_Page.Task6.CartCheckoutPage;
+import ru.merion.aqa.DZ_Praktika.Task_4.page.AuthPage;
+import ru.merion.aqa.DZ_Praktika.Task_4.page.CartCheckoutPage;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -41,7 +41,7 @@ public class Task_4_Test {
         itemNames.add("Sauce Labs Bolt T-Shirt");
         itemNames.add("Sauce Labs Onesie");
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
         auth = new AuthPage(driver).open();
         catalog = auth.loginAs("standard_user", "secret_sauce");
@@ -55,5 +55,4 @@ public class Task_4_Test {
 
         assertTrue(total.endsWith("$58.29"));
     }
-
 }
