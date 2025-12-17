@@ -8,6 +8,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.DZ_Praktika.Task_3.page.CalculatorPage;
 import ru.merion.aqa.selenideDZ_2_Page.Task6.AuthPage;
 
+import java.time.Duration;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Напишите скрипт для работы с интернет-магазином. Шаги
  *
@@ -51,6 +55,13 @@ public class Task_4_Test {
     public void happyPath() {
         AuthPage auth;
         CalculatorPage catalog;
+
+        Set<String> itemNames = new HashSet<>();
+        itemNames.add("Sause Labs Backpack");
+        itemNames.add("Sauce Labs Bolt T-Shirt");
+        itemNames.add("Sauce Labs Bolt Oneside");
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
     }
 }
