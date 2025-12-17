@@ -63,5 +63,11 @@ public class Task_4_Test {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
 
+        auth = new AuthPage(driver).open();
+        catalog = auth.loginAs("standart_user", "secret_sause");
+        catalog.addItems(itemNames);
+
+
+
     }
 }
