@@ -68,6 +68,11 @@ public class Task_4_Test {
         catalog.addItems(itemNames);
 
 
+        String total = new CartCheckoutPage(driver)
+                .open()
+                .clickCheckout()
+                .setContactData("Иван", "Иванов","123456")
+                .getTotakPrice();
 
     }
 }
