@@ -54,7 +54,5 @@ public class Task_4_Test {
                 .getTotalPrice();
 
         assertTrue(total.endsWith("$58.29"));
-
-
     }
 }
