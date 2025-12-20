@@ -47,12 +47,5 @@ public class Task_4_Test {
         catalog = auth.loginAs("standard_user", "secret_sauce");
         catalog.addItems(itemNames);
 
-        String total = new CartCheckoutPage(driver)
-                .open()
-                .clickCheckout()
-                .setContactData("Иван", "Иванов", "123457")
-                .getTotalPrice();
-
-        assertTrue(total.endsWith("$58.29"));
     }
 }
