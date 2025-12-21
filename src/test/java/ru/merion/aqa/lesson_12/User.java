@@ -43,4 +43,9 @@ public class User {
         if (!(o instanceof User user)) return false;
         return getId() == user.getId() && Objects.equals(getName(), user.getName()) && Objects.equals(getLogin(), user.getLogin());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName(), getLogin());
+    }
 }
