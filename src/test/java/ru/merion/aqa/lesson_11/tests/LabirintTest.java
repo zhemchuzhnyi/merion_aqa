@@ -88,6 +88,12 @@ public class LabirintTest {
     public void searchResult() {
         System.out.println("test_3");
     }
+
+    private MainPage openMainPage(WebDriver driver) {
+        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
+        mainPage.open();
+        return mainPage;
+    }
 }
 
 
