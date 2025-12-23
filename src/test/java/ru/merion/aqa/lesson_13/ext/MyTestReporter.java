@@ -27,7 +27,7 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
                 <html lang="en">
                 <head>
                   <meta charset="UTF-8">
-                  <title>#[[$Title$]]#</title>
+                  <title>Test report</title>
                 </head>
                 <body>
             """;
