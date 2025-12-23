@@ -10,6 +10,7 @@ public class QualityGuard implements TestWatcher {
         TestWatcher.super.testFailed(context, cause);
         if (context.getTags().contains("CRITICAL")) {
             System.err.println("ALARM!!! CRIT TEST FAILED");
+            // TG! Email
 
         }
     }

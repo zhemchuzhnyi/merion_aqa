@@ -53,7 +53,7 @@ public class TestWatcherDemo {
     }
 
     @Test
-    @DisplayName("Сравнение объектов (негатив")
+    @DisplayName("Сравнение объектов (негатив)")
     public void checkTwoObjectNonEquality() {
         User userFromXml = new User(1, "Tester name", "TEST");
         User userFromDb = new User(2, "Tester name", "TEST");
