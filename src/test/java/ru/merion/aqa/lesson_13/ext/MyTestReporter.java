@@ -54,17 +54,22 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
         Files.writeString(reportFile, HTML_HEAD);
         Files.writeString(reportFile, "<ol>", StandardOpenOption.APPEND);
 
+        String content = "";
         for (String testName : greenTests.keySet()) {
-            String content = "<li>" + testName + "</li>";
+            content += "<li>" + testName + "</li>";
         }
 
+        for (String testName : redTests.keySet()) {
+            content += "<li>" + testName + "</li>";
+        }
+
+        for (String testName : yellowTests.keySet()) {
+            content += "<li>" + testName + "</li>";
+        }
+
+        Files.writeString(reportFile, content, StandardOpenOption.APPEND);
         Files.writeString(reportFile, "</ol>", StandardOpenOption.APPEND);
         Files.writeString(reportFile, HTML_HEAD);
-
-
-
-        Files.writeString(reportFile, "<p> Hello! </p>", StandardOpenOption.APPEND);
-        Files.writeString(reportFile, HTML_TAIL, StandardOpenOption.APPEND);
     }
 
     @Override
