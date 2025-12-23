@@ -39,6 +39,8 @@ public class MyTestReporter implements TestWatcher {
 
         if (cause instanceof AssertionFailedError) {
             yellowTests.put(context.getDisplayName(), context.getRequiredTestMethod());
+        } else {
+            redTests.put(context.getDisplayName(), context.getRequiredTestMethod());
         }
     }
 }
