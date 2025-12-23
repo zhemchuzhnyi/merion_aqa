@@ -4,57 +4,57 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import ru.merion.aqa.lesson7.WDFactory;
+import ru.merion.aqa.lesson_13.ext.DriverResolver;
+import ru.merion.aqa.lesson_13.ext.SearchWordResolver;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
-import ru.merion.aqa.lesson_13.ext.DriverResolver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@ExtendWith(DriverResolver.class)
+@ExtendWith({DriverResolver.class, SearchWordResolver.class})
 public class LabirintTest {
 
     @Test
-    @Order(1)
     @DisplayName("Поиск товаров на сайте и добавление в корзину")
-    @Tags({@Tag("positive"),@Tag("search")})
-    public void positiveScenario(WebDriver driver) {
+    @Tags({@Tag("positive"), @Tag("search")})
+    public void positiveScenario(WebDriver driver, String word) {
         MainPage mainPage = openMainPage(driver);
 
-        ResultPage resultPage = mainPage.header.searchFor("Java");
+        ResultPage resultPage = mainPage.header.searchFor(word);
         resultPage.addAllItemsToCart();
         String iconText = resultPage.header.getIconText();
-        assertEquals("35", iconText);
+        assertEquals("60", iconText);
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
-        assertEquals("35 товаров", counter);
+
+        assertEquals("60 товаров", counter);
     }
 
     @Test
-    @Order(2)
-    @Tags({@Tag("negative"),@Tag("search")})
+    @Tags({@Tag("negative"), @Tag("search")})
     @DisplayName("Поиск на сайте без результатов")
     public void emptySearchResult(WebDriver driver) {
         MainPage mainPage = openMainPage(driver);
 
-        ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
+        ResultPage resultPage = mainPage.header.searchFor("sdhfjgmnbvcxsdfg");
         String msg = resultPage.getEmptyResultMessage();
-        assertEquals("Все, что мы нашли в Лабиринте по запросу «@@@@»", msg);
+        assertEquals("Мы ничего не нашли по вашему запросу! Что делать?", msg);
+
         String iconText = resultPage.header.getIconText();
         assertEquals("0", iconText);
 
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
-        assertEquals("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?", counter.toUpperCase());
+
+        assertTrue(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
     }
 
     @Test
-    @Order(3)
-    @DisplayName("Не реализован")
-    public void searchResult() {
-        System.out.println("test_3");
+    public void test3() {
+        System.out.println("test 3");
     }
 
     private MainPage openMainPage(WebDriver driver) {
