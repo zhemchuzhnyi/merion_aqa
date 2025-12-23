@@ -7,6 +7,8 @@ import org.junit.jupiter.api.extension.TestWatcher;
 import org.opentest4j.AssertionFailedError;
 
 import java.lang.reflect.Method;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -19,6 +21,8 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
 
     @Override
     public void afterAll(ExtensionContext context) throws Exception {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_ HH:mm");
+        String filename = LocalDateTime.now().format(dateTimeFormatter) + "_report.html";
 
     }
 
