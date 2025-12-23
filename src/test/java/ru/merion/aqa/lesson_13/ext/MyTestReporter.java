@@ -1,6 +1,5 @@
 package ru.merion.aqa.lesson_13.ext;
 
-import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.extension.AfterAllCallback;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -10,7 +9,6 @@ import org.opentest4j.AssertionFailedError;
 import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
