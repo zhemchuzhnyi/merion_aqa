@@ -1,5 +1,7 @@
 package ru.merion.aqa.lesson_13.ext;
 
+import org.junit.jupiter.api.extension.AfterAllCallback;
+import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.opentest4j.AssertionFailedError;
@@ -9,11 +11,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public class MyTestReporter implements TestWatcher {
+public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllCallback {
 
-    private final Map<String, Method> greenTests = new HashMap<>();
-    private final Map<String, Method> redTests = new HashMap<>();
-    private final Map<String, Method> yellowTests = new HashMap<>();
+    private Map<String, Method> greenTests;
+    private Map<String, Method> redTests;
+    private Map<String, Method> yellowTests;
+
+    @Override
+    public void afterAll(ExtensionContext context) throws Exception {
+
+    }
+
+    @Override
+    public void beforeAll(ExtensionContext context) throws Exception {
+        greenTests = new HashMap<>();
+        redTests = new HashMap<>();
+        yellowTests = new HashMap<>();
+    }
 
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
