@@ -26,5 +26,6 @@ public class MyTestReporter implements TestWatcher {
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
         TestWatcher.super.testFailed(context, cause);
+        System.out.println(context.getDisplayName());
     }
 }
