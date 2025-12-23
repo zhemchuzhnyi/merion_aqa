@@ -1,15 +1,18 @@
 package ru.merion.aqa.lesson_13;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import ru.merion.aqa.lesson7.WDFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
+import ru.merion.aqa.lesson_13.ext.DriverResolver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ExtendWith(DriverResolver.class)
 public class LabirintTest {
 
     @Test
@@ -18,10 +21,12 @@ public class LabirintTest {
     @Tags({@Tag("positive"),@Tag("search")})
     public void positiveScenario(WebDriver driver) {
         MainPage mainPage = openMainPage(driver);
+
         ResultPage resultPage = mainPage.header.searchFor("Java");
         resultPage.addAllItemsToCart();
         String iconText = resultPage.header.getIconText();
         assertEquals("35", iconText);
+
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getCartCounter();
         assertEquals("35 товаров", counter);
@@ -33,11 +38,13 @@ public class LabirintTest {
     @DisplayName("Поиск на сайте без результатов")
     public void emptySearchResult(WebDriver driver) {
         MainPage mainPage = openMainPage(driver);
+
         ResultPage resultPage = mainPage.header.searchFor("    @@@@   ");
         String msg = resultPage.getEmptyResultMessage();
         assertEquals("Все, что мы нашли в Лабиринте по запросу «@@@@»", msg);
         String iconText = resultPage.header.getIconText();
         assertEquals("0", iconText);
+
         CartPage cartPage = resultPage.header.clickCartIcon();
         String counter = cartPage.getEmptyCartMessage();
         assertEquals("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?", counter.toUpperCase());
