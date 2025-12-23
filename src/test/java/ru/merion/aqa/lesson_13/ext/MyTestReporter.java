@@ -28,6 +28,19 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
                 <head>
                   <meta charset="UTF-8">
                   <title>Test report</title>
+                  <style>
+                  .ok {
+                        background: #E5FFCC
+                  }
+                  
+                  .failed {
+                        background: #FFFFCC
+                  }
+                  
+                  .broken {
+                        background: #FFCCCC
+                  }
+                  </style>
                 </head>
                 <body>
             """;
@@ -55,18 +68,17 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
         Files.writeString(reportFile, "<p>Test Report Generated</p>", StandardOpenOption.APPEND);
         Files.writeString(reportFile, "<ol>", StandardOpenOption.APPEND);
 
-        StringBuilder content = new StringBuilder();
-
+        String content = "";
         for (String testName : greenTests.keySet()) {
-            content.append("<li style='color: green;'>").append(testName).append("</li>");
+            content += "<li class=\"ok\">" + testName + "</li>";
         }
 
         for (String testName : yellowTests.keySet()) {
-            content.append("<li style='color: orange;'>").append(testName).append("</li>");
+            content += "<li class=\"failed\">" + testName + "</li>";
         }
 
         for (String testName : redTests.keySet()) {
-            content.append("<li style='color: red;'>").append(testName).append("</li>");
+            content += "<li class=\"broken\">" + testName + "</li>";
         }
 
         Files.writeString(reportFile, content.toString(), StandardOpenOption.APPEND);
