@@ -15,6 +15,7 @@ public class MyTestReporter implements TestWatcher {
     @Override
     public void testSuccessful(ExtensionContext context) {
         TestWatcher.super.testSuccessful(context);
+        System.out.println(context.getDisplayName());
     }
 
     @Override
