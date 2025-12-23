@@ -15,11 +15,9 @@ import java.util.Optional;
 
 public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllCallback {
 
-    @Override
-    public void afterAll(ExtensionContext context) throws Exception {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_ HH:mm");
-        String filename = LocalDateTime.now().format(dateTimeFormatter) + "_report.html";
-    }
+    private static Map<String, Method> greenTests;
+    private static Map<String, Method> redTests;
+    private static Map<String, Method> yellowTests;
 
     @Override
     public void beforeAll(ExtensionContext context) throws Exception {
@@ -28,9 +26,12 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
         yellowTests = new HashMap<>();
     }
 
-    private Map<String, Method> greenTests;
-    private Map<String, Method> redTests;
-    private Map<String, Method> yellowTests;
+    @Override
+    public void afterAll(ExtensionContext context) throws Exception {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH:mm");
+        String filename = LocalDateTime.now().format(dateTimeFormatter) + "_report.html";
+        System.out.println("Отчет: " + filename);
+    }
 
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
