@@ -23,7 +23,6 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
     public void afterAll(ExtensionContext context) throws Exception {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_ HH:mm");
         String filename = LocalDateTime.now().format(dateTimeFormatter) + "_report.html";
-
     }
 
     @Override
