@@ -8,12 +8,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import ru.merion.aqa.lesson_12.User;
 import ru.merion.aqa.lesson_13.ext.MyTestReporter;
+import ru.merion.aqa.lesson_13.ext.QualityGuard;
 
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith({MyTestReporter.class})
+@ExtendWith({MyTestReporter.class, QualityGuard.class})
 @DisplayName("Тесты всех статусов")
 public class TestWatcherDemo {
 
