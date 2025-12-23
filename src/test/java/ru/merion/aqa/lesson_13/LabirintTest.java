@@ -20,6 +20,7 @@ public class LabirintTest {
     @DisplayName("Поиск товаров на сайте и добавление в корзину")
     @Tags({@Tag("positive"), @Tag("search")})
     public void positiveScenario(WebDriver driver, String word) {
+
         MainPage mainPage = openMainPage(driver);
 
         ResultPage resultPage = mainPage.header.searchFor(word);
