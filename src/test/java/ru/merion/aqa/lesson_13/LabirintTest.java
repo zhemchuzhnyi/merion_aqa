@@ -53,8 +53,17 @@ public class LabirintTest {
         assertTrue(counter.equalsIgnoreCase("ВАША КОРЗИНА ПУСТА. ПОЧЕМУ?"));
     }
 
+    private MainPage openMainPage(WebDriver driver) {
+        return PageFactory.initElements(driver, MainPage.class);
+    }
+
     @Test
     public void test3() {
         System.out.println("test 3");
+    }
+    private MainPage openMainPage(WebDriver driver) {
+        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
+        mainPage.open();
+        return mainPage;
     }
 }
