@@ -57,10 +57,4 @@ public class LabirintTest {
     public void test3() {
         System.out.println("test 3");
     }
-
-    private MainPage openMainPage(WebDriver driver) {
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.open();
-        return mainPage;
-    }
 }
