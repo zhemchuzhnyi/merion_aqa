@@ -1,8 +1,6 @@
 package ru.merion.aqa.Practics;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.Practics.page.Task2Page;
@@ -25,6 +23,8 @@ public class Task2 {
     }
 
     @Test
+    @Tags({@Tag("positive"), @Tag("login")})
+    @DisplayName("Регистрация с валидными данными")
     public void iCanLogin() {
         String data = new Task2Page(driver)
                 .open()
@@ -33,5 +33,19 @@ public class Task2 {
 
         assertEquals("You logged into a secure area!\n" +
                 "×", data);
+    }
+
+    @Test
+    @Tags({@Tag("negative"), @Tag("login")})
+    @DisplayName("Регистрация с НЕ валидными данными")
+    public void iCanLoginNegative() {
+        String data = new Task2Page(driver)
+                .open()
+                .enterRegistrationData("Andrey", "Password!")
+                .getContent();
+
+        assertEquals("Your username is invalid!\n" +
+                "×", data);
+
     }
 }
