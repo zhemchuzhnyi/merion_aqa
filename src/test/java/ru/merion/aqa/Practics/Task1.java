@@ -11,7 +11,7 @@ public class Task1 {
         driver.get("https://the-internet.herokuapp.com/login");
         driver.findElement(By.cssSelector("#username")).sendKeys("tomsmith");
         driver.findElement(By.cssSelector("#password")).sendKeys("SuperSecretPassword!");
-        driver.findElement(By.cssSelector("#fa-fa-2x-fa-sign-in")).click();
+        driver.findElement(By.cssSelector(".fa-sign-in")).click();
 
         driver.findElement(By.cssSelector(".subheader")).getText();
         driver.findElement(By.cssSelector(".flash")).getText();
