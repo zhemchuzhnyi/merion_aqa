@@ -14,6 +14,9 @@ public class Task1 {
         driver.findElement(By.cssSelector(".fa-fa-2x-fa-sign-in")).click();
 
         driver.findElement(By.cssSelector(".subheader")).getText();
+        driver.findElement(By.cssSelector(".flash")).getText();
+
+
 
 
     }
