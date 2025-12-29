@@ -5,8 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.Practics.page.Task2Page;
 
-import java.sql.Driver;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Task2 {
     private WebDriver driver;
@@ -25,9 +26,11 @@ public class Task2 {
 
     @Test
     public void iCanLogin() {
+        String data = new Task2Page(driver)
+                .open()
+                .enterRegistrationData("tomsmith", "SuperSecretPassword!")
+                .getContent();  // Возвращает String
 
+        assertEquals("You logged into a secure area!", data);
     }
-
-
-
 }
