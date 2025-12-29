@@ -9,7 +9,9 @@ public class Task1 {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com/login");
-        WebElement element = driver.findElement(By.cssSelector(""));
+        driver.findElement(By.cssSelector(".username")).sendKeys("tomsmith");
+        driver.findElement(By.cssSelector(".password")).sendKeys("SuperSecretPassword!");
+        driver.findElement(By.cssSelector(".fa-fa-2x-fa-sign-in")).click();
 
     }
 }
