@@ -18,9 +18,5 @@ public class Task1 {
 
         System.out.println(content);
         System.out.println(success);
-
-
-
-
     }
 }
