@@ -15,10 +15,16 @@ public class Task2Page {
         return this;
     }
 
-    public Task2Page enterRegistrationData(String username) {
+    public Task2Page enterRegistrationData(String username, String password) {
         driver.findElement(By.cssSelector("#username")).sendKeys("tomsmith");
         driver.findElement(By.cssSelector("#password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.cssSelector(".fa-sign-in")).click();
+        return this;
+    }
+
+    public Task2Page getContent(String content, String success) {
+        driver.findElement(By.cssSelector(".flash")).getText();
+        driver.findElement(By.cssSelector(".subheader")).getText();
         return this;
     }
 
