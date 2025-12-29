@@ -29,7 +29,7 @@ public class Task2 {
         String data = new Task2Page(driver)
                 .open()
                 .enterRegistrationData("tomsmith", "SuperSecretPassword!")
-                .getContent();  // Возвращает String
+                .getContent();
 
         assertEquals("You logged into a secure area!", data);
     }
