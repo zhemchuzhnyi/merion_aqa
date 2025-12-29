@@ -13,8 +13,11 @@ public class Task1 {
         driver.findElement(By.cssSelector("#password")).sendKeys("SuperSecretPassword!");
         driver.findElement(By.cssSelector(".fa-sign-in")).click();
 
-        driver.findElement(By.cssSelector(".subheader")).getText();
-        driver.findElement(By.cssSelector(".flash")).getText();
+        String content = driver.findElement(By.cssSelector(".subheader")).getText();
+        String success = driver.findElement(By.cssSelector(".flash")).getText();
+
+        System.out.println(content);
+        System.out.println(success);
 
 
 
