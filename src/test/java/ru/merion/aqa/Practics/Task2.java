@@ -31,6 +31,7 @@ public class Task2 {
                 .enterRegistrationData("tomsmith", "SuperSecretPassword!")
                 .getContent();
 
-        assertEquals("You logged into a secure area!", data);
+        assertEquals("You logged into a secure area!\n" +
+                "×", data);
     }
 }
