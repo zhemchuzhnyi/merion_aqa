@@ -2,6 +2,7 @@ package ru.merion.aqa.Practics;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -20,6 +21,11 @@ public class Task2 {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    @Test
+    public void iCanLogin() {
+
     }
 
 
