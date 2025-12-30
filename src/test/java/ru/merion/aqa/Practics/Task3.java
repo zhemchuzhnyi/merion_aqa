@@ -8,6 +8,7 @@ public class Task3 {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.cssSelector(".user-name")).sendKeys("visual_user");
+        driver.findElement(By.cssSelector("#user-name")).sendKeys("visual_user");
+        driver.findElement(By.cssSelector("#password")).sendKeys("visual_user");
     }
 }
