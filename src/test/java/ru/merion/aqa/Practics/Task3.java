@@ -10,5 +10,6 @@ public class Task3 {
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("visual_user");
         driver.findElement(By.cssSelector("#password")).sendKeys("visual_user");
+        driver.findElement(By.cssSelector("#login-button")).click();
     }
 }
