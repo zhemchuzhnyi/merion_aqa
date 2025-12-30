@@ -10,7 +10,7 @@ public class Task3 {
     public static void main(String[] args) {
         WebDriver driver = new ChromeDriver();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
 
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("visual_user");
@@ -20,10 +20,10 @@ public class Task3 {
 
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
         driver.findElement(By.cssSelector("#about_sidebar_link")).click();
-       //driver.findElement
-       //(By.xpath("//button[contains(@class, 'MuiButton-contained')][contains(@class, 'accentGreen')][normalize-space() = 'Sign up for free']")).click();
 
-        String text = driver.findElement(By.xpath("//span[contains(text(), '© 2025 Sauce Labs Inc.')]")).getText();
+        driver.navigate().back();
+
+        String text = driver.findElement(By.cssSelector(".app_logo")).getText();
 
         System.out.println(text);
 
