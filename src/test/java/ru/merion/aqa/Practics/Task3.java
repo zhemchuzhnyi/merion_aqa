@@ -21,7 +21,12 @@ public class Task3 {
 
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
         driver.findElement(By.cssSelector("#about_sidebar_link")).click();
-        By.xpath("//button[contains(@class, 'MuiButton-contained')][contains(@class, 'accentGreen')][normalize-space() = 'Sign up for free']");
+        driver.findElement
+                (By.xpath("//button[contains(@class, 'MuiButton-contained')][contains(@class, 'accentGreen')][normalize-space() = 'Sign up for free']")).click();
+
+        String text = driver.findElement(By.xpath("//span[contains(text(), '© 2025 Sauce Labs Inc.')]")).getText();
+
+        System.out.println(text);
 
 
 
