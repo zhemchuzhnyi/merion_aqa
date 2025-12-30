@@ -3,7 +3,6 @@ package ru.merion.aqa.Practics;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -21,8 +20,8 @@ public class Task3 {
 
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
         driver.findElement(By.cssSelector("#about_sidebar_link")).click();
-        driver.findElement
-                (By.xpath("//button[contains(@class, 'MuiButton-contained')][contains(@class, 'accentGreen')][normalize-space() = 'Sign up for free']")).click();
+       //driver.findElement
+       //(By.xpath("//button[contains(@class, 'MuiButton-contained')][contains(@class, 'accentGreen')][normalize-space() = 'Sign up for free']")).click();
 
         String text = driver.findElement(By.xpath("//span[contains(text(), '© 2025 Sauce Labs Inc.')]")).getText();
 
