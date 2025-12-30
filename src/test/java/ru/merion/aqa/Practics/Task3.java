@@ -12,6 +12,7 @@ public class Task3 {
         WebDriver driver = new ChromeDriver();
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
         driver.get("https://www.saucedemo.com/");
         driver.findElement(By.cssSelector("#user-name")).sendKeys("visual_user");
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
@@ -19,5 +20,9 @@ public class Task3 {
 
 
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
+        driver.findElement(By.cssSelector("#about_sidebar_link")).click();
+
+
+
     }
 }
