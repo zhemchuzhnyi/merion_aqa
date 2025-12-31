@@ -1,51 +1,32 @@
 package ru.merion.aqa.Practics;
 
-import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.merion.aqa.Practics.page.Task2Page;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.time.Duration;
 
 public class Task2 {
-    private WebDriver driver;
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
 
-    @BeforeEach
-    public void open() {
-        driver = new ChromeDriver();
-    }
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
 
-    @AfterEach
-    public void close() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+        driver.get("https://www.saucedemo.com/");
+        driver.findElement(By.cssSelector("#user-name")).sendKeys("visual_user");
+        driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
+        driver.findElement(By.cssSelector("#login-button")).click();
 
-    @Test
-    @Tags({@Tag("positive"), @Tag("login")})
-    @DisplayName("Регистрация с валидными данными")
-    public void iCanLogin() {
-        String data = new Task2Page(driver)
-                .open()
-                .enterRegistrationData("tomsmith", "SuperSecretPassword!")
-                .getContent();
 
-        assertEquals("You logged into a secure area!\n" +
-                "×", data);
-    }
+        driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
+        driver.findElement(By.cssSelector("#about_sidebar_link")).click();
+        driver.navigate().back();
 
-    @Test
-    @Tags({@Tag("negative"), @Tag("login")})
-    @DisplayName("Регистрация с НЕ валидными данными")
-    public void iCanLoginNegative() {
-        String data = new Task2Page(driver)
-                .open()
-                .enterRegistrationData("Andrey", "Password!")
-                .getContent();
+        String text = driver.findElement(By.cssSelector(".app_logo")).getText();
 
-        assertEquals("Your username is invalid!\n" +
-                "×", data);
+        System.out.println(text);
+
+
 
     }
 }
