@@ -28,4 +28,12 @@ public class AuthPageTask3 {
         return this;
     }
 
+    public BackToMain main(){
+        driver.navigate().back();
+        return this;
+    }
+
+    public String getMainLogo() {
+        return driver.findElement(By.cssSelector(".app_logo")).getText();
+    }
 }
