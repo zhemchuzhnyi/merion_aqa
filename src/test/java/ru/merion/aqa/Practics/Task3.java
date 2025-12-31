@@ -20,7 +20,6 @@ public class Task3 {
 
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
         driver.findElement(By.cssSelector("#about_sidebar_link")).click();
-
         driver.navigate().back();
 
         String text = driver.findElement(By.cssSelector(".app_logo")).getText();
