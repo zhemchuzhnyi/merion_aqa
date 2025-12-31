@@ -19,7 +19,13 @@ public class AuthPageTask3 {
         driver.findElement(By.cssSelector("#user-name")).sendKeys("visual_user");
         driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
         driver.findElement(By.cssSelector("#login-button")).click();
-        return new MainPageOpen;
+        return new MainPageOpen(driver);
+    }
+
+    public TryToClickBurger burger() {
+        driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
+        driver.findElement(By.cssSelector("#about_sidebar_link")).click();
+        return this;
     }
 
 }
