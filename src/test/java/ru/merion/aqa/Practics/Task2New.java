@@ -1,7 +1,6 @@
 package ru.merion.aqa.Practics;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -20,4 +19,10 @@ public class Task2New {
         }
     }
 
+    @Test
+    @Tags({@Tag("positive"),@Tag("login")})
+    @DisplayName("Вход на сайт с валидными данными")
+    public void task2New(){
+
+    }
 }
