@@ -9,4 +9,9 @@ public class AuthPageTask3 {
         this.driver = driver;
     }
 
+    public AuthPageTask3 open() {
+        driver.get("https://www.saucedemo.com/");
+        return this;
+    }
+
 }
