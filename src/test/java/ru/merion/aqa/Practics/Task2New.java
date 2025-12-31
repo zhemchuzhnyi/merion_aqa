@@ -3,6 +3,7 @@ package ru.merion.aqa.Practics;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import ru.merion.aqa.Practics.page.AuthPageTask2;
 
 public class Task2New {
     private WebDriver driver;
@@ -23,7 +24,11 @@ public class Task2New {
     @Tags({@Tag("positive"),@Tag("login")})
     @DisplayName("Вход на сайт с валидными данными")
     public void iCanEnter(){
-
-
+        String data = new AuthPageTask2(driver)
+                .open()
+                .login("visual_user","secret_sauce")
+                .burger()
+                .goBack()
+                .getMainLogo();
     }
 }

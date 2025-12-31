@@ -15,20 +15,20 @@ public class AuthPageTask2 {
         return this;
     }
 
-    public MainPageOpen login() {
-        driver.findElement(By.cssSelector("#user-name")).sendKeys("visual_user");
-        driver.findElement(By.cssSelector("#password")).sendKeys("secret_sauce");
+    public MainPageOpen login(String username, String password) {
+        driver.findElement(By.cssSelector("#user-name")).sendKeys(username);
+        driver.findElement(By.cssSelector("#password")).sendKeys(password);
         driver.findElement(By.cssSelector("#login-button")).click();
         return new MainPageOpen(driver);
     }
 
-    public TryToClickBurger burger() {
+    public TryOpenBurger burger() {
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
         driver.findElement(By.cssSelector("#about_sidebar_link")).click();
-        return this;
+        return TryOpenBurger;
     }
 
-    public BackToMain main(){
+    public TryToGoBack goBack() {
         driver.navigate().back();
         return this;
     }
