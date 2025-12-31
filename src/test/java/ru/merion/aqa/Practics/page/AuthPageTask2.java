@@ -2,12 +2,17 @@ package ru.merion.aqa.Practics.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import java.time.Duration;
 
 public class AuthPageTask2 {
     private final WebDriver driver;
+    private final WebDriverWait wait;
 
     public AuthPageTask2(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     public AuthPageTask2 open() {
@@ -24,7 +29,8 @@ public class AuthPageTask2 {
 
     public AuthPageTask2 burger() {
         driver.findElement(By.cssSelector("#react-burger-menu-btn")).click();
-        driver.findElement(By.cssSelector("#about_sidebar_link")).click();
+        // Ждем, пока элемент станет видимым и интерактивным
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#about_sidebar_link"))).click();
         return this;
     }
 
