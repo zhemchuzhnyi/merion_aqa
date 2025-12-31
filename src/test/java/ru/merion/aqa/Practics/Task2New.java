@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.Practics.page.AuthPageTask2;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class Task2New {
     private WebDriver driver;
 
@@ -30,5 +32,7 @@ public class Task2New {
                 .burger()
                 .goBack()
                 .getMainLogo();
+
+        assertEquals("Swag Labs" , data);
     }
 }
