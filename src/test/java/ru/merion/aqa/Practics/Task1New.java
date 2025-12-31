@@ -3,7 +3,7 @@ package ru.merion.aqa.Practics;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.merion.aqa.Practics.page.Task2Page;
+import ru.merion.aqa.Practics.page.Task1Page;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,7 +26,7 @@ public class Task1New {
     @Tags({@Tag("positive"), @Tag("login")})
     @DisplayName("Регистрация с валидными данными")
     public void iCanLogin() {
-        String data = new Task2Page(driver)
+        String data = new Task1Page(driver)
                 .open()
                 .enterRegistrationData("tomsmith", "SuperSecretPassword!")
                 .getContent();
@@ -39,7 +39,7 @@ public class Task1New {
     @Tags({@Tag("negative"), @Tag("login")})
     @DisplayName("Регистрация с НЕ валидными данными")
     public void iCanLoginNegative() {
-        String data = new Task2Page(driver)
+        String data = new Task1Page(driver)
                 .open()
                 .enterRegistrationData("Andrey", "Password!")
                 .getContent();

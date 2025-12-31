@@ -22,7 +22,8 @@ public class Task2New {
     @Test
     @Tags({@Tag("positive"),@Tag("login")})
     @DisplayName("Вход на сайт с валидными данными")
-    public void task2New(){
+    public void iCanEnter(){
+
 
     }
 }

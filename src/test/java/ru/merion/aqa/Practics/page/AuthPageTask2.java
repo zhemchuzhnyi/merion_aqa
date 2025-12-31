@@ -3,14 +3,14 @@ package ru.merion.aqa.Practics.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AuthPageTask3 {
+public class AuthPageTask2 {
     private final WebDriver driver;
 
-    public AuthPageTask3(WebDriver driver) {
+    public AuthPageTask2(WebDriver driver) {
         this.driver = driver;
     }
 
-    public AuthPageTask3 open() {
+    public AuthPageTask2 open() {
         driver.get("https://www.saucedemo.com/");
         return this;
     }
