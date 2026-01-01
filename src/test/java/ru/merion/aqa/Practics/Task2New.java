@@ -44,6 +44,7 @@ public class Task2New {
     public void iCanNotEnter(){
         AuthPageTask2 authPage = new AuthPageTask2(driver)
                 .open();
+
         authPage.login("user", "sauce");
         String error = authPage.error();
 
