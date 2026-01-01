@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.Practics.page.AuthPageTask2;
 
+import java.nio.channels.ConnectionPendingException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Task2New {
@@ -34,5 +36,12 @@ public class Task2New {
                 .getMainLogo();
 
         assertEquals("Swag Labs" , data);
+    }
+
+    @Test
+    @Tags({@Tag("negative"),@Tag("login")})
+    @DisplayName("Вход на сайт с невалидными данными")
+    public void iCanNotEnter(){
+
     }
 }
