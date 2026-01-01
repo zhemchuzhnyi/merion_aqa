@@ -37,4 +37,17 @@ public class Task2New {
 
         assertEquals("Swag Labs" , data);
     }
+
+    @Test
+    @Tags({@Tag("negative"),@Tag("login")})
+    @DisplayName("Вход на сайт с невалидными данными")
+    public void iCanNotEnter(){
+        AuthPageTask2 authPage = new AuthPageTask2(driver)
+                .open();
+
+        authPage.login("user", "sauce");
+        String error = authPage.error();
+
+        assertEquals("Epic sadface: Username and password do not match any user in this service", error);
+    }
 }
