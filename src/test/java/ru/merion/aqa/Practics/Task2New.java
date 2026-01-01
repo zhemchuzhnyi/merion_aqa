@@ -48,6 +48,6 @@ public class Task2New {
         authPage.login("user", "sauce");
         String error = authPage.error();
 
-        assertEquals("Epic sadface: Username and password do not match any user in this", error);
+        assertEquals("Epic sadface: Username and password do not match any user in this service", error);
     }
 }
