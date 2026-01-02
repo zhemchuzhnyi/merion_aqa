@@ -43,8 +43,4 @@ public class AuthPageTask2 {
     public String getMainLogo() {
         return driver.findElement(By.cssSelector(".app_logo")).getText();
     }
-
-    public String error() {
-        return driver.findElement(By.cssSelector("h3")).getText();
-    }
 }
