@@ -37,13 +37,10 @@ public class AuthPageTask2 {
     public AuthPageTask2 goBack() {
         driver.navigate().back();
         return this;
+
     }
 
     public String getMainLogo() {
         return driver.findElement(By.cssSelector(".app_logo")).getText();
-    }
-
-    public String error() {
-        return driver.findElement(By.cssSelector("h3")).getText();
     }
 }
