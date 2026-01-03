@@ -59,6 +59,7 @@ public class AuthPageTask2 {
     }
 
     public String getTitle() {
-        return driver.findElement(By.xpath("//span[text()='Products']")).getText();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        return driver.findElement(By.cssSelector("#title")).getText();
     }
 }
