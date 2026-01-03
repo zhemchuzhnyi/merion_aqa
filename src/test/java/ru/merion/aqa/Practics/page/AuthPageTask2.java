@@ -59,6 +59,10 @@ public class AuthPageTask2 {
     }
 
     public String getTitle() {
-        return driver.findElement(By.cssSelector("[data-test='title']")).getText();
+        return new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.visibilityOfElementLocated(
+                        By.cssSelector("[data-test='title']")
+                ))
+                .getText();
     }
 }
