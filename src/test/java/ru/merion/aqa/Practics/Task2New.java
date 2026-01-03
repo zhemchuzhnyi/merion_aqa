@@ -29,24 +29,9 @@ public class Task2New {
         String data = new AuthPageTask2(driver)
                 .open()
                 .login("visual_user","secret_sauce")
-                .burger()
-                .goBack()
                 .getMainLogo();
 
         assertEquals("Swag Labs" , data);
-    }
-
-    @Test
-    @Tags({@Tag("negative"),@Tag("login")})
-    @DisplayName("Вход на сайт с невалидными данными")
-    public void iCanNotEnter(){
-        AuthPageTask2 authPage = new AuthPageTask2(driver)
-                .open();
-
-        authPage.login("user", "sauce");
-        String error = authPage.error();
-
-        assertEquals("Epic sadface: Username and password do not match any user in this service", error);
     }
 
     @Test
@@ -60,5 +45,18 @@ public class Task2New {
                 .getPrivacyPolicy();
 
         assertEquals("© 2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" , sort);
+    }
+
+    @Test
+    @Tags({@Tag("negative"),@Tag("login")})
+    @DisplayName("Вход на сайт с невалидными данными")
+    public void iCanNotEnter(){
+        AuthPageTask2 authPage = new AuthPageTask2(driver)
+                .open();
+
+        authPage.login("user", "sauce");
+        String error = authPage.error();
+
+        assertEquals("Epic sadface: Username and password do not match any user in this service", error);
     }
 }
