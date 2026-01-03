@@ -50,4 +50,12 @@ public class Task2New {
 
         assertEquals("Epic sadface: Username and password do not match any user in this service", error);
     }
+
+    @Test
+    @Tags({@Tag("positive"),@Tag("select")})
+    @DisplayName("Проверка работы выпадющего списка")
+    public void iCanSelect(){
+
+    }
+
 }
