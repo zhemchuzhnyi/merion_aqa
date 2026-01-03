@@ -59,6 +59,6 @@ public class AuthPageTask2 {
     }
 
     public String getTitle() {
-        return driver.findElement(By.cssSelector(".header_secondary_container")).getText();
+        return driver.findElement(By.xpath("//span[text()='Products']")).getText();
     }
 }

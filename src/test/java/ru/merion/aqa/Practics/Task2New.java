@@ -45,7 +45,7 @@ public class Task2New {
                 .goBack()
                 .getTitle();
 
-        assertEquals("Produc" , text);
+        assertEquals("Products" , text);
     }
 
     @Test
