@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
+import org.openqa.selenium.support.ui.Select;
 
 public class AuthPageTask2 {
     private final WebDriver driver;
@@ -34,10 +35,15 @@ public class AuthPageTask2 {
         return this;
     }
 
+    public AuthPageTask2 container() {
+        Select dropdown = new Select(driver.findElement(By.cssSelector(".product_sort_container")));
+        dropdown.selectByValue("hilo");
+        return this;
+    }
+
     public AuthPageTask2 goBack() {
         driver.navigate().back();
         return this;
-
     }
 
     public String getMainLogo() {
