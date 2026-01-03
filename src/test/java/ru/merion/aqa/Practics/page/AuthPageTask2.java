@@ -54,7 +54,7 @@ public class AuthPageTask2 {
         return driver.findElement(By.cssSelector("h3")).getText();
     }
 
-    public String privacyPolicy() {
+    public String getPrivacyPolicy() {
         return driver.findElement(By.cssSelector(".footer_copy")).getText();
     }
 }

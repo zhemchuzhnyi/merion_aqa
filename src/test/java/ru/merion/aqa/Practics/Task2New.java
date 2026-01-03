@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.Practics.page.AuthPageTask2;
 
-import java.nio.channels.ConnectionPendingException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Task2New {
@@ -55,6 +53,13 @@ public class Task2New {
     @Tags({@Tag("positive"),@Tag("select")})
     @DisplayName("Проверка работы выпадющего списка")
     public void iCanSelect(){
+        String sort = new AuthPageTask2(driver)
+                .open()
+                .login("visual_user","secret_sauce")
+                .container()
+                .getPrivacyPolicy();
+
+
 
     }
 
