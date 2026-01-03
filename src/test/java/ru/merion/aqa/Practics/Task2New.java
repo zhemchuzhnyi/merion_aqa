@@ -35,8 +35,8 @@ public class Task2New {
     }
 
     @Test
-    @Tags({@Tag("positive"),@Tag("select")})
-    @DisplayName("Проверка работы выпадающего списка")
+    @Tags({@Tag("positive"),@Tag("burger")})
+    @DisplayName("Проверка работы бургера")
     public void tryToOpenBurger() {
         String text = new AuthPageTask2(driver)
                 .open()

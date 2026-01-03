@@ -59,6 +59,6 @@ public class AuthPageTask2 {
     }
 
     public String getTitle() {
-        return driver.findElement(By.cssSelector("#title")).getText();
+        return driver.findElement(By.cssSelector("span.title")).getText();
     }
 }
