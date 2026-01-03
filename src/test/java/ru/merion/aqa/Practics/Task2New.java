@@ -33,7 +33,7 @@ public class Task2New {
                 .goBack()
                 .getMainLogo();
 
-        assertEquals("© 2026  Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" , data);
+        assertEquals("Swag Labs" , data);
     }
 
     @Test
@@ -59,8 +59,6 @@ public class Task2New {
                 .container()
                 .getPrivacyPolicy();
 
-
-
+        assertEquals("© 2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" , sort);
     }
-
 }
