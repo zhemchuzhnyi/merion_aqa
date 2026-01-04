@@ -57,4 +57,10 @@ public class AuthPageTask2 {
     public String getPrivacyPolicy() {
         return driver.findElement(By.cssSelector(".footer_copy")).getText();
     }
+
+
+    public String getTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        return driver.findElement(By.cssSelector("#title")).getText();
+    }
 }
