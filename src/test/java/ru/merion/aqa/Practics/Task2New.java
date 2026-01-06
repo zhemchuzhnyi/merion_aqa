@@ -1,9 +1,13 @@
 package ru.merion.aqa.Practics;
 
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.merion.aqa.Practics.page.AuthPageTask2;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -72,5 +76,10 @@ public class Task2New {
         String error = authPage.error();
 
         assertEquals("Epic sadface: Username and password do not match any user in this service", error);
+    }
+
+    public String getTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        return driver.findElement(By.cssSelector("#title")).getText();
     }
 }
