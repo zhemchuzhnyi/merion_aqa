@@ -77,4 +77,9 @@ public class Task2New {
 
         assertEquals("Epic sadface: Username and password do not match any user in this service", error);
     }
+    public String getTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        return driver.findElement(By.cssSelector("#title")).getText();
+    }
+
 }
