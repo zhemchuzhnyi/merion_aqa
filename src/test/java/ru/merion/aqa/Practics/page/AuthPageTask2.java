@@ -62,4 +62,5 @@ public class AuthPageTask2 {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
         return driver.findElement(By.cssSelector("#title")).getText();
     }
+
 }
