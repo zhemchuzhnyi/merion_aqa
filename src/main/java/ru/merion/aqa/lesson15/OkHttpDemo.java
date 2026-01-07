@@ -25,6 +25,5 @@ public class OkHttpDemo {
 
 
         System.out.println("Status: " + response.code());
-        System.out.println("Body: " + response.body().string());
     }
 }
