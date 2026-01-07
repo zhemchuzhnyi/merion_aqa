@@ -22,8 +22,11 @@ public class OkHttpDemo {
 
         // execute
         Response response = client.newCall(getAllTask).execute();
+        String cookie  = response.header("Set-Cookie");
 
 
         System.out.println("Status: " + response.code());
+        System.out.println(cookie);
+
     }
 }
