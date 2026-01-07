@@ -5,10 +5,11 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.List;
 
 
 public class OkHttpDemo {
-    public static final String URL = "https://sky-todo-list.herokuapp.com/";
+    public static final String URL = "https://ya.ru/";
 
     public static void main(String[] args) throws IOException {
         // client
@@ -22,11 +23,11 @@ public class OkHttpDemo {
 
         // execute
         Response response = client.newCall(getAllTask).execute();
-        String cookie  = response.header("Set-Cookie");
 
 
         System.out.println("Status: " + response.code());
-        System.out.println(cookie);
 
     }
 }
+
+//     public static final String URL = "https://sky-todo-list.herokuapp.com/";
