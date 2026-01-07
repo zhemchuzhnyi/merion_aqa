@@ -23,11 +23,13 @@ public class OkHttpDemo {
 
         // execute
         Response response = client.newCall(getAllTask).execute();
+        MediaType mediaType = response.body().contentType();
+        String body = response.body().string();
+
+
 
         System.out.println("Status: " + response.code());
-        MediaType mediaType = response.body().contentType();
         System.out.println(mediaType);
-        String body = response.body().string();
         System.out.println(body);
 
     }
