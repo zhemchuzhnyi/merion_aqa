@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class OkHttpDemo {
-    public static final String URL = "https://ya.ru/";
+    public static final String URL = "https://sky-todo-list.herokuapp.com/";
 
     public static void main(String[] args) throws IOException {
         // client
@@ -31,5 +31,3 @@ public class OkHttpDemo {
 
     }
 }
-
-//     public static final String URL = "https://sky-todo-list.herokuapp.com/";
