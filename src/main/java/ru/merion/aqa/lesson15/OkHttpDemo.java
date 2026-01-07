@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson15;
 
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -24,8 +25,9 @@ public class OkHttpDemo {
         // execute
         Response response = client.newCall(getAllTask).execute();
 
-
         System.out.println("Status: " + response.code());
+        MediaType mediaType = response.body().contentType();
+        System.out.println(mediaType);
 
     }
 }
