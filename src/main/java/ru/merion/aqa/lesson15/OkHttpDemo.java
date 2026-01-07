@@ -1,7 +1,29 @@
 package ru.merion.aqa.lesson15;
 
-public class OkHttpDemo {
-    public static void main(String[] args) {
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
+import java.io.IOException;
+
+
+public class OkHttpDemo {
+    public static final String URL = "https://sky-todo-list.herokuapp.com/";
+
+    public static void main(String[] args) throws IOException {
+        // client
+        OkHttpClient client = new OkHttpClient();
+
+        // request
+        Request getAllTask = new Request.Builder()
+                .url(URL)
+                .get()
+                .build();
+
+        // execute
+        Response execute = client.newCall(getAllTask).execute();
+
+        System.out.println("Status: " + execute.code());
+        System.out.println("Body: " + execute.body().string());
     }
 }
