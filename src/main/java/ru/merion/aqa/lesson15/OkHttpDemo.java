@@ -21,9 +21,10 @@ public class OkHttpDemo {
                 .build();
 
         // execute
-        Response execute = client.newCall(getAllTask).execute();
+        Response response = client.newCall(getAllTask).execute();
 
-        System.out.println("Status: " + execute.code());
-        System.out.println("Body: " + execute.body().string());
+
+        System.out.println("Status: " + response.code());
+        System.out.println("Body: " + response.body().string());
     }
 }
