@@ -6,7 +6,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
-import java.util.List;
 
 
 public class OkHttpDemo {
@@ -28,6 +27,8 @@ public class OkHttpDemo {
         System.out.println("Status: " + response.code());
         MediaType mediaType = response.body().contentType();
         System.out.println(mediaType);
+        String body = response.body().string();
+        System.out.println(body);
 
     }
 }
