@@ -33,6 +33,13 @@ public class OkHttpDemo {
         System.out.println(body);
 
         String json = "{\"title\":\"94649646\",\"completed\":false}";
-        Request createNew = new Request.Builder().url(URL).post(null).header("Content-Type","application/json").build();
+        Request createNewTaskRequest = new Request.Builder()
+                .url(URL)
+                .post(null)
+                .header("Content-Type","application/json")
+                .build();
+
+        response = client.newCall(createNewTaskRequest).execute();
+
     }
 }
