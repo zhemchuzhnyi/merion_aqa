@@ -15,18 +15,12 @@ public class OkHttpDemo {
         // request
         Request getAllTask = new Request.Builder()
                 .url(URL)
-                .get()
                 .build();
 
-        // execute
         Response response = client.newCall(getAllTask).execute();
+        System.out.println(response.code());
         MediaType mediaType = response.body().contentType();
         String body = response.body().string();
-
-
-
-        System.out.println("Status: " + response.code());
-        System.out.println(mediaType);
         System.out.println(body);
 
         String json = "{\"title\":\"94649646\",\"completed\":false}";
