@@ -27,5 +27,4 @@ public class OkHttpDemo {
         System.out.println(response.code());
         System.out.println(response.body().string());
     }
-
 }
