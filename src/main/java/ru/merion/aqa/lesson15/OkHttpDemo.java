@@ -31,5 +31,8 @@ public class OkHttpDemo {
         System.out.println("Status: " + response.code());
         System.out.println(mediaType);
         System.out.println(body);
+
+        String json = "{\"title\":\"94649646\",\"completed\":false}";
+        Request createNew = new Request.Builder().url(URL).post(null).header("Content-Type","application/json").build();
     }
 }
