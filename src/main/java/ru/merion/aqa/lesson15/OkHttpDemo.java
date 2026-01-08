@@ -33,8 +33,7 @@ public class OkHttpDemo {
         RequestBody requestBody = RequestBody.create(json, MediaType.get("application/json"));
         Request createNewTaskRequest = new Request.Builder()
                 .url(URL)
-                .post(null)
-                .header("Content-Type","application/json")
+                .post(requestBody)
                 .build();
 
         response = client.newCall(createNewTaskRequest).execute();
