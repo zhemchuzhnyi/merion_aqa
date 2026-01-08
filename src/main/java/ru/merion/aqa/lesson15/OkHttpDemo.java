@@ -1,38 +1,31 @@
 package ru.merion.aqa.lesson15;
 
 import okhttp3.*;
-
 import java.io.IOException;
 
-
 public class OkHttpDemo {
-    public static final String URL = "https://sky-todo-list.herokuapp.com/";
+    public static final String URL = "https://todo-app-sky.herokuapp.com/";
 
     public static void main(String[] args) throws IOException {
         // client
         OkHttpClient client = new OkHttpClient();
 
         // request
-        Request getAllTask = new Request.Builder()
-                .url(URL)
-                .build();
+        Request getAllTasksReq = new Request.Builder().url(URL).build();
+        Response response = client.newCall(getAllTasksReq).execute();
 
-        Response response = client.newCall(getAllTask).execute();
         System.out.println(response.code());
         MediaType mediaType = response.body().contentType();
         String body = response.body().string();
         System.out.println(body);
 
-        String json = "{\"title\":\"94649646\",\"completed\":false}";
-        RequestBody requestBody = RequestBody.create(json, MediaType.get("application/json"));
-        Request createNewTaskRequest = new Request.Builder()
-                .url(URL)
-                .post(requestBody)
-                .header("ABS","123")
-                .build();
+        String json = "{\"title\":\"456\",\"completed\":false}";
+        RequestBody reqBody = RequestBody.create(json, MediaType.get("application/json"));
+        Request createNewTaskRequest = new Request.Builder().url(URL).post(reqBody).header("ABC", "123").build();
 
         response = client.newCall(createNewTaskRequest).execute();
-        System.out.println("Status: " + response.code());
-
+        System.out.println(response.code());
+        System.out.println(response.body().string());
     }
+
 }
