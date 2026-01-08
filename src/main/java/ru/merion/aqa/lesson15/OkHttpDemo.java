@@ -29,7 +29,5 @@ public class OkHttpDemo {
 
 
         System.out.println("Status: " + response.code());
-        System.out.println(mediaType);
-        System.out.println(body);
     }
 }
