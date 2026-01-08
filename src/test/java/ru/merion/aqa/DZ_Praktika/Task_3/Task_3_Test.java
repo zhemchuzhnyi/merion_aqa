@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import ru.merion.aqa.selenideDZ_2_Page.Task5.CalculatorPage;
+import ru.merion.aqa.practiceTasks.selenideDZ_2_Page.Task5.CalculatorPage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
