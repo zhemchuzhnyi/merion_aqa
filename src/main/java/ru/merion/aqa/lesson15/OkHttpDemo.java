@@ -30,7 +30,7 @@ public class OkHttpDemo {
         System.out.println(body);
 
         String json = "{\"title\":\"94649646\",\"completed\":false}";
-        RequestBody requestBody = RequestBody.create(json, mediaType);
+        RequestBody requestBody = RequestBody.create(json, MediaType.get("application/json"));
         Request createNewTaskRequest = new Request.Builder()
                 .url(URL)
                 .post(null)
