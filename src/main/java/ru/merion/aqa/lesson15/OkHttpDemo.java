@@ -1,9 +1,6 @@
 package ru.merion.aqa.lesson15;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.*;
 
 import java.io.IOException;
 
@@ -33,6 +30,7 @@ public class OkHttpDemo {
         System.out.println(body);
 
         String json = "{\"title\":\"94649646\",\"completed\":false}";
+        RequestBody requestBody = RequestBody.create(json, mediaType);
         Request createNewTaskRequest = new Request.Builder()
                 .url(URL)
                 .post(null)
