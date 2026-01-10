@@ -17,9 +17,9 @@ public class XClientsRequests {
         OkHttpClient client = new OkHttpClient();
 
         Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
-
         Response response = client.newCall(getAllCompanies).execute();
-
         System.out.println(response.body().string());
+
+
     }
 }
