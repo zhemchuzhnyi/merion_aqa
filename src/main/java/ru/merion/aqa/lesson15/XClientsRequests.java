@@ -16,6 +16,7 @@ public class XClientsRequests {
 
         OkHttpClient client = new OkHttpClient();
 /*
+        // авторизация
         String creds = """
                 {
                   "username": "leonardo",
@@ -28,6 +29,9 @@ public class XClientsRequests {
         Response authResp = client.newCall(authReq).execute();
         System.out.println("Auth response: " + authResp.body().string());
 */
+
+        // создание организации
+
         String json = """
                 {
                   "name": "Merion Academy",
@@ -44,6 +48,8 @@ public class XClientsRequests {
                 .build();
         Response response = client.newCall(createNew).execute();
         System.out.println("Create response: " + response.body().string());
+
+        // получение списка организаций
 
         Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
         Response list = client.newCall(getAllCompanies).execute();
