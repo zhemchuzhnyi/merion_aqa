@@ -21,7 +21,5 @@ public class XClientsRequests {
         Response response = client.newCall(getAllCompanies).execute();
 
         System.out.println(response.body().string());
-
-
     }
 }
