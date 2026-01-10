@@ -40,7 +40,7 @@ public class XClientsRequests {
                 """;
 
 
-        String token;
+        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjgwNzMwNTksImV4cCI6MTc2ODA3Mzk1OX0.nNzwYwKMOayrOkg_Lfe_uUPhrE3vDXAB3YJVwYxwwOg";
         RequestBody reqBody = RequestBody.create(json, JSON);
         Request createNew = new Request.Builder()
                 .post(reqBody)
