@@ -2,6 +2,7 @@ package ru.merion.aqa.lesson15;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import java.io.IOException;
@@ -16,10 +17,19 @@ public class XClientsRequests {
 
         OkHttpClient client = new OkHttpClient();
 
-        Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
-        Response response = client.newCall(getAllCompanies).execute();
-        System.out.println(response.body().string());
+//        Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
+//        Response response = client.newCall(getAllCompanies).execute();
+//        System.out.println(response.body().string());
 
+        String json = """
+                {
+                  "name": "string",
+                  "description": "string"
+                }
+                """;
+
+        RequestBody reqBody = RequestBody.create()
+        Request createNew = new Request.Builder().post().url(URL + COMPANY).build();
 
     }
 }
