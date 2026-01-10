@@ -1,9 +1,6 @@
 package ru.merion.aqa.lesson15;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import okhttp3.*;
 
 import java.io.IOException;
 
@@ -23,13 +20,15 @@ public class XClientsRequests {
 
         String json = """
                 {
-                  "name": "string",
-                  "description": "string"
+                  "name": "Merion Academy",
+                  "description": "Платформа доступного образования"
                 }
                 """;
 
-        RequestBody reqBody = RequestBody.create()
-        Request createNew = new Request.Builder().post().url(URL + COMPANY).build();
+        RequestBody reqBody = RequestBody.create(json, MediaType.get("application/json"));
+        Request createNew = new Request.Builder().post(reqBody).url(URL + COMPANY).build();
+        Response response = client.newCall(createNew).execute();
+        System.out.println(response.body().string());
 
     }
 }
