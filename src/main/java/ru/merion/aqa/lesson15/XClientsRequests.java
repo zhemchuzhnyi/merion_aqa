@@ -15,7 +15,7 @@ public class XClientsRequests {
     public static void main(String[] args) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
-/*
+
         // авторизация
         String creds = """
                 {
@@ -28,7 +28,7 @@ public class XClientsRequests {
         Request authReq = new Request.Builder().post(authBody).url(URL + LOGIN).build();
         Response authResp = client.newCall(authReq).execute();
         System.out.println("Auth response: " + authResp.body().string());
-*/
+
 
         // создание организации
 
