@@ -24,5 +24,7 @@ public class OkHttpDemo {
         Request createNewTaskRequest = new Request.Builder().url(URL).post(reqBody).header("ABC", "123").build();
 
         response = client.newCall(createNewTaskRequest).execute();
+        System.out.println(response.code());
+        System.out.println(response.body().string());
     }
 }
