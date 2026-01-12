@@ -1,9 +1,6 @@
 package ru.merion.aqa.lesson15;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
-import ru.merion.aqa.lesson15.model.AuthRequest;
-import ru.merion.aqa.lesson15.model.AuthResponse;
 
 import java.io.IOException;
 
