@@ -4,7 +4,7 @@ import okhttp3.*;
 
 import java.io.IOException;
 
-public class XClientsRequests {
+public class XClientsDemo {
 
     private static final MediaType JSON = MediaType.get("application/json");
 
@@ -13,21 +13,15 @@ public class XClientsRequests {
 
     public static void main(String[] args) throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
-
         // авторизация
         XClientsWebClient service = new XClientsWebClient(URL);
         String token = service.getToken("leonardo", "leads");
 
         // создание организации
+        int newCompanyID = service.create("ABC", "Letters", token);
 
-        String json = """
-                {
-                  "name": "Merion Academy",
-                  "description": "Платформа доступного образования"
-                }
-                """;
 
+        OkHttpClient client = new OkHttpClient();
 
         // получение списка организаций
 

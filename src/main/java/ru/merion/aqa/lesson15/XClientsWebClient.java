@@ -4,11 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
 import ru.merion.aqa.lesson15.model.AuthRequest;
 import ru.merion.aqa.lesson15.model.AuthResponse;
-import ru.merion.aqa.lesson15.model.CreateNewCompanyRequest;
+import ru.merion.aqa.lesson15.model.CreateNewCompanyResponse;
 
 import java.io.IOException;
 
-import static ru.merion.aqa.lesson15.XClientsRequests.COMPANY;
+import static ru.merion.aqa.lesson15.XClientsDemo.COMPANY;
 
 public class XClientsWebClient {
 
@@ -43,7 +43,7 @@ public class XClientsWebClient {
     }
 
     public int create(String name, String description, String token) throws IOException {
-        CreateNewCompanyRequest createNewCompanyRequest = new CreateNewCompanyRequest(name, description);
+        CreateNewCompanyResponse createNewCompanyRequest = new CreateNewCompanyResponse(name, description);
         String jsonRequest = mapper.writeValueAsString(createNewCompanyRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
         Request request = new Request.Builder()
@@ -54,8 +54,8 @@ public class XClientsWebClient {
 
         Response response = client.newCall(request).execute();
         String jsonResponce = response.body().string();
-        int id = mapper.readValue(jsonResponce, Integer.class);
+        CreateNewCompanyResponse r = mapper.readValue(jsonResponce, CreateNewCompanyResponse.class);
 
-        return id;
+        return r.id();
     }
 }
