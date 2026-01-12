@@ -61,10 +61,17 @@ public class XClientsWebClient {
         return r.id();
     }
 
-    public List<Company> getAll() throws IOException {
+    public List<Company> getAll(Boolean isActive) throws IOException {
+
+        HttpUrl.Builder url = HttpUrl.parse(URL).newBuilder();
+
+        if (isActive != null) {
+            url.addQueryParameter("active", isActive.toString());
+        }
+        url.addPathSegment(COMPANY);
 
         Request getAllCompanies = new Request.Builder()
-                .url(URL + COMPANY)
+                .url(url.build())
                 .build();
         Response response = client.newCall(getAllCompanies).execute();
         String jsonResponse = response.body().string();
@@ -73,8 +80,10 @@ public class XClientsWebClient {
         CollectionType listOfCompanies = mapper.getTypeFactory().constructCollectionType(List.class, Company.class);
         return mapper.readValue(jsonResponse, listOfCompanies);
     }
+/*
+TODO // TODO // TODO //
+ */
 
-    // TODO //
     public Company getById(int id) throws JacksonException {
         return mapper.readValue("", Company.class);
     }
