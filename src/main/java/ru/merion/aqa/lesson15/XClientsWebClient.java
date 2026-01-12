@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
 import ru.merion.aqa.lesson15.model.AuthRequest;
 import ru.merion.aqa.lesson15.model.AuthResponse;
+import ru.merion.aqa.lesson15.model.CreateNewCompanyRequest;
 import ru.merion.aqa.lesson15.model.CreateNewCompanyResponse;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class XClientsWebClient {
     }
 
     public int create(String name, String description, String token) throws IOException {
-        CreateNewCompanyResponse createNewCompanyRequest = new CreateNewCompanyResponse(name, description);
+        CreateNewCompanyRequest createNewCompanyRequest = new CreateNewCompanyRequest(name, description);
         String jsonRequest = mapper.writeValueAsString(createNewCompanyRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
         Request request = new Request.Builder()
