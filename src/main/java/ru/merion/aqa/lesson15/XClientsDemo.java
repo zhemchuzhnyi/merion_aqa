@@ -2,14 +2,12 @@ package ru.merion.aqa.lesson15;
 
 import okhttp3.*;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class XClientsDemo {
 
-    private static final MediaType JSON = MediaType.get("application/json");
-
     public static final String URL = "http://51.250.26.13:8083";
-    public static final String COMPANY = "/company";
 
     public static void main(String[] args) throws IOException {
 
@@ -23,10 +21,6 @@ public class XClientsDemo {
 
         OkHttpClient client = new OkHttpClient();
 
-        // получение списка организаций
-
-        Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
-        Response list = client.newCall(getAllCompanies).execute();
-        System.out.println("Get all companies: " + list.body().string());
+        List<Company> companyList = service.getAll();
     }
 }
