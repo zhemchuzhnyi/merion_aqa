@@ -22,12 +22,9 @@ public class XClientsRequests {
 
         // авторизация
         AuthRequest authRequest = new AuthRequest("leonardo","leads");
-
-        String authReqBody = mapper.writeValueAsString(authRequest);
-
-        RequestBody authBody = RequestBody.create(authReqBody, JSON);
-
-        Request authReq = new Request.Builder().post(authBody).url(URL + LOGIN).build();
+        String jsonRequest = mapper.writeValueAsString(authRequest);
+        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+        Request authReq = new Request.Builder().post(requestBody).url(URL + LOGIN).build();
         Response authResp = client.newCall(authReq).execute();
         String jsonResp = authResp.body().string();
         AuthResponse authResponse = mapper.readValue(jsonResp, AuthResponse.class);
