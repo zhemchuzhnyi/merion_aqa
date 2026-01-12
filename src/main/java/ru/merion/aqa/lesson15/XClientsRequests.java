@@ -20,17 +20,6 @@ public class XClientsRequests {
         OkHttpClient client = new OkHttpClient();
         ObjectMapper mapper = new ObjectMapper();
 
-        // авторизация
-        AuthRequest authRequest = new AuthRequest("leonardo","leads");
-        String jsonRequest = mapper.writeValueAsString(authRequest);
-        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
-        Request authReq = new Request.Builder().post(requestBody).url(URL + LOGIN).build();
-        Response authResp = client.newCall(authReq).execute();
-        String jsonResp = authResp.body().string();
-        AuthResponse authResponse = mapper.readValue(jsonResp, AuthResponse.class);
-
-
-
         // создание организации
 
         String json = """
