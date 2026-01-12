@@ -1,6 +1,7 @@
 package ru.merion.aqa.lesson15;
 
 import okhttp3.*;
+import ru.merion.aqa.lesson15.model.AuthRequest;
 
 import java.io.IOException;
 
@@ -17,14 +18,9 @@ public class XClientsRequests {
         OkHttpClient client = new OkHttpClient();
 
         // авторизация
-        String creds = """
-                {
-                  "username": "leonardo",
-                  "password": "leads"
-                }
-                """;
-
+        AuthRequest authRequest = new AuthRequest("leonardo","leads");
         RequestBody authBody = RequestBody.create(creds, JSON);
+
         Request authReq = new Request.Builder().post(authBody).url(URL + LOGIN).build();
         Response authResp = client.newCall(authReq).execute();
         System.out.println("Auth response: " + authResp.body().string());
