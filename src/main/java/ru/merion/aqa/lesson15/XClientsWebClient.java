@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import okhttp3.*;
+import okhttp3.logging.HttpLoggingInterceptor;
 import ru.merion.aqa.lesson15.model.*;
 
 import java.io.IOException;
@@ -25,8 +26,12 @@ public class XClientsWebClient {
     private final ObjectMapper mapper;
 
     public XClientsWebClient(String URL) {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         mapper = new ObjectMapper();
-        client = new OkHttpClient();
+        client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).build();
+
         this.URL = URL;
     }
 
@@ -73,17 +78,12 @@ public class XClientsWebClient {
         }
 
         HttpUrl build = url.build();
-        System.out.println(build);
-
         Request getAllCompanies = new Request.Builder()
                 .url(build)
                 .build();
         Response response = client.newCall(getAllCompanies).execute();
-        String jsonResponse = response.body().string();
-        System.out.println("Response: " + jsonResponse);
-
         CollectionType listOfCompanies = mapper.getTypeFactory().constructCollectionType(List.class, Company.class);
-        return mapper.readValue(jsonResponse, listOfCompanies);
+        return mapper.readValue(response.body().string(), listOfCompanies);
     }
 /*
 TODO // TODO // TODO //
