@@ -26,7 +26,7 @@ public class XClientsWebClient {
         this.URL = URL;
     }
 
-    public String  auth(String login, String pass) throws IOException {
+    public String getToken(String login, String pass) throws IOException {
         AuthRequest authRequest = new AuthRequest(login, pass);
         String jsonRequest = mapper.writeValueAsString(authRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
