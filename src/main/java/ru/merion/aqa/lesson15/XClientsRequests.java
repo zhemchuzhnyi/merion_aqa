@@ -18,7 +18,10 @@ public class XClientsRequests {
     public static void main(String[] args) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
-        ObjectMapper mapper = new ObjectMapper();
+
+        // авторизация
+        XClientsWebClient service = new XClientsWebClient(URL);
+        String token = service.getToken("leonardo", "leads");
 
         // создание организации
 
