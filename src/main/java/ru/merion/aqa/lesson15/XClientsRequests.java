@@ -3,6 +3,7 @@ package ru.merion.aqa.lesson15;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
 import ru.merion.aqa.lesson15.model.AuthRequest;
+import ru.merion.aqa.lesson15.model.AuthResponse;
 
 import java.io.IOException;
 
@@ -28,7 +29,9 @@ public class XClientsRequests {
 
         Request authReq = new Request.Builder().post(authBody).url(URL + LOGIN).build();
         Response authResp = client.newCall(authReq).execute();
-        System.out.println("Auth response: " + authResp.body().string());
+        String jsonResp = authResp.body().string();
+        mapper.readValue(jsonResp, AuthResponse.class);
+
 
 
         // создание организации
