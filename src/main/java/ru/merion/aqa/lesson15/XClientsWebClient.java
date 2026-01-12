@@ -26,7 +26,8 @@ public class XClientsWebClient {
     private final ObjectMapper mapper;
 
     public XClientsWebClient(String URL) {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new MyCustomLogger());
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         mapper = new ObjectMapper();
