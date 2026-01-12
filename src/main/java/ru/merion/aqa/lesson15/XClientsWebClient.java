@@ -2,10 +2,12 @@ package ru.merion.aqa.lesson15;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import okhttp3.*;
 import ru.merion.aqa.lesson15.model.*;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 import static ru.merion.aqa.lesson15.XClientsDemo.COMPANY;
@@ -62,7 +64,10 @@ public class XClientsWebClient {
     public List<Company> getAll() throws IOException {
         Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
         Response response = client.newCall(getAllCompanies).execute();
-        return mapper.readValue(response.body().string(), new TypeReference<List<Company>>() {});
+        //return mapper.readValue(response.body().string(), new TypeReference<List<Company>>() {});
+
+        CollectionType listOfCompanies = mapper.getTypeFactory().constructCollectionType(List.class, Company.class);
+        return mapper.readValue(response.body().string(), listOfCompanies);
 
     }
 }
