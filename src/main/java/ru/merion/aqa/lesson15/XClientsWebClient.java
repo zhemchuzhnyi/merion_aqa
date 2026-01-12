@@ -1,23 +1,22 @@
 package ru.merion.aqa.lesson15;
 
 import com.fasterxml.jackson.core.JacksonException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import okhttp3.*;
 import ru.merion.aqa.lesson15.model.*;
 
 import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 
-import static ru.merion.aqa.lesson15.XClientsDemo.COMPANY;
 
 public class XClientsWebClient {
 
     private static final MediaType JSON = MediaType.get("application/json");
 
     private static final String LOGIN = "/auth/login";
+
+    private static final String COMPANY = "/company";
 
     private final String URL;
 
@@ -63,12 +62,16 @@ public class XClientsWebClient {
     }
 
     public List<Company> getAll() throws IOException {
-        Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
+
+        Request getAllCompanies = new Request.Builder()
+                .url(URL + COMPANY)
+                .build();
         Response response = client.newCall(getAllCompanies).execute();
-        //return mapper.readValue(response.body().string(), new TypeReference<List<Company>>() {});
+        String jsonResponse = response.body().string();
+        System.out.println("Response: " + jsonResponse);
 
         CollectionType listOfCompanies = mapper.getTypeFactory().constructCollectionType(List.class, Company.class);
-        return mapper.readValue(response.body().string(), listOfCompanies);
+        return mapper.readValue(jsonResponse, listOfCompanies);
     }
 
     // TODO //
