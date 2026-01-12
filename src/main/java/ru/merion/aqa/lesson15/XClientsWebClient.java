@@ -26,7 +26,7 @@ public class XClientsWebClient {
         this.URL = URL;
     }
 
-    public AuthResponse auth(String login, String pass) throws IOException {
+    public String  auth(String login, String pass) throws IOException {
         AuthRequest authRequest = new AuthRequest(login, pass);
         String jsonRequest = mapper.writeValueAsString(authRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
@@ -34,6 +34,6 @@ public class XClientsWebClient {
         Response authResp = client.newCall(authReq).execute();
         String jsonResp = authResp.body().string();
         AuthResponse authResponse = mapper.readValue(jsonResp, AuthResponse.class);
-        return authResponse;
+        return authResponse.userToken();
     }
 }
