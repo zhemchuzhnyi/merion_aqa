@@ -27,6 +27,10 @@ public class XClientsWebClient {
     }
 
     public String getToken(String login, String pass) throws IOException {
+        return auth(login, pass).userToken();
+    }
+
+    public AuthResponse auth(String login, String pass) throws IOException {
         AuthRequest authRequest = new AuthRequest(login, pass);
         String jsonRequest = mapper.writeValueAsString(authRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
@@ -34,6 +38,6 @@ public class XClientsWebClient {
         Response authResp = client.newCall(authReq).execute();
         String jsonResp = authResp.body().string();
         AuthResponse authResponse = mapper.readValue(jsonResp, AuthResponse.class);
-        return authResponse.userToken();
+        return authResponse;
     }
 }
