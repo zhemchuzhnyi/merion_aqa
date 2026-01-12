@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson15;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
 import ru.merion.aqa.lesson15.model.AuthRequest;
 
@@ -16,10 +17,14 @@ public class XClientsRequests {
     public static void main(String[] args) throws IOException {
 
         OkHttpClient client = new OkHttpClient();
+        ObjectMapper mapper = new ObjectMapper();
 
         // авторизация
         AuthRequest authRequest = new AuthRequest("leonardo","leads");
-        RequestBody authBody = RequestBody.create(creds, JSON);
+
+        String authReqBody = mapper.writeValueAsString(authRequest);
+
+        RequestBody authBody = RequestBody.create(authReqBody, JSON);
 
         Request authReq = new Request.Builder().post(authBody).url(URL + LOGIN).build();
         Response authResp = client.newCall(authReq).execute();
