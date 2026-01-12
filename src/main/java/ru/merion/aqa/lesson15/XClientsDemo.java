@@ -14,11 +14,14 @@ public class XClientsDemo {
 
         // авторизация
         XClientsWebClient service = new XClientsWebClient(URL);
+
+        // получение токена
         String token = service.getToken("leonardo", "leads");
 
         // создание организации
         int newCompanyID = service.create("ABC", "Letters", token);
 
+        // получение списка всех организаций
         List<Company> companyList = service.getAll();
     }
 }
