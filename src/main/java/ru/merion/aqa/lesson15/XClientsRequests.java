@@ -29,15 +29,6 @@ public class XClientsRequests {
                 """;
 
 
-        RequestBody reqBody = RequestBody.create(json, JSON);
-        Request createNew = new Request.Builder()
-                .post(reqBody)
-                .header("x-client-token", token)
-                .url(URL + COMPANY)
-                .build();
-        Response response = client.newCall(createNew).execute();
-        System.out.println("Create response: " + response.body().string());
-
         // получение списка организаций
 
         Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
