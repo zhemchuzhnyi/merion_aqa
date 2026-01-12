@@ -37,7 +37,6 @@ public class XClientsWebClient {
         Request authReq = new Request.Builder().post(requestBody).url(URL + LOGIN).build();
         Response authResp = client.newCall(authReq).execute();
         String jsonResp = authResp.body().string();
-        AuthResponse authResponse = mapper.readValue(jsonResp, AuthResponse.class);
-        return authResponse;
+        return mapper.readValue(jsonResp, AuthResponse.class);
     }
 }
