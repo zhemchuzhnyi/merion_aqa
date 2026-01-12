@@ -48,6 +48,9 @@ public class XClientsWebClient {
         CreateNewCompanyRequest createNewCompanyRequest = new CreateNewCompanyRequest(name, description);
         String jsonRequest = mapper.writeValueAsString(createNewCompanyRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+
+        HttpUrl url = HttpUrl.parse(URL).newBuilder().addPathSegment(COMPANY).build();
+
         Request request = new Request.Builder()
                 .post(requestBody)
                 .header("x-client-token", token)
