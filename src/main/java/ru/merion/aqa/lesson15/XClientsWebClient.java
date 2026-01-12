@@ -1,13 +1,12 @@
 package ru.merion.aqa.lesson15;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
-import ru.merion.aqa.lesson15.model.AuthRequest;
-import ru.merion.aqa.lesson15.model.AuthResponse;
-import ru.merion.aqa.lesson15.model.CreateNewCompanyRequest;
-import ru.merion.aqa.lesson15.model.CreateNewCompanyResponse;
+import ru.merion.aqa.lesson15.model.*;
 
 import java.io.IOException;
+import java.util.List;
 
 import static ru.merion.aqa.lesson15.XClientsDemo.COMPANY;
 
@@ -58,5 +57,12 @@ public class XClientsWebClient {
         CreateNewCompanyResponse r = mapper.readValue(jsonResponce, CreateNewCompanyResponse.class);
 
         return r.id();
+    }
+
+    public List<Company> getAll() throws IOException {
+        Request getAllCompanies = new Request.Builder().url(URL + COMPANY).build();
+        Response response = client.newCall(getAllCompanies).execute();
+        return mapper.readValue(response.body().string(), new TypeReference<List<Company>>() {});
+
     }
 }
