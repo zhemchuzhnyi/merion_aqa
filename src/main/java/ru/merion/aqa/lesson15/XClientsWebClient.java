@@ -1,24 +1,32 @@
 package ru.merion.aqa.lesson15;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import okhttp3.*;
 import ru.merion.aqa.lesson15.model.AuthRequest;
 import ru.merion.aqa.lesson15.model.AuthResponse;
 
+import java.io.IOException;
+
 public class XClientsWebClient {
 
+    private static final MediaType JSON = MediaType.get("application/json");
+
+    private static final String LOGIN = "/auth/login";
+
+    private final String URL;
+
     private final OkHttpClient client;
+
     private final ObjectMapper mapper;
 
-    public XClientsWebClient() {
+    public XClientsWebClient(String URL) {
         mapper = new ObjectMapper();
         client = new OkHttpClient();
+        this.URL = URL;
     }
 
-    public AuthResponse auth(String login, String pass) {
+    public AuthResponse auth(String login, String pass) throws IOException {
         AuthRequest authRequest = new AuthRequest(login, pass);
         String jsonRequest = mapper.writeValueAsString(authRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
@@ -26,5 +34,6 @@ public class XClientsWebClient {
         Response authResp = client.newCall(authReq).execute();
         String jsonResp = authResp.body().string();
         AuthResponse authResponse = mapper.readValue(jsonResp, AuthResponse.class);
+        return authResponse;
     }
 }
