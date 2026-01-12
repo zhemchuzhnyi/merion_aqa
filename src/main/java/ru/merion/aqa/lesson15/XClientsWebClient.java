@@ -1,5 +1,6 @@
 package ru.merion.aqa.lesson15;
 
+import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
@@ -68,6 +69,22 @@ public class XClientsWebClient {
 
         CollectionType listOfCompanies = mapper.getTypeFactory().constructCollectionType(List.class, Company.class);
         return mapper.readValue(response.body().string(), listOfCompanies);
+    }
 
+    // TODO //
+    public Company getById(int id) throws JacksonException {
+        return mapper.readValue("", Company.class);
+    }
+
+    public Company deleteById(int id, String token) throws JacksonException {
+        return mapper.readValue("", Company.class);
+    }
+
+    public Company setActive(int id, boolean active, String token) throws JacksonException {
+        return mapper.readValue("", Company.class);
+    }
+
+    public Company updateCompany(int id, String name, String description, String token) throws JacksonException {
+        return mapper.readValue("", Company.class);
     }
 }
