@@ -1,6 +1,5 @@
 package ru.merion.aqa.lesson15;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
 import ru.merion.aqa.lesson15.model.AuthRequest;
@@ -16,8 +15,6 @@ public class XClientsWebClient {
     private static final MediaType JSON = MediaType.get("application/json");
 
     private static final String LOGIN = "/auth/login";
-
-    public static final String URL = "http://51.250.26.13:8083";
 
     private final String URL;
 
@@ -45,7 +42,7 @@ public class XClientsWebClient {
         return mapper.readValue(jsonResp, AuthResponse.class);
     }
 
-    public int create(String name, String description) throws IOException {
+    public int create(String name, String description, String token) throws IOException {
         CreateNewCompanyRequest createNewCompanyRequest = new CreateNewCompanyRequest(name, description);
         String jsonRequest = mapper.writeValueAsString(createNewCompanyRequest);
         RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
@@ -56,7 +53,9 @@ public class XClientsWebClient {
                 .build();
 
         Response response = client.newCall(request).execute();
+        String jsonResponce = response.body().string();
+        int id = mapper.readValue(jsonResponce, Integer.class);
 
-        return 0;
+        return id;
     }
 }
