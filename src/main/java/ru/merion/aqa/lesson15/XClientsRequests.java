@@ -35,7 +35,7 @@ public class XClientsRequests {
         RequestBody reqBody = RequestBody.create(json, JSON);
         Request createNew = new Request.Builder()
                 .post(reqBody)
-                .header("x-client-token", authResponse.userToken())
+                .header("x-client-token", token)
                 .url(URL + COMPANY)
                 .build();
         Response response = client.newCall(createNew).execute();
