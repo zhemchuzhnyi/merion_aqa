@@ -63,15 +63,17 @@ public class XClientsWebClient {
 
     public List<Company> getAll(Boolean isActive) throws IOException {
 
-        HttpUrl.Builder url = HttpUrl.parse(URL).newBuilder();
+        HttpUrl.Builder url = HttpUrl.parse(URL + COMPANY).newBuilder();
 
         if (isActive != null) {
             url.addQueryParameter("active", isActive.toString());
         }
-        url.addPathSegment(COMPANY);
+
+        HttpUrl build = url.build();
+        System.out.println(build);
 
         Request getAllCompanies = new Request.Builder()
-                .url(url.build())
+                .url(build)
                 .build();
         Response response = client.newCall(getAllCompanies).execute();
         String jsonResponse = response.body().string();

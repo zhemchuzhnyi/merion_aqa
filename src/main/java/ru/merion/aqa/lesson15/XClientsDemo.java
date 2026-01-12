@@ -22,6 +22,6 @@ public class XClientsDemo {
         int newCompanyID = service.create("ABC", "Letters", token);
 
         // получение списка всех организаций
-        List<Company> companyList = service.getAll();
+        List<Company> companyList = service.getAll(false);
     }
 }
