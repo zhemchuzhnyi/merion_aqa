@@ -30,7 +30,7 @@ public class XClientsRequests {
         Request authReq = new Request.Builder().post(authBody).url(URL + LOGIN).build();
         Response authResp = client.newCall(authReq).execute();
         String jsonResp = authResp.body().string();
-        mapper.readValue(jsonResp, AuthResponse.class);
+        AuthResponse authResponse = mapper.readValue(jsonResp, AuthResponse.class);
 
 
 
