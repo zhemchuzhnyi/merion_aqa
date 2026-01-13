@@ -29,6 +29,8 @@ public class XClientsDemo {
         System.out.println(companyByID);
 
         // удаление компании
+        Company companyDeleteById = service.deleteById(newCompanyID, token);
+        System.out.println(companyDeleteById);
 
     }
 }

@@ -7,7 +7,6 @@ import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 import ru.merion.aqa.lesson15.model.*;
 
-import java.io.IO;
 import java.io.IOException;
 import java.util.List;
 
@@ -110,12 +109,13 @@ TODO // TODO // TODO //
     public Company deleteById(int id, String token) throws IOException {
         HttpUrl url = HttpUrl.parse(URL + COMPANY)
                 .newBuilder()
-                .addPathSegment(String.valueOf(id, token))
+                .addPathSegment(String.valueOf(id))
                 .build();
 
         Request request = new Request.Builder()
                 .url(url)
                 .delete()
+                .header("x-client-token", token)
                 .build();
         Response response = client.newCall(request).execute();
         String jsonResponce = response.body().string();
