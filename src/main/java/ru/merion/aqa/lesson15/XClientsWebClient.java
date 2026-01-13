@@ -106,6 +106,34 @@ TODO // TODO // TODO //
         return mapper.readValue(jsonResponce, Company.class);
     }
 
+    public Company updateCompany(int id, String name, String description, String token) throws IOException {
+        CreateNewCompanyRequest updateCompanyRequest = new CreateNewCompanyRequest(name, description);
+        String jsonRequest = mapper.writeValueAsString(updateCompanyRequest);
+        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+
+        HttpUrl url = HttpUrl.parse(URL + COMPANY)
+                .newBuilder()
+                .addPathSegment(String.valueOf(id))
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .patch(requestBody)
+                .header("x-client-token", token)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        if (response.isSuccessful()) {
+            throw new IOException("Update failed with code " + response.code());
+        }
+        String jsonResponce = response.body().string();
+        return mapper.readValue(jsonResponce, Company.class);
+    }
+
+    public Company setActive(int id, boolean active, String token) throws JacksonException {
+        return mapper.readValue("", Company.class);
+    }
+
     public Company deleteById(int id, String token) throws IOException {
         HttpUrl url = HttpUrl.parse(URL + COMPANY)
                 .newBuilder()
@@ -120,13 +148,5 @@ TODO // TODO // TODO //
         Response response = client.newCall(request).execute();
         String jsonResponce = response.body().string();
         return mapper.readValue(jsonResponce, Company.class);
-    }
-
-    public Company setActive(int id, boolean active, String token) throws JacksonException {
-        return mapper.readValue("", Company.class);
-    }
-
-    public Company updateCompany(int id, String name, String description, String token) throws JacksonException {
-        return mapper.readValue("", Company.class);
     }
 }

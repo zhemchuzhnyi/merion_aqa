@@ -28,6 +28,8 @@ public class XClientsDemo {
         Company companyByID = service.getById(newCompanyID);
         System.out.println(companyByID);
 
+        //
+
         // удаление компании
         Company companyDeleteById = service.deleteById(newCompanyID, token);
         System.out.println(companyDeleteById);
