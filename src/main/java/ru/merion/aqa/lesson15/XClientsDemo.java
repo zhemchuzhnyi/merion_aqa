@@ -23,5 +23,9 @@ public class XClientsDemo {
 
         // получение списка всех организаций
         List<Company> companyList = service.getAll(false);
+
+        // получение компании по id
+        Company companyByID = service.getById(newCompanyID);
+        System.out.println(companyByID);
     }
 }
