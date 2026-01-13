@@ -7,6 +7,7 @@ import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 import ru.merion.aqa.lesson15.model.*;
 
+import java.io.IO;
 import java.io.IOException;
 import java.util.List;
 
@@ -106,8 +107,19 @@ TODO // TODO // TODO //
         return mapper.readValue(jsonResponce, Company.class);
     }
 
-    public Company deleteById(int id, String token) throws JacksonException {
-        return mapper.readValue("", Company.class);
+    public Company deleteById(int id, String token) throws IOException {
+        HttpUrl url = HttpUrl.parse(URL + COMPANY)
+                .newBuilder()
+                .addPathSegment(String.valueOf(id, token))
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .delete()
+                .build();
+        Response response = client.newCall(request).execute();
+        String jsonResponce = response.body().string();
+        return mapper.readValue(jsonResponce, Company.class);
     }
 
     public Company setActive(int id, boolean active, String token) throws JacksonException {

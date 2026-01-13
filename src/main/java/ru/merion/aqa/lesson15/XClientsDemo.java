@@ -19,7 +19,7 @@ public class XClientsDemo {
         String token = service.getToken("leonardo", "leads");
 
         // создание организации
-        int newCompanyID = service.create("ABC", "Letters", token);
+        int newCompanyID = service.create("Merion", "AQA Java", token);
 
         // получение списка всех организаций
         List<Company> companyList = service.getAll(false);
@@ -27,5 +27,8 @@ public class XClientsDemo {
         // получение компании по id
         Company companyByID = service.getById(newCompanyID);
         System.out.println(companyByID);
+
+        // удаление компании
+
     }
 }
