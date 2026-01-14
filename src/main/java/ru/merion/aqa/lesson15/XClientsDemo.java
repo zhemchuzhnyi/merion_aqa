@@ -35,6 +35,16 @@ public class XClientsDemo {
                 "New Description",
                 token
         );
+        System.out.println(updatedCompany);
+
+        // изменение статуса активности компании
+        Company deactivatedCompany = service.setActive(newCompanyID, false, token);
+        System.out.println("Деактивирована: " + deactivatedCompany);
+
+        // снова активируем
+        Company activatedCompany = service.setActive(newCompanyID, true, token);
+        System.out.println("Активирована: " + activatedCompany);
+
 /*
         // удаление компании
         Company companyDeleteById = service.deleteById(newCompanyID, token);
