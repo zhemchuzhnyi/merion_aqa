@@ -45,10 +45,8 @@ public class XClientsDemo {
         Company activatedCompany = service.setActive(newCompanyID, true, token);
         System.out.println("Активирована: " + activatedCompany);
 
-/*
         // удаление компании
         Company companyDeleteById = service.deleteById(newCompanyID, token);
         System.out.println(companyDeleteById);
-*/
     }
 }
