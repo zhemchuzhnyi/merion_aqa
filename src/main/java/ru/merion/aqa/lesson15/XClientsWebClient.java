@@ -123,14 +123,19 @@ TODO // TODO // TODO //
                 .build();
 
         Response response = client.newCall(request).execute();
-        if (response.isSuccessful()) {
+        if (!response.isSuccessful()) {
             throw new IOException("Update failed with code " + response.code());
         }
         String jsonResponce = response.body().string();
         return mapper.readValue(jsonResponce, Company.class);
     }
 
-    public Company setActive(int id, boolean active, String token) throws JacksonException {
+    public Company setActive(int id, boolean active, String token) throws IOException {
+        HttpUrl url = HttpUrl.parse(URL + COMPANY)
+                .newBuilder()
+                .addPathSegment(String.valueOf(id))
+                .build();
+
         return mapper.readValue("", Company.class);
     }
 
