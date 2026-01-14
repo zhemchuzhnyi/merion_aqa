@@ -28,11 +28,17 @@ public class XClientsDemo {
         Company companyByID = service.getById(newCompanyID);
         System.out.println(companyByID);
 
-        //
-
+        // обновление информации о компании
+        Company updatedCompany = service.updateCompany(
+                newCompanyID,
+                "Merion Updated Test",
+                "New Description",
+                token
+        );
+/*
         // удаление компании
         Company companyDeleteById = service.deleteById(newCompanyID, token);
         System.out.println(companyDeleteById);
-
+*/
     }
 }
