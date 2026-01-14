@@ -136,7 +136,16 @@ TODO // TODO // TODO //
                 .addPathSegment(String.valueOf(id))
                 .build();
 
-        return mapper.readValue("", Company.class);
+        String jsonRequest = "{\"active\":" + active + "}";
+        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+        Request request = new Request.Builder()
+                .url(url)
+                .patch(requestBody)
+                .header("x-client-token", token)
+                .build();
+        Response response = client.newCall(request).execute();
+
+        return mapper.readValue("request", Company.class);
     }
 
     public Company deleteById(int id, String token) throws IOException {
