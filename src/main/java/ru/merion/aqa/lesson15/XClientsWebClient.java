@@ -144,8 +144,8 @@ TODO // TODO // TODO //
                 .header("x-client-token", token)
                 .build();
         Response response = client.newCall(request).execute();
-
-        return mapper.readValue("request", Company.class);
+        String jsonResponce = response.body().string();
+        return mapper.readValue(jsonResponce, Company.class);
     }
 
     public Company deleteById(int id, String token) throws IOException {
