@@ -48,5 +48,6 @@ public class XClientsDemo {
         // удаление компании
         Company companyDeleteById = service.deleteById(newCompanyID, token);
         System.out.println(companyDeleteById);
+
     }
 }
