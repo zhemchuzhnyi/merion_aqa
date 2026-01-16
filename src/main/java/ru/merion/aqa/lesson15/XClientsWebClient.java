@@ -147,4 +147,19 @@ TODO // TODO // TODO //
         String jsonResponce = response.body().string();
         return mapper.readValue(jsonResponce, Company.class);
     }
+    public Company deleteById(int id, String token) throws IOException {
+        HttpUrl url = HttpUrl.parse(URL + COMPANY)
+                .newBuilder()
+                .addPathSegment(String.valueOf(id))
+                .build();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .delete()
+                .header("x-client-token", token)
+                .build();
+        Response response = client.newCall(request).execute();
+        String jsonResponce = response.body().string();
+        return mapper.readValue(jsonResponce, Company.class);
+    }
 }
