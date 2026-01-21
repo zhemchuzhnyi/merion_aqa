@@ -1,145 +1,109 @@
 package ru.merion.aqa.practiceTasks.OkhttpAPIPractics;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
+import ru.merion.aqa.lesson15.model.CreateNewCompanyResponse;
+import ru.merion.aqa.practiceTasks.OkhttpAPIPractics.model.CreateEmployee;
+import ru.merion.aqa.practiceTasks.OkhttpAPIPractics.model.Employee;
+import ru.merion.aqa.practiceTasks.OkhttpAPIPractics.model.UpdateEmployee;
+
 import java.io.IOException;
+import java.util.List;
 
 public class EmployeeService {
     private static final MediaType JSON = MediaType.get("application/json");
-    private static final String BASE_URL = "http://51.250.26.13:8083";
-    private static final String LOGIN_PATH = "/auth/login";
-    private static final String EMPLOYEE_PATH = "/employee";
-
+    private static final String COMPANY = "company";
+    private static final String EMPLOYEE = "employee";
+    public final CollectionType listOfEmpsType;
+    private final String URL;
     private final OkHttpClient client;
     private final ObjectMapper mapper;
-    private final String token;
+    private final String TOKEN_VALUE;
+    private static final String TOKEN_KEY = "x-client-token";
 
-    /**
-     * Конструктор принимает логин и пароль для авторизации
-     */
-    public EmployeeService(String login, String password) throws IOException {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+    public EmployeeService(String url, String login, String pass) throws IOException {
+        this.URL = url;
 
-        this.client = new OkHttpClient.Builder()
-                .addNetworkInterceptor(interceptor)
-                .build();
-        this.mapper = new ObjectMapper();
+        mapper = new ObjectMapper();
+        listOfEmpsType = mapper.getTypeFactory().constructCollectionType(List.class, Employee.class);
 
-        // Получаем токен при создании сервиса
-        this.token = authenticate(login, password);
-    }
-
-    /**
-     * Метод для получения токена авторизации
-     */
-    private String authenticate(String login, String password) throws IOException {
-        String json = String.format("{\"username\":\"%s\",\"password\":\"%s\"}", login, password);
-        RequestBody body = RequestBody.create(json, JSON);
-
-        Request request = new Request.Builder()
-                .url(BASE_URL + LOGIN_PATH)
-                .post(body)
+        client = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .build();
 
-        Response response = client.newCall(request).execute();
-        if (!response.isSuccessful()) {
-            throw new IOException("Ошибка авторизации: " + response.code());
-        }
-        String responseBody = response.body().string();
-        return mapper.readTree(responseBody).get("userToken").asText();
+        TOKEN_VALUE = new AuthService(url).getToken(login, pass);
     }
 
-    /**
-     * Получить список сотрудников компании
-     */
-    public String getEmployeeList(int companyId) throws IOException {
-        String url = BASE_URL + EMPLOYEE_PATH + "?company=" + companyId;
+    // PATCH https://x-clients-be.onrender.com/employee/1212
+    public Employee update(int id, UpdateEmployee update) throws IOException {
+        String jsonRequest = mapper.writeValueAsString(update);
+        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+
+        HttpUrl url = HttpUrl.parse(URL)
+                .newBuilder()
+                .addPathSegment(EMPLOYEE)
+                .addPathSegment("" + id)
+                .build();
 
         Request request = new Request.Builder()
+                .patch(requestBody)
+                .header(TOKEN_KEY, TOKEN_VALUE)
                 .url(url)
-                .header("x-client-token", token)
-                .get()
                 .build();
 
         Response response = client.newCall(request).execute();
-        if (!response.isSuccessful()) {
-            throw new IOException("Ошибка получения списка: " + response.code());
-        }
-        return response.body().string();
+        return mapper.readValue(response.body().string(), Employee.class);
     }
 
-    /**
-     * Получить сотрудника по ID
-     */
-    public String getEmployeeById(int id) throws IOException {
+    // GET https://x-clients-be.onrender.com/employee?company=2340
+    public List<Employee> getByCompanyId(int companyId) throws IOException {
+        HttpUrl url = HttpUrl.parse(URL)
+                .newBuilder()
+                .addPathSegment(EMPLOYEE)
+                .addQueryParameter(COMPANY, Integer.toString(companyId))
+                .build();
+
+        Request getByIdReq = new Request.Builder()
+                .url(url)
+                .build();
+        Response response = client.newCall(getByIdReq).execute();
+        return mapper.readValue(response.body().string(), listOfEmpsType);
+    }
+
+    // GET https://x-clients-be.onrender.com/employee/1876
+    public Employee getById(int id) throws IOException {
+        HttpUrl url = HttpUrl.parse(URL)
+                .newBuilder()
+                .addPathSegment(EMPLOYEE)
+                .addPathSegment("" + id)
+                .build();
+
+        Request getByIdReq = new Request.Builder()
+                .url(url)
+                .build();
+        Response response = client.newCall(getByIdReq).execute();
+        return mapper.readValue(response.body().string(), Employee.class);
+    }
+
+    // POST https://x-clients-be.onrender.com/employee
+    public int create(CreateEmployee employee) throws IOException {
+        String jsonRequest = mapper.writeValueAsString(employee);
+        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+
+        HttpUrl url = HttpUrl.parse(URL).newBuilder().addPathSegment(EMPLOYEE).build();
+
         Request request = new Request.Builder()
-                .url(BASE_URL + EMPLOYEE_PATH + "/" + id)
-                .header("x-client-token", token)
-                .get()
+                .post(requestBody)
+                .header(TOKEN_KEY, TOKEN_VALUE)
+                .url(url)
                 .build();
 
         Response response = client.newCall(request).execute();
-        if (!response.isSuccessful()) {
-            throw new IOException("Ошибка получения сотрудника: " + response.code());
-        }
-        return response.body().string();
-    }
+        String jsonResponse = response.body().string();
+        CreateNewCompanyResponse r = mapper.readValue(jsonResponse, CreateNewCompanyResponse.class);
 
-    /**
-     * Создать нового сотрудника
-     */
-    public int createEmployee(int companyId, String firstName, String lastName,
-                              String phone, boolean isActive) throws IOException {
-        String json = String.format(
-                "{\"companyId\":%d,\"firstName\":\"%s\",\"lastName\":\"%s\",\"phone\":\"%s\",\"isActive\":%b}",
-                companyId, firstName, lastName, phone, isActive
-        );
-
-        RequestBody body = RequestBody.create(json, JSON);
-        Request request = new Request.Builder()
-                .url(BASE_URL + EMPLOYEE_PATH)
-                .header("x-client-token", token)
-                .post(body)
-                .build();
-
-        Response response = client.newCall(request).execute();
-        if (!response.isSuccessful()) {
-            throw new IOException("Ошибка создания сотрудника: " + response.code());
-        }
-        String responseBody = response.body().string();
-        return mapper.readTree(responseBody).get("id").asInt();
-    }
-
-    /**
-     * Изменить данные сотрудника
-     */
-    public String updateEmployee(int id, String lastName, String email,
-                                 String phone, boolean isActive) throws IOException {
-        String json = String.format(
-                "{\"lastName\":\"%s\",\"email\":\"%s\",\"phone\":\"%s\",\"isActive\":%b}",
-                lastName, email, phone, isActive
-        );
-
-        RequestBody body = RequestBody.create(json, JSON);
-        Request request = new Request.Builder()
-                .url(BASE_URL + EMPLOYEE_PATH + "/" + id)
-                .header("x-client-token", token)
-                .patch(body)
-                .build();
-
-        Response response = client.newCall(request).execute();
-        if (!response.isSuccessful()) {
-            throw new IOException("Ошибка обновления сотрудника: " + response.code());
-        }
-        return response.body().string();
-    }
-
-    /**
-     * Получить токен (для отладки)
-     */
-    public String getToken() {
-        return token;
+        return r.id();
     }
 }
