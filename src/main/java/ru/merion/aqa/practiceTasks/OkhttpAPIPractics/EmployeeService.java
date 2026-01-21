@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
-import ru.merion.aqa.lesson15.model.CreateNewCompanyResponse;
 import ru.merion.aqa.practiceTasks.OkhttpAPIPractics.model.CreateEmployee;
+import ru.merion.aqa.practiceTasks.OkhttpAPIPractics.model.CreateEmployeeResponse;
 import ru.merion.aqa.practiceTasks.OkhttpAPIPractics.model.Employee;
 import ru.merion.aqa.practiceTasks.OkhttpAPIPractics.model.UpdateEmployee;
 
@@ -102,7 +102,7 @@ public class EmployeeService {
 
         Response response = client.newCall(request).execute();
         String jsonResponse = response.body().string();
-        CreateNewCompanyResponse r = mapper.readValue(jsonResponse, CreateNewCompanyResponse.class);
+        CreateEmployeeResponse r = mapper.readValue(jsonResponse, CreateEmployeeResponse.class);
 
         return r.id();
     }
