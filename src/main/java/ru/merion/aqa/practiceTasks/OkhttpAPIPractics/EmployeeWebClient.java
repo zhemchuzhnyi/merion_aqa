@@ -6,6 +6,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import ru.merion.aqa.lesson15.MyCustomLogger;
 import ru.merion.aqa.lesson15.model.AuthRequest;
 import ru.merion.aqa.lesson15.model.AuthResponse;
+import ru.merion.aqa.lesson15.model.CreateNewCompanyRequest;
+import ru.merion.aqa.lesson15.model.CreateNewCompanyResponse;
 
 import java.io.IOException;
 
@@ -44,5 +46,25 @@ public class EmployeeWebClient {
         Response authResp = client.newCall(authReq).execute();
         String jsonResp = authResp.body().string();
         return mapper.readValue(jsonResp, AuthResponse.class);
+    }
+
+    public int create(String name, String description, String token) throws IOException {
+        CreateNewCompanyRequest createNewCompanyRequest = new CreateNewCompanyRequest(name, description);
+        String jsonRequest = mapper.writeValueAsString(createNewCompanyRequest);
+        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+
+        HttpUrl url = HttpUrl.parse(URL).newBuilder().addPathSegment(Employee).build();
+
+        Request request = new Request.Builder()
+                .post(requestBody)
+                .header("x-client-token", token)
+                .url(URL + Employee)
+                .build();
+
+        Response response = client.newCall(request).execute();
+        String jsonResponce = response.body().string();
+        CreateNewCompanyResponse r = mapper.readValue(jsonResponce, CreateNewCompanyResponse.class);
+
+        return r.id();
     }
 }

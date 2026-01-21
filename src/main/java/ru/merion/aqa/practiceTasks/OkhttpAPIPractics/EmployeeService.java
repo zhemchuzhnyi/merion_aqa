@@ -8,7 +8,8 @@ public class EmployeeService {
 
     public static void main(String[] args) throws IOException {
         EmployeeWebClient service = new EmployeeWebClient(URl);
-
-
     }
+
+    String token = service.getToken("leonardo", "leads");
+
 }
