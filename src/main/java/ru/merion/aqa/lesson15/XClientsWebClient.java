@@ -1,6 +1,5 @@
 package ru.merion.aqa.lesson15;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
 import okhttp3.*;
