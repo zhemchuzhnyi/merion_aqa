@@ -8,7 +8,7 @@ import java.util.List;
 
 public class DemoClass {
     public static void main(String[] args) throws IOException {
-        String url = "https://x-clients-be.onrender.com";
+        String url = "http://51.250.26.13:8083";
         String username = "leonardo";
         String password = "leads";
 
