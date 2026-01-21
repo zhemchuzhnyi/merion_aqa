@@ -7,6 +7,7 @@ public class EmployeeService {
     public static final String Employee = "/employee";
 
     public static void main(String[] args) throws IOException {
+        EmployeeWebClient service = new EmployeeWebClient(URl);
 
 
     }

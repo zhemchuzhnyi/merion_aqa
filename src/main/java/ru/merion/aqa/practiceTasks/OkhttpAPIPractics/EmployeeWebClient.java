@@ -1,10 +1,13 @@
 package ru.merion.aqa.practiceTasks.OkhttpAPIPractics;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
+import okhttp3.*;
 import okhttp3.logging.HttpLoggingInterceptor;
 import ru.merion.aqa.lesson15.MyCustomLogger;
+import ru.merion.aqa.lesson15.model.AuthRequest;
+import ru.merion.aqa.lesson15.model.AuthResponse;
+
+import java.io.IOException;
 
 public class EmployeeWebClient {
     private static final MediaType JSON = MediaType.get("application/json");
@@ -27,5 +30,19 @@ public class EmployeeWebClient {
         client = new OkHttpClient.Builder().addNetworkInterceptor(interceptor).build();
 
         this.URL = URL;
+    }
+
+    public String getToken(String login, String pass) throws IOException {
+        return auth(login, pass).userToken();
+    }
+
+    public AuthResponse auth(String login, String pass) throws IOException {
+        AuthRequest authRequest = new AuthRequest(login, pass);
+        String jsonRequest = mapper.writeValueAsString(authRequest);
+        RequestBody requestBody = RequestBody.create(jsonRequest, JSON);
+        Request authReq = new Request.Builder().post(requestBody).url(URL + LOGIN).build();
+        Response authResp = client.newCall(authReq).execute();
+        String jsonResp = authResp.body().string();
+        return mapper.readValue(jsonResp, AuthResponse.class);
     }
 }
