@@ -85,9 +85,6 @@ public class XClientsWebClient {
         CollectionType listOfCompanies = mapper.getTypeFactory().constructCollectionType(List.class, Company.class);
         return mapper.readValue(response.body().string(), listOfCompanies);
     }
-/*
-TODO // TODO // TODO //
- */
 
     public Company getById(int id) throws IOException {
         HttpUrl url = HttpUrl.parse(URL + COMPANY)
