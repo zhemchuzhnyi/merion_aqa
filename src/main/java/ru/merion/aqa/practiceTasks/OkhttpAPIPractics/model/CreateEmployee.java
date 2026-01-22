@@ -22,4 +22,9 @@ public record CreateEmployee(
     }
 
     // Устаревший конструктор с email (для обратной совместимости)
+    @Deprecated
+    public CreateEmployee(String firstName, String lastName,
+                          int companyId, String email, String phone) {
+        this(firstName, lastName, companyId, phone); // игнорируем email
+    }
 }
