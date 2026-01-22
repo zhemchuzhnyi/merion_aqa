@@ -27,5 +27,6 @@ public class DemoClass {
         System.out.printf("Сотрудник: %s %s, ID: %d, Телефон: %s%n",
                 newEmp.firstName(), newEmp.lastName(),
                 newEmp.id(), newEmp.phone());
+
     }
 }
