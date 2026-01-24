@@ -105,6 +105,5 @@ public class EmployeeService {
         CreateNewCompanyResponse r = mapper.readValue(jsonResponse, CreateNewCompanyResponse.class);
 
         return r.id();
-
     }
 }
