@@ -34,5 +34,4 @@ public record Employee(
 
         @JsonProperty("isActive")
         boolean isActive
-
 ) {}
