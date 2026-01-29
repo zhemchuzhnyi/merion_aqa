@@ -27,5 +27,4 @@ public record CreateEmployee(
                           int companyId, String email, String phone) {
         this(firstName, lastName, companyId, phone); // игнорируем email
     }
-
 }
