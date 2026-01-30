@@ -17,4 +17,5 @@ public record UpdateEmployee(
 
         @JsonProperty("isActive")
         boolean isActive
+
 ) {}
