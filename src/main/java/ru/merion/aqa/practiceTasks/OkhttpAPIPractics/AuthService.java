@@ -40,4 +40,5 @@ public class AuthService {
         String jsonResp = authResp.body().string();
         return mapper.readValue(jsonResp, AuthResponse.class);
     }
+
 }
