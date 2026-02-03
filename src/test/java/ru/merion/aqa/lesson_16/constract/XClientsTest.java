@@ -5,5 +5,7 @@ import org.junit.jupiter.api.Test;
 public class XClientsTest {
 
     @Test
+    public void shouldReturnArrayOnGetCompanyList() {
 
+    }
 }
