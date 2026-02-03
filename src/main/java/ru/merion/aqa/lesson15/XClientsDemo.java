@@ -7,7 +7,7 @@ import java.util.List;
 
 public class XClientsDemo {
 
-    public static final String URL = "http://51.250.26.13:8083";
+    public static final String URL = "c";
     public static final String COMPANY = "/company";
 
     public static void main(String[] args) throws IOException {
