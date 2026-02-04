@@ -21,7 +21,6 @@ public class XClientsTest {
         Response response = client.newCall(request).execute();
 
         assertEquals(200, response.code());
-
     }
 
 }
