@@ -1,0 +1,16 @@
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Оставляем важные предупреждения и ошибки -->
+    <logger name="com.codeborne.selenide" level="WARN"/>
+    <logger name="org.seleniumhq" level="WARN"/>
+    <logger name="io.github.bonigarcia" level="WARN"/>
+
+    <root level="ERROR">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

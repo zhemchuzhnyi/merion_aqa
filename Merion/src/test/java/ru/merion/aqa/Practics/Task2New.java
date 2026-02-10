@@ -1,0 +1,81 @@
+package ru.merion.aqa.Practics;
+
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.merion.aqa.Practics.page.AuthPageTask2;
+
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class Task2New {
+    private WebDriver driver;
+
+    @BeforeEach
+    public void open(){
+        driver = new ChromeDriver();
+    }
+
+    @AfterEach
+    public void close(){
+        if (driver != null){
+            driver.quit();
+        }
+    }
+
+    @Test
+    @Tags({@Tag("positive"),@Tag("login")})
+    @DisplayName("Вход на сайт с валидными данными")
+    public void iCanEnter(){
+        String data = new AuthPageTask2(driver)
+                .open()
+                .login("visual_user","secret_sauce")
+                .getMainLogo();
+
+        assertEquals("Swag Labs" , data);
+    }
+
+    @Test
+    @Tags({@Tag("positive"),@Tag("burger")})
+    @DisplayName("Проверка работы бургера")
+    public void tryToOpenBurger() {
+        String text = new AuthPageTask2(driver)
+                .open()
+                .login("visual_user","secret_sauce")
+                .burger()
+                .goBack()
+                .getTitle();
+
+        assertEquals("Products" , text);
+    }
+
+    @Test
+    @Tags({@Tag("positive"),@Tag("select")})
+    @DisplayName("Проверка работы выпадающего списка")
+    public void iCanSelect(){
+        String sort = new AuthPageTask2(driver)
+                .open()
+                .login("visual_user","secret_sauce")
+                .container()
+                .getPrivacyPolicy();
+
+        assertEquals("© 2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy" , sort);
+    }
+
+    @Test
+    @Tags({@Tag("negative"),@Tag("login")})
+    @DisplayName("Вход на сайт с невалидными данными")
+    public void iCanNotEnter(){
+        AuthPageTask2 authPage = new AuthPageTask2(driver)
+                .open();
+
+        authPage.login("user", "sauce");
+        String error = authPage.error();
+
+        assertEquals("Epic sadface: Username and password do not match any user in this service", error);
+    }
+
+}
