@@ -25,5 +25,4 @@ public class XClientsTest {
         System.out.println(responseBody);
 
     }
-
 }
