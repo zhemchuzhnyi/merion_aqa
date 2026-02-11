@@ -21,7 +21,5 @@ public class XClientsTest {
         Response response = client.newCall(request).execute();
 
         assertEquals(200, response.code());
-        String responseBody = response.body().string();
-        System.out.println(responseBody);
     }
 }
