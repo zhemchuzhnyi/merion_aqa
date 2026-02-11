@@ -23,6 +23,5 @@ public class XClientsTest {
         assertEquals(200, response.code());
         String responseBody = response.body().string();
         System.out.println(responseBody);
-
     }
 }
