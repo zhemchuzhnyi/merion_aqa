@@ -22,4 +22,5 @@ public class XClientsTest {
 
         assertEquals(200, response.code());
     }
+
 }
