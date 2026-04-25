@@ -78,12 +78,4 @@ public class Task2New {
         assertEquals("Epic sadface: Username and password do not match any user in this service", error);
     }
 
-
-
-
-
-
-
-
-
 }
