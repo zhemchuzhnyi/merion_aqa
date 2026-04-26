@@ -43,6 +43,5 @@ public class Task1 {
         System.out.println("Количество кнопок Delete " + deleteButtons.size());
 
         driver.quit();
-
     }
 }
