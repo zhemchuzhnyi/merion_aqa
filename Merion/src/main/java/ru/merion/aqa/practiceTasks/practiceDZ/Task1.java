@@ -44,6 +44,5 @@ public class Task1 {
 
         driver.quit();
 
-
     }
 }
