@@ -8,6 +8,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 public @interface Token {
-    String login();
-    String pass();
+    String login() default "";
+    String pass() default "";
+
+    boolean createNewUser() default false;
+
+
 }
