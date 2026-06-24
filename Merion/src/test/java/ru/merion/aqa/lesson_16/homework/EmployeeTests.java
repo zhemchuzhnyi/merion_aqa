@@ -36,10 +36,8 @@ public class EmployeeTests {
     @Test
     @DisplayName("Можно создать сотрудника в компании")
     public void iCanCreateAnEmployee() throws IOException {
-        // Создать компанию
         int newId = createNewCompany();
 
-        // Создать сотрудника
         HttpUrl url = HttpUrl.parse(URL).newBuilder()
                 .addPathSegment(EMPLOYEE)
                 .build();
@@ -76,8 +74,8 @@ public class EmployeeTests {
                 .get().build();
 
         Response response = client.newCall(getListRequest).execute();
-        JsonNode jsonNode = mapper.readTree(response.body().string()); // [ {}, {} ]
-        Iterator<JsonNode> elements = jsonNode.elements();// {}, {}
+        JsonNode jsonNode = mapper.readTree(response.body().string());
+        Iterator<JsonNode> elements = jsonNode.elements();
         JsonNode emp1 = elements.next();
         JsonNode emp2 = elements.next();
 
@@ -169,7 +167,6 @@ public class EmployeeTests {
     @Test
     @DisplayName("Нельзя создать сотрудника для несуществующей компании")
     public void iCantCreateEmployeeForNullCompany() throws IOException {
-        // Создать сотрудника
         HttpUrl url = HttpUrl.parse(URL).newBuilder()
                 .addPathSegment(EMPLOYEE)
                 .build();
@@ -202,6 +199,8 @@ public class EmployeeTests {
         assertFalse(jsonNode.elements().hasNext());
     }
 
+    // ==================== Вспомогательные методы ====================
+
     private String getToken() throws IOException {
         String json = """
                 {
@@ -210,19 +209,39 @@ public class EmployeeTests {
                 }
                 """;
 
-        RequestBody authBody = RequestBody.create(json, JSON);
-        Request request = new Request.Builder().post(authBody).url(URL + LOGIN).build();
-        Response response = client.newCall(request).execute();
+        int maxAttempts = 5;
+        int delayMs = 5000;
 
-        String body = response.body().string();
+        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
+            RequestBody authBody = RequestBody.create(json, JSON);
+            Request request = new Request.Builder()
+                    .post(authBody)
+                    .url(URL + LOGIN)
+                    .build();
 
-        JsonNode jsonNode = mapper.readTree(body);
-        return jsonNode.get("userToken").asText();
+            Response response = client.newCall(request).execute();
+            String body = response.body().string();
+
+            System.out.println("[getToken] Попытка " + attempt + ", ответ сервера: " + body);
+
+            if (body.trim().startsWith("{")) {
+                JsonNode jsonNode = mapper.readTree(body);
+                return jsonNode.get("userToken").asText();
+            }
+
+            System.out.println("[getToken] Сервер ещё не проснулся, ждём " + (delayMs / 1000) + " сек...");
+            try {
+                Thread.sleep(delayMs);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                throw new IOException("Прервано ожидание пробуждения сервера", e);
+            }
+        }
+
+        throw new IOException("Сервер не вернул JSON после " + maxAttempts + " попыток. Проверьте доступность " + URL);
     }
 
     private int createNewCompany() throws IOException {
-
-        // Создать сотрудника
         HttpUrl url = HttpUrl.parse(URL).newBuilder()
                 .addPathSegment(COMPANY)
                 .build();
@@ -241,15 +260,12 @@ public class EmployeeTests {
                 .post(reqBody).build();
 
         Response response = client.newCall(createRequest).execute();
-
         JsonNode jsonNode = mapper.readTree(response.body().string());
 
-        // Получить id компании
         return jsonNode.get("id").asInt();
     }
 
     private int createNewEmployee(int companyId) throws IOException {
-        // Создать сотрудника
         HttpUrl url = HttpUrl.parse(URL).newBuilder()
                 .addPathSegment(EMPLOYEE)
                 .build();
