@@ -21,7 +21,7 @@ public class EmployeeTests {
     private static final String COMPANY = "company";
     private static final String EMPLOYEE = "employee";
     private static final String X_CLIENT_TOKEN = "x-client-token";
-    private final String URL = "https://x-clients-be.onrender.com";
+    private final String URL = "http://51.250.26.13:8083";
     private ObjectMapper mapper;
     private OkHttpClient client;
 
@@ -209,36 +209,19 @@ public class EmployeeTests {
                 }
                 """;
 
-        int maxAttempts = 5;
-        int delayMs = 5000;
+        RequestBody authBody = RequestBody.create(json, JSON);
+        Request request = new Request.Builder()
+                .post(authBody)
+                .url(URL + LOGIN)
+                .build();
 
-        for (int attempt = 1; attempt <= maxAttempts; attempt++) {
-            RequestBody authBody = RequestBody.create(json, JSON);
-            Request request = new Request.Builder()
-                    .post(authBody)
-                    .url(URL + LOGIN)
-                    .build();
+        Response response = client.newCall(request).execute();
+        String body = response.body().string();
 
-            Response response = client.newCall(request).execute();
-            String body = response.body().string();
+        System.out.println("[getToken] Ответ сервера: " + body);
 
-            System.out.println("[getToken] Попытка " + attempt + ", ответ сервера: " + body);
-
-            if (body.trim().startsWith("{")) {
-                JsonNode jsonNode = mapper.readTree(body);
-                return jsonNode.get("userToken").asText();
-            }
-
-            System.out.println("[getToken] Сервер ещё не проснулся, ждём " + (delayMs / 1000) + " сек...");
-            try {
-                Thread.sleep(delayMs);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                throw new IOException("Прервано ожидание пробуждения сервера", e);
-            }
-        }
-
-        throw new IOException("Сервер не вернул JSON после " + maxAttempts + " попыток. Проверьте доступность " + URL);
+        JsonNode jsonNode = mapper.readTree(body);
+        return jsonNode.get("userToken").asText();
     }
 
     private int createNewCompany() throws IOException {
