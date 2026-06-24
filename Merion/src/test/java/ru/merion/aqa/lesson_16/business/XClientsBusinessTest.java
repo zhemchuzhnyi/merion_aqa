@@ -1,4 +1,4 @@
-package ru.merion.aqa.lesson16.business;
+package ru.merion.aqa.lesson_16.business;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -25,8 +25,13 @@ public class XClientsBusinessTest {
 
     @Test
     public void shouldCreateCompany(XClientsWebClient xClient, @Token(login = "leonardo", pass = "leads") String token) throws IOException {
+        // посмотреть, сколько было ДО
         int sizeBefore = xClient.getAll().size();
+
+        // изменить
         companyId = xClient.create("DeleteMe", "", token);
+
+        // посмотреть, сколько стало ПОСЛЕ
         int sizeAfter = xClient.getAll().size();
         assertEquals(sizeBefore + 1, sizeAfter);
     }
@@ -35,7 +40,9 @@ public class XClientsBusinessTest {
     public void shouldSetDefaultValues(XClientsWebClient xClient, @Token(login = "leonardo", pass = "leads") String token) throws IOException {
         String companyName = "DeleteMe";
         companyId = xClient.create(companyName, "", token);
+
         Company company = xClient.getById(companyId);
+
         assertEquals(companyId, company.id());
         assertTrue(company.isActive());
         assertTrue(company.description().isBlank());
@@ -46,8 +53,11 @@ public class XClientsBusinessTest {
     public void shouldSaveNameAndDescValues(XClientsWebClient xClient, @Token(login = "leonardo", pass = "leads") String token) throws IOException {
         String companyName = "DeleteMe";
         String desc = "please";
+
         companyId = xClient.create(companyName, desc, token);
+
         Company company = xClient.getById(companyId);
+
         assertEquals(companyId, company.id());
         assertTrue(company.isActive());
         assertEquals(desc, company.description());
@@ -55,7 +65,10 @@ public class XClientsBusinessTest {
     }
 
     @Test
-    public void shouldDeleteCompany(XClientsWebClient client, @Token(login = "leonardo", pass = "leads") String token) throws IOException {
+    public void shouldDeleteCompany(
+            XClientsWebClient client,
+            @Token(login = "leonardo", pass = "leads") String token
+    ) throws IOException {
         int id = client.create("A", "B", token);
         Company deletedInfo = client.deleteById(id, token);
         assertEquals(id, deletedInfo.id());
