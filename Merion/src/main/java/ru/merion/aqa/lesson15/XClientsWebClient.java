@@ -13,14 +13,19 @@ import java.util.List;
 public class XClientsWebClient {
 
     private static final MediaType JSON = MediaType.get("application/json");
+
     private static final String LOGIN = "/auth/login";
+
     private static final String COMPANY = "/company";
 
     private final String URL;
+
     private final OkHttpClient client;
+
     private final ObjectMapper mapper;
 
     public XClientsWebClient(String URL) {
+
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new MyCustomLogger());
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -62,12 +67,12 @@ public class XClientsWebClient {
         return r.id();
     }
 
-    // БЕЗ аргументов — новый метод
     public List<Company> getAll() throws IOException {
         return getAll(null);
     }
 
     public List<Company> getAll(Boolean isActive) throws IOException {
+
         HttpUrl.Builder url = HttpUrl.parse(URL + COMPANY).newBuilder();
 
         if (isActive != null) {
