@@ -276,6 +276,5 @@ public class EmployeeTests {
                 .get().build();
 
         Response response = client.newCall(getRequest).execute();
-
     }
 }
