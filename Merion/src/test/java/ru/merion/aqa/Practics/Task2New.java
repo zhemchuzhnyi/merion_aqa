@@ -23,7 +23,6 @@ public class Task2New {
     public void close(){
         if (driver != null){
             driver.quit();
-
         }
     }
 
