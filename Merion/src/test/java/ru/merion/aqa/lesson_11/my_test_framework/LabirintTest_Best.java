@@ -3,7 +3,7 @@ package ru.merion.aqa.lesson_11.my_test_framework;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import ru.merion.aqa.lesson7.WDFactory;
+import ru.merion.aqa.WebDriverFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
@@ -23,7 +23,7 @@ public class LabirintTest_Best {
 
     @BeforeEach
     public void setUp() {
-        driver = WDFactory.create("chrome");
+        driver = WebDriverFactory.create("chrome");
     }
 
     @AfterEach

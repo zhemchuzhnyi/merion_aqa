@@ -1,5 +1,6 @@
 package ru.merion.aqa;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -11,8 +12,16 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
 import java.io.File;
+import java.time.Duration;
 
+/**
+ * Единая фабрика WebDriver для всех браузеров проекта.
+ * Скачивает драйвер через WebDriverManager, чтобы он не зависел от PATH/машины.
+ */
 public class WebDriverFactory {
+
+    // Базовое неявное ожидание проекта (см. ResultPage.addAllItemsToCart, которое возвращает его обратно)
+    private static final Duration DEFAULT_IMPLICIT_WAIT = Duration.ofMillis(500);
 
     public static WebDriver create(String browserName) {
         if (browserName == null) {
@@ -44,19 +53,22 @@ public class WebDriverFactory {
     }
 
     public static WebDriver create(FirefoxOptions options) {
-        return new FirefoxDriver(options);
+        WebDriverManager.firefoxdriver().setup();
+        return withDefaultTimeout(new FirefoxDriver(options));
     }
 
     public static WebDriver create(EdgeOptions options) {
-        return new EdgeDriver(options);
+        WebDriverManager.edgedriver().setup();
+        return withDefaultTimeout(new EdgeDriver(options));
     }
 
     public static WebDriver create(ChromeOptions options) {
+        WebDriverManager.chromedriver().setup();
         File extension = new File(getChromeExtensionPath());
         if (extension.exists()) {
             options.addExtensions(extension);
         }
-        return new ChromeDriver(options);
+        return withDefaultTimeout(new ChromeDriver(options));
     }
 
     // Яндекс.Браузер (основан на Chromium)
@@ -68,8 +80,8 @@ public class WebDriverFactory {
         if (extension.exists()) {
             options.addExtensions(extension);
         }
-
-        return new ChromeDriver(options);
+        WebDriverManager.chromedriver().setup();
+        return withDefaultTimeout(new ChromeDriver(options));
     }
 
     // LibreWolf (основан на Firefox)
@@ -77,7 +89,13 @@ public class WebDriverFactory {
         FirefoxOptions options = new FirefoxOptions();
         String librewolfPath = "/Applications/LibreWolf.app/Contents/MacOS/librewolf";
         options.setBinary(librewolfPath);
-        return new FirefoxDriver(options);
+        WebDriverManager.firefoxdriver().setup();
+        return withDefaultTimeout(new FirefoxDriver(options));
+    }
+
+    private static WebDriver withDefaultTimeout(WebDriver driver) {
+        driver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICIT_WAIT);
+        return driver;
     }
 
     // Метод для получения пути к расширению Chrome (можно настроить через конфигурацию)

@@ -7,9 +7,12 @@ import ru.merion.aqa.lesson15.XClientsWebClient;
 
 import java.io.IOException;
 
+/**
+ * Внедряет токен X-Clients в параметр теста.
+ * Переиспользует клиента из store, если он уже создан ClientProvider,
+ * чтобы не плодить соединения.
+ */
 public class TokenProvider implements ParameterResolver {
-
-    private static final String BASE_URL = "http://51.250.26.13:8083";
 
     @Override
     public boolean supportsParameter(ParameterContext parameterContext,
@@ -22,8 +25,17 @@ public class TokenProvider implements ParameterResolver {
     public Object resolveParameter(ParameterContext parameterContext,
                                    ExtensionContext extensionContext) {
         Token annotation = parameterContext.getParameter().getAnnotation(Token.class);
+        String login = annotation.login().isBlank() ? TestConfig.LOGIN : annotation.login();
+        String pass = annotation.pass().isBlank() ? TestConfig.PASSWORD : annotation.pass();
+
+        XClientsWebClient client = extensionContext.getStore(ExtensionContext.Namespace.GLOBAL)
+                .get("x_client", XClientsWebClient.class);
+        if (client == null) {
+            client = new XClientsWebClient(TestConfig.BASE_URL);
+        }
+
         try {
-            return new XClientsWebClient(BASE_URL).getToken(annotation.login(), annotation.pass());
+            return client.getToken(login, pass);
         } catch (IOException e) {
             throw new RuntimeException("Не удалось получить токен: " + e.getMessage(), e);
         }

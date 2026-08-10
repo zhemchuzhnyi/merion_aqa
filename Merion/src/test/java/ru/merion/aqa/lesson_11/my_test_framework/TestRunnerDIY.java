@@ -1,7 +1,7 @@
 package ru.merion.aqa.lesson_11.my_test_framework;
 
 import org.openqa.selenium.WebDriver;
-import ru.merion.aqa.lesson7.WDFactory;
+import ru.merion.aqa.WebDriverFactory;
 
 import java.lang.reflect.Method;
 import java.util.HashSet;
@@ -25,7 +25,7 @@ public class TestRunnerDIY {
                     testsTotal++;
                     System.out.println("----------------------------------------------------------------------------------");
                     System.out.println(testMethod.getName());
-                    driver = WDFactory.create("chrome");
+                    driver = WebDriverFactory.create("chrome");
                     testMethod.invoke(testClass, driver);
                     success.add(testMethod);
 

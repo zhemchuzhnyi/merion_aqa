@@ -1,6 +1,7 @@
 package ru.merion.aqa.lesson7;
 
 import org.openqa.selenium.WebDriver;
+import ru.merion.aqa.WebDriverFactory;
 import ru.merion.aqa.lesson7.page.CartPage;
 import ru.merion.aqa.lesson7.page.MainPage;
 import ru.merion.aqa.lesson7.page.ResultPage;
@@ -11,7 +12,7 @@ public class LabirintScenario {
     public static void main(String[] args) {
 
         // Создаём экземпляр Chrome драйвера через фабрику
-        WebDriver driver = WDFactory.create("chrome");
+        WebDriver driver = WebDriverFactory.create("chrome");
 
         // Создаём объект главной страницы и передаём в него драйвер
         MainPage mainPage = new MainPage(driver);

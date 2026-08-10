@@ -7,6 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import ru.merion.aqa.ext.TestConfig;
 import ru.merion.aqa.lesson15.MyCustomLogger;
 
 import java.io.IOException;
@@ -17,8 +18,8 @@ public class XClientsCompanyTest {
     private OkHttpClient client;
     private ObjectMapper mapper;
     private final MediaType JSON = MediaType.get("application/json");
-    public static final String URL = "https://x-clients-be.onrender.com/company";
-    public static final String URL_LOGIN = "https://x-clients-be.onrender.com/auth/login";
+    public static final String URL = TestConfig.BASE_URL + "/company";
+    public static final String URL_LOGIN = TestConfig.BASE_URL + "/auth/login";
     private final static String X_CLIENT_TOKEN = "x-client-token";
 
     @BeforeEach
@@ -33,75 +34,55 @@ public class XClientsCompanyTest {
     @Test
     public void shouldReturnArrayOnGetCompanyList() throws IOException {
         Request request = new Request.Builder().url(URL).build();
-        Response response = client.newCall(request).execute();
-        String body = response.body().string();
+        try (Response response = client.newCall(request).execute()) {
+            String body = response.body().string();
 
-        assertEquals(200, response.code());
-        assertTrue(body.startsWith("["));
-        assertTrue(body.endsWith("]"));
+            assertEquals(200, response.code());
+            assertTrue(body.startsWith("["));
+            assertTrue(body.endsWith("]"));
+        }
     }
 
     @Test
     public void shouldReturn401WithoutToken() throws IOException {
-        String json = """
-                {
-                  "name": "Contract Test Company",
-                  "description": "string"
-                }
-                """;
-
-        RequestBody body = RequestBody.create(json, MediaType.get("application/json"));
+        RequestBody body = RequestBody.create(companyJson(), JSON);
         Request request = new Request.Builder().url(URL).post(body).build();
 
-        Response response = client.newCall(request).execute();
-
-        assertEquals(401, response.code());
-        assertEquals("{\"statusCode\":401,\"message\":\"Unauthorized\"}", response.body().string());
+        try (Response response = client.newCall(request).execute()) {
+            assertEquals(401, response.code());
+            assertEquals("{\"statusCode\":401,\"message\":\"Unauthorized\"}", response.body().string());
+        }
     }
 
     @Test
     public void shouldReturn401WithoutValidToken() throws IOException {
-        String json = """
-                {
-                  "name": "Contract Test Company",
-                  "description": "string"
-                }
-                """;
-
-        RequestBody body = RequestBody.create(json, JSON);
+        RequestBody body = RequestBody.create(companyJson(), JSON);
         Request request = new Request.Builder()
                 .url(URL)
                 .header(X_CLIENT_TOKEN, "NON_VALID_TOKEN")
                 .post(body).build();
 
-        Response response = client.newCall(request).execute();
-
-        assertEquals(401, response.code());
-        assertEquals("{\"statusCode\":401,\"message\":\"Unauthorized\"}", response.body().string());
+        try (Response response = client.newCall(request).execute()) {
+            assertEquals(401, response.code());
+            assertEquals("{\"statusCode\":401,\"message\":\"Unauthorized\"}", response.body().string());
+        }
     }
 
     @Test
     public void shouldReturn201OnCompanyCreated() throws IOException {
-        String json = """
-                {
-                  "name": "Contract Test Company",
-                  "description": "string"
-                }
-                """;
-
-        RequestBody reqBody = RequestBody.create(json, JSON);
+        RequestBody reqBody = RequestBody.create(companyJson(), JSON);
         Request createRequest = new Request.Builder()
                 .url(URL)
                 .header(X_CLIENT_TOKEN, getToken())
                 .post(reqBody).build();
 
-        Response response = client.newCall(createRequest).execute();
+        try (Response response = client.newCall(createRequest).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
+            int newId = jsonNode.get("id").asInt();
 
-        JsonNode jsonNode = mapper.readTree(response.body().string());
-        int newId = jsonNode.get("id").asInt();
-
-        assertEquals(201, response.code());
-        assertTrue(newId > 0);
+            assertEquals(201, response.code());
+            assertTrue(newId > 0);
+        }
     }
 
     @Test
@@ -113,13 +94,12 @@ public class XClientsCompanyTest {
                 .header(X_CLIENT_TOKEN, getToken())
                 .build();
 
-        Response response = client.newCall(request).execute();
+        try (Response response = client.newCall(request).execute()) {
+            JsonNode node = mapper.readTree(response.body().string());
 
-        String body = response.body().string();
-        JsonNode node = mapper.readTree(body);
-
-        assertEquals(200, response.code());
-        assertEquals(id, node.get("id").asInt());
+            assertEquals(200, response.code());
+            assertEquals(id, node.get("id").asInt());
+        }
     }
 
     @Test
@@ -131,12 +111,15 @@ public class XClientsCompanyTest {
                 .url(URL + "/delete/" + id)
                 .header(X_CLIENT_TOKEN, getToken())
                 .build();
-        client.newCall(request).execute();
 
-        Response response = client.newCall(request).execute();
+        try (Response ignored = client.newCall(request).execute()) {
+            // удаляем компанию первым запросом
+        }
 
-        assertTrue(response.body().string().isEmpty());
-        assertEquals(404, response.code());
+        try (Response response = client.newCall(request).execute()) {
+            assertTrue(response.body().string().isEmpty());
+            assertEquals(404, response.code());
+        }
     }
 
 
@@ -148,52 +131,50 @@ public class XClientsCompanyTest {
                 .url(URL + "/delete/" + id)
                 .build();
 
-        Response response = client.newCall(request).execute();
-
-        assertEquals(401, response.code());
-        assertEquals("{\"statusCode\":401,\"message\":\"Unauthorized\"}", response.body().string());
-
+        try (Response response = client.newCall(request).execute()) {
+            assertEquals(401, response.code());
+            assertEquals("{\"statusCode\":401,\"message\":\"Unauthorized\"}", response.body().string());
+        }
     }
 
     private String getToken() throws IOException {
-        String json = """
-                {
-                  "username": "leonardo",
-                  "password": "leads"
-                }
-                """;
-
-        RequestBody authBody = RequestBody.create(json, JSON);
+        RequestBody authBody = RequestBody.create(authJson(), JSON);
         Request request = new Request.Builder().post(authBody).url(URL_LOGIN).build();
-        Response response = client.newCall(request).execute();
 
-        String body = response.body().string();
-
-        JsonNode jsonNode = mapper.readTree(body);
-        return jsonNode.get("userToken").asText();
+        try (Response response = client.newCall(request).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
+            return jsonNode.get("userToken").asText();
+        }
     }
 
     private int createDummyCompany() throws IOException {
-        String json = """
-                {
-                  "name": "Will be deleted",
-                  "description": "string"
-                }
-                """;
-
-        RequestBody reqBody = RequestBody.create(json, JSON);
+        RequestBody reqBody = RequestBody.create(companyJson(), JSON);
         Request createRequest = new Request.Builder()
                 .url(URL)
                 .header(X_CLIENT_TOKEN, getToken())
                 .post(reqBody).build();
 
-        Response response = client.newCall(createRequest).execute();
-
-        JsonNode jsonNode = mapper.readTree(response.body().string());
-        return jsonNode.get("id").asInt();
+        try (Response response = client.newCall(createRequest).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
+            return jsonNode.get("id").asInt();
+        }
     }
 
+    private String companyJson() {
+        return """
+                {
+                  "name": "Contract Test Company",
+                  "description": "string"
+                }
+                """;
+    }
 
-
-
+    private String authJson() {
+        return """
+                {
+                  "username": "%s",
+                  "password": "%s"
+                }
+                """.formatted(TestConfig.LOGIN, TestConfig.PASSWORD);
+    }
 }

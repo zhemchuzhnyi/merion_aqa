@@ -1,11 +1,7 @@
 package ru.merion.aqa.lesson7.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.time.Duration;
 
 public class MainPage extends BasePage {
 
@@ -13,9 +9,11 @@ public class MainPage extends BasePage {
         super(driver);
     }
 
-    public void open () {
+    public void open() {
         driver.get("https://www.labirint.ru/");
-
+        // Принимаем политику cookie, иначе баннер перекрывает страницу.
+        // Cookie ставится до перезагрузки, т.к. addCookie требует нахождения на домене.
+        driver.manage().addCookie(new Cookie("cookie_policy", "1"));
+        driver.get("https://www.labirint.ru/");
     }
-
 }

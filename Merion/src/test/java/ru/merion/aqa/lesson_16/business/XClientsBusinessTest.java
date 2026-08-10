@@ -20,7 +20,10 @@ public class XClientsBusinessTest {
 
     @AfterEach
     public void tearDown(XClientsWebClient client, @Token(login = "leonardo", pass = "leads") String token) throws IOException {
-        client.deleteById(companyId, token);
+        if (companyId != 0) {
+            client.deleteById(companyId, token);
+            companyId = 0;
+        }
     }
 
     @Test
@@ -72,5 +75,8 @@ public class XClientsBusinessTest {
         int id = client.create("A", "B", token);
         Company deletedInfo = client.deleteById(id, token);
         assertEquals(id, deletedInfo.id());
+
+        // Тест уже удалил компанию — не даём @AfterEach удалять её повторно
+        companyId = 0;
     }
 }

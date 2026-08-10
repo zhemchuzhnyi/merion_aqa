@@ -36,3 +36,11 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Проектный мусор ###
+.idea/
+Merion/path
+Merion/test.txt
+Merion/push_test.txt
+Merion/btn.png
+Merion/res.png

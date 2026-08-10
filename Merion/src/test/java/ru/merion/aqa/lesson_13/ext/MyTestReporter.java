@@ -6,21 +6,22 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 import org.opentest4j.AssertionFailedError;
 
-import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Формирует простой HTML-отчёт о прошедших тестах в target/reports.
+ * Экземпляр расширения один на класс, поэтому поля не static.
+ */
 public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllCallback {
 
-    private static Map<String, Method> greenTests;
-    private static Map<String, Method> redTests;
-    private static Map<String, Method> yellowTests;
+    private Map<String, String> results;
 
     public static final String HTML_HEAD = """
             <!DOCTYPE html>
@@ -32,11 +33,11 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
                   .ok {
                         background: #E5FFCC
                   }
-                  
+
                   .failed {
                         background: #FFFFCC
                   }
-                  
+
                   .broken {
                         background: #FFCCCC
                   }
@@ -50,40 +51,35 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
             """;
 
     @Override
-    public void beforeAll(ExtensionContext context) throws Exception {
-        greenTests = new HashMap<>();
-        redTests = new HashMap<>();
-        yellowTests = new HashMap<>();
+    public void beforeAll(ExtensionContext context) {
+        results = new LinkedHashMap<>();
     }
 
     @Override
     public void afterAll(ExtensionContext context) throws Exception {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH:mm");
+        // Двоеточие убрано: оно недопустимо в именах файлов на Windows
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd_MM_yyyy_HH-mm-ss");
         String filename = LocalDateTime.now().format(dateTimeFormatter) + "_report.html";
-        System.out.println("Отчет: " + filename);
 
-        Path reportFile = Path.of(filename);
+        Path reportDir = Path.of("target", "reports");
+        Files.createDirectories(reportDir);
+        Path reportFile = reportDir.resolve(filename);
 
-        Files.writeString(reportFile, HTML_HEAD);
-        Files.writeString(reportFile, "<p>Test Report Generated</p>", StandardOpenOption.APPEND);
-        Files.writeString(reportFile, "<ol>", StandardOpenOption.APPEND);
+        StringBuilder html = new StringBuilder();
+        html.append(HTML_HEAD);
+        html.append("<p>Test Report Generated</p>");
+        html.append("<ol>");
 
-        String content = "";
-        for (String testName : greenTests.keySet()) {
-            content += "<li class=\"ok\">" + testName + "</li>";
-        }
+        // ok (успешные), failed (упали на ассерте), broken (упали с ошибкой)
+        html.append("<li class=\"ok\">").append(results.getOrDefault("ok", "")).append("</li>");
+        html.append("<li class=\"failed\">").append(results.getOrDefault("failed", "")).append("</li>");
+        html.append("<li class=\"broken\">").append(results.getOrDefault("broken", "")).append("</li>");
 
-        for (String testName : yellowTests.keySet()) {
-            content += "<li class=\"failed\">" + testName + "</li>";
-        }
+        html.append("</ol>");
+        html.append(HTML_TAIL);
 
-        for (String testName : redTests.keySet()) {
-            content += "<li class=\"broken\">" + testName + "</li>";
-        }
-
-        Files.writeString(reportFile, content.toString(), StandardOpenOption.APPEND);
-        Files.writeString(reportFile, "</ol>", StandardOpenOption.APPEND);
-        Files.writeString(reportFile, HTML_TAIL, StandardOpenOption.APPEND);
+        Files.writeString(reportFile, html.toString());
+        System.out.println("Отчет: " + reportFile.toAbsolutePath());
     }
 
     @Override
@@ -95,7 +91,7 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
     public void testSuccessful(ExtensionContext context) {
         TestWatcher.super.testSuccessful(context);
         System.out.println(context.getDisplayName());
-        greenTests.put(context.getDisplayName(), context.getRequiredTestMethod());
+        addResult("ok", context.getDisplayName());
     }
 
     @Override
@@ -109,9 +105,14 @@ public class MyTestReporter implements TestWatcher, BeforeAllCallback, AfterAllC
         System.out.println(context.getDisplayName());
 
         if (cause instanceof AssertionFailedError) {
-            yellowTests.put(context.getDisplayName(), context.getRequiredTestMethod());
+            addResult("failed", context.getDisplayName());
         } else {
-            redTests.put(context.getDisplayName(), context.getRequiredTestMethod());
+            addResult("broken", context.getDisplayName());
         }
+    }
+
+    private void addResult(String category, String testName) {
+        String prev = results.getOrDefault(category, "");
+        results.put(category, prev + "<li>" + testName + "</li>");
     }
 }

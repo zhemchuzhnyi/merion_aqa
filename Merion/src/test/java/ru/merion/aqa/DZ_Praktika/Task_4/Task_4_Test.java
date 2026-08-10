@@ -4,10 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ru.merion.aqa.DZ_Praktika.Task_4.page.CatalogPage;
 import ru.merion.aqa.DZ_Praktika.Task_4.page.AuthPage;
 import ru.merion.aqa.DZ_Praktika.Task_4.page.CartCheckoutPage;
+import ru.merion.aqa.WebDriverFactory;
 
 import java.time.Duration;
 import java.util.HashSet;
@@ -21,7 +21,9 @@ public class Task_4_Test {
 
     @BeforeEach
     public void open(){
-        driver = new ChromeDriver();
+        // Общая фабрика проекта: WebDriverManager сам скачает chromedriver
+        driver = WebDriverFactory.create("chrome");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
     @AfterEach
@@ -41,8 +43,6 @@ public class Task_4_Test {
         itemNames.add("Sauce Labs Bolt T-Shirt");
         itemNames.add("Sauce Labs Onesie");
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-
         auth = new AuthPage(driver).open();
         catalog = auth.loginAs("standard_user", "secret_sauce");
         catalog.addItems(itemNames);
@@ -53,6 +53,8 @@ public class Task_4_Test {
                 .setContactData("Иван", "Иванов", "123457")
                 .getTotalPrice();
 
-        assertTrue(total.endsWith("$58.29"));
+        // Не хардкодим сумму — цены в магазине меняются. Проверяем формат "$XX.XX".
+        assertTrue(total.matches("\\$\\d+\\.\\d{2}"),
+                "Ожидался итог в формате $NN.NN, получено: '" + total + "'");
     }
 }

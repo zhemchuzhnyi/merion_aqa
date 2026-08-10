@@ -7,6 +7,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.merion.aqa.ext.TestConfig;
 import ru.merion.aqa.lesson15.MyCustomLogger;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class EmployeeTests {
     private static final String COMPANY = "company";
     private static final String EMPLOYEE = "employee";
     private static final String X_CLIENT_TOKEN = "x-client-token";
-    private final String URL = "http://51.250.26.13:8083";
+    private final String URL = TestConfig.BASE_URL;
     private ObjectMapper mapper;
     private OkHttpClient client;
 
@@ -49,11 +50,12 @@ public class EmployeeTests {
                 .header(X_CLIENT_TOKEN, getToken())
                 .post(reqBody).build();
 
-        Response response = client.newCall(createRequest).execute();
-        JsonNode jsonNode = mapper.readTree(response.body().string());
+        try (Response response = client.newCall(createRequest).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
 
-        assertEquals(201, response.code());
-        assertTrue(jsonNode.get("id").asInt() > 0);
+            assertEquals(201, response.code());
+            assertTrue(jsonNode.get("id").asInt() > 0);
+        }
     }
 
     @Test
@@ -73,16 +75,17 @@ public class EmployeeTests {
                 .url(url)
                 .get().build();
 
-        Response response = client.newCall(getListRequest).execute();
-        JsonNode jsonNode = mapper.readTree(response.body().string());
-        Iterator<JsonNode> elements = jsonNode.elements();
-        JsonNode emp1 = elements.next();
-        JsonNode emp2 = elements.next();
+        try (Response response = client.newCall(getListRequest).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
+            Iterator<JsonNode> elements = jsonNode.elements();
+            JsonNode emp1 = elements.next();
+            JsonNode emp2 = elements.next();
 
-        assertFalse(elements.hasNext());
-        assertEquals(firstEmpId, emp1.get("id").asInt());
-        assertEquals(secondEmpId, emp2.get("id").asInt());
-        assertEquals(200, response.code());
+            assertFalse(elements.hasNext());
+            assertEquals(firstEmpId, emp1.get("id").asInt());
+            assertEquals(secondEmpId, emp2.get("id").asInt());
+            assertEquals(200, response.code());
+        }
     }
 
     @Test
@@ -104,8 +107,9 @@ public class EmployeeTests {
                 .addHeader(X_CLIENT_TOKEN, getToken())
                 .patch(reqBody).build();
 
-        Response response = client.newCall(patchRequest).execute();
-        assertEquals(200, response.code());
+        try (Response response = client.newCall(patchRequest).execute()) {
+            assertEquals(200, response.code());
+        }
 
         JsonNode empInfo = getEmpInfo(empId);
         assertFalse(empInfo.get("isActive").asBoolean());
@@ -130,8 +134,9 @@ public class EmployeeTests {
                 .addHeader(X_CLIENT_TOKEN, getToken())
                 .patch(reqBody).build();
 
-        Response response = client.newCall(patchRequest).execute();
-        assertEquals(200, response.code());
+        try (Response response = client.newCall(patchRequest).execute()) {
+            assertEquals(200, response.code());
+        }
 
         JsonNode empInfo = getEmpInfo(empId);
         assertEquals("mail@mail.ru", empInfo.get("email").asText());
@@ -156,8 +161,9 @@ public class EmployeeTests {
                 .addHeader(X_CLIENT_TOKEN, getToken())
                 .patch(reqBody).build();
 
-        Response response = client.newCall(patchRequest).execute();
-        assertEquals(200, response.code());
+        try (Response response = client.newCall(patchRequest).execute()) {
+            assertEquals(200, response.code());
+        }
 
         JsonNode empInfo = getEmpInfo(empId);
         assertEquals("mail@mail.ru", empInfo.get("email").asText());
@@ -178,12 +184,13 @@ public class EmployeeTests {
                 .header(X_CLIENT_TOKEN, getToken())
                 .post(reqBody).build();
 
-        Response response = client.newCall(createRequest).execute();
-        JsonNode jsonNode = mapper.readTree(response.body().string());
+        try (Response response = client.newCall(createRequest).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
 
-        assertEquals(500, response.code());
-        assertEquals(500, jsonNode.get("statusCode").asInt());
-        assertEquals("Internal server error", jsonNode.get("message").asText());
+            assertEquals(500, response.code());
+            assertEquals(500, jsonNode.get("statusCode").asInt());
+            assertEquals("Internal server error", jsonNode.get("message").asText());
+        }
 
         url = HttpUrl.parse(URL).newBuilder()
                 .addPathSegment(EMPLOYEE)
@@ -194,34 +201,28 @@ public class EmployeeTests {
                 .url(url)
                 .get().build();
 
-        response = client.newCall(getListRequest).execute();
-        jsonNode = mapper.readTree(response.body().string());
-        assertFalse(jsonNode.elements().hasNext());
+        try (Response response = client.newCall(getListRequest).execute()) {
+            assertFalse(mapper.readTree(response.body().string()).elements().hasNext());
+        }
     }
 
     // ==================== Вспомогательные методы ====================
 
     private String getToken() throws IOException {
-        String json = """
-                {
-                  "username": "leonardo",
-                  "password": "leads"
-                }
-                """;
-
-        RequestBody authBody = RequestBody.create(json, JSON);
+        RequestBody authBody = RequestBody.create(authJson(), JSON);
         Request request = new Request.Builder()
                 .post(authBody)
                 .url(URL + LOGIN)
                 .build();
 
-        Response response = client.newCall(request).execute();
-        String body = response.body().string();
+        try (Response response = client.newCall(request).execute()) {
+            String body = response.body().string();
 
-        System.out.println("[getToken] Ответ сервера: " + body);
+            System.out.println("[getToken] Ответ сервера: " + body);
 
-        JsonNode jsonNode = mapper.readTree(body);
-        return jsonNode.get("userToken").asText();
+            JsonNode jsonNode = mapper.readTree(body);
+            return jsonNode.get("userToken").asText();
+        }
     }
 
     private int createNewCompany() throws IOException {
@@ -229,23 +230,16 @@ public class EmployeeTests {
                 .addPathSegment(COMPANY)
                 .build();
 
-        String json = """
-                {
-                  "name": "Contract Test Company",
-                  "description": "string"
-                }
-                """;
-
-        RequestBody reqBody = RequestBody.create(json, JSON);
+        RequestBody reqBody = RequestBody.create(companyJson(), JSON);
         Request createRequest = new Request.Builder()
                 .url(url)
                 .header(X_CLIENT_TOKEN, getToken())
                 .post(reqBody).build();
 
-        Response response = client.newCall(createRequest).execute();
-        JsonNode jsonNode = mapper.readTree(response.body().string());
-
-        return jsonNode.get("id").asInt();
+        try (Response response = client.newCall(createRequest).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
+            return jsonNode.get("id").asInt();
+        }
     }
 
     private int createNewEmployee(int companyId) throws IOException {
@@ -260,9 +254,10 @@ public class EmployeeTests {
                 .header(X_CLIENT_TOKEN, getToken())
                 .post(reqBody).build();
 
-        Response response = client.newCall(createRequest).execute();
-        JsonNode jsonNode = mapper.readTree(response.body().string());
-        return jsonNode.get("id").asInt();
+        try (Response response = client.newCall(createRequest).execute()) {
+            JsonNode jsonNode = mapper.readTree(response.body().string());
+            return jsonNode.get("id").asInt();
+        }
     }
 
     private JsonNode getEmpInfo(int empId) throws IOException {
@@ -275,7 +270,26 @@ public class EmployeeTests {
                 .url(url)
                 .get().build();
 
-        Response response = client.newCall(getRequest).execute();
-        return null;
+        try (Response response = client.newCall(getRequest).execute()) {
+            return mapper.readTree(response.body().string());
+        }
+    }
+
+    private String companyJson() {
+        return """
+                {
+                  "name": "Contract Test Company",
+                  "description": "string"
+                }
+                """;
+    }
+
+    private String authJson() {
+        return """
+                {
+                  "username": "%s",
+                  "password": "%s"
+                }
+                """.formatted(TestConfig.LOGIN, TestConfig.PASSWORD);
     }
 }

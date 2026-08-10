@@ -14,7 +14,7 @@ public class ClientProvider implements ParameterResolver {
 
     @Override
     public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
-        XClientsWebClient client = new XClientsWebClient("https://x-clients-be.onrender.com");
+        XClientsWebClient client = new XClientsWebClient(TestConfig.BASE_URL);
         extensionContext.getStore(ExtensionContext.Namespace.GLOBAL).put("x_client", client);
         return client;
     }
