@@ -89,6 +89,9 @@ public class WebDriverFactory {
         FirefoxOptions options = new FirefoxOptions();
         String librewolfPath = "/Applications/LibreWolf.app/Contents/MacOS/librewolf";
         options.setBinary(librewolfPath);
+        // LibreWolf по умолчанию включает HTTPS-only: форсирует https:// и валит
+        // http-сайты (например, uitestingplayground.com) с ошибкой netTimeout.
+        options.addPreference("dom.security.https_only_mode", false);
         WebDriverManager.firefoxdriver().setup();
         return withDefaultTimeout(new FirefoxDriver(options));
     }

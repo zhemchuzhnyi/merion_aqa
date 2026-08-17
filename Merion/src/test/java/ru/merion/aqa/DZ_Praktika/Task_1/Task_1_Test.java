@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  Напишите скрипт. Шаги:
 
  Перейти на сайт http://uitestingplayground.com/textinput
- Указать в поле ввода текст "Merion"
+ Указать - в поле ввода текст "Merion"
  Нажать на синюю кнопку
  Проверьте, что текст кнопки = Merion
  **/
