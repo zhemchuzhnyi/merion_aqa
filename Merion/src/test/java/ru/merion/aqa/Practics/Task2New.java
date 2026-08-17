@@ -76,5 +76,6 @@ public class Task2New {
         String error = authPage.error();
 
         assertEquals("Epic sadface: Username and password do not match any user in this service", error);
+
     }
 }
