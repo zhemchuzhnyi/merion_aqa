@@ -20,6 +20,20 @@ import java.time.Duration;
  */
 public class WebDriverFactory {
 
+    private WebDriver driver;
+
+    /** Creates or returns the browser used by Cucumber scenarios. */
+    public WebDriver getOrCreate() {
+        if (driver == null) {
+            driver = create(System.getProperty("browser", "chrome"));
+        }
+        return driver;
+    }
+
+    public static WebDriver create() {
+        return create(System.getProperty("browser", "chrome"));
+    }
+
     // Базовое неявное ожидание проекта (см. ResultPage.addAllItemsToCart, которое возвращает его обратно)
     private static final Duration DEFAULT_IMPLICIT_WAIT = Duration.ofMillis(500);
 
